@@ -12,35 +12,34 @@
     body {
       font-family: 'Bebas Neue', sans-serif;
       margin: 0;
-      padding: 20px;
+      padding: 10px;
       background-color: #f5f5f5;
       letter-spacing: 0.5px;
     }
     .container {
       max-width: 1000px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      display: flex;
+      flex-direction: column;
     }
     .form-container, .chart-container {
       background: white;
-      padding: 30px;
+      padding: 20px;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
     }
     h1 {
-      grid-column: 1 / -1;
       text-align: center;
       color: #333;
-      font-size: 3em;
+      font-size: 2.5em;
       margin-bottom: 20px;
       letter-spacing: 2px;
     }
     .form-container form {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      grid-template-columns: 1fr;
+      gap: 15px;
     }
     .form-container label {
       display: block;
@@ -60,11 +59,7 @@
       display: flex;
       flex-direction: column;
     }
-    .full-width {
-      grid-column: 1 / -1;
-    }
     button {
-      grid-column: 1 / -1;
       padding: 12px;
       border: none;
       border-radius: 4px;
@@ -73,6 +68,7 @@
       font-size: 1.2em;
       cursor: pointer;
       letter-spacing: 1px;
+      margin-top: 10px;
     }
     button:hover {
       background-color: #555;
@@ -83,82 +79,113 @@
       font-size: 2em;
       letter-spacing: 1.5px;
     }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    
+    /* Media Queries */
+    @media (min-width: 768px) {
+      body {
+        padding: 20px;
+      }
+      .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+      .form-container, .chart-container {
+        margin-bottom: 0;
+      }
+      h1 {
+        grid-column: 1 / -1;
+        font-size: 3em;
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Editable Character Radar Chart</h1>
+    <h1>Character Radar Chart</h1>
 
     <!-- Form -->
     <div class="form-container">
       <form id="statsForm">
         <!-- Character & Color (full width) -->
-        <div class="full-width">
+        <div>
           <label>Character Name:
             <input type="text" id="charName" value="Nagato"/>
           </label>
         </div>
-        <div class="full-width">
+        <div>
           <label>Chart Color:
             <input type="color" id="chartColor" value="#800080"/>
           </label>
         </div>
 
         <!-- Stat name + value groups -->
-        <div class="stat-group">
-          <label for="statName0">Stat 1 Name</label>
-          <input type="text" id="statName0" value="Fūinjutsu"/>
-          <label for="stat0" id="label0">Value</label>
-          <input type="number" id="stat0" min="0" max="5" step="0.1" value="5"/>
-        </div>
+        <div class="stats-grid">
+          <div class="stat-group">
+            <label for="statName0">Stat 1 Name</label>
+            <input type="text" id="statName0" value="Fūinjutsu"/>
+            <label for="stat0" id="label0">Value</label>
+            <input type="number" id="stat0" min="0" max="5" step="0.1" value="5"/>
+          </div>
 
-        <div class="stat-group">
-          <label for="statName1">Stat 2 Name</label>
-          <input type="text" id="statName1" value="Ninjutsu"/>
-          <label for="stat1" id="label1">Value</label>
-          <input type="number" id="stat1" min="0" max="5" step="0.1" value="5"/>
-        </div>
+          <div class="stat-group">
+            <label for="statName1">Stat 2 Name</label>
+            <input type="text" id="statName1" value="Ninjutsu"/>
+            <label for="stat1" id="label1">Value</label>
+            <input type="number" id="stat1" min="0" max="5" step="0.1" value="5"/>
+          </div>
 
-        <div class="stat-group">
-          <label for="statName2">Stat 3 Name</label>
-          <input type="text" id="statName2" value="Kototamajutsu"/>
-          <label for="stat2" id="label2">Value</label>
-          <input type="number" id="stat2" min="0" max="5" step="0.1" value="4"/>
-        </div>
+          <div class="stat-group">
+            <label for="statName2">Stat 3 Name</label>
+            <input type="text" id="statName2" value="Kototamajutsu"/>
+            <label for="stat2" id="label2">Value</label>
+            <input type="number" id="stat2" min="0" max="5" step="0.1" value="4"/>
+          </div>
 
-        <div class="stat-group">
-          <label for="statName3">Stat 4 Name</label>
-          <input type="text" id="statName3" value="Taijutsu"/>
-          <label for="stat3" id="label3">Value</label>
-          <input type="number" id="stat3" min="0" max="5" step="0.1" value="4.5"/>
-        </div>
+          <div class="stat-group">
+            <label for="statName3">Stat 4 Name</label>
+            <input type="text" id="statName3" value="Taijutsu"/>
+            <label for="stat3" id="label3">Value</label>
+            <input type="number" id="stat3" min="0" max="5" step="0.1" value="4.5"/>
+          </div>
 
-        <div class="stat-group">
-          <label for="statName4">Stat 5 Name</label>
-          <input type="text" id="statName4" value="Intelligence"/>
-          <label for="stat4" id="label4">Value</label>
-          <input type="number" id="stat4" min="0" max="5" step="0.1" value="5"/>
-        </div>
+          <div class="stat-group">
+            <label for="statName4">Stat 5 Name</label>
+            <input type="text" id="statName4" value="Intelligence"/>
+            <label for="stat4" id="label4">Value</label>
+            <input type="number" id="stat4" min="0" max="5" step="0.1" value="5"/>
+          </div>
 
-        <div class="stat-group">
-          <label for="statName5">Stat 6 Name</label>
-          <input type="text" id="statName5" value="Strength"/>
-          <label for="stat5" id="label5">Value</label>
-          <input type="number" id="stat5" min="0" max="5" step="0.1" value="3.5"/>
-        </div>
+          <div class="stat-group">
+            <label for="statName5">Stat 6 Name</label>
+            <input type="text" id="statName5" value="Strength"/>
+            <label for="stat5" id="label5">Value</label>
+            <input type="number" id="stat5" min="0" max="5" step="0.1" value="3.5"/>
+          </div>
 
-        <div class="stat-group">
-          <label for="statName6">Stat 7 Name</label>
-          <input type="text" id="statName6" value="Speed"/>
-          <label for="stat6" id="label6">Value</label>
-          <input type="number" id="stat6" min="0" max="5" step="0.1" value="5"/>
-        </div>
+          <div class="stat-group">
+            <label for="statName6">Stat 7 Name</label>
+            <input type="text" id="statName6" value="Speed"/>
+            <label for="stat6" id="label6">Value</label>
+            <input type="number" id="stat6" min="0" max="5" step="0.1" value="5"/>
+          </div>
 
-        <div class="stat-group">
-          <label for="statName7">Stat 8 Name</label>
-          <input type="text" id="statName7" value="Stamina"/>
-          <label for="stat7" id="label7">Value</label>
-          <input type="number" id="stat7" min="0" max="5" step="0.1" value="5"/>
+          <div class="stat-group">
+            <label for="statName7">Stat 8 Name</label>
+            <input type="text" id="statName7" value="Stamina"/>
+            <label for="stat7" id="label7">Value</label>
+            <input type="number" id="stat7" min="0" max="5" step="0.1" value="5"/>
+          </div>
         </div>
 
         <button type="submit">Update Chart</button>
@@ -175,7 +202,23 @@
   <script>
     // Chart.js default font
     Chart.defaults.font.family = "'Bebas Neue', sans-serif";
-    Chart.defaults.font.size   = 16;
+    Chart.defaults.font.size = 14; // Smaller font for mobile
+    
+    // Responsive font sizing
+    function updateFontSize() {
+      if (window.innerWidth < 768) {
+        Chart.defaults.font.size = 12;
+      } else {
+        Chart.defaults.font.size = 16;
+      }
+    }
+    
+    window.addEventListener('resize', function() {
+      updateFontSize();
+      radarChart.update();
+    });
+    
+    updateFontSize();
 
     // Grab initial color
     let chartColor = document.getElementById('chartColor').value;
@@ -203,15 +246,28 @@
       },
       options: {
         responsive: true,
+        maintainAspectRatio: true,
         scales: {
           r: {
             angleLines: { display: true, color: 'rgba(0,0,0,0.3)' },
-            grid:       { color: 'rgba(0,0,0,0.3)' },
+            grid: { color: 'rgba(0,0,0,0.3)' },
             suggestedMin: 0,
             suggestedMax: 5,
-            ticks: { stepSize: 1 },
+            ticks: { 
+              stepSize: 1,
+              font: {
+                size: function() {
+                  return window.innerWidth < 768 ? 10 : 14;
+                }
+              }
+            },
             pointLabels: {
-              font: { size: 16, family: "'Bebas Neue', sans-serif" }
+              font: {
+                size: function() {
+                  return window.innerWidth < 768 ? 10 : 16;
+                },
+                family: "'Bebas Neue', sans-serif"
+              }
             }
           }
         },
@@ -225,7 +281,7 @@
     document.getElementById('statsForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
-      const name  = document.getElementById('charName').value;
+      const name = document.getElementById('charName').value;
       const color = document.getElementById('chartColor').value;
 
       // Gather new labels & values
@@ -249,12 +305,12 @@
       // Update chart
       const ds = radarChart.data.datasets[0];
       radarChart.data.labels = newLabels;
-      ds.label               = name;
-      ds.data                = newValues;
-      ds.backgroundColor     = color + '40';
-      ds.borderColor         = color;
-      ds.pointBackgroundColor= color;
-      ds.pointHoverBorderColor= color;
+      ds.label = name;
+      ds.data = newValues;
+      ds.backgroundColor = color + '40';
+      ds.borderColor = color;
+      ds.pointBackgroundColor = color;
+      ds.pointHoverBorderColor = color;
 
       radarChart.update();
     });

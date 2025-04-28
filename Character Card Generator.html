@@ -9,44 +9,44 @@
             font-family: Arial, sans-serif;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 10px;
             background-color: #f5f5f5;
         }
         .container {
             display: flex;
+            flex-direction: column;
             gap: 20px;
         }
         .form-container {
-            flex: 1;
             background: white;
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .preview-container {
-            flex: 1;
             background: white;
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 20px;
-            max-height: 90vh;
+            max-height: none;
             overflow-y: auto;
         }
         .output-container {
             margin-top: 20px;
             background: white;
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         h1, h2 {
             color: #333;
         }
+        h1 {
+            font-size: 1.8rem;
+        }
         .form-section {
             margin-bottom: 20px;
-            padding-bottom: 20px;
+            padding-bottom: 15px;
             border-bottom: 1px solid #eee;
         }
         .form-group {
@@ -63,6 +63,7 @@
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 16px;
+            box-sizing: border-box;
         }
         textarea {
             height: 100px;
@@ -77,6 +78,8 @@
             cursor: pointer;
             font-size: 16px;
             margin-right: 10px;
+            margin-bottom: 10px;
+            width: 100%;
         }
         button:hover {
             background-color: #45a049;
@@ -98,29 +101,33 @@
         /* Character Card CSS */
         .char-card {
             display: flex;
+            flex-direction: column;
             border: 1px solid #ddd;
             border-radius: 8px;
             overflow: hidden;
         }
         .char-header {
-            width: 200px;
+            width: 100%;
+            max-width: 100%;
         }
         .char-image {
             width: 100%;
+            max-width: 200px;
             display: block;
+            margin: 0 auto;
         }
         .char-info {
-            flex: 1;
             padding: 15px;
         }
         .char-title {
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 10px;
+            text-align: center;
         }
         .char-meta {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             margin-bottom: 20px;
         }
         .char-path {
@@ -143,7 +150,8 @@
         }
         .stats-container {
             display: flex;
-            gap: 20px;
+            flex-direction: column;
+            gap: 10px;
             margin-bottom: 20px;
         }
         .stats-column {
@@ -178,18 +186,85 @@
         }
         #htmlOutput {
             width: 100%;
-            height: 300px;
+            height: 200px;
             font-family: monospace;
             white-space: pre-wrap;
             border: 1px solid #ccc;
             padding: 10px;
             background-color: #f9f9f9;
+            box-sizing: border-box;
         }
         .copy-btn {
             background-color: #2196F3;
         }
         .copy-btn:hover {
             background-color: #0b7dda;
+        }
+        
+        /* Media Queries for Mobile Responsiveness */
+        @media (min-width: 768px) {
+            /* Reset everything to match the original desktop design */
+            body {
+                padding: 20px;
+            }
+            .container {
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+            }
+            .form-container {
+                flex: 1;
+                padding: 20px;
+            }
+            .preview-container {
+                flex: 1;
+                padding: 20px;
+                position: sticky;
+                top: 20px;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+            button {
+                width: auto;
+                margin-bottom: 0;
+            }
+            
+            /* Reset the character card to original desktop layout */
+            .char-card {
+                display: flex;
+                flex-direction: row;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            .char-header {
+                width: 200px;
+            }
+            .char-image {
+                width: 100%;
+                margin: 0;
+                max-width: none;
+            }
+            .char-info {
+                flex: 1;
+                padding: 15px;
+            }
+            .char-title {
+                text-align: left;
+            }
+            .char-meta {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .stats-container {
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+            }
+            #htmlOutput {
+                height: 300px;
+            }
         }
     </style>
 </head>
@@ -347,8 +422,10 @@ The valley is gone.</textarea>
                     </div>
                 </div>
                 
-                <button type="button" id="generateBtn">Generate HTML</button>
-                <button type="button" id="resetBtn">Reset Form</button>
+                <div>
+                    <button type="button" id="generateBtn">Generate HTML</button>
+                    <button type="button" id="resetBtn">Reset Form</button>
+                </div>
             </form>
         </div>
         

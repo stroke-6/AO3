@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Editable Character Radar Chart</title>
+  <!-- Google Fonts - Bebas Neue -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"/>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+  <style>
+    body {
+      font-family: 'Bebas Neue', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+      letter-spacing: 0.5px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .form-container, .chart-container {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1 {
+      grid-column: 1 / -1;
+      text-align: center;
+      color: #333;
+      font-size: 3em;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+    .form-container form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .form-container label {
+      display: block;
+      font-size: 1.1em;
+      margin-bottom: 6px;
+    }
+    .form-container input[type="text"],
+    .form-container input[type="number"],
+    .form-container input[type="color"] {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      font-size: 1em;
+      margin-bottom: 12px;
+    }
+    .stat-group {
+      display: flex;
+      flex-direction: column;
+    }
+    .full-width {
+      grid-column: 1 / -1;
+    }
+    button {
+      grid-column: 1 / -1;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      background-color: #333;
+      color: white;
+      font-size: 1.2em;
+      cursor: pointer;
+      letter-spacing: 1px;
+    }
+    button:hover {
+      background-color: #555;
+    }
+    .chart-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2em;
+      letter-spacing: 1.5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Editable Character Radar Chart</h1>
+
+    <!-- Form -->
+    <div class="form-container">
+      <form id="statsForm">
+        <!-- Character & Color (full width) -->
+        <div class="full-width">
+          <label>Character Name:
+            <input type="text" id="charName" value="Nagato"/>
+          </label>
+        </div>
+        <div class="full-width">
+          <label>Chart Color:
+            <input type="color" id="chartColor" value="#800080"/>
+          </label>
+        </div>
+
+        <!-- Stat name + value groups -->
+        <div class="stat-group">
+          <label for="statName0">Stat 1 Name</label>
+          <input type="text" id="statName0" value="Fūinjutsu"/>
+          <label for="stat0" id="label0">Value</label>
+          <input type="number" id="stat0" min="0" max="5" step="0.1" value="5"/>
+        </div>
+
+        <div class="stat-group">
+          <label for="statName1">Stat 2 Name</label>
+          <input type="text" id="statName1" value="Ninjutsu"/>
+          <label for="stat1" id="label1">Value</label>
+          <input type="number" id="stat1" min="0" max="5" step="0.1" value="5"/>
+        </div>
+
+        <div class="stat-group">
+          <label for="statName2">Stat 3 Name</label>
+          <input type="text" id="statName2" value="Kototamajutsu"/>
+          <label for="stat2" id="label2">Value</label>
+          <input type="number" id="stat2" min="0" max="5" step="0.1" value="4"/>
+        </div>
+
+        <div class="stat-group">
+          <label for="statName3">Stat 4 Name</label>
+          <input type="text" id="statName3" value="Taijutsu"/>
+          <label for="stat3" id="label3">Value</label>
+          <input type="number" id="stat3" min="0" max="5" step="0.1" value="4.5"/>
+        </div>
+
+        <div class="stat-group">
+          <label for="statName4">Stat 5 Name</label>
+          <input type="text" id="statName4" value="Intelligence"/>
+          <label for="stat4" id="label4">Value</label>
+          <input type="number" id="stat4" min="0" max="5" step="0.1" value="5"/>
+        </div>
+
+        <div class="stat-group">
+          <label for="statName5">Stat 6 Name</label>
+          <input type="text" id="statName5" value="Strength"/>
+          <label for="stat5" id="label5">Value</label>
+          <input type="number" id="stat5" min="0" max="5" step="0.1" value="3.5"/>
+        </div>
+
+        <div class="stat-group">
+          <label for="statName6">Stat 7 Name</label>
+          <input type="text" id="statName6" value="Speed"/>
+          <label for="stat6" id="label6">Value</label>
+          <input type="number" id="stat6" min="0" max="5" step="0.1" value="5"/>
+        </div>
+
+        <div class="stat-group">
+          <label for="statName7">Stat 8 Name</label>
+          <input type="text" id="statName7" value="Stamina"/>
+          <label for="stat7" id="label7">Value</label>
+          <input type="number" id="stat7" min="0" max="5" step="0.1" value="5"/>
+        </div>
+
+        <button type="submit">Update Chart</button>
+      </form>
+    </div>
+
+    <!-- Chart -->
+    <div class="chart-container">
+      <h2 id="chartTitle" style="color: #800080;">Nagato</h2>
+      <canvas id="radarChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    // Chart.js default font
+    Chart.defaults.font.family = "'Bebas Neue', sans-serif";
+    Chart.defaults.font.size   = 16;
+
+    // Grab initial color
+    let chartColor = document.getElementById('chartColor').value;
+
+    // Build the chart
+    const ctx = document.getElementById('radarChart').getContext('2d');
+    const radarChart = new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: [
+          'Fūinjutsu','Ninjutsu','Kototamajutsu','Taijutsu',
+          'Intelligence','Strength','Speed','Stamina'
+        ],
+        datasets: [{
+          label: document.getElementById('charName').value,
+          data: [5,5,4,4.5,5,3.5,5,5],
+          backgroundColor: chartColor + '40',
+          borderColor: chartColor,
+          borderWidth: 2,
+          pointBackgroundColor: chartColor,
+          pointBorderColor: '#fff',
+          pointHoverBackgroundColor: '#fff',
+          pointHoverBorderColor: chartColor
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          r: {
+            angleLines: { display: true, color: 'rgba(0,0,0,0.3)' },
+            grid:       { color: 'rgba(0,0,0,0.3)' },
+            suggestedMin: 0,
+            suggestedMax: 5,
+            ticks: { stepSize: 1 },
+            pointLabels: {
+              font: { size: 16, family: "'Bebas Neue', sans-serif" }
+            }
+          }
+        },
+        plugins: {
+          legend: { display: false }
+        }
+      }
+    });
+
+    // Update on form submit
+    document.getElementById('statsForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name  = document.getElementById('charName').value;
+      const color = document.getElementById('chartColor').value;
+
+      // Gather new labels & values
+      const newLabels = [];
+      const newValues = [];
+      for (let i = 0; i < 8; i++) {
+        newLabels.push(document.getElementById(`statName${i}`).value);
+        newValues.push(parseFloat(document.getElementById(`stat${i}`).value) || 0);
+      }
+
+      // Refresh tiny form-value labels
+      newLabels.forEach((lab, i) => {
+        document.getElementById(`label${i}`).textContent = lab + ':';
+      });
+
+      // Update heading
+      const titleEl = document.getElementById('chartTitle');
+      titleEl.textContent = name;
+      titleEl.style.color = color;
+
+      // Update chart
+      const ds = radarChart.data.datasets[0];
+      radarChart.data.labels = newLabels;
+      ds.label               = name;
+      ds.data                = newValues;
+      ds.backgroundColor     = color + '40';
+      ds.borderColor         = color;
+      ds.pointBackgroundColor= color;
+      ds.pointHoverBorderColor= color;
+
+      radarChart.update();
+    });
+  </script>
+</body>
+</html>

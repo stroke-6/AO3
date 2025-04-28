@@ -1,5 +1,91 @@
-  <p>Hello. Here are some links:</p>
-ul>
-    <li><a href="Character Card Generator.html">Visit Page 1</a></li>
-
-  </ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>stroke6</title>
+  <style>
+    body {
+      font-family: "Lucida Grande", "Lucida Sans Unicode", "GNU Unifont", Verdana, Helvetica, sans-serif;
+      background: #eee;
+      color: #2a2a2a;
+      line-height: 1.5;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+    }
+    
+    .header {
+      margin-bottom: 20px;
+    }
+    
+    .icon img {
+      border-radius: 3px;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+    
+    h1 {
+      font-family: Georgia, serif;
+      font-size: 1.8em;
+      font-weight: 400;
+      color: #900;
+      margin-top: 0;
+    }
+    
+    p {
+      margin: 10px 0;
+    }
+    
+    .links-container {
+      margin-top: 25px;
+    }
+    
+    /* Character Card Generator Link Style */
+    .character-card-link {
+      display: block;
+      margin: 15px 0;
+      padding: 12px 15px;
+      background: #f3f3f3;
+      border: 1px solid #ddd;
+      border-left: 5px solid #900;
+      border-radius: 3px;
+      color: #900;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.2s ease;
+    }
+    
+    .character-card-link:hover, .character-card-link:focus {
+      background: #ffe6e6;
+      border-left-width: 8px;
+      transform: translateX(3px);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="icon">
+        <img src="https://archiveofourown.org/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOTdKSlE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--01c86b15f6e03859b871688f7cd7abc300decd81/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVdscGFUb0xiRzloWkdWeWV3WTZCbTVwK2c9PSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--dbfda9f6349f05dbf7e1dce388e216b2ffb49003/original.jpg" alt="Profile icon">
+      </div>
+      <h1>Resources</h1>
+      <p>Hello, stroke here. Here are some links:</p>
+    </div>
+    
+    <div class="links-container">
+      <a href="Character Card Generator.html" class="character-card-link">Character Card Generator</a>
+    </div>
+  </div>
+</body>
+</html>

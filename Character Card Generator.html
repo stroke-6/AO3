@@ -5,267 +5,963 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Character Card Generator</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 10px;
-            background-color: #f5f5f5;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .form-container {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .preview-container {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            max-height: none;
-            overflow-y: auto;
-        }
-        .output-container {
-            margin-top: 20px;
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        h1, h2 {
-            color: #333;
-        }
-        h1 {
-            font-size: 1.8rem;
-        }
-        .form-section {
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        input, textarea, select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-        textarea {
-            height: 100px;
-            resize: vertical;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-right: 10px;
-            margin-bottom: 10px;
-            width: 100%;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        .skill-item {
-            border: 1px solid #eee;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 4px;
-        }
-        .skill-controls {
-            text-align: right;
-        }
-        .summaryred {
-            color: red;
-            font-weight: bold;
-        }
-        
-        /* Character Card CSS */
-        .char-card {
-            display: flex;
-            flex-direction: column;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .char-header {
-            width: 100%;
-            max-width: 100%;
-        }
-        .char-image {
-            width: 100%;
-            max-width: 200px;
-            display: block;
-            margin: 0 auto;
-        }
-        .char-info {
-            padding: 15px;
-        }
-        .char-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .char-meta {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 20px;
-        }
-        .char-path {
-            color: blue;
-            font-weight: bold;
-        }
-        .char-warrank {
-            color: red;
-            font-weight: bold;
-        }
-        .char-tier {
-            color: green;
-        }
-        .attributes-section, .skills-section, .shinobi-section, .backstory-section {
-            font-weight: bold;
-            font-size: 18px;
-            margin-top: 15px;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-        .stats-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .stats-column {
-            flex: 1;
-        }
-        .stat-row {
-            margin-bottom: 8px;
-        }
-        .stat-name {
-            font-weight: bold;
-        }
-        .stat-value {
-            font-weight: bold;
-        }
-        .red {
-            color: red;
-        }
-        .skill-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-        }
-        .skill-name {
-            font-weight: bold;
-        }
-        .skill-level {
-            font-weight: bold;
-            color: purple;
-        }
-        .skill-desc {
-            margin-bottom: 15px;
-        }
-        #htmlOutput {
-            width: 100%;
-            height: 200px;
-            font-family: monospace;
-            white-space: pre-wrap;
-            border: 1px solid #ccc;
-            padding: 10px;
-            background-color: #f9f9f9;
-            box-sizing: border-box;
-        }
-        .copy-btn {
-            background-color: #2196F3;
-        }
-        .copy-btn:hover {
-            background-color: #0b7dda;
-        }
-        
-        /* Media Queries for Mobile Responsiveness */
-        @media (min-width: 768px) {
-            /* Reset everything to match the original desktop design */
-            body {
-                padding: 20px;
-            }
-            .container {
-                display: flex;
-                flex-direction: row;
-                gap: 20px;
-            }
-            .form-container {
-                flex: 1;
-                padding: 20px;
-            }
-            .preview-container {
-                flex: 1;
-                padding: 20px;
-                position: sticky;
-                top: 20px;
-                max-height: 90vh;
-                overflow-y: auto;
-            }
-            button {
-                width: auto;
-                margin-bottom: 0;
-            }
-            
-            /* Reset the character card to original desktop layout */
-            .char-card {
-                display: flex;
-                flex-direction: row;
-                border: 1px solid #ddd;
-                border-radius: 8px;
-                overflow: hidden;
-            }
-            .char-header {
-                width: 200px;
-            }
-            .char-image {
-                width: 100%;
-                margin: 0;
-                max-width: none;
-            }
-            .char-info {
-                flex: 1;
-                padding: 15px;
-            }
-            .char-title {
-                text-align: left;
-            }
-            .char-meta {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-            }
-            .stats-container {
-                display: flex;
-                flex-direction: row;
-                gap: 20px;
-            }
-            #htmlOutput {
-                height: 300px;
-            }
-        }
+        /* Base styles */
+body {
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #f5f5f5;
+}
+
+/* Container Layout */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-container, 
+.preview-container, 
+.output-container {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.output-container {
+  margin-top: 20px;
+}
+
+.preview-container {
+  max-height: none;
+  overflow-y: auto;
+}
+
+/* Typography */
+h1, h2 {
+  color: #333;
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+/* Form Elements */
+.form-section {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.copy-btn {
+  background-color: #2196F3;
+}
+
+.copy-btn:hover {
+  background-color: #0b7dda;
+}
+
+/* Skill Items */
+.skill-item {
+  border: 1px solid #eee;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.skill-controls {
+  text-align: right;
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.skill-name {
+  font-weight: bold;
+}
+
+.skill-level {
+  font-weight: bold;
+  color: purple;
+}
+
+.skill-desc {
+  margin-bottom: 15px;
+}
+
+/* Custom Style Elements */
+.summaryred,
+.red {
+  color: red;
+  font-weight: bold;
+}
+
+/* Work Skin Styles */
+#workskin div.preface .notes,
+#workskin div.preface .summary,
+#workskin div.preface .series,
+#workskin div.preface .children {
+  min-height: 0;
+}
+
+#workskin .userstuff hr {
+  width: 100%;
+  margin: auto;
+}
+
+/* HR Styles */
+#workskin .hr4 {
+  background-color: #a80a06;
+  border: 0;
+  height: 1px;
+  width: 100%;
+}
+
+#workskin .hr5,
+#workskin .hr6 {
+  background: url('https://a.l3n.co/i/oGRk4A.png') no-repeat center center;
+  background-size: contain;
+  display: block;
+  height: 50px;
+  border: 0;
+  position: relative;
+  transition-duration: 3s;
+  transition-timing-function: ease-in-out;
+}
+
+#workskin .hr5:before,
+#workskin .hr5:after {
+  content: '';
+  display: block;
+  position: absolute;
+  background-color: #000000;
+  height: 1px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition-duration: 3s;
+  transition-timing-function: ease-in-out;
+}
+
+#workskin .hr5::before {
+  left: 0;
+  right: 50%;
+  margin-right: 30px;
+}
+
+#workskin .hr5::after {
+  left: 50%;
+  right: 0;
+  margin-left: 30px;
+}
+
+#workskin .hr5:hover {
+  height: 5em;
+  transition-delay: 4s;
+  transition-duration: 2s;
+  transition-timing-function: ease-in-out;
+}
+
+#workskin .hr6:hover {
+  height: 10em;
+  filter: drop-shadow(1em 1em rgb(247, 140, 88));
+  transition-delay: 4s;
+  transition-duration: 2s;
+  transition-timing-function: ease-in-out;
+}
+
+#workskin .hr5:hover::before {
+  transform: translateX(-800px);
+  transition-duration: 2s;
+  transition-timing-function: linear;
+}
+
+#workskin .hr5:hover::after {
+  transform: translateX(800px);
+  transition-duration: 2s;
+  transition-timing-function: linear;
+}
+
+#workskin .hr7 {
+  border: 0;
+  height: 1px;
+  width: 40%;
+  background: linear-gradient(to right, rgba(117, 7, 5, 0) 0%, rgba(117, 7, 5, 1) 25%, rgba(117, 7, 5, 1) 75%, rgba(117, 7, 5, 0) 100%);
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(117, 7, 5, 0.5);
+}
+
+/* Title and Heading Styles */
+#workskin .title.heading {
+  font-family: PT Serif, Raleway, Georgia;
+  font-size: 170%;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 52px;
+  text-transform: uppercase;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+  background: transparent;
+  display: inline-block;
+  padding: 2px 8px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+#workskin .title.heading:hover {
+  background: rgb(247, 140, 88);
+  transform: translateX(-50%) rotate(-3deg);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
+}
+
+#workskin .title.heading + .byline {
+  font-family: Georgia;
+  transition-duration: 3s;
+}
+
+#workskin .title.heading:hover + .byline {
+  filter: brightness(0);
+  transition-duration: 3s;
+}
+
+#workskin h3.title {
+  display: none;
+}
+
+/* Preface Styles */
+#workskin .preface.group div h3 {
+  display: none;
+}
+
+#workskin .preface.group a {
+  border: none;
+  font-weight: bold;
+  font-family: arial, helvetica, sans-serif;
+  color: #a80a06;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.7px;
+}
+
+#workskin .preface.group h3.byline.heading a {
+  color: #a80a06;
+  display: inline;
+  margin-bottom: 0;
+  text-transform: lowercase;
+  letter-spacing: 0;
+  font-size: 16px;
+}
+
+#workskin .preface.group {
+  padding: 15px;
+}
+
+#workskin div.preface {
+  margin: 0;
+  padding: .643em .643em 0;
+  float: none;
+}
+
+/* Common Element Styles */
+#workskin .notes,
+#workskin .summary {
+  font-size: 13px;
+  padding: 0.643em 0.643em;
+  border-radius: 5px;
+  margin: 1.5em 3em;
+  float: none;
+}
+
+#workskin .summary {
+  padding-top: 1em;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+}
+
+#workskin .notes {
+  padding: 0.643em 0.643em 0;
+  border: none;
+}
+
+#workskin .notes p,
+#workskin .summary p {
+  font-size: 12px;
+  font-family: Arial;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#workskin .notes img {
+  width: 120%;
+}
+
+/* Text Style Classes */
+#workskin .strongserif {
+  font-size: 105%;
+  font-weight: bold;
+}
+
+#workskin .strongred {
+  font-size: 140%;
+  font-weight: bold;
+  font-family: PT Serif, Georgia;
+  color: #750705;
+}
+
+#workskin p .red .strongred {
+  font-size: 3em;
+  line-height: 1;
+  font-weight: bold;
+}
+
+#workskin .red {
+  font-weight: bold;
+  font-family: PT Serif;
+  color: #750705;
+  font-size: 1.1em;
+}
+
+/* Notes Special Styling */
+#workskin .notes u:hover {
+  color: #750705;
+}
+
+#workskin .notes u:hover::after {
+  content: url('https://c.l3n.co/i/vJpYDq.png');
+  transform: scale(0.05);
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: top;
+  margin-right: 0.5em;
+  position: relative;
+  top: -0.1em;
+}
+
+#workskin .notes .fnotes {
+  width: 95%;
+}
+
+#workskin .notes a.fnotes.module p a {
+  text-transform: lowercase;
+  font-weight: normal;
+  font-size: inherit;
+  color: inherit;
+  text-decoration: none;
+}
+
+#workskin .notes details {
+  font-size: 13px;
+  font-weight: bold;
+  color: #750705;
+  font-family: Arial;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#workskin .notes summary {
+  background-color: rgba(117,7,5, 0.2);
+  display: inline-block;
+  transform: rotate(-10deg);
+  padding: 0.25em;
+  border-radius: 4px;
+  border-bottom: 1px solid #891111;
+  transition-duration: 0.2s;
+}
+
+#workskin .notes summary:active {
+  color: #111;
+  background: #ccc;
+  border-color: #fff;
+  box-shadow: inset 1px 1px 3px #333;
+  transform: translateY(4px);
+}
+
+#workskin .notes summary:hover {
+  color: #111;
+  text-decoration: none;
+  border-bottom: 1px solid;
+  box-shadow: 2px 2px 0px #891111;
+}
+
+#workskin .notes summary::before {
+  content: url('https://c.l3n.co/i/vJpYDq.png');
+  transform: scale(0.05);
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: top;
+  margin-right: 0.5em;
+  position: relative;
+  top: -0.1em;
+}
+
+#workskin .notes summary::after {
+  content: " ↓";
+}
+
+#workskin #notes {
+  display: none;
+}
+
+/* Container Elements */
+#workskin .fnotes-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#workskin .fnotes {
+  font-size: 12px;
+  font-family: Arial;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+#workskin .tbc-img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 12px;
+  font-family: Arial;
+  text-align: right;
+}
+
+#workskin .epigraph {
+  width: 90%;
+  font-size: 110%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'EB Garamond', Garamond, Georgia, serif;
+}
+
+#workskin .email {
+  padding: 0 0.643em;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+  float: none;
+}
+
+#workskin .circle {
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#workskin .circle2 {
+  display: block;
+  border: 1px solid #a80a06;
+  height: 60px;
+  width: 60px;
+  line-height: 60px;
+  border-radius: 30px;
+  background-color: transparent;
+  color: white;
+  text-align: center;
+  font-size: 2em;
+}
+
+#workskin .image-container {
+  width: 75%;
+  height: 25px;
+  background-image: url('https://c.l3n.co/i/ssrp2Q.png');
+  background-repeat: repeat-x;
+  background-size: 25px 25px;
+  background-position: center;
+  display: flex;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#workskin .containerb {
+  margin: 0;
+  position: relative;
+  text-align: center;
+  font-size: 250%;
+  color: #2a2a2a;
+  font-family: Georgia;
+}
+
+#workskin .centeredb {
+  margin: 0;
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#workskin .containerb p,
+#workskin .centeredb p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Special Content Types */
+#workskin .flashback {
+  border-right: 1px dotted rgba(0, 0, 0, 0.9);
+  padding: 0 1em 0 0;
+  color: #333;
+  margin: 0 0 0 1em;
+}
+
+#workskin .vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  padding: 10px;
+  font-weight: bold;
+}
+
+#workskin .centered-container {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+}
+
+#workskin .centered-content {
+  max-width: 600px;
+  padding: 20px;
+}
+
+#workskin .centered-content p {
+  line-height: 1.5;
+  margin-bottom: 1em;
+  color: #333;
+  text-align: left;
+}
+
+/* Tables and Definition Lists */
+#workskin dd {
+  border: 1px solid gray;
+  padding: 8px;
+  text-align: left;
+}
+
+#workskin dt {
+  background-color: #f2f2f2;
+  color: #750705;
+  font-weight: bold;
+}
+
+#workskin .table-container {
+  overflow-x: auto;
+  width: 100%;
+}
+
+#workskin table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#workskin th,
+#workskin td {
+  border: 1px solid gray;
+  padding: 8px;
+  text-align: left;
+}
+
+#workskin th {
+  background-color: #f2f2f2;
+}
+
+#workskin .thick-border-top {
+  border-top: 3px double gray;
+}
+
+#workskin .thick-border-bottom {
+  border-bottom: 3px double gray;
+}
+
+/* Manga Box */
+#workskin .manga-box3 {
+  padding: 0.643em 0;
+  font-size: 12px;
+  font-family: Arial;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+  width: 75%;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#workskin .summaryred {
+  font-size: 16px;
+  font-weight: bold;
+  color: #750705;
+  padding: .125em;
+  border-bottom: .25em double #333;
+}
+
+/* House Classes */
+#workskin .noble-house {
+  background-color: rgba(128, 0, 0, 0.4);
+}
+
+#workskin .essential-house {
+  background-color: rgba(188, 143, 143, 0.4);
+}
+
+#workskin .support-house {
+  background-color: rgba(255, 228, 225, 0.4);
+}
+
+/* Selection Styling */
+#workskin ::selection {
+  background: rgb(247, 140, 88);
+}
+
+#workskin .red::selection,
+#workskin .strongred::selection,
+#workskin .title.heading::selection {
+  color: #2a2a2a;
+}
+
+/* Character Card Styles */
+#workskin .char-card * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#workskin .char-card {
+  width: 100%;
+  max-width: 700px;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+#workskin .char-header {
+  position: relative;
+  width: 100%;
+  background-color: #f2f2f2;
+}
+
+#workskin .char-image {
+  max-width: 100%;
+  display: block;
+}
+
+#workskin .char-name {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background-color: #4ade80;
+  color: white;
+  padding: 5px 15px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#workskin .char-info {
+  padding: 15px;
+  background-color: white;
+}
+
+#workskin .char-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#workskin .char-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+#workskin .char-path {
+  background-color: #3b82f6;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+#workskin .char-warrank {
+  background-color: #F5533B;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+#workskin .char-tier {
+  background-color: #750705;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+#workskin .char-section {
+  margin-bottom: 20px;
+}
+
+#workskin .section-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Character Stats */
+#workskin .stats-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+#workskin .stats-column {
+  width: 50%;
+  padding-right: 10px;
+}
+
+#workskin .stat-row {
+  margin-bottom: 8px;
+}
+
+#workskin .stat-name {
+  font-weight: bold;
+  display: inline-block;
+  width: 100px;
+}
+
+#workskin .stat-value {
+  display: inline-block;
+  width: 50px;
+  text-align: right;
+}
+
+#workskin .stat-bar-bg {
+  display: inline-block;
+  width: 150px;
+  height: 10px;
+  background-color: #eee;
+  margin-top: 5px;
+  position: relative;
+}
+
+#workskin .stat-bar-fill {
+  display: block;
+  height: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Specific Stat Bar Colors */
+#workskin .stat-ninjutsu .stat-bar-fill { background-color: #3b82f6; }
+#workskin .stat-taijutsu .stat-bar-fill { background-color: #ef4444; }
+#workskin .stat-genjutsu .stat-bar-fill { background-color: #8b5cf6; }
+#workskin .stat-perception .stat-bar-fill { background-color: #10b981; }
+#workskin .stat-dexterity .stat-bar-fill { background-color: #f59e0b; }
+#workskin .stat-strength .stat-bar-fill { background-color: #b91c1c; }
+#workskin .stat-speed .stat-bar-fill { background-color: #22c55e; }
+#workskin .stat-intelligence .stat-bar-fill { background-color: #0ea5e9; }
+#workskin .stat-endurance .stat-bar-fill { background-color: #78716c; }
+#workskin .stat-output .stat-bar-fill { background-color: #f97316; }
+
+/* Section Styles */
+#workskin .attributes-section,
+#workskin .skills-section,
+#workskin .shinobi-section,
+#workskin .backstory-section {
+  border-top: 2px solid #333;
+  border-bottom: 2px solid #333;
+  padding: 5px 0;
+  margin: 15px 0;
+  font-weight: bold;
+}
+
+/* Skill Items */
+#workskin .skill-item {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+#workskin .skill-item:last-child {
+  border-bottom: none;
+}
+
+#workskin .skill-level {
+  background-color: #e5e7eb;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+#workskin .skill-desc,
+#workskin .origin-desc {
+  font-size: 14px;
+  color: #666;
+}
+
+#workskin .background-text {
+  line-height: 1.5;
+}
+
+/* HTML Output */
+#htmlOutput {
+  width: 100%;
+  height: 200px;
+  font-family: monospace;
+  white-space: pre-wrap;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+}
+
+/* Media Queries for Responsive Design */
+@media (min-width: 768px) {
+  body {
+    padding: 20px;
+  }
+  
+  .container {
+    flex-direction: row;
+  }
+  
+  .form-container,
+  .preview-container {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .preview-container {
+    position: sticky;
+    top: 20px;
+    max-height: 90vh;
+  }
+  
+  button {
+    width: auto;
+    margin-bottom: 0;
+  }
+  
+  /* Character card desktop layout */
+  .char-card {
+    flex-direction: row;
+  }
+  
+  .char-header {
+    width: 200px;
+  }
+  
+  .char-image {
+    width: 100%;
+    margin: 0;
+    max-width: none;
+  }
+  
+  .char-info {
+    flex: 1;
+  }
+  
+  .char-title {
+    text-align: left;
+  }
+  
+  .char-meta {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  /* Fix for attributes display in desktop view */
+  #workskin .stats-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  #workskin .stats-column {
+    width: 45%;
+    flex: 0 0 auto;
+  }
+  
+  /* Ensure stats are laid out horizontally within columns */
+  #workskin .stat-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  #workskin .stat-name {
+    width: auto;
+    flex: 0 0 100px;
+  }
+  
+  #workskin .stat-value {
+    width: auto;
+    margin: 0 10px;
+  }
+  
+  #htmlOutput {
+    height: 300px;
+  }
+}
     </style>
 </head>
 <body>

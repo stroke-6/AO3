@@ -128,6 +128,34 @@
       font-size: 0.95em;
       border-left: 1px dashed #ccc;
     }
+    
+    /* New styles for Story Annexes section */
+    .annex-container {
+      margin-bottom: 25px;
+    }
+    
+    .annex-link {
+      display: block;
+      margin: 15px 0 5px 0;
+      padding: 12px 15px;
+      background: #fffdf0;
+      border: 1px solid #e6d9a3;
+      border-left: 5px solid #e6bc00;
+      border-radius: 3px;
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.2s ease;
+      position: relative;
+      padding-left: 15px;
+    }
+    
+    .annex-link:hover, .annex-link:focus {
+      background: #fff8d6;
+      border-left-width: 8px;
+      transform: translateX(3px);
+      color: #333;
+    }
   </style>
 </head>
 <body>
@@ -166,6 +194,20 @@
           Download stories — ...Never mind. That's what I use to download "Crimson Horizons" with decent formatting and keep it updated as an EPUB file. This script technically works for... works that have grown too large for AO3's standard download functionality, but, admittedly, I modified the formatting to suit my own needs.
         </div>
       </div>
+      
+      <!-- Story Annexes Section -->
+      <h2>Story Annexes</h2>
+      <p>Additional resources and supplementary materials for my stories:</p>
+      
+            
+      <div class="annex-container">
+        <a href="FTRWL_Character_Relationships.html" class="annex-link">From the Ring, With Love — Character Relationships</a>
+        <div class="script-description">
+          A visual map of character connections and relationships in the FTRWL universe — hopefully useful for keeping track of the extensive cast.
+        </div>
+      </div>
+      
+  
     </div>
   </div>
 </body>

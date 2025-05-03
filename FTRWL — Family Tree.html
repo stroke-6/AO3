@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Tree - Organized by Unions</title>
+  <style>
+       body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+  color: #900;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.family-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.father {
+  margin-bottom: 50px;
+}
+
+.unions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.union {
+  border: 1px dashed #ccc;
+  border-radius: 10px;
+  padding: 25px 20px;
+  width: 360px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.union-poly {
+  border: 1px dashed #ccc;
+  border-radius: 10px;
+  padding: 25px 20px;
+  position: relative;
+}
+
+.top15 {
+  margin-top: 15px;
+}
+
+.union-poly2 {
+  border: 1px dashed #ccc;
+  border-radius: 10px;
+  padding: 25px 20px;
+  margin-top: 15px; 
+}
+
+.parents {
+  display: flex;
+  justify-content: center; 
+  gap: 20px; 
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+
+.parents::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px; 
+  height: 2px;
+  background-color: #666;
+  z-index: 0; 
+}
+
+.union-title {
+  position: absolute;
+  top: -10px;
+  background-color: white;
+  padding: 0 10px;
+  font-weight: bold;
+  color: #666;
+}
+
+.union-poly-title {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  background-color: white;
+  padding: 0 10px;
+  font-weight: bold;
+  color: #666;
+}
+
+.children {
+  width: 100%;
+  border-top: 1px solid #eee;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center; 
+  justify-content: center; 
+  position: relative;
+  margin-top: 20px;
+  min-height: 150px; 
+  box-sizing: border-box;
+}
+
+.children .person {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+
+.person {
+  padding: 12px 10px;
+  border-radius: 5px;
+  width: 145px; 
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-sizing: border-box; 
+  font-size: 14px; 
+  position: relative; 
+  z-index: 1; 
+}
+
+.male {
+  background-color: #d6e4ff;
+  border-left: 4px solid #4c75a3;
+}
+
+.female {
+  background-color: #ffe6ee;
+  border-left: 4px solid #d6769e;
+}
+
+.connector {
+  width: 2px;
+  height: 20px;
+  background-color: #666;
+  margin: 5px 0;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+  margin-right: 5px;
+}
+
+.tab.active {
+  background-color: white;
+  border-bottom: 1px solid white;
+  position: relative;
+  bottom: -1px;
+  font-weight: bold;
+}
+
+.family-trees > div {
+  display: none;
+}
+
+.family-trees > div.active {
+  display: block;
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+}
+
+.male-color {
+  background-color: #d6e4ff;
+  border-left: 4px solid #4c75a3;
+}
+
+.female-color {
+  background-color: #ffe6ee;
+  border-left: 4px solid #d6769e;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Family Tree - Organized by Unions</h1>
+    
+    <div class="tabs" id="familyTabs">
+      <div class="tab active" data-family="uzumaki">Uzumaki Family</div>
+      <div class="tab" data-family="uchiha">Uchiha Family</div>
+	  <div class="tab" data-family="uzumaki07">Uzumaki Family (#07)</div>
+      <div class="tab" data-family="uchiha07">Uchiha Family (#07)</div>
+    </div>
+    
+    <div class="family-trees">
+      <div id="uzumaki-family" class="active">
+        <div class="family-tree">
+         
+          
+          <div class="unions union-poly top15">
+		    <div class="union-poly-title">The Dreaded Poly Circle</div>
+
+            <!-- Yoisen and Naruto -->
+            <div class="union">
+              <div class="union-title">Yoisen & Naruto</div>
+              <div class="parents">
+				<div class="person male">Uzumaki Naruto</div>
+                <div class="person female">Uzumaki Yoisen</div>
+              </div>
+              <div class="children">
+                <div class="person female">Uzumaki Aoi</div>
+                <div class="person female">Uzumaki Kasumi</div>
+              </div>
+            </div>
+            
+            <!-- Karin and Naruto -->
+            <div class="union">
+              <div class="union-title">Karin & Naruto</div>
+              <div class="parents">
+				<div class="person male">Uzumaki Naruto</div>
+                <div class="person female">Uzumaki Karin</div>
+              </div>
+              <div class="children">
+                <div class="person male">Uzumaki Satoshi</div>
+                <div class="person female">Uzumaki Mana</div>
+              </div>
+            </div>
+            
+            <!-- Ino and Naruto -->
+            <div class="union">
+              <div class="union-title">Ino & Naruto</div>
+              <div class="parents">
+				<div class="person male">Uzumaki Naruto</div>
+                <div class="person female">Uzumaki Ino</div>
+              </div>
+              <div class="children">
+                <div class="person male">Uzumaki Riku</div>
+                <div class="person male">Uzumaki Nori</div>
+                <div class="person male">Uzumaki Takumi</div>
+              </div>
+            </div>
+            
+            <!-- Hanabi and Naruto -->
+            <div class="union">
+              <div class="union-title">Hanabi & Naruto</div>
+              <div class="parents">
+				<div class="person male">Uzumaki Naruto</div>
+                <div class="person female">Uzumaki Hanabi</div>
+              </div>
+              <div class="children">
+                <div class="person female">Uzumaki Minori</div>
+                <div class="person male">Uzumaki Kaizen</div>
+                <div class="person female">Uzumaki Yumi</div>
+              </div>
+            </div>
+            
+            <!-- Yugito and Naruto -->
+            <div class="union">
+              <div class="union-title">Yugito & Naruto</div>
+              <div class="parents">
+			  <div class="person male">Uzumaki Naruto</div>
+                <div class="person female">Nii Yugito</div>
+              </div>
+              <div class="children">
+                <div class="person male">Nii Yoshirō</div>
+              </div>
+            </div>
+			
+			<!-- Sakura and Naruto -->
+            <div class="union">
+              <div class="union-title">Sakura & Naruto</div>
+              <div class="parents">
+			  <div class="person male">Uzumaki Naruto</div>
+                <div class="person female">Uzumaki Sakura</div>
+              </div>
+            </div>
+			
+          </div>
+        </div>
+      </div>
+      
+      <div id="uchiha-family">
+        <div class="family-tree">
+          <div class="unions" style="margin-top: 30px;">
+			
+			<div class="union">
+              <div class="union-title">Itachi & Mei</div>
+              <div style="display: flex; gap: 20px; margin-bottom: 30px;">
+			  <div class="parents">
+                <div class="person male">Uchiha Itachi</div>
+                <div class="person female">Uchiha Mei</div>
+              </div>
+			  </div>
+              <div class="children">
+                <div class="person female">Uchiha Nozomi</div>
+              </div>
+            </div>
+		  
+            <div class="union">
+              <div class="union-title">Sasuke & Hinata</div>
+              <div style="display: flex; gap: 20px; margin-bottom: 30px;">
+			  <div class="parents">
+                <div class="person male">Uchiha Sasuke</div>
+                <div class="person female">Uchiha Hinata</div>
+              </div>
+			  </div>
+              <div class="children">
+                <div class="person male">Uchiha Hitoshi</div>
+				<div class="person male">Uchiha Jiraiya</div>
+              </div>
+            </div>
+			
+			<div class="union">
+              <div class="union-title">Shisui & Anko</div>
+              <div style="display: flex; gap: 20px; margin-bottom: 30px;">
+			  <div class="parents">
+				<div class="person male">Uchiha Shisui</div>
+                <div class="person female">Mitarashi Anko</div>
+              </div>
+			  </div>
+              <div class="children">
+                <div class="person female">Mitarashi Yui</div>
+              </div>
+            </div>
+			
+			<div class="union">
+              <div class="union-title">Toru and Akemi</div>
+              <div style="display: flex; gap: 20px; margin-bottom: 30px;">
+			  <div class="parents">
+                <div class="person male">Uchiha Toru</div>
+                <div class="person female">Uchiha Akemi</div>
+              </div>
+			  </div>
+              <div class="children">
+                <div class="person male">Uchiha Hiro</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="uzumaki07-family">
+		<div class="family-tree">
+          <div class="unions" style="margin-top: 30px;">
+			
+			<div class="union">
+              <div class="union-title">Naruto & Hinata</div>
+              <div style="display: flex; gap: 20px; margin-bottom: 30px;">
+			  <div class="parents">
+                <div class="person male">Uzumaki Naruto</div>
+                <div class="person female">Uzumaki Hinata</div>
+              </div>
+			  </div>
+              <div class="children">
+                <div class="person male">Uzumaki Boruto</div>
+				<div class="person female">Uzumaki Himawari</div>
+              </div>
+            </div>
+
+		
+		<div class="union-poly">
+				  <div class="union-poly-title">The Dreaded Other Poly Couple</div>
+
+            <div class="union">
+              <div class="union-title">Boruto & Sarada</div>
+              <div style="display: flex; gap: 20px; margin-bottom: 30px;">
+			  <div class="parents">
+                <div class="person male">Uzumaki Boruto</div>
+                <div class="person female">Uchiha Sarada</div>
+				
+              </div>
+			  </div>
+              <div class="children">
+                <div class="person female">Uzumaki Hanabi</div>
+				<div class="person female">Uzumaki Kazue</div>
+              </div>
+            </div>
+			
+			<div class="union">
+              <div class="union-title">Boruto & Hermione</div>
+              <div style="display: flex; gap: 20px; margin-bottom: 30px;">
+			  <div class="parents">
+                <div class="person male">Uzumaki Boruto</div>
+                <div class="person female">Hermione Granger</div>
+				
+              </div>
+			  </div>
+              <div class="children">
+                <div class="person male">Uzumaki Kaito</div>
+				<div class="person female">Uzumaki Rei</div>
+              </div>
+            </div>
+		</div>
+			
+          </div>
+        </div>
+		</div>
+		
+		 <div id="uchiha07-family">
+        <div class="family-tree">
+          <div class="unions" style="margin-top: 30px;">
+			
+			<div class="union">
+              <div class="union-title">Sasuke & Sakura</div>
+              <div style="display: flex; gap: 20px; margin-bottom: 30px;">
+			  <div class="parents">
+                <div class="person male">Uchiha Sasuke</div>
+                <div class="person female">Uchiha Sakura</div>
+              </div>
+			  </div>
+              <div class="children">
+                <div class="person female">Uchiha Sarada</div>
+				<div class="person female">Uchiha Azumi</div>
+              </div>
+            </div>
+		  
+            
+			<div class="union-poly">
+				  <div class="union-poly-title">The Dreaded Other Poly Couple</div>
+
+            <div class="union">
+              <div class="union-title">Boruto & Sarada</div>
+              <div style="display: flex; gap: 20px; margin-bottom: 30px;">
+			  <div class="parents">
+                <div class="person male">Uzumaki Boruto</div>
+                <div class="person female">Uchiha Sarada</div>
+				
+              </div>
+			  </div>
+              <div class="children">
+                <div class="person female">Uzumaki Hanabi</div>
+				<div class="person female">Uzumaki Kazue</div>
+              </div>
+            </div>
+			
+			<div class="union">
+              <div class="union-title">Boruto & Hermione</div>
+              <div style="display: flex; gap: 20px; margin-bottom: 30px;">
+			  <div class="parents">
+                <div class="person male">Uzumaki Boruto</div>
+                <div class="person female">Hermione Granger</div>
+				
+              </div>
+			  </div>
+              <div class="children">
+                <div class="person male">Uzumaki Kaito</div>
+				<div class="person female">Uzumaki Rei</div>
+              </div>
+            </div>
+		</div>
+			
+			
+			
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-color male-color"></div>
+        <span>Male</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color female-color"></div>
+        <span>Female</span>
+      </div>
+	  <div class="legend-item">
+        <div class="legend-color parents"></div>
+        <span>Together</span>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Tab switching functionality
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Update active tab
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        // Show corresponding family tree
+        const familyId = tab.getAttribute('data-family');
+        document.querySelectorAll('.family-trees > div').forEach(tree => tree.classList.remove('active'));
+        document.getElementById(`${familyId}-family`).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         FanFiction.net Enhanced Reader
 // @namespace    http://tampermonkey.net/
-// @version      1.0
-// @description  Display images from lensdump codes, style chapter titles, enable text selection, and enhance reading experience on fanfiction.net — for me, at least
+// @version      1.1
+// @description  Display images from lensdump codes, style chapter titles, enable text selection, and enhance reading experience on fanfiction.net
 // @author       stroke6
 // @match        https://www.fanfiction.net/*
 // @match        https://fanfiction.net/*
@@ -19,14 +19,15 @@
     // STROKE6'S FANFICTION.NET ENHANCED READER SCRIPT
     // ========================================
     // Features:
-    // - Convert i/[code] patterns into clickable image buttons
+    // - Convert i/[code] and i / [code] patterns into clickable image buttons
     // - Automatically style chapter titles and Japanese text — the latter is for Crimson Horizons
     // - Enable text selection on pages, because I dislike not being able to do so.
-    // - Support for both desktop and mobile versions — probably
+    // - Support for both desktop and mobile versions
     //
     // Usage:
-    // - Image codes like i/D7UmSr become clickable buttons
+    // - Image codes like i/D7UmSr or i / D7UmSr become clickable buttons
     // - Buttons try multiple subdomains (a-z.l3n.co) to find images
+    // - Press Ctrl+Shift+I to manually trigger the script
     // ========================================
 
     // CSS for the image overlay and styling
@@ -453,7 +454,7 @@
             let foundContent = false;
 
             bodyDivs.forEach(div => {
-                if (div.textContent.includes('i/') && div.textContent.length > 100) {
+                if ((div.textContent.includes('i/') || div.textContent.includes('i /')) && div.textContent.length > 100) {
                     processTextInElement(div);
                     foundContent = true;
                 }
@@ -472,8 +473,8 @@
     // Function to process text in a specific element
     function processTextInElement(element) {
 
-        // Regular expression to match i/code format (without quotes)
-        const imageRegex = /i\/([A-Za-z0-9]+)/g;
+        // Regular expression to match both i/code and i / code formats
+        const imageRegex = /i\s*\/\s*([A-Za-z0-9]+)/g;
 
         // Get all text nodes in the element
         const walker = document.createTreeWalker(
@@ -507,7 +508,7 @@
                     code: match[1],
                     index: match.index
                 });
-                console.log(`Found image code: ${match[1]}`);
+                console.log(`Found image code: ${match[1]} (from "${match[0]}")`);
             }
 
             // If we found matches, replace the text node with HTML

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         FanFiction.net Enhanced Reader
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.2
 // @description  Display images from lensdump codes, style chapter titles, enable text selection, and enhance reading experience on fanfiction.net
 // @author       stroke6
 // @match        https://www.fanfiction.net/*
@@ -473,8 +473,9 @@
     // Function to process text in a specific element
     function processTextInElement(element) {
 
-        // Regular expression to match both i/code and i / code formats
-        const imageRegex = /i\s*\/\s*([A-Za-z0-9]+)/g;
+        // Fixed regex to match i/code or i / code only when 'i' is at word boundary
+        // This prevents matching "Sci-Fi / Fantasy" while still catching "i/D7UmSr" and "i / D7UmSr"
+        const imageRegex = /(?:^|\s)(i\s*\/\s*([A-Za-z0-9]+))/g;
 
         // Get all text nodes in the element
         const walker = document.createTreeWalker(
@@ -504,11 +505,11 @@
             // Find all matches in this text node
             while ((match = imageRegex.exec(text)) !== null) {
                 matches.push({
-                    fullMatch: match[0],
-                    code: match[1],
-                    index: match.index
+                    fullMatch: match[1], // The i/code part without the leading space
+                    code: match[2],     // Just the code
+                    index: match.index + (match[0].length - match[1].length) // Adjust for any leading space
                 });
-                console.log(`Found image code: ${match[1]} (from "${match[0]}")`);
+                console.log(`Found image code: ${match[2]} (from "${match[1]}")`);
             }
 
             // If we found matches, replace the text node with HTML

@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>stroke6 — Resources</title>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Merriweather:wght@400;700&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       --accent: #b31212;          /* primary red accent */
@@ -85,6 +83,7 @@
 
     .link-card {
       margin-block: 1rem;
+      position: relative; /* Added for positioning context */
     }
 
     .link-card a {
@@ -116,6 +115,14 @@
       font-size: .95rem;
     }
 
+    .link-desc code {
+      background: #e8e8e8;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Monaco', 'Consolas', monospace;
+      font-size: 0.9em;
+    }
+
     /* ---------- Accent Variants ---------- */
     [data-accent="blue"] > a {
       border-left-color: #4c75a3;
@@ -135,6 +142,62 @@
       background: #fff8d6;
     }
 
+    /* ---------- Hover Trigger Styles ---------- */
+    .hover-trigger {
+      cursor: pointer;
+      padding: 2px 4px;
+      border-radius: 3px;
+      transition: background-color 0.2s ease;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 2px;
+    }
+
+    .hover-trigger:hover {
+      background-color: rgba(76, 117, 163, 0.1);
+    }
+
+    /* ---------- Image Preview Styles ---------- */
+    .image-preview {
+      position: fixed;
+      pointer-events: none;
+      z-index: 1000;
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+      padding: 8px;
+      border: 1px solid #ddd;
+      opacity: 0;
+      transform: scale(0.9) translateY(-10px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      max-width: 400px;
+    }
+
+    .image-preview.visible {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    .image-preview img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .loading-placeholder {
+      width: 300px;
+      height: 200px;
+      background: #f8f8f8;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-size: 14px;
+      border: 1px dashed #ccc;
+    }
+
     /* ---------- Dark‑mode (prefers‑color‑scheme) ---------- */
     @media (prefers-color-scheme: dark) {
       body { background: #222; color: #ddd; }
@@ -143,10 +206,27 @@
       .link-card a { background: #333; border-color: #444; border-left-color: var(--accent); }
       .link-card a:hover { background: #3a0000; }
       .link-desc { color: #aaa; border-left-color: #666; }
+      .link-desc code { background: #444; color: #ddd; }
+      
+      /* Dark mode for hover trigger and image preview */
+      .hover-trigger:hover {
+        background-color: rgba(76, 117, 163, 0.2);
+      }
+      
+      .image-preview { 
+        background: #2b2b2b; 
+        border-color: #444; 
+        box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      }
+      .loading-placeholder { 
+        background: #333; 
+        border-color: #555; 
+        color: #aaa; 
+      }
     }
   </style>
 </head>
-<body>
+<body data-new-gr-c-s-check-loaded="14.1245.0" data-gr-ext-installed="" cz-shortcut-listen="true">
   <main class="container">
     <!-- ===== HEADER ===== -->
     <header class="header">
@@ -180,15 +260,15 @@
       <ul class="link-list">
         <li class="link-card" data-accent="blue">
           <a href="AO3 Direct Chapter Index Button.user.js">AO3 Direct Chapter Index Button</a>
-          <p class="link-desc">Adds a convenient button to story & author pages for instant access to the chapter index.</p>
+          <p class="link-desc">Adds a convenient button to story &amp; author pages for instant access to the chapter index.</p>
         </li>
         <li class="link-card" data-accent="blue">
           <a href="AO3 Story Downloader.user.js">AO3 Story Downloader</a>
-          <p class="link-desc">Download huge works (e.g. <em>Crimson Horizons</em>) as well‑formatted EPUBs even once AO3’s built‑in button taps out. Without author's notes, and my own formatting style, that is, so...</p>
+          <p class="link-desc">Download huge works (e.g. <em>Crimson Horizons</em>) as well‑formatted EPUBs even once AO3's built‑in button taps out. Without author's notes, and my own formatting style, that is, so...</p>
         </li>
         <li class="link-card" data-accent="blue">
           <a href="FanFiction.net Enhanced Reader.user.js">FanFiction.net Enhanced Reader</a>
-          <p class="link-desc">Transforms image codes like <code>i/D7UmSr</code> into clickable buttons, automatically styles chapter titles in serif typography, enables text selection for no particular reason other than allowing for easier editing three and a half years later.</p>
+          <p class="link-desc">Transforms image codes like <code>i/D7UmSr</code> into <span class="hover-trigger" id="clickable-buttons">clickable buttons</span>, automatically styles chapter titles in serif typography, enables text selection for no particular reason other than allowing for easier editing three and a half years later.</p>
         </li>
       </ul>
     </section>
@@ -204,5 +284,82 @@
       </ul>
     </section>
   </main>
-</body>
-</html>
+
+  <!-- Image preview container -->
+  <div class="image-preview" id="imagePreview">
+    <div class="loading-placeholder">Loading preview...</div>
+  </div>
+
+  <script>
+    // Target the specific "clickable buttons" text
+    const hoverTrigger = document.getElementById('clickable-buttons');
+    const imagePreview = document.getElementById('imagePreview');
+    const imageUrl = 'https://a.l3n.co/i/N8Q65x.png';
+    
+    let preloadedImage = null;
+    let isImageLoaded = false;
+
+    // Preload the image
+    function preloadImage() {
+      if (!preloadedImage) {
+        preloadedImage = new Image();
+        preloadedImage.onload = function() {
+          isImageLoaded = true;
+          // Replace loading placeholder with actual image
+          imagePreview.innerHTML = '';
+          imagePreview.appendChild(preloadedImage);
+        };
+        preloadedImage.onerror = function() {
+          imagePreview.innerHTML = '<div class="loading-placeholder">Failed to load image</div>';
+        };
+        preloadedImage.src = imageUrl;
+      }
+    }
+
+    // Start preloading immediately
+    preloadImage();
+
+    function showPreview(e) {
+      const rect = hoverTrigger.getBoundingClientRect();
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+      
+      // Position the preview to the right of the text
+      let left = rect.right + scrollLeft + 15;
+      let top = rect.top + scrollTop - 10; // Slightly above the text
+      
+      // Check if preview would go off screen to the right
+      const previewWidth = 400; // max-width from CSS
+      if (left + previewWidth > window.innerWidth + scrollLeft - 10) {
+        // Position to the left instead
+        left = rect.left + scrollLeft - previewWidth - 15;
+      }
+      
+      // Make sure preview doesn't go off screen vertically
+      const previewHeight = 300; // estimated height
+      if (top + previewHeight > window.innerHeight + scrollTop - 10) {
+        top = Math.max(10, window.innerHeight + scrollTop - previewHeight - 10);
+      }
+      
+      // Ensure minimum margins
+      left = Math.max(10, left);
+      top = Math.max(10, top);
+      
+      imagePreview.style.left = left + 'px';
+      imagePreview.style.top = top + 'px';
+      
+      // Show preview with animation
+      imagePreview.classList.add('visible');
+    }
+
+    function hidePreview() {
+      imagePreview.classList.remove('visible');
+    }
+
+    // Add event listeners to the hover trigger
+    if (hoverTrigger) {
+      hoverTrigger.addEventListener('mouseenter', showPreview);
+      hoverTrigger.addEventListener('mouseleave', hidePreview);
+    }
+  </script>
+</body></html>

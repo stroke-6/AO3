@@ -145,7 +145,6 @@
     /* ---------- Hover Trigger Styles ---------- */
     .hover-trigger {
       cursor: pointer;
-      padding: 2px 4px;
       border-radius: 3px;
       transition: background-color 0.2s ease;
       text-decoration: underline;
@@ -260,7 +259,7 @@
       <ul class="link-list">
         <li class="link-card" data-accent="blue">
           <a href="AO3 Direct Chapter Index Button.user.js">AO3 Direct Chapter Index Button</a>
-          <p class="link-desc">Adds a convenient button to story &amp; author pages for instant access to the chapter index.</p>
+          <p class="link-desc">Adds a <span class="hover-trigger" data-preview-image="https://d.l3n.co/i/N8Vc1v.png">convenient button</span> to story &amp; author pages for instant access to the chapter index.</p>
         </li>
         <li class="link-card" data-accent="blue">
           <a href="AO3 Story Downloader.user.js">AO3 Story Downloader</a>
@@ -268,7 +267,7 @@
         </li>
         <li class="link-card" data-accent="blue">
           <a href="FanFiction.net Enhanced Reader.user.js">FanFiction.net Enhanced Reader</a>
-          <p class="link-desc">Transforms image codes like <code>i/D7UmSr</code> into <span class="hover-trigger" id="clickable-buttons">clickable buttons</span>, automatically styles chapter titles in serif typography, enables text selection for no particular reason other than allowing for easier editing three and a half years later.</p>
+          <p class="link-desc">Transforms image codes like <code>i/D7UmSr</code> into <span class="hover-trigger" data-preview-image="https://a.l3n.co/i/N8Q65x.png">clickable buttons</span>, automatically styles chapter titles in serif typography, enables text selection for no particular reason other than allowing for easier editing three and a half years later.</p>
         </li>
       </ul>
     </section>
@@ -291,75 +290,123 @@
   </div>
 
   <script>
-    // Target the specific "clickable buttons" text
-    const hoverTrigger = document.getElementById('clickable-buttons');
-    const imagePreview = document.getElementById('imagePreview');
-    const imageUrl = 'https://a.l3n.co/i/N8Q65x.png';
-    
-    let preloadedImage = null;
-    let isImageLoaded = false;
+    // General hover preview system
+    class HoverPreviewManager {
+      constructor() {
+        this.imagePreview = document.getElementById('imagePreview');
+        this.preloadedImages = new Map(); // Cache for preloaded images
+        this.currentImageUrl = null;
+        
+        this.initializeHoverTriggers();
+      }
 
-    // Preload the image
-    function preloadImage() {
-      if (!preloadedImage) {
-        preloadedImage = new Image();
-        preloadedImage.onload = function() {
-          isImageLoaded = true;
-          // Replace loading placeholder with actual image
-          imagePreview.innerHTML = '';
-          imagePreview.appendChild(preloadedImage);
-        };
-        preloadedImage.onerror = function() {
-          imagePreview.innerHTML = '<div class="loading-placeholder">Failed to load image</div>';
-        };
-        preloadedImage.src = imageUrl;
+      initializeHoverTriggers() {
+        // Find all elements with hover-trigger class
+        const hoverTriggers = document.querySelectorAll('.hover-trigger[data-preview-image]');
+        
+        hoverTriggers.forEach(trigger => {
+          const imageUrl = trigger.getAttribute('data-preview-image');
+          
+          // Preload the image
+          this.preloadImage(imageUrl);
+          
+          // Add event listeners
+          trigger.addEventListener('mouseenter', (e) => this.showPreview(e, imageUrl));
+          trigger.addEventListener('mouseleave', () => this.hidePreview());
+        });
+      }
+
+      preloadImage(imageUrl) {
+        if (!this.preloadedImages.has(imageUrl)) {
+          const img = new Image();
+          img.onload = () => {
+            this.preloadedImages.set(imageUrl, img);
+            // If this image is currently being shown, update the preview
+            if (this.currentImageUrl === imageUrl && this.imagePreview.classList.contains('visible')) {
+              this.updatePreviewContent(imageUrl);
+            }
+          };
+          img.onerror = () => {
+            // Store error state
+            this.preloadedImages.set(imageUrl, 'error');
+          };
+          img.src = imageUrl;
+          
+          // Mark as loading
+          this.preloadedImages.set(imageUrl, 'loading');
+        }
+      }
+
+      updatePreviewContent(imageUrl) {
+        const imageState = this.preloadedImages.get(imageUrl);
+        
+        if (imageState === 'loading') {
+          this.imagePreview.innerHTML = '<div class="loading-placeholder">Loading preview...</div>';
+        } else if (imageState === 'error') {
+          this.imagePreview.innerHTML = '<div class="loading-placeholder">Failed to load image</div>';
+        } else if (imageState instanceof Image) {
+          // Clone the image to avoid issues with multiple references
+          const imgClone = imageState.cloneNode();
+          this.imagePreview.innerHTML = '';
+          this.imagePreview.appendChild(imgClone);
+        }
+      }
+
+      showPreview(event, imageUrl) {
+        this.currentImageUrl = imageUrl;
+        const trigger = event.target;
+        const rect = trigger.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+        
+        // Update preview content
+        this.updatePreviewContent(imageUrl);
+        
+        // Position the preview to the right of the text
+        let left = rect.right + scrollLeft + 15;
+        let top = rect.top + scrollTop - 10; // Slightly above the text
+        
+        // Check if preview would go off screen to the right
+        const previewWidth = 400; // max-width from CSS
+        if (left + previewWidth > window.innerWidth + scrollLeft - 10) {
+          // Position to the left instead
+          left = rect.left + scrollLeft - previewWidth - 15;
+        }
+        
+        // Make sure preview doesn't go off screen vertically
+        const previewHeight = 300; // estimated height
+        if (top + previewHeight > window.innerHeight + scrollTop - 10) {
+          top = Math.max(10, window.innerHeight + scrollTop - previewHeight - 10);
+        }
+        
+        // Ensure minimum margins
+        left = Math.max(10, left);
+        top = Math.max(10, top);
+        
+        this.imagePreview.style.left = left + 'px';
+        this.imagePreview.style.top = top + 'px';
+        
+        // Show preview with animation
+        this.imagePreview.classList.add('visible');
+      }
+
+      hidePreview() {
+        this.imagePreview.classList.remove('visible');
+        this.currentImageUrl = null;
       }
     }
 
-    // Start preloading immediately
-    preloadImage();
+    // Initialize the hover preview system when the page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      new HoverPreviewManager();
+    });
 
-    function showPreview(e) {
-      const rect = hoverTrigger.getBoundingClientRect();
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-      
-      // Position the preview to the right of the text
-      let left = rect.right + scrollLeft + 15;
-      let top = rect.top + scrollTop - 10; // Slightly above the text
-      
-      // Check if preview would go off screen to the right
-      const previewWidth = 400; // max-width from CSS
-      if (left + previewWidth > window.innerWidth + scrollLeft - 10) {
-        // Position to the left instead
-        left = rect.left + scrollLeft - previewWidth - 15;
-      }
-      
-      // Make sure preview doesn't go off screen vertically
-      const previewHeight = 300; // estimated height
-      if (top + previewHeight > window.innerHeight + scrollTop - 10) {
-        top = Math.max(10, window.innerHeight + scrollTop - previewHeight - 10);
-      }
-      
-      // Ensure minimum margins
-      left = Math.max(10, left);
-      top = Math.max(10, top);
-      
-      imagePreview.style.left = left + 'px';
-      imagePreview.style.top = top + 'px';
-      
-      // Show preview with animation
-      imagePreview.classList.add('visible');
-    }
-
-    function hidePreview() {
-      imagePreview.classList.remove('visible');
-    }
-
-    // Add event listeners to the hover trigger
-    if (hoverTrigger) {
-      hoverTrigger.addEventListener('mouseenter', showPreview);
-      hoverTrigger.addEventListener('mouseleave', hidePreview);
+    // Also initialize immediately if DOM is already loaded
+    if (document.readyState === 'loading') {
+      // DOM is still loading, wait for DOMContentLoaded
+    } else {
+      // DOM is already loaded
+      new HoverPreviewManager();
     }
   </script>
 </body></html>

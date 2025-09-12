@@ -1,0 +1,2088 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="keywords" content="fanfiction, transformative works, otw, fair use, archive" />
+  <meta name="language" content="en-US" />
+  <meta name="subject" content="fandom" />
+  <meta name="description" content="An Archive of Our Own, a project of the Organization for Transformative Works" />
+  <meta name="distribution" content="GLOBAL" />
+  <meta name="classification" content="transformative works" />
+  <meta name="author" content="Organization for Transformative Works" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="chrome" content="nointentdetection" />
+  <title>All Character Cards</title>
+  <link rel="stylesheet" href="FTRWL.css">
+  <link rel="stylesheet" href="style-variable.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <div id="workskin">
+    <div class="preface group">
+      <h2 class="title heading">FTRWL</h2>
+    </div>
+
+    <hr />
+
+    <main>
+
+
+      <style>
+        /* Miniature grid */
+        #miniatures {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          margin: 1rem 0 2rem;
+        }
+
+        .mini-card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 150px;
+          text-align: center;
+          border: 1px solid #ddd;
+          border-radius: 10px;
+          padding: 6px;
+          background: #fff;
+          box-shadow: 0 1px 4px rgba(0, 0, 0, .06);
+        }
+
+        .mini-thumb {
+          width: 100%;
+          aspect-ratio: 1 / 1;
+          object-fit: cover;
+          border-radius: 8px;
+          display: block;
+        }
+
+        .mini-name {
+          margin-top: 6px;
+          font-size: 1.2em;
+          font-family: 'Bebas Neue', sans-serif;
+          line-height: 1.2;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          width: 100%;
+          color: rgb(157, 82, 78);
+        }
+
+        .char-cards-flex {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 16px;
+        }
+
+        .char-cards-flex>.char-card {
+          flex: 1 1 300px;
+          /* responsive cards (min ~300px) */
+        }
+      </style>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          // Collect all cards
+          const cards = Array.from(document.querySelectorAll('.char-card'));
+          if (!cards.length) return;
+
+          // The parent that holds the cards
+          const parent = cards[0].parentElement;
+
+          // Add a flex layout class to the parent
+          parent.classList.add('char-cards-flex');
+
+          // Helper: safely extract (name, src) from each card
+          const getCardData = (card) => {
+            const img = card.querySelector('img.char-image');
+            const name = (img?.getAttribute('alt') || '').trim();
+            const src = img?.getAttribute('src') || '';
+            return { name, src };
+          };
+
+          // Sort cards alphabetically by alt (case-insensitive, locale aware)
+          const sorted = cards.slice().sort((a, b) => {
+            const an = getCardData(a).name || '';
+            const bn = getCardData(b).name || '';
+            return an.localeCompare(bn, undefined, { sensitivity: 'base' });
+          });
+
+          // Re-append in sorted order
+          sorted.forEach(card => parent.appendChild(card));
+
+          // Build the miniature grid above the cards
+          const mini = document.createElement('section');
+          mini.id = 'miniatures';
+          mini.setAttribute('aria-label', 'Character miniatures');
+
+          sorted.forEach(card => {
+            const { name, src } = getCardData(card);
+
+            if (!src) return;
+
+            const tile = document.createElement('div');
+            tile.className = 'mini-card';
+            tile.title = name || 'Unknown';
+
+            const img = document.createElement('img');
+            img.className = 'mini-thumb';
+            img.src = src;
+            img.alt = name || 'Unknown';
+
+            const cap = document.createElement('span');
+            cap.className = 'mini-name';
+            cap.textContent = name || 'Unknown';
+
+            tile.appendChild(img);
+            tile.appendChild(cap);
+
+            if (name) {
+              // ensure each card has an id based on its name for linking
+              const id = 'char-' + name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');
+              if (!card.id) card.id = id;
+              tile.style.cursor = 'pointer';
+              tile.addEventListener('click', () => {
+                document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              });
+            }
+
+            mini.appendChild(tile);
+          });
+
+          // Insert the mini grid before the card list
+          parent.parentElement.insertBefore(mini, parent);
+        });
+      </script>
+
+
+
+
+      <!-- Below! -->
+
+
+
+
+      <div class="cardsch6">
+        <div class="char-card">
+          <div class="char-header">
+            <p>
+              <img class="char-image" src="https://c.l3n.co/i/oUf0Ci.png" alt="Naoya">
+            </p>
+          </div>
+          <div class="char-info">
+            <div class="char-title">
+              <p>Zephyr Blade</p>
+            </div>
+            <div class="char-meta">
+              <div>
+                <p>Weapon: Tessen</p>
+              </div>
+              <div>
+                <p>
+                  <span class="char-path">Warrior</span>
+                  <br>
+                  <span class="char-warrank">S-Rank</span>
+                  <br>
+                  <span class="char-tier">Standing: 62</span>
+                </p>
+              </div>
+            </div>
+            <div class="attributes-section">
+              <p>Attributes</p>
+            </div>
+            <div class="stats-container">
+              <div class="stats-column">
+                <div class="stat-row stat-ninjutsu">
+                  <p>
+                    <span class="stat-name">Ninjutsu</span>
+                    <br>
+                    <span class="stat-value red">160</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-taijutsu">
+                  <p>
+                    <span class="stat-name">Taijutsu</span>
+                    <br>
+                    <span class="stat-value red">110</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-genjutsu">
+                  <p>
+                    <span class="stat-name">Genjutsu</span>
+                    <br>
+                    <span class="stat-value red">80</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-perception">
+                  <p>
+                    <span class="stat-name">Perception</span>
+                    <br>
+                    <span class="stat-value red">120</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-dexterity">
+                  <p>
+                    <span class="stat-name">Dexterity</span>
+                    <br>
+                    <span class="stat-value red">140</span>
+                  </p>
+                </div>
+              </div>
+              <div class="stats-column">
+                <div class="stat-row stat-strength">
+                  <p>
+                    <span class="stat-name">Strength</span>
+                    <br>
+                    <span class="stat-value red">80</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-speed">
+                  <p>
+                    <span class="stat-name">Speed</span>
+                    <br>
+                    <span class="stat-value red">140</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-intelligence">
+                  <p>
+                    <span class="stat-name">Intelligence</span>
+                    <br>
+                    <span class="stat-value red">140</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-endurance">
+                  <p>
+                    <span class="stat-name">Endurance</span>
+                    <br>
+                    <span class="stat-value red">110</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-output">
+                  <p>
+                    <span class="stat-name">Output</span>
+                    <br>
+                    <span class="stat-value red">120</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="skills-section">
+              <p>Skills</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Wind Release</span>
+                  <br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Supreme control over wind currents and pressure</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Silent Tempest</span>
+                  <br>
+                  <span class="skill-level">A</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Movement completely masked by wind manipulation; superior stealth operations</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Wind Blade Projection</span>
+                  <br>
+                  <span class="skill-level">A</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Creates invisible cutting blades that can slice through most materials</p>
+              </div>
+            </div>
+            <div class="shinobi-section">
+              <p>Shinjutsu</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Void Storm</span>
+                  <br>
+                  <span class="skill-level">A</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Creates intangible copies that can fight entirely independently</p>
+              </div>
+            </div>
+            <div class="backstory-section">
+              <p>Origin</p>
+            </div>
+            <div class="origin-desc">
+              <p>Born the moment the wind paused, Yamiri Naoya was the only child the hurricane did not touch. His
+                village no longer exists — claimed by the same silence he now carries. At thirteen, he vanished into the
+                Eastern Mountains. The Wind Sage who trained there was never seen again. Naoya returned cloaked in
+                stillness, wielding no named technique, only an eerie calm. Now, he walks without footprints, hears what
+                no one else can, and needs not call any jutsu — the hurricane simply obeys.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="char-card">
+          <div class="char-header">
+            <p>
+              <img class="char-image" src="https://d.l3n.co/i/uuI7CQ.png" alt="Mai">
+            </p>
+          </div>
+          <div class="char-info">
+            <div class="char-title">
+              <p>Head of Intel</p>
+            </div>
+            <div class="char-meta">
+              <div>
+                <p>Weapon: Charts / Sheets / Data</p>
+              </div>
+              <div>
+                <p>
+                  <span class="char-path-command">Command</span><br>
+                  <span class="char-comrank">Ninth Ring</span><br>
+                  <span class="char-tier-command">Standing: 3</span>
+                </p>
+              </div>
+            </div>
+            <div class="attributes-section">
+              <p>Attributes</p>
+            </div>
+            <div class="stats-container">
+              <div class="stats-column">
+                <div class="stat-row stat-ninjutsu">
+                  <p>
+                    <span class="stat-name-long">Information Gathering</span><br>
+                    <span class="stat-value red">EX</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-taijutsu">
+                  <p>
+                    <span class="stat-name-long">Budget Management</span><br>
+                    <span class="stat-value red">200</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-genjutsu">
+                  <p>
+                    <span class="stat-name-long">Personnel Oversight</span><br>
+                    <span class="stat-value red">190</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-perception">
+                  <p>
+                    <span class="stat-name-long">Strategic Analysis</span><br>
+                    <span class="stat-value red">EX</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-dexterity">
+                  <p>
+                    <span class="stat-name-long">Administrative Control</span><br>
+                    <span class="stat-value red">EX</span>
+                  </p>
+                </div>
+              </div>
+              <div class="stats-column">
+                <div class="stat-row stat-strength">
+                  <p>
+                    <span class="stat-name-long">Network Coordination</span><br>
+                    <span class="stat-value red">EX</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-speed">
+                  <p>
+                    <span class="stat-name-long">Crisis Management</span><br>
+                    <span class="stat-value red">EX</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-intelligence">
+                  <p>
+                    <span class="stat-name-long">Leadership Authority</span><br>
+                    <span class="stat-value red">EX</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-endurance">
+                  <p>
+                    <span class="stat-name-long">Operational Efficiency</span><br>
+                    <span class="stat-value red">EX</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-output">
+                  <p>
+                    <span class="stat-name-long">Intelligence Processing</span><br>
+                    <span class="stat-value red">EX</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="skills-section">
+              <p>Skills</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Intelligence Networks</span><br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Commands a multiplanetary network of informants, analysts, and data collectors that seemingly spans
+                  every reached world, organization, and black market.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Strategic Planning</span><br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Can orchestrate multi-year campaigns with backup plans for the backup plans. Her strategic frameworks
+                  turn chaos into clockwork precision across entire worlds.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Resource Management</span><br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Allocates budgets, personnel, and assets with terrifying efficiency. Can fund a rebellion or starve
+                  an economy with a few budget line adjustments.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Leadership Psychology</span><br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Understands what makes people tick and how to make them do what she needs. Motivates through a
+                  perfect blend of carrot, stick, and existential dread.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Financial Oversight</span><br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Used to track every coin that moved through the organization, when money was actually a thing. Her
+                  accounting systems used to make the Daimyo's treasurers weep with envy and terror.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Administrative Command</span><br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Transforms organizational chaos into streamlined operations through the dark art of proper
+                  documentation and workflow optimization.</p>
+              </div>
+            </div>
+            <div class="backstory-section">
+              <p>Origin</p>
+            </div>
+            <div class="origin-desc">
+              <p>Orochimaru once thought he was recruiting a talented administrator to handle his paperwork. What he
+                actually did was hand over the keys to information itself to someone who would eventually make his spy
+                networks look like a child's work. Mai didn't climb the ranks through flashy jutsu or dramatic battles,
+                for she had none. No, she simply made herself indispensable by being the only person who actually knew
+                where anything was, who anyone was, and what was really happening.</p>
+              <p>It is quite possible that she might be the one who made the dream work in the first place.</p>
+              <p>When others fought for power, she quietly accumulated the most valuable currency of all: information.
+                When the future Emperor began his rise, Mai was already three steps ahead, having identified him as a
+                winner long before he knew it himself.</p>
+              <p>She didn't join the Celestial Ring — she designed its entire intelligence infrastructure, created its
+                administrative backbone, and established the information networks that made its existence not just
+                possible, but inevitable.</p>
+              <p>Now, the name "Head of Intel" is closer to a tongue-in-cheek joke. Still, she's the person who can
+                actually run the world while everyone else thinks they're in charge.</p>
+              <p>Her greatest weapon isn't a sword or jutsu. It's a perfectly organized filing system, and the knowledge
+                that information is the only power that truly matters.</p>
+              <p>
+                <em>"Behind every great leader is an even greater administrative assistant. Behind an Emperor, however?
+                  That would be Mai. Mostly because she has no interest in doing the job herself."</em>
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="char-card">
+          <div class="char-header">
+            <p>
+              <img class="char-image" src="https://b.l3n.co/i/uo2v2k.jpg" alt="Naruto">
+            </p>
+          </div>
+          <div class="char-info">
+            <div class="char-title">
+              <p>Faded Lightning</p>
+            </div>
+            <div class="char-meta">
+              <div>
+                <p>Weapon: Sword(s)</p>
+              </div>
+              <div>
+                <p>
+                  <span class="char-path">Warrior</span><br>
+                  <span class="char-warrank">S-Rank</span><br>
+                  <span class="char-tier">Standing: 1</span>
+                </p>
+              </div>
+            </div>
+            <div class="attributes-section">
+              <p>Attributes</p>
+            </div>
+            <div class="stats-container">
+              <div class="stats-column">
+                <div class="stat-row stat-ninjutsu">
+                  <p>
+                    <span class="stat-name">Ninjutsu</span><br>
+                    <span class="stat-value red">EX</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-taijutsu">
+                  <p>
+                    <span class="stat-name">Taijutsu</span><br>
+                    <span class="stat-value red">190</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-genjutsu">
+                  <p>
+                    <span class="stat-name">Genjutsu</span><br>
+                    <span class="stat-value red">110</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-perception">
+                  <p>
+                    <span class="stat-name">Perception</span><br>
+                    <span class="stat-value red">160</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-dexterity">
+                  <p>
+                    <span class="stat-name">Dexterity</span><br>
+                    <span class="stat-value red">200</span>
+                  </p>
+                </div>
+              </div>
+              <div class="stats-column">
+                <div class="stat-row stat-strength">
+                  <p>
+                    <span class="stat-name">Strength</span><br>
+                    <span class="stat-value red">200</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-speed">
+                  <p>
+                    <span class="stat-name">Speed</span><br>
+                    <span class="stat-value red">EX</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-intelligence">
+                  <p>
+                    <span class="stat-name">Intelligence</span><br>
+                    <span class="stat-value red">150</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-endurance">
+                  <p>
+                    <span class="stat-name">Endurance</span><br>
+                    <span class="stat-value red">200</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-output">
+                  <p>
+                    <span class="stat-name">Output</span><br>
+                    <span class="stat-value red">EX</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="skills-section">
+              <p>Skills</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Lightning Mastery</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Complete dominance over lightning-based chakra manipulation, allowing for instantaneous generation,
+                  precise control, and creative application of electrical energy in combat and utility situations.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Chakra Mastery</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Perfect understanding and control of one's chakra flow, enabling maximum efficiency in technique
+                  execution, minimal energy waste, and seamless transitions between different chakra natures.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Yin Chakra</span><br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Advanced mastery of spiritual energy manipulation, granting enhanced mental techniques, illusion
+                  creation (supposedly), and the ability to give form to imagination through pure willpower.</p>
+              </div>
+            </div>
+            <div class="shinobi-section">
+              <p>Shinjutsu</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Lightning Repudiation<br>
+                    <span class="skill-level">EX</span></span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>A versatile lightning technique with three distinct forms: a passive electromagnetic shield that
+                  repels and counters attacks, an ultimate Lightning Armor that enhances speed and defense while
+                  blinding alive opponents on sight, and devastating (and unstable) Black Lightning that bypasses all
+                  known conventional defenses. A fourth form remains in development.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Raiden<br>
+                    <span class="skill-level">EX</span></span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>An advanced Yin Release technique inspired by Indra's Mangekyō Sharingan abilities. Manipulates the
+                  flow of time and motion within a limited area, allowing the user to reverse recent movements and store
+                  kinetic energy for later release, creating devastating counterattacks.</p>
+              </div>
+            </div>
+            <div class="backstory-section">
+              <p>Origin</p>
+            </div>
+            <div class="origin-desc">
+              <p>Trained by Fire Country's elite ninja, he was presumed dead at thirteen during a catastrophic mission.
+                Emerging from the shadows years later, he founded his own village by nineteen and conquered the world by
+                twenty, claiming the titles of Shōgun and Emperor through overwhelming power and vision. By twenty-five,
+                he led the Celestial Ring — an elite coalition of the worlds' best and brightest.</p>
+              <p>From child prodigy to presumed casualty to supreme ruler in barely more than a decade, his meteoric
+                rise remains history's most remarkable ascension to absolute power.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="char-card">
+          <div class="char-header">
+            <p>
+              <img class="char-image" src="https://a.l3n.co/i/uo2DpK.jpg" alt="Sasuke">
+            </p>
+          </div>
+          <div class="char-info">
+            <div class="char-title">
+              <p>Living Flame</p>
+            </div>
+            <div class="char-meta">
+              <div>
+                <p>Weapon: Sword(s)</p>
+              </div>
+              <div>
+                <p>
+                  <span class="char-path">Warrior</span><br>
+                  <span class="char-warrank">S-Rank</span><br>
+                  <span class="char-tier">Standing: 2</span>
+                </p>
+              </div>
+            </div>
+            <div class="attributes-section">
+              <p>Attributes</p>
+            </div>
+            <div class="stats-container">
+              <div class="stats-column">
+                <div class="stat-row stat-ninjutsu">
+                  <p>
+                    <span class="stat-name">Ninjutsu</span><br>
+                    <span class="stat-value red">EX</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-taijutsu">
+                  <p>
+                    <span class="stat-name">Taijutsu</span><br>
+                    <span class="stat-value red">170</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-genjutsu">
+                  <p>
+                    <span class="stat-name">Genjutsu</span><br>
+                    <span class="stat-value red">170</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-perception">
+                  <p>
+                    <span class="stat-name">Perception</span><br>
+                    <span class="stat-value red">200</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-dexterity">
+                  <p>
+                    <span class="stat-name">Dexterity</span><br>
+                    <span class="stat-value red">180</span>
+                  </p>
+                </div>
+              </div>
+              <div class="stats-column">
+                <div class="stat-row stat-strength">
+                  <p>
+                    <span class="stat-name">Strength</span><br>
+                    <span class="stat-value red">180</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-speed">
+                  <p>
+                    <span class="stat-name">Speed</span><br>
+                    <span class="stat-value red">180</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-intelligence">
+                  <p>
+                    <span class="stat-name">Intelligence</span><br>
+                    <span class="stat-value red">150</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-endurance">
+                  <p>
+                    <span class="stat-name">Endurance</span><br>
+                    <span class="stat-value red">EX</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-output">
+                  <p>
+                    <span class="stat-name">Output</span><br>
+                    <span class="stat-value red">EX</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="skills-section">
+              <p>Skills</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Fire Mastery</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Mastery over flame-based techniques, allowing for precise temperature control, creative fire
+                  manipulation, and the ability to generate flames hot enough to melt through any defense.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Wood Release</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Wood Release mastery, enabling the creation and manipulation of plant life, from simple wooden
+                  constructs to vast forests that can heal and reshape entire worlds.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Yang Chakra</span><br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Advanced control over physical energy, enhancing life force manipulation, healing abilities, and the
+                  power to breathe vitality into living beings and inanimate matter.</p>
+              </div>
+            </div>
+            <div class="shinobi-section">
+              <p>Shinjutsu</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Blazing Heavens</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Compounds the seven elements upon themselves, releasing them into a single, obliterating fire strike
+                  that transcends normal flame techniques. The concentrated elemental fusion creates an attack capable
+                  of reducing entire landscapes to ash.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Emerald Grove</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Summons the power of nature into the strongest display of Mokuton. It can be used to breathe life
+                  into a world through massive forest creation and environmental restoration, or as a last-resort
+                  adaptable defense that grows and evolves to counter any attack.</p>
+              </div>
+            </div>
+            <div class="backstory-section">
+              <p>Origin</p>
+            </div>
+            <div class="origin-desc">
+              <p>Born as the Fifth Hokage's son, Sasuke became a jinchūriki at thirteen, mastering the balance between
+                his awakened Dōjutsu and ancient beast power. He assumed leadership of the Uchiha clan by twenty through
+                proven competence rather than birthright alone, evolving the clan beyond more than their skill for
+                battle.</p>
+              <p>Before thirty, he was the world's second strongest individual, an unprecedented warrior capable of
+                nurturing entire worlds or reducing them to ash with equal mastery.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="char-card">
+          <div class="char-header">
+            <p>
+              <img class="char-image" src="https://c.l3n.co/i/uoTTbQ.jpg" alt="Hanabi">
+            </p>
+          </div>
+          <div class="char-info">
+            <div class="char-title">
+              <p>All-Seeing Eye</p>
+            </div>
+            <div class="char-meta">
+              <div>
+                <p>Weapon: Hands</p>
+              </div>
+              <div>
+                <p>
+                  <span class="char-path">Warrior</span><br>
+                  <span class="char-warrank">S-Rank</span><br>
+                  <span class="char-tier">Standing: 3</span>
+                </p>
+              </div>
+            </div>
+            <div class="attributes-section">
+              <p>Attributes</p>
+            </div>
+            <div class="stats-container">
+              <div class="stats-column">
+                <div class="stat-row stat-ninjutsu">
+                  <p>
+                    <span class="stat-name">Ninjutsu</span><br>
+                    <span class="stat-value red">180</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-taijutsu">
+                  <p>
+                    <span class="stat-name">Taijutsu</span><br>
+                    <span class="stat-value red">EX</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-genjutsu">
+                  <p>
+                    <span class="stat-name">Genjutsu</span><br>
+                    <span class="stat-value red">80</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-perception">
+                  <p>
+                    <span class="stat-name">Perception</span><br>
+                    <span class="stat-value red">EX</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-dexterity">
+                  <p>
+                    <span class="stat-name">Dexterity</span><br>
+                    <span class="stat-value red">190</span>
+                  </p>
+                </div>
+              </div>
+              <div class="stats-column">
+                <div class="stat-row stat-strength">
+                  <p>
+                    <span class="stat-name">Strength</span><br>
+                    <span class="stat-value red">160</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-speed">
+                  <p>
+                    <span class="stat-name">Speed</span><br>
+                    <span class="stat-value red">200</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-intelligence">
+                  <p>
+                    <span class="stat-name">Intelligence</span><br>
+                    <span class="stat-value red">130</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-endurance">
+                  <p>
+                    <span class="stat-name">Endurance</span><br>
+                    <span class="stat-value red">170</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-output">
+                  <p>
+                    <span class="stat-name">Output</span><br>
+                    <span class="stat-value red">200</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="skills-section">
+              <p>Skills</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Wind Release</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Supreme control over wind currents and pressure, enabling manipulation of atmospheric forces with
+                  precision that borders on the supernatural.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Tenseigan Mastery</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Possesses the clearest Tenseigan in all realms, granting a powerful chakra mode, unparalleled vision
+                  into present, past, and limited future events with crystalline clarity.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Soul Incarnation</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Manipulates the connection between spiritual and physical realms, capable of forcing kami to take
+                  physical form through soul-binding techniques or summoning ethereal shades of warriors, fallen or not,
+                  to fight alongside her.</p>
+              </div>
+            </div>
+            <div class="shinobi-section">
+              <p>Shinjutsu</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Radiant Moon</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Allows for the perpetual reincarnation of any linked warriors across any distance, enabling them to
+                  surpass their natural capabilities and return to battle even after death.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Divine Wind of the Last Breath</span><br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Compounds seven elements upon five, manifesting as a wind-sharpened arrow that cleaves through the
+                  very fabric of space itself. Legend suggests its name was once a playful mockery of Neji's grandiose
+                  monikers, though the truth of this tale has blurred with time.</p>
+              </div>
+            </div>
+            <div class="backstory-section">
+              <p>Origin</p>
+            </div>
+            <div class="origin-desc">
+              <p>As Hinata's younger sister, Hanabi lived in the shadow of her clan's expectations until Neji's
+                departure from the village changed everything. The elders moved swiftly to ensure the branch family's
+                compliance. Branded with the caged bird seal and put under higher scrutiny, her freedom was stripped
+                away in a moment of political expedience.</p>
+              <p>When the offer came to leave Konoha, she of course accepted without hesitation. Joining Umi's cause,
+                she found purpose beyond the suffocating traditions of her clan. Ironically enough, the girl who was
+                caged for fear she might flee never once looked back at the village that had imprisoned her.</p>
+              <p>Now, for better or for worse, she soars free, her Tenseigan seeing paths the Hyūga elders could never
+                imagine, wielding winds that carry her far beyond any cage they could forge.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="char-card">
+          <div class="char-header">
+            <p>
+              <img class="char-image" src="https://a.l3n.co/i/uoTkra.jpg" alt="Toru">
+            </p>
+          </div>
+          <div class="char-info">
+            <div class="char-title">
+              <p>Mirage Blade</p>
+            </div>
+            <div class="char-meta">
+              <div>
+                <p>Weapon: Hands / Sword</p>
+              </div>
+              <div>
+                <p>
+                  <span class="char-path">Warrior</span><br>
+                  <span class="char-warrank">S-Rank</span><br>
+                  <span class="char-tier">Standing: 3</span>
+                </p>
+              </div>
+            </div>
+            <div class="attributes-section">
+              <p>Attributes</p>
+            </div>
+            <div class="stats-container">
+              <div class="stats-column">
+                <div class="stat-row stat-ninjutsu">
+                  <p>
+                    <span class="stat-name">Ninjutsu</span><br>
+                    <span class="stat-value red">170</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-taijutsu">
+                  <p>
+                    <span class="stat-name">Taijutsu</span><br>
+                    <span class="stat-value red">EX</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-genjutsu">
+                  <p>
+                    <span class="stat-name">Genjutsu</span><br>
+                    <span class="stat-value red">EX</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-perception">
+                  <p>
+                    <span class="stat-name">Perception</span><br>
+                    <span class="stat-value red">160</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-dexterity">
+                  <p>
+                    <span class="stat-name">Dexterity</span><br>
+                    <span class="stat-value red">160</span>
+                  </p>
+                </div>
+              </div>
+              <div class="stats-column">
+                <div class="stat-row stat-strength">
+                  <p>
+                    <span class="stat-name">Strength</span><br>
+                    <span class="stat-value red">160</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-speed">
+                  <p>
+                    <span class="stat-name">Speed</span><br>
+                    <span class="stat-value red">200</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-intelligence">
+                  <p>
+                    <span class="stat-name">Intelligence</span><br>
+                    <span class="stat-value red">150</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-endurance">
+                  <p>
+                    <span class="stat-name">Endurance</span><br>
+                    <span class="stat-value red">160</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-output">
+                  <p>
+                    <span class="stat-name">Output</span><br>
+                    <span class="stat-value red">160</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="skills-section">
+              <p>Skills</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Hand-to-Hand Combat</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Supreme mastery of close-quarters combat, combining fluid movement and predictive abilities with
+                  devastating precision in order to turn his body into the perfect weapon.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Genjutsu Mastery</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Creates illusions so seamless and sophisticated that reality itself becomes questionable, weaving
+                  deceptions that can fool even the most perceptive opponents.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Susanoo Control</span><br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Commands his spectral guardian with innovative skill, manipulating and shaping it as naturally as
+                  moving his own limbs.</p>
+              </div>
+            </div>
+            <div class="shinobi-section">
+              <p>Shinjutsu</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Godly Delusion</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>The ultimate, undetectable genjutsu. A subtle technique that blurs the line between reality and
+                  illusion so completely that it might or might not be the key to victory.</p>
+              </div>
+            </div>
+            <div class="backstory-section">
+              <p>Origin</p>
+            </div>
+            <div class="origin-desc">
+              <p>Born into the shadow of his talented brother's growing skill, Toru faced impossible expectations from
+                day one. A mother who never wanted him and a father whose mind had fractured created a childhood where
+                only scraps felt honest, and art provided escape.</p>
+              <p>Despite his extraordinary talent for illusions — perhaps because of this situation — he finds genuine
+                joy only in hand-to-hand combat and creative expression. Where others see a prodigy genjutsu user, he
+                only sees a 'bullshit artist.'</p>
+              <p>Now pursuing his artistic ambitions while serving as one of the world's most dangerous illusionists,
+                Toru has found success on his own terms, proving that even those born into impossible circumstances can
+                forge their own path.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="char-card">
+          <div class="char-header">
+            <p>
+              <img class="char-image" src="https://c.l3n.co/i/uoT64e.jpg" alt="Sakura">
+            </p>
+          </div>
+          <div class="char-info">
+            <div class="char-title">
+              <p>Sakura</p>
+            </div>
+            <div class="char-meta">
+              <div>
+                <p>Weapon: Sword</p>
+              </div>
+              <div>
+                <p>
+                  <span class="char-path">Warrior</span><br>
+                  <span class="char-warrank">S-Rank</span><br>
+                  <span class="char-tier">Standing: 4</span>
+                </p>
+              </div>
+            </div>
+            <div class="attributes-section">
+              <p>Attributes</p>
+            </div>
+            <div class="stats-container">
+              <div class="stats-column">
+                <div class="stat-row stat-ninjutsu">
+                  <p>
+                    <span class="stat-name">Ninjutsu</span><br>
+                    <span class="stat-value red">180</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-taijutsu">
+                  <p>
+                    <span class="stat-name">Taijutsu</span><br>
+                    <span class="stat-value red">170</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-genjutsu">
+                  <p>
+                    <span class="stat-name">Genjutsu</span><br>
+                    <span class="stat-value red">200</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-perception">
+                  <p>
+                    <span class="stat-name">Perception</span><br>
+                    <span class="stat-value red">190</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-dexterity">
+                  <p>
+                    <span class="stat-name">Dexterity</span><br>
+                    <span class="stat-value red">190</span>
+                  </p>
+                </div>
+              </div>
+              <div class="stats-column">
+                <div class="stat-row stat-strength">
+                  <p>
+                    <span class="stat-name">Strength</span><br>
+                    <span class="stat-value red">140</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-speed">
+                  <p>
+                    <span class="stat-name">Speed</span><br>
+                    <span class="stat-value red">190</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-intelligence">
+                  <p>
+                    <span class="stat-name">Intelligence</span><br>
+                    <span class="stat-value red">190</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-endurance">
+                  <p>
+                    <span class="stat-name">Endurance</span><br>
+                    <span class="stat-value red">180</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-output">
+                  <p>
+                    <span class="stat-name">Output</span><br>
+                    <span class="stat-value red">130</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="skills-section">
+              <p>Skills</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Chakra Control</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Precise manipulation of chakra flow, enabling flawless technique execution and the ability to channel
+                  massive amounts of energy with surgical precision.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Kamui</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Intangibility techniques combined with offensive capabilities that bypass all conventional defenses,
+                  creating attacks that are fundamentally impossible to block or counter.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Ōtsutsuki Transformation</span><br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Otherworldly metamorphosis that dramatically enhances all natural abilities, amplifying water
+                  manipulation skills and unfortunately intensifying her already considerable capacity for violence.</p>
+              </div>
+            </div>
+            <div class="shinobi-section">
+              <p>Shinjutsu</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Abyssal Maelstrom</span><br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Conjures a massive pillar of water that relentlessly slashes apart anything within its constraints
+                  until nothing remains. Uses water as its foundation, allowing it to be layered with composite elements
+                  for devastating combinations.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Freezing Ice Formation</span><br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Halts the very thermal motion of atoms to achieve absolute zero temperatures. The technique is
+                  dangerous enough that allies must steer entirely clear of its area of effect, or require channels of
+                  similar elemental composition to safely constrain its reach.</p>
+              </div>
+            </div>
+            <div class="backstory-section">
+              <p>Origin</p>
+            </div>
+            <div class="origin-desc">
+              <p>From gifted student to injured kunoichi to something far more dangerous, Sakura's transformation began
+                with exceptional chakra control but evolved into mastery over chakra that defies conventional
+                understanding. Her acquisition of Kamui and Ōtsutsuki abilities created a Dragon who operates beyond
+                normal physical limitations.</p>
+              <p>Surgical precision, dimensional manipulation, water conversion, and alien enhancement have forged
+                someone capable of both high-speed regeneration and devastation on scales that blur the line between
+                Warrior and force of nature.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="char-card">
+          <div class="char-header">
+            <p>
+              <img class="char-image" src="https://a.l3n.co/i/uoTCPk.jpg" alt="Orochimaru">
+            </p>
+          </div>
+          <div class="char-info">
+            <div class="char-title">
+              <p>Great Serpent</p>
+            </div>
+            <div class="char-meta">
+              <div>
+                <p>Weapon: Sword</p>
+              </div>
+              <div>
+                <p>
+                  <span class="char-path">Warrior</span><br>
+                  <span class="char-warrank">S-Rank</span><br>
+                  <span class="char-tier">Standing: 5</span>
+                </p>
+              </div>
+            </div>
+            <div class="attributes-section">
+              <p>Attributes</p>
+            </div>
+            <div class="stats-container">
+              <div class="stats-column">
+                <div class="stat-row stat-ninjutsu">
+                  <p>
+                    <span class="stat-name">Ninjutsu</span><br>
+                    <span class="stat-value red">EX</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-taijutsu">
+                  <p>
+                    <span class="stat-name">Taijutsu</span><br>
+                    <span class="stat-value red">150</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-genjutsu">
+                  <p>
+                    <span class="stat-name">Genjutsu</span><br>
+                    <span class="stat-value red">190</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-perception">
+                  <p>
+                    <span class="stat-name">Perception</span><br>
+                    <span class="stat-value red">180</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-dexterity">
+                  <p>
+                    <span class="stat-name">Dexterity</span><br>
+                    <span class="stat-value red">200</span>
+                  </p>
+                </div>
+              </div>
+              <div class="stats-column">
+                <div class="stat-row stat-strength">
+                  <p>
+                    <span class="stat-name">Strength</span><br>
+                    <span class="stat-value red">130</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-speed">
+                  <p>
+                    <span class="stat-name">Speed</span><br>
+                    <span class="stat-value red">170</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-intelligence">
+                  <p>
+                    <span class="stat-name">Intelligence</span><br>
+                    <span class="stat-value red">EX</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-endurance">
+                  <p>
+                    <span class="stat-name">Endurance</span><br>
+                    <span class="stat-value red">150</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-output">
+                  <p>
+                    <span class="stat-name">Output</span><br>
+                    <span class="stat-value red">180</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="skills-section">
+              <p>Skills</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Arcane Knowledge</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Possesses understanding of forbidden techniques, ancient secrets, and esoteric sciences that span
+                  multiple disciplines and realms of existence.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Polyvalence</span><br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Demonstrates exceptional adaptability across all fields of study and combat, seamlessly transitioning
+                  between research, experimentation, and battlefield application.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Survival</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Mastery of the art of persistence through any circumstance, whether facing death, exile, or the
+                  consequences of dangerous experimentation.</p>
+              </div>
+            </div>
+            <div class="shinobi-section">
+              <p>Shinjutsu</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Singularity Surge</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Conjures a black hole through manipulation of gravitational forces, creating a point of infinite
+                  density that devours everything within its event horizon.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Serpentine Genesis</span><br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Allows for direct manipulation and alteration of biological DNA, enabling advanced healing,
+                  controlled evolution, or the creation of entirely new life forms from genetic templates. Including
+                  himself.</p>
+              </div>
+            </div>
+            <div class="backstory-section">
+              <p>Origin</p>
+            </div>
+            <div class="origin-desc">
+              <p>Descended from the people of Lake Takura, Orochimaru was a student of Sarutobi who once stood at the
+                precipice of darkness but chose to step back from the edge. That moment of restraint, rather than
+                weakness, became the foundation of his true strength.</p>
+              <p>His innate curiosity and Sarutobi's teachings combined to create something unprecedented — a researcher
+                who pursued forbidden knowledge not for power's sake, but for understanding itself. His discoveries and
+                innovations have reshaped the world in indescribable ways.</p>
+              <p>Now wielding techniques that manipulate the very fabric of reality and life itself, Orochimaru
+                represents what happens when brilliant curiosity is tempered by wisdom rather than consumed by
+                all-encompassing ambition.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="char-card">
+          <div class="char-header">
+            <p>
+              <img class="char-image" src="https://d.l3n.co/i/uoT9M1.jpg" alt="Ino">
+            </p>
+          </div>
+          <div class="char-info">
+            <div class="char-title">
+              <p>Soul Weaver</p>
+            </div>
+            <div class="char-meta">
+              <div>
+                <p>Weapon: Soul / Naginata</p>
+              </div>
+              <div>
+                <p>
+                  <span class="char-path">Warrior</span><br>
+                  <span class="char-warrank">S-Rank</span><br>
+                  <span class="char-tier">Standing: 6</span>
+                </p>
+              </div>
+            </div>
+            <div class="attributes-section">
+              <p>Attributes</p>
+            </div>
+            <div class="stats-container">
+              <div class="stats-column">
+                <div class="stat-row stat-ninjutsu">
+                  <p>
+                    <span class="stat-name">Ninjutsu</span><br>
+                    <span class="stat-value red">EX</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-taijutsu">
+                  <p>
+                    <span class="stat-name">Taijutsu</span><br>
+                    <span class="stat-value red">120</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-genjutsu">
+                  <p>
+                    <span class="stat-name">Genjutsu</span><br>
+                    <span class="stat-value red">190</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-perception">
+                  <p>
+                    <span class="stat-name">Perception</span><br>
+                    <span class="stat-value red">180</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-dexterity">
+                  <p>
+                    <span class="stat-name">Dexterity</span><br>
+                    <span class="stat-value red">150</span>
+                  </p>
+                </div>
+              </div>
+              <div class="stats-column">
+                <div class="stat-row stat-strength">
+                  <p>
+                    <span class="stat-name">Strength</span><br>
+                    <span class="stat-value red">100</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-speed">
+                  <p>
+                    <span class="stat-name">Speed</span><br>
+                    <span class="stat-value red">130</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-intelligence">
+                  <p>
+                    <span class="stat-name">Intelligence</span><br>
+                    <span class="stat-value red">150</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-endurance">
+                  <p>
+                    <span class="stat-name">Endurance</span><br>
+                    <span class="stat-value red">130</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-output">
+                  <p>
+                    <span class="stat-name">Output</span><br>
+                    <span class="stat-value red">130</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="skills-section">
+              <p>Skills</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Soul Weaving</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Manipulates the very essence of spiritual energy, capable of binding, redirecting, or completely
+                  restructuring soul connections between individuals.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Mind Arts</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Mastery of advanced mental techniques that go far beyond simple mind reading, allowing for complex
+                  psychological manipulation and consciousness alteration.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Telepathy</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Establishes direct mental communication across vast (interworld) distances and can penetrate even the
+                  most heavily defended minds with surgical precision.</p>
+              </div>
+            </div>
+            <div class="shinobi-section">
+              <p>Shinjutsu</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Soul Invasion</span><br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Through her Divine Territory ability, enables complete infiltration of another's soul, perhaps even
+                  divine.</p>
+              </div>
+            </div>
+            <div class="backstory-section">
+              <p>Origin</p>
+            </div>
+            <div class="origin-desc">
+              <p>After losing her father and being accused of treason, Ino saw her world crumbling around her, and
+                village justice closing in.</p>
+              <p>Someone important to her helped her escape into exile. That moment of betrayal by her own village
+                transformed her. Her mastery of soul-based techniques deepened, fed by grief and the knowledge that
+                those she'd sworn to protect had cast her aside.</p>
+              <p>Now, she wields powers that can rewrite the very essence of a person's being, and swears to use them
+                for good. Surely.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="char-card">
+          <div class="char-header">
+            <p>
+              <img class="char-image" src="https://b.l3n.co/i/uoC7R5.png" alt="Yoisen">
+            </p>
+          </div>
+          <div class="char-info">
+            <div class="char-title">
+              <p>Ashveil Blade</p>
+            </div>
+            <div class="char-meta">
+              <div>
+                <p>Weapon: Sword</p>
+              </div>
+              <div>
+                <p>
+                  <span class="char-path">Warrior</span><br>
+                  <span class="char-warrank">S-Rank</span><br>
+                  <span class="char-tier">Standing: 7</span>
+                </p>
+              </div>
+            </div>
+            <div class="attributes-section">
+              <p>Attributes</p>
+            </div>
+            <div class="stats-container">
+              <div class="stats-column">
+                <div class="stat-row stat-ninjutsu">
+                  <p>
+                    <span class="stat-name">Ninjutsu</span><br>
+                    <span class="stat-value red">190</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-taijutsu">
+                  <p>
+                    <span class="stat-name">Taijutsu</span><br>
+                    <span class="stat-value red">180</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-genjutsu">
+                  <p>
+                    <span class="stat-name">Genjutsu</span><br>
+                    <span class="stat-value red">170</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-perception">
+                  <p>
+                    <span class="stat-name">Perception</span><br>
+                    <span class="stat-value red">180</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-dexterity">
+                  <p>
+                    <span class="stat-name">Dexterity</span><br>
+                    <span class="stat-value red">EX</span>
+                  </p>
+                </div>
+              </div>
+              <div class="stats-column">
+                <div class="stat-row stat-strength">
+                  <p>
+                    <span class="stat-name">Strength</span><br>
+                    <span class="stat-value red">130</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-speed">
+                  <p>
+                    <span class="stat-name">Speed</span><br>
+                    <span class="stat-value red">180</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-intelligence">
+                  <p>
+                    <span class="stat-name">Intelligence</span><br>
+                    <span class="stat-value red">160</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-endurance">
+                  <p>
+                    <span class="stat-name">Endurance</span><br>
+                    <span class="stat-value red">150</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-output">
+                  <p>
+                    <span class="stat-name">Output</span><br>
+                    <span class="stat-value red">140</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="skills-section">
+              <p>Skills</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Sword Mastery</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Sword techniques refined over centuries of practice, achieving a level of precision and artistry that
+                  borders on the supernatural.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Fire Release</span><br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Mastery over flames that transcends destructive potential, capable of creating controlled fire that
+                  she has, as of recently, would like to use to heal rather than harm; barriers to protect rather than
+                  consume.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Healing</span><br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Advanced medical abilities that can mend nearly any physical wounds.</p>
+              </div>
+            </div>
+            <div class="shinobi-section">
+              <p>Shinjutsu</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Void Ember Fortress</span><br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Creates a dome of pure gold fire that shimmers with controlled inner flame. This barrier demonstrates
+                  perfect mastery — protective, purposeful, and beautiful in its restraint.</p>
+              </div>
+            </div>
+            <div class="backstory-section">
+              <p>Origin</p>
+            </div>
+            <div class="origin-desc">
+              <p>Born a millennium ago, Yoisen witnessed the destruction of her homeland and made the fateful choice to
+                join with Indra. It was a decision that gave her all the time in the world to watch his ideals twist and
+                darken, each passing century adding weight to her regret.</p>
+              <p>For ages, she carried the burden of that ancient allegiance, watching as noble intentions became
+                corrupted and witnessing the consequences of choices made in desperation.</p>
+              <p>&nbsp;</p>
+              <p>Time, they say, heals all wounds — a sentiment she only recently decided to embrace.</p>
+              <p>Now, with her fire controlled rather than consuming and her blade guided by hard-earned wisdom, Yoisen
+                seeks redemption centuries of reflection hadn't allowed her to obtain. Of course, she says, she had some
+                help finding her way back to the light.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="char-card">
+          <div class="char-header">
+            <p>
+              <img class="char-image" src="https://b.l3n.co/i/uoTQix.jpg" alt="Karin">
+            </p>
+          </div>
+          <div class="char-info">
+            <div class="char-title">
+              <p>Crimson Fist</p>
+            </div>
+            <div class="char-meta">
+              <div>
+                <p>Weapon: Hands / Chains</p>
+              </div>
+              <div>
+                <p>
+                  <span class="char-path">Warrior</span><br>
+                  <span class="char-warrank">S-Rank</span><br>
+                  <span class="char-tier">Standing: 8</span>
+                </p>
+              </div>
+            </div>
+            <div class="attributes-section">
+              <p>Attributes</p>
+            </div>
+            <div class="stats-container">
+              <div class="stats-column">
+                <div class="stat-row stat-ninjutsu">
+                  <p>
+                    <span class="stat-name">Ninjutsu</span><br>
+                    <span class="stat-value red">170</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-taijutsu">
+                  <p>
+                    <span class="stat-name">Taijutsu</span><br>
+                    <span class="stat-value red">180</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-genjutsu">
+                  <p>
+                    <span class="stat-name">Genjutsu</span><br>
+                    <span class="stat-value red">80</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-perception">
+                  <p>
+                    <span class="stat-name">Perception</span><br>
+                    <span class="stat-value red">180</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-dexterity">
+                  <p>
+                    <span class="stat-name">Dexterity</span><br>
+                    <span class="stat-value red">120</span>
+                  </p>
+                </div>
+              </div>
+              <div class="stats-column">
+                <div class="stat-row stat-strength">
+                  <p>
+                    <span class="stat-name">Strength</span><br>
+                    <span class="stat-value red">180</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-speed">
+                  <p>
+                    <span class="stat-name">Speed</span><br>
+                    <span class="stat-value red">150</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-intelligence">
+                  <p>
+                    <span class="stat-name">Intelligence</span><br>
+                    <span class="stat-value red">130</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-endurance">
+                  <p>
+                    <span class="stat-name">Endurance</span><br>
+                    <span class="stat-value red">190</span>
+                  </p>
+                </div>
+                <div class="stat-row stat-output">
+                  <p>
+                    <span class="stat-name">Output</span><br>
+                    <span class="stat-value red">160</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="skills-section">
+              <p>Skills</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Sealing Chains</span><br>
+                  <span class="skill-level">EX</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Manifests chakra chains capable of binding even the most powerful entities, with sealing properties
+                  that can suppress or redirect massive amounts of energy.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Gravity Manipulation</span><br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Controls gravitational forces with precision, able to alter weight, trajectory, and momentum of
+                  objects or opponents within her sphere of influence.</p>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Earth Release</span><br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Mastery of earth-based techniques that complement her gravity control, creating devastating
+                  combinations of geological manipulation and gravitational force.</p>
+              </div>
+            </div>
+            <div class="shinobi-section">
+              <p>Shinjutsu</p>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <p>
+                  <span class="skill-name">Gravity Well</span><br>
+                  <span class="skill-level">S</span>
+                </p>
+              </div>
+              <div class="skill-desc">
+                <p>Conjures a vortex of intense gravitational force that anchors and immobilizes enemies within a
+                  reality-bending pit. Trapped foes become defenseless against an onslaught of perfect metal spheres, or
+                  blazing hot molten metal should the spheres shatter under the immense pressure.</p>
+              </div>
+            </div>
+            <div class="backstory-section">
+              <p>Origin</p>
+            </div>
+            <div class="origin-desc">
+              <p>Born in Kusa but found her first true friends in Konoha, Karin's loyalty runs deeper than bloodlines or
+                village allegiances. Circumstances led her to join Orochimaru's ragtag group years before Naruto himself
+                did, and later on, fate reunited her with those precious bonds.</p>
+              <p>Now wielding incredible power (and harder fists), she fights not for glory or conquest, but for
+                something far more important. Her determination to protect those she cares about has become an
+                unbreakable force of nature ("Believe it").</p>
+              <p>Whether facing gods or mortals, Karin has every intention of seeing her loved ones survive this battle.
+                And if she happens to complete her harem along the way, well, that's just efficient multitasking.</p>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+      <div class="cardsch7">
+        <div class="char-card"><div class="char-header"><p><img class="char-image" src="https://d.l3n.co/i/NXzHgm.png" alt="Mitsuki"></p></div><div class="char-info"><div class="char-title"><p>Skybreaker</p></div><div class="char-meta"><div><p>Weapon: Hollow Fang</p></div><div><p><span class="char-path-command">Command</span><br><span class="char-comrank">Ninth Ring</span><br><span class="char-tier-command">Standing: 1</span></p></div><div><p><span class="char-path">Warrior</span><br><span class="char-warrank">S-Rank</span><br><span class="char-tier">Standing: 1</span></p></div></div><div class="attributes-section"><p>Attributes</p></div><div class="stats-container"><div class="stats-column"><div class="stat-row stat-ninjutsu"><p><span class="stat-name">Ninjutsu</span><br><span class="stat-value red">EX</span></p></div><div class="stat-row stat-taijutsu"><p><span class="stat-name">Taijutsu</span><br><span class="stat-value red">180</span></p></div><div class="stat-row stat-genjutsu"><p><span class="stat-name">Genjutsu</span><br><span class="stat-value red">150</span></p></div><div class="stat-row stat-perception"><p><span class="stat-name">Perception</span><br><span class="stat-value red">160</span></p></div><div class="stat-row stat-dexterity"><p><span class="stat-name">Dexterity</span><br><span class="stat-value red">180</span></p></div></div><div class="stats-column"><div class="stat-row stat-strength"><p><span class="stat-name">Strength</span><br><span class="stat-value red">EX</span></p></div><div class="stat-row stat-speed"><p><span class="stat-name">Speed</span><br><span class="stat-value red">EX</span></p></div><div class="stat-row stat-intelligence"><p><span class="stat-name">Intelligence</span><br><span class="stat-value red">200</span></p></div><div class="stat-row stat-endurance"><p><span class="stat-name">Endurance</span><br><span class="stat-value red">150</span></p></div><div class="stat-row stat-output"><p><span class="stat-name">Output</span><br><span class="stat-value red">180</span></p></div></div></div><div class="skills-section"><p>Skills</p></div><div class="skill-item"><div class="skill-header"><p><span class="skill-name">Void Authority</span><br><span class="skill-level ex-rank">EX</span></p></div><div class="skill-desc"><p>Mastery over space and time.</p></div></div><div class="skill-item"><div class="skill-header"><p><span class="skill-name">Six Paths Snake Sage Mode</span><br><span class="skill-level s-rank">S</span></p></div><div class="skill-desc"><p>Grants near-unmatched sensory perception, flight, and the ability to wield Truth-Seeking Orbs. Transcends mortal limits, blending physical, spiritual, and natural energies into perfect harmony.</p></div></div><div class="skill-item"><div class="skill-header"><p><span class="skill-name">Imperial Presence</span><br><span class="skill-level s-rank">S</span></p></div><div class="skill-desc"><p>Overwhelming aura that can pacify armies or inspire absolute loyalty.</p></div></div><div class="shinobi-section"><p>Shinjutsu</p></div><div class="skill-item"><div class="skill-header"><p><span class="skill-name">The Idol of Time and Space</span><br><span class="skill-level ex-rank">EX</span></p></div><div class="skill-desc"><p>Rewrite the fundamental laws of reality within his domain; creation and destruction, at will.</p></div></div><div class="skill-item"><div class="skill-header"><p><span class="skill-name">Celestial Conduction</span><br><span class="skill-level ex-rank">EX</span></p></div><div class="skill-desc"><p>Shape lightning into cosmic threads, binding stars, realms, and dimensions together. Travel, sever, or collapse pathways at will, turning space into a web of his design.</p></div></div><div class="skill-item"><div class="skill-header"><p><span class="skill-name">Heaven’s Thunderous Record</span><br><span class="skill-level ex-rank">EX</span></p></div><div class="skill-desc"><p>Unleash a lightning strike that never ends.</p></div></div><div class="backstory-section"><p>Origin</p></div><div class="origin-desc"><p>Mitsuki was born in an era without war. His childhood was unremarkable — at least to him, though few others would have called it that — until he crossed paths with Boruto’s revered “Uncle,” a man whose strength carried the weight of legend. That meeting, he liked to say, struck him like lightning — and yes, the pun was intended. It was more than admiration; it was the unsettling sense that his life had been waiting for that spark.</p><p>From then on, he began to outgrow the world that had raised him. What started as a boy’s imitation of a hero became something far stranger: a journey beyond the limits others could not even perceive. He did not inherit greatness; he stepped past it, untethered from the measures most use to define power.</p><p>Mitsuki, of course, remains the horizon that keeps receding;&nbsp;the moon that refused to be caged by the earth.</p></div></div></div>
+        <div class="char-card"><div class="char-header"><p><img class="char-image" src="https://d.l3n.co/i/NXozQ7.png" alt="Konohamaru"></p></div><div class="char-info"><div class="char-title"><p>Steady Leaf</p></div><div class="char-meta"><div><p>Weapon: Staff of Embers</p></div><div><p><span class="char-path-tantric">Tantric</span><br><span class="char-tanrank">First Ring</span><br><span class="char-tier-tantric">Channel</span></p></div><div><p><span class="char-path">Warrior</span><br><span class="char-warrank">A-Rank</span><br><span class="char-tier">Standing: 12,237</span></p></div></div><div class="attributes-section"><p>Attributes</p></div><div class="stats-container"><div class="stats-column"><div class="stat-row stat-ninjutsu"><p><span class="stat-name">Ninjutsu</span><br><span class="stat-value red">105</span></p></div><div class="stat-row stat-taijutsu"><p><span class="stat-name">Taijutsu</span><br><span class="stat-value red">95</span></p></div><div class="stat-row stat-genjutsu"><p><span class="stat-name">Genjutsu</span><br><span class="stat-value red">65</span></p></div><div class="stat-row stat-perception"><p><span class="stat-name">Perception</span><br><span class="stat-value red">85</span></p></div><div class="stat-row stat-dexterity"><p><span class="stat-name">Dexterity</span><br><span class="stat-value red">90</span></p></div></div><div class="stats-column"><div class="stat-row stat-strength"><p><span class="stat-name">Strength</span><br><span class="stat-value red">100</span></p></div><div class="stat-row stat-speed"><p><span class="stat-name">Speed</span><br><span class="stat-value red">100</span></p></div><div class="stat-row stat-intelligence"><p><span class="stat-name">Intelligence</span><br><span class="stat-value red">110</span></p></div><div class="stat-row stat-endurance"><p><span class="stat-name">Endurance</span><br><span class="stat-value red">110</span></p></div><div class="stat-row stat-output"><p><span class="stat-name">Output</span><br><span class="stat-value red">85</span></p></div></div></div><div class="skills-section"><p>Skills</p></div><div class="skill-item"><div class="skill-header"><p><span class="skill-name">Fire Release</span><br><span class="skill-level b-rank">B</span></p></div><div class="skill-desc"><p>Solid mastery of flame techniques; specializes in sustained burning attacks.</p></div></div><div class="skill-item"><div class="skill-header"><p><span class="skill-name">Staff Combat</span><br><span class="skill-level b-rank">B</span></p></div><div class="skill-desc"><p>Expert-level quarterstaff techniques combined with chakra enhancement.</p></div></div><div class="skill-item"><div class="skill-header"><p><span class="skill-name">Monkey Sage Mode</span><br><span class="skill-level a-rank">A</span></p></div><div class="skill-desc"><p>A primal sage state drawing on the instincts of the simian clans. Grants heightened agility, keen spatial awareness, and the ability to read opponents through subtle movements. Excels in adaptability and group coordination.</p></div></div><div class="shinobi-section"><p>Shinjutsu</p></div><div class="skill-item"><div class="skill-header"><p><span class="skill-name">Monkey King’s Flame Wheel</span><br><span class="skill-level b-rank">B</span></p></div><div class="skill-desc"><p>Unleashes a spiraling wheel of fire, rolling and bounding like a great simian form. The flames cling and rebound, able to curve back toward a fleeing target.</p></div></div><div class="backstory-section"><p>Origin</p></div><div class="origin-desc"><p>Konohamaru grew up in the shadows of giants. Grandson to a Hokage, clan-brother to the storm called Uzumaki Naruto, contemporary to Konoha's best (or worst) generation, he carried the weight of expectation long before he understood it. While others played, he trained. While others rested, he pressed on. Always running, never quite catching the legends ahead.</p><p>But in time, he stopped running. His strength was never in surpassing others, but in standing firm. He knew he would never split the heavens with his power, never bend the world with a single strike. What he could do was protect those beside him. Do his part, steady and unshaken. Burn quietly, little leaf, endure.</p><p>Konohamaru, in the end, is the flame that refuses to gutter out — ordinary, yes, and in being so, indispensable.</p></div></div></div>
+        <div class="char-card"><div class="char-header"><p><img class="char-image" src="https://a.l3n.co/i/NXoSnr.png" alt="Satoshi"></p></div><div class="char-info"><div class="char-title"><p>Little Mountain</p></div><div class="char-meta"><div><p>Weapon: Six Rings / Twin Swords</p></div><div><p><span class="char-path-astronomer">Astronomer</span><br><span class="char-astrank">Second Ring</span><br><span class="char-tier-astronomer">Cartographer</span></p></div><div><p><span class="char-path">Warrior</span><br><span class="char-warrank">C-Rank</span><br><span class="char-tier">Standing: 47,847</span></p></div></div><div class="attributes-section"><p>Attributes</p></div><div class="stats-container"><div class="stats-column"><div class="stat-row stat-ninjutsu"><p><span class="stat-name">Ninjutsu</span><br><span class="stat-value red">45</span></p></div><div class="stat-row stat-taijutsu"><p><span class="stat-name">Taijutsu</span><br><span class="stat-value red">75</span></p></div><div class="stat-row stat-genjutsu"><p><span class="stat-name">Genjutsu</span><br><span class="stat-value red">20</span></p></div><div class="stat-row stat-perception"><p><span class="stat-name">Perception</span><br><span class="stat-value red">80</span></p></div><div class="stat-row stat-dexterity"><p><span class="stat-name">Dexterity</span><br><span class="stat-value red">70</span></p></div></div><div class="stats-column"><div class="stat-row stat-strength"><p><span class="stat-name">Strength</span><br><span class="stat-value red">75</span></p></div><div class="stat-row stat-speed"><p><span class="stat-name">Speed</span><br><span class="stat-value red">65</span></p></div><div class="stat-row stat-intelligence"><p><span class="stat-name">Intelligence</span><br><span class="stat-value red">55</span></p></div><div class="stat-row stat-endurance"><p><span class="stat-name">Endurance</span><br><span class="stat-value red">85</span></p></div><div class="stat-row stat-output"><p><span class="stat-name">Output</span><br><span class="stat-value red">70</span></p></div></div></div><div class="skills-section"><p>Skills</p></div><div class="skill-item"><div class="skill-header"><p><span class="skill-name">Enhanced Strength</span><br><span class="skill-level b-rank">B</span></p></div><div class="skill-desc"><p>Natural physical power that exceeds normal human limits for his age.</p></div></div><div class="skill-item"><div class="skill-header"><p><span class="skill-name">Stubborn, Sticky Fist</span><br><span class="skill-level c-rank">B</span></p></div><div class="skill-desc"><p>Simple, direct strikes delivered with relentless pressure and ever-increasing gravitational pressure. Each blow builds on the last, overwhelming defenses through persistence.</p></div></div><div class="skill-item"><div class="skill-header"><p><span class="skill-name">Iron Will</span><br><span class="skill-level b-rank">B</span></p></div><div class="skill-desc"><p>Exceptional mental fortitude; highly resistant to fear and intimidation.</p></div></div><div class="shinobi-section"><p>Innate</p></div><div class="skill-item"><div class="skill-header"><p><span class="skill-name">Magnetism</span><br><span class="skill-level c-rank">C</span></p></div><div class="skill-desc"><p>Natural ability to generate and manipulate magnetic fields through chakra manipulation. Can attract or repel metallic objects, create magnetic bonds between surfaces, and generate localized gravitational effects by magnetizing the iron in blood or earth. At his current level, requires physical contact or proximity, but shows potential for ranged applications as he develops.</p></div></div><div class="backstory-section"><p>Origin</p></div><div class="origin-desc"><p>Many are born into comparisons they never asked for. When your kin can bend minds with a thought, split land and sky with a gesture, and your eldest sibling is hailed as divinity reborn, giving up would seem the natural response.</p><p>Most children would have bent beneath that weight.</p><p>But Satoshi did not bend, and he never broke.</p><p>Call it Uzumaki stubbornness, or simply the refusal to be left behind: every impossible feat became a challenge, every legend an invitation. He did not resent the gulf between himself and others. No, he relished it, climbing it one brutal step at a time.</p><p>Satoshi is the Little Mountain. Not yet towering, perhaps, but rising. Steady, unshaken... and intent on touching the sky.</p></div></div></div>
+        <div class="char-card"><div class="char-header"><p><img class="char-image" src="https://d.l3n.co/i/NXzmVH.png" alt="Riku"></p></div><div class="char-info"><div class="char-title"><p>Bachi</p></div><div class="char-meta"><div><p>Instrument: Shamisen</p></div><div><p><span class="char-path-musician">Musician</span><br><span class="char-musrank">Second Ring</span><br><span class="char-tier-musician">Melodist</span></p></div><div><p><span class="char-path">Warrior</span><br><span class="char-warrank">D-Rank</span><br><span class="char-tier">Standing: Unranked</span></p></div></div><div class="attributes-section"><p>Attributes</p></div><div class="stats-container"><div class="stats-column"><div class="stat-row stat-ninjutsu"><p><span class="stat-name">Ninjutsu</span><br><span class="stat-value red">45</span></p></div><div class="stat-row stat-taijutsu"><p><span class="stat-name">Taijutsu</span><br><span class="stat-value red">35</span></p></div><div class="stat-row stat-genjutsu"><p><span class="stat-name">Genjutsu</span><br><span class="stat-value red">45</span></p></div><div class="stat-row stat-perception"><p><span class="stat-name">Perception</span><br><span class="stat-value red">85</span></p></div><div class="stat-row stat-dexterity"><p><span class="stat-name">Dexterity</span><br><span class="stat-value red">45</span></p></div></div><div class="stats-column"><div class="stat-row stat-strength"><p><span class="stat-name">Strength</span><br><span class="stat-value red">20</span></p></div><div class="stat-row stat-speed"><p><span class="stat-name">Speed</span><br><span class="stat-value red">40</span></p></div><div class="stat-row stat-intelligence"><p><span class="stat-name">Intelligence</span><br><span class="stat-value red">75</span></p></div><div class="stat-row stat-endurance"><p><span class="stat-name">Endurance</span><br><span class="stat-value red">30</span></p></div><div class="stat-row stat-output"><p><span class="stat-name">Output</span><br><span class="stat-value red">50</span></p></div></div></div><div class="skills-section"><p>Skills</p></div><div class="skill-item"><div class="skill-header"><p><span class="skill-name">Empathic Resonance</span><br><span class="skill-level b-rank">B</span></p></div><div class="skill-desc"><p>Natural ability to sense and share emotions of others within a moderate radius.</p></div></div><div class="skill-item"><div class="skill-header"><p><span class="skill-name">Telepathy</span><br><span class="skill-level c-rank">C</span></p></div><div class="skill-desc"><p>Can read thoughts and intentions.</p></div></div><div class="skill-item"><div class="skill-header"><p><span class="skill-name">Melodic Memory</span><br><span class="skill-level c-rank">C</span></p></div><div class="skill-desc"><p>Perfect musical recall and ability to reproduce any melody heard.</p></div></div><div class="shinobi-section"><p>Innate</p></div><div class="skill-item"><div class="skill-header"><p><span class="skill-name">Transparency</span><br><span class="skill-level c-rank">C</span></p></div><div class="skill-desc"><p>A natural lightning-born sensitivity that renders deeper thoughts almost impossible to shield using conventional means. Emotions and intentions arc across his awareness like static discharges. The more intense the feeling or sharper the thought, the louder the signal.</p></div></div><div class="backstory-section"><p>Origin</p></div><div class="origin-desc"><p>Riku had never known quiet. Ever since he was small, other people's thoughts had leaked into his head; their worries, their fights, conversations he never particularly cared to hear. While his brothers and sisters threw themselves into combat training, Riku went looking for something different: silence.</p><p>His mother taught him how to cope with all those voices crowding his head. His father gave him music, something that could hold the noise at bay, and a way to shape silence out of sound. An instrument, he decided, was a place to breathe.</p><p>Riku might not be the fighter his siblings were becoming, but he had his own kind of strength; a melody too soft to ignore.</p></div></div></div>
+
+
+      </div>
+
+
+      <!-- Above! -->
+
+
+    </main>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

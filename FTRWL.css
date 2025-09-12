@@ -1,0 +1,892 @@
+#workskin div.preface .notes,
+#workskin div.preface .summary,
+#workskin div.preface .series,
+#workskin div.preface .children {
+  min-height: 0;
+}
+
+#workskin .userstuff hr {
+  width: 100%;
+  margin: auto;
+}
+
+#workskin .hr5 {
+  background: url('https://a.l3n.co/i/oGRk4A.png') no-repeat center center;
+  background-size: contain;
+  display: block;
+  height: 50px;
+  border: 0;
+  position: relative;
+  transition-duration: 3s;
+  transition-timing-function: ease-in-out;
+}
+
+#workskin .hr6 {
+  background: url('https://a.l3n.co/i/oGRk4A.png') no-repeat center center;
+  background-size: contain;
+  display: block;
+  height: 150px;
+  border: 0;
+  position: relative;
+  transition-duration: 3s;
+  transition-timing-function: ease-in-out;
+}
+
+#workskin .hr5:before,
+#workskin .hr5:after {
+  content: '';
+  display: block;
+  position: absolute;
+  background-color: #000000;
+  height: 1px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition-duration: 3s;
+  transition-timing-function: ease-in-out;
+}
+
+#workskin .hr5::before {
+  left: 0;
+  right: 50%;
+  margin-right: 30px;
+}
+
+#workskin .hr5::after {
+  left: 50%;
+  right: 0;
+  margin-left: 30px;
+}
+
+#workskin .hr5:hover {
+  height: 5em;
+  transition-delay: 4s;
+  transition-duration: 2s;
+  transition-timing-function: ease-in-out;
+}
+
+#workskin .hr6:hover {
+  height: 10em;
+  filter: drop-shadow(1em 1em #f78c58);
+  transition-delay: 4s;
+  transition-duration: 2s;
+  transition-timing-function: ease-in-out;
+}
+
+#workskin .hr5:hover::before {
+  transform: translateX(-800px);
+  transition-duration: 2s;
+  transition-timing-function: linear;
+}
+
+#workskin .hr5:hover::after {
+  transform: translateX(800px);
+  transition-duration: 2s;
+  transition-timing-function: linear;
+}
+
+#workskin .title.heading {
+  font-family: PT Serif, Raleway, Georgia;
+  font-size: 170%;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 52px;
+  text-transform: uppercase;
+  transition-duration: 2s;
+  transition-timing-function: ease-in-out;
+  background-image: url('https://d.l3n.co/i/D8PWHZ.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-indent: -9999px;
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  display: block;
+}
+
+#workskin .title.heading:hover {
+  filter: brightness(1.3) contrast(1.1);
+  transform: scale(1.05);
+  transition-timing-function: ease-in-out;
+}
+
+#workskin .title.heading + .byline {
+  font-family: Georgia;
+  transition-duration: 3s;
+}
+
+#workskin .title.heading:hover + .byline {
+  filter: brightness(0);
+  transition-duration: 3s;
+}
+
+#workskin .hr4 {
+  background-color: #a80a06;
+  border: 0;
+  height: 1px;
+  width: 100%;
+}
+
+#workskin .preface.group div h3 {
+  display: none;
+}
+
+#workskin .preface.group a {
+  border: none;
+  font-weight: bold;
+  font-family: arial,helvetica,sans-serif;
+  color: #a80a06;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.7px;
+}
+
+#workskin .preface.group h3.byline.heading a {
+  color: black;
+  display: inline;
+  margin-bottom: 0;
+  text-transform: lowercase;
+  letter-spacing: 0;
+  font-size: 16px;
+}
+
+#workskin .preface.group {
+  padding: 15px;
+}
+
+#workskin div.preface {
+  margin: 0px;
+  padding: .643em .643em 0;
+  float: none;
+}
+
+#workskin .notes {
+  font-size: 13px;
+}
+
+#workskin .summary {
+  font-size: 13px;
+  padding-top: 1em;
+}
+
+#workskin .notes.notes.module p a {
+  text-transform: lowercase;
+  font-weight: normal;
+  font-size: inherit;
+  text-decoration: none;
+}
+
+#workskin .strongserif {
+  font-size: 105%;
+  font-weight: bold;
+}
+
+#workskin .notes u:hover {
+  color: #750705;
+}
+
+#workskin .notes u:hover::after {
+  content: url('https://c.l3n.co/i/vJpYDq.png');
+  transform: scale(0.05);
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: top;
+  margin-right: 0.5em;
+  position: relative;
+  top: -0.1em;
+}
+
+#workskin .strongred {
+  font-size: 140%;
+  font-weight: bold;
+  font-family: PT Serif, Georgia;
+  color: #750705;
+}
+
+#workskin p .red .strongred {
+  font-size: 3em;
+  line-height: 1;
+  font-weight: bold;
+}
+
+#workskin .red {
+  font-weight: bold;
+  font-family: PT Serif;
+  color: #750705;
+  font-size: 1.1em;
+}
+
+#workskin .hr7 {
+  border: 0;
+  height: 1px;
+  width: 40%;
+  background: linear-gradient(to right, rgba(117, 7, 5, 0) 0%, rgba(117, 7, 5, 1) 25%, rgba(117, 7, 5, 1) 75%, rgba(117, 7, 5, 0) 100%);
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(117, 7, 5, 0.5);
+}
+
+#workskin .fnotes-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#workskin .fnotes {
+  font-size: 12px;
+  font-family: Arial;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+#workskin .notes .fnotes {
+  width: 95%;
+}
+
+#workskin .tbc-img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 12px;
+  font-family: Arial;
+  text-align: right;
+}
+
+#workskin .epigraph {
+  width: 90%;
+  font-size: 110%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'EB Garamond', Garamond, Georgia, serif;
+}
+
+#workskin .summary {
+  padding: 0.643em 0.643em;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+  margin: 1.5em 3em;
+  float: none;
+}
+
+#workskin .summary p {
+  font-size: 12px;
+  font-family: Arial;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#workskin .notes {
+  padding: 0.643em 0.643em 0;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: none;
+  margin: 1.5em 3em;
+  float: none;
+}
+
+#workskin .notes p {
+  font-size: 12px;
+  font-family: Arial;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#workskin .notes img {
+  width: 120%;
+}
+
+#workskin .notes details {
+  font-size: 13px;
+  font-weight: bold;
+  color: #750705;
+  font-family: Arial;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#workskin .notes summary {
+  background-color: rgba(117,7,5, 0.2);
+  display: inline-block;
+  transform: rotate(-10deg);
+  padding: 0.25em;
+  border-radius: 4px;
+  border-bottom: 1px solid #891111;
+  transition-duration: 0.2s;
+}
+
+#workskin .notes summary:active {
+  color: #111;
+  background: #ccc;
+  border-color: #fff;
+  box-shadow: inset 1px 1px 3px #333;
+  transform: translateY(4px);
+}
+
+#workskin .notes summary:hover {
+  color: #111;
+  text-decoration: none;
+  border-bottom: 1px solid;
+  box-shadow: 2px 2px 0px #891111;
+}
+
+#workskin .notes summary::before {
+  content: url('https://c.l3n.co/i/vJpYDq.png');
+  transform: scale(0.05);
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: top;
+  margin-right: 0.5em;
+  position: relative;
+  top: -0.1em;
+}
+
+#workskin .notes summary::after {
+  content: " ↓";
+}
+
+#workskin .email {
+  padding: 0em 0.643em 0em;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+  float: none;
+}
+
+#workskin .circle {
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#workskin .circle2 {
+  display: block;
+  border: 1px solid #a80a06;
+  height: 60px;
+  width: 60px;
+  line-height: 60px;
+  _1px solid_
+    -moz-border-radius: 30px;
+  border-radius: 30px;
+  background-color: transparent;
+  color: white;
+  text-align: center;
+  font-size: 2em;
+}
+
+#workskin .image-container {
+  width: 75%;
+  height: 25px;
+  background-image: url('https://c.l3n.co/i/ssrp2Q.png');
+  background-repeat: repeat-x;
+  background-size: 25px 25px;
+  background-position: center;
+  display: flex;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#workskin .containerb {
+  margin: 0px 0px 0px 0px;
+  position: relative;
+  text-align: center;
+  font-size: 250%;
+  font-color: #2a2a2a;
+  font-family: GeorgiaGeorgia;
+}
+
+#workskin .centeredb {
+  margin: 0px 0px 0px 0px;
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#workskin .containerb p {
+  margin: 0px;
+  padding: 0px;
+}
+
+#workskin .centeredb p {
+  margin: 0px;
+  padding: 0px;
+}
+
+#workskin h3.title {
+  display: none;
+}
+
+#workskin #notes {
+  display: none;
+}
+
+#workskin .flashback {
+  border-right: 1px dotted rgba(0, 0, 0, 0.9);
+  padding: 0px 1em 0em 0em;
+  color: #333;
+  margin: 0em 0em 0em 1em;
+}
+
+#workskin dd {
+  border: 1px solid gray;
+  padding: 8px;
+  text-align: left;
+}
+
+#workskin dt {
+  background-color: #f2f2f2;
+  color: #750705;
+  font-weight: bold;
+}
+
+#workskin table-container {
+  overflow-x: auto;
+  width: 100%;
+}
+
+#workskin table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#workskin th,
+#workskin td {
+  border: 1px solid gray;
+  padding: 8px;
+  text-align: left;
+}
+
+#workskin .thick-border-top {
+  border-top: 3px double gray;
+}
+
+#workskin .thick-border-bottom {
+  border-bottom: 3px double gray;
+}
+
+#workskin th {
+  background-color: #f2f2f2;
+}
+
+#workskin .manga-box3 {
+  padding: 0.643em 0em;
+  font-size: 12px;
+  font-family: Arial;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+  width: 75%;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#workskin .summaryred {
+  font-size: 16px;
+  font-weight: bold;
+  color: #750705;
+  padding: .125em;
+  border-bottom: .25em double #333;
+}
+
+#workskin .vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  padding: 10px;
+  font-weight: bold;
+}
+
+#workskin .noble-house {
+  background-color: rgba(128, 0, 0, 0.4);
+}
+
+#workskin .essential-house {
+  background-color: rgba(188, 143, 143, 0.4);
+}
+
+#workskin .support-house {
+  background-color: rgba(255, 228, 225, 0.4);
+}
+
+#workskin .centered-container {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+}
+
+#workskin .centered-content {
+  max-width: 600px;
+  padding: 20px;
+}
+
+#workskin .centered-content p {
+  line-height: 1.5;
+  margin-bottom: 1em;
+  color: #333;
+  text-align: left;
+}
+
+#workskin ::selection {
+  background: rgb(247, 140, 88);
+}
+
+#workskin .red::selection,
+#workskin .strongred::selection,
+#workskin .title.heading::selection {
+  color: #2a2a2a;
+}
+
+#workskin .char-card * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#workskin .char-card {
+  width: 100%;
+  max-width: 700px;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+#workskin .char-header {
+  position: relative;
+  width: 100%;
+  background-color: #f2f2f2;
+}
+
+#workskin .char-image {
+  max-width: 100%;
+  display: block;
+  transition: all 0.2s ease;
+}
+
+#workskin .char-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+#workskin .char-name {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background-color: #4ade80;
+  color: white;
+  padding: 5px 15px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#workskin .char-info {
+  padding: 15px;
+  background-color: white;
+}
+
+#workskin .char-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#workskin .char-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+#workskin .char-path,
+#workskin .char-path-command,
+#workskin .char-path-musician,
+#workskin .char-path-astronomer,
+#workskin .char-path-tantric,
+#workskin .char-warrank,
+#workskin .char-comrank,
+#workskin .char-musrank,
+#workskin .char-astrank,
+#workskin .char-tanrank,
+#workskin .char-tier,
+#workskin .char-tier-command,
+#workskin .char-tier-musician,
+#workskin .char-tier-astronomer,
+#workskin .char-tier-tantric {
+  color: white;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 14px;
+  white-space: pre;
+  transition: all 0.3s ease;
+}
+
+#workskin .char-path:hover,
+#workskin .char-path-command:hover,
+#workskin .char-path-musician:hover,
+#workskin .char-path-astronomer:hover,
+#workskin .char-path-tantric:hover,
+#workskin .char-warrank:hover,
+#workskin .char-comrank:hover,
+#workskin .char-musrank:hover,
+#workskin .char-astrank:hover,
+#workskin .char-tanrank:hover,
+#workskin .char-tier:hover,
+#workskin .char-tier-command:hover,
+#workskin .char-tier-musician:hover,
+#workskin .char-tier-astronomer:hover,
+#workskin .char-tier-tantric:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  filter: brightness(1.1);
+}
+
+#workskin .char-path {
+  background-color: #3b82f6;
+}
+
+#workskin .char-path-command {
+  background-color: #a52cd1;
+}
+
+#workskin .char-path-musician {
+  background-color: #8b5cf6;
+}
+
+#workskin .char-path-astronomer {
+  background-color: #1e293b;
+}
+
+#workskin .char-path-tantric {
+  background-color: #e98d8d;
+}
+
+#workskin .char-warrank {
+  background-color: #F5533B;
+}
+
+#workskin .char-comrank {
+  background-color: #cf887e;
+}
+
+#workskin .char-musrank {
+  background-color: #cda7ef;
+}
+
+#workskin .char-astrank {
+  background-color: #475569;
+}
+
+#workskin .char-tanrank {
+  background-color: #b91c1c;
+}
+
+#workskin .char-tier {
+  background-color: #750705;
+}
+
+#workskin .char-tier-command {
+  background-color: #348ecb;
+}
+
+#workskin .char-tier-musician {
+  background-color: #ec4899;
+}
+
+#workskin .char-tier-astronomer {
+  background-color: #6f93e7;
+}
+
+#workskin .char-tier-tantric {
+  background-color: #ad7eb1;
+}
+
+#workskin .char-section {
+  margin-bottom: 20px;
+}
+
+#workskin .section-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
+}
+
+#workskin .stats-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+#workskin .stats-column {
+  width: 50%;
+  padding-right: 10px;
+}
+
+#workskin .stat-row {
+  margin-bottom: 8px;
+}
+
+#workskin .stat-name {
+  font-weight: bold;
+  display: inline-block;
+  width: 100px;
+}
+
+#workskin .stat-name-long {
+  font-weight: bold;
+  display: inline-block;
+}
+
+#workskin .stat-value {
+  display: inline-block;
+  width: 50px;
+  text-align: right;
+}
+
+#workskin .stat-bar-bg {
+  display: inline-block;
+  width: 150px;
+  height: 10px;
+  background-color: #eee;
+  margin-top: 5px;
+  position: relative;
+}
+
+#workskin .stat-bar-fill {
+  display: block;
+  height: 10px;
+  background-color: #3b82f6;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#workskin .attributes-section {
+  border-top: 2px solid #333;
+  border-bottom: 2px solid #333;
+  padding: 5px 0;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+#workskin .skills-section {
+  border-top: 2px solid #333;
+  border-bottom: 2px solid #333;
+  padding: 5px 0;
+  margin: 15px 0;
+  font-weight: bold;
+}
+
+#workskin .shinobi-section {
+  border-top: 2px solid #333;
+  border-bottom: 2px solid #333;
+  padding: 5px 0;
+  margin: 15px 0;
+  font-weight: bold;
+}
+
+#workskin .stat-ninjutsu .stat-bar-fill {
+  background-color: #3b82f6;
+}
+
+#workskin .stat-taijutsu .stat-bar-fill {
+  background-color: #ef4444;
+}
+
+#workskin .stat-genjutsu .stat-bar-fill {
+  background-color: #8b5cf6;
+}
+
+#workskin .stat-perception .stat-bar-fill {
+  background-color: #10b981;
+}
+
+#workskin .stat-dexterity .stat-bar-fill {
+  background-color: #f59e0b;
+}
+
+#workskin .stat-strength .stat-bar-fill {
+  background-color: #b91c1c;
+}
+
+#workskin .stat-speed .stat-bar-fill {
+  background-color: #22c55e;
+}
+
+#workskin .stat-intelligence .stat-bar-fill {
+  background-color: #0ea5e9;
+}
+
+#workskin .stat-endurance .stat-bar-fill {
+  background-color: #78716c;
+}
+
+#workskin .stat-output .stat-bar-fill {
+  background-color: #f97316;
+}
+
+#workskin .skill-item {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+#workskin .skill-item:last-child {
+  border-bottom: none;
+}
+
+#workskin .skill-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+#workskin .skill-name {
+  font-weight: bold;
+}
+
+#workskin .skill-level {
+  background-color: #e5e7eb;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+#workskin .skill-desc {
+  font-size: 14px;
+  color: #666;
+}
+
+#workskin .origin-desc {
+  font-size: 14px;
+  color: #666;
+}
+
+#workskin .background-text {
+  line-height: 1.5;
+}
+
+#workskin .backstory-section {
+  border-top: 2px solid #333;
+  border-bottom: 2px solid #333;
+  padding: 5px 0;
+  margin: 15px 0;
+  font-weight: bold;
+}
+
+   

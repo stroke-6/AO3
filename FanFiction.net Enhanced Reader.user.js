@@ -1,590 +1,359 @@
 // ==UserScript==
-// @name         FanFiction.net Enhanced Reader
+// @name         FanFiction.net Enhanced Reader — 1.3
 // @namespace    http://tampermonkey.net/
-// @version      1.2
+// @version      1.3
 // @description  Display images from lensdump codes, style chapter titles, enable text selection, and enhance reading experience on fanfiction.net
 // @author       stroke6
-// @match        https://www.fanfiction.net/*
-// @match        https://fanfiction.net/*
-// @match        https://m.fanfiction.net/*
+// @match        https://www.fanfiction.net/s/14312002/*
+// @match        https://www.fanfiction.net/s/14396658/*
+// @match        https://www.fanfiction.net/s/14163903/*
+// @match        https://www.fanfiction.net/s/14095149/*
+// @match        https://www.fanfiction.net/s/14285217/*
+// @match        https://fanfiction.net/s/14312002/*
+// @match        https://fanfiction.net/s/14396658/*
+// @match        https://fanfiction.net/s/14163903/*
+// @match        https://fanfiction.net/s/14095149/*
+// @match        https://fanfiction.net/s/14285217/*
+// @match        https://m.fanfiction.net/s/14312002/*
+// @match        https://m.fanfiction.net/s/14396658/*
+// @match        https://m.fanfiction.net/s/14163903/*
+// @match        https://m.fanfiction.net/s/14095149/*
+// @match        https://m.fanfiction.net/s/14285217/*
 // @grant        none
-// @updateURL
-// @downloadURL
 // ==/UserScript==
 
 (function() {
-    'use strict';
+  'use strict';
 
-    // ========================================
-    // STROKE6'S FANFICTION.NET ENHANCED READER SCRIPT
-    // ========================================
-    // Features:
-    // - Convert i/[code] and i / [code] patterns into clickable image buttons
-    // - Automatically style chapter titles and Japanese text — the latter is for Crimson Horizons
-    // - Enable text selection on pages, because I dislike not being able to do so.
-    // - Support for both desktop and mobile versions
-    //
-    // Usage:
-    // - Image codes like i/D7UmSr or i / D7UmSr become clickable buttons
-    // - Buttons try multiple subdomains (a-z.l3n.co) to find images
-    // - Press Ctrl+Shift+I to manually trigger the script
-    // ========================================
+  // ---------- CSS ----------
+  const overlayCSS = `
+    .ffn-image-overlay {
+      position: fixed; inset: 0;
+      background-color: rgba(0,0,0,.8);
+      display: flex; justify-content: center; align-items: center;
+      z-index: 10000; cursor: pointer;
+    }
+    .ffn-image-overlay img {
+      max-width: 90%; max-height: 90%;
+      border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,.5);
+    }
+    .ffn-image-btn {
+      background-color: rgba(117,7,5,.2);
+      color: inherit; border: none; padding: .25em; margin: 0 4px;
+      border-radius: 4px; border-bottom: 1px solid #891111;
+      cursor: pointer; font-size: inherit; text-decoration: none;
+      display: inline-block; transition: .2s; position: relative;
+    }
+    .ffn-image-btn:hover { color:#111; border-bottom:1px solid; box-shadow: 2px 2px 0 #891111; }
+    .ffn-image-btn:active { color:#111; background:#ccc; border-color:#fff; box-shadow: inset 1px 1px 3px #333; transform: translateY(4px); }
+    .ffn-image-btn::before { content: url('https://c.l3n.co/i/vJpYDq.png'); transform: scale(.05); display:inline-block; width:1em; height:1em; vertical-align:top; margin-right:.5em; position:relative; top:-.1em; }
+    .ffn-image-btn::after { content:" ↓"; }
+    .ffn-image-title {
+      font-size: 140%; font-weight: bold; font-family: PT Serif, Georgia; color: #750705;
+      position:absolute; top:20px; left:50%; transform: translateX(-50%);
+      z-index:10001; text-align:center; background: rgba(255,255,255,.9);
+      padding:10px 20px; border-radius:8px;
+    }
+    .ffn-image-loading { color:#ddd; font-style: italic; font-family: PT Serif, Georgia; background: rgba(0,0,0,.4); padding:8px 12px; border-radius:6px; }
+    .strongred { font-size:140% !important; font-weight:bold !important; font-family: PT Serif, Georgia !important; color:#750705 !important; }
+    p .red .strongred { font-size:3em !important; line-height:1 !important; font-weight:bold !important; }
+    .ffn-kanji-styled { font-size:3em !important; line-height:1 !important; font-weight:bold !important; font-family: PT Serif, Georgia !important; color:#750705 !important; }
+  `;
+  const style = document.createElement('style');
+  style.textContent = overlayCSS;
+  document.head.appendChild(style);
 
-    // CSS for the image overlay and styling
-    const overlayCSS = `
-        .ffn-image-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            cursor: pointer;
+  // Heuristics against Lensdump's black "no permission/deleted" image.
+  // Tune here if they change assets (again)
+  const PLACEHOLDER_SIZES = new Set([
+    '400x200', // common landscape placeholder
+    '200x400'  // (portrait)
+  ]);
+  const MIN_AREA_OK = 350 * 350; // require at least 122,500 px^2
+
+  function looksLikePlaceholder(w, h) {
+    const tag = `${w}x${h}`;
+    if (PLACEHOLDER_SIZES.has(tag)) return true;
+    if ((w * h) < MIN_AREA_OK) return true;
+    const ar = w > h ? (w / h) : (h / w);
+    if (ar >= 1.95 && ar <= 2.05 && (w * h) < (500 * 500)) return true;
+    return false;
+  }
+
+  // ---------- Robust Lensdump resolution ----------
+  function tryImageUrls(code) {
+    const subs = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    const exts = ['png','jpg','jpeg','webp','gif'];
+
+    const candidates = [];
+    for (const s of subs) {
+      for (const ext of exts) {
+        candidates.push(`https://${s}.l3n.co/i/${code}.${ext}`);
+      }
+    }
+    candidates.push(`https://c.l3n.co/i/${code}`);
+
+    const loadAsPromise = (url, timeoutMs = 8000) => new Promise((resolve, reject) => {
+      const img = new Image();
+      let timedOut = false;
+      const timer = setTimeout(() => { timedOut = true; try { img.src = ''; } catch(_){}; reject(new Error('timeout')); }, timeoutMs);
+
+      img.onload = () => {
+        if (!timedOut) {
+          clearTimeout(timer);
+          const w = img.naturalWidth || 0;
+          const h = img.naturalHeight || 0;
+          if (w > 0 && h > 0 && !looksLikePlaceholder(w, h)) {
+            resolve(url);                 // accept real image
+          } else {
+            reject(new Error('placeholder-or-tiny'));
+          }
         }
+      };
+      img.onerror = () => { clearTimeout(timer); reject(new Error('error')); };
 
-        .ffn-image-overlay img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      // cache-bust
+      const sep = url.includes('?') ? '&' : '?';
+      img.src = url + sep + '_=' + Date.now();
+    });
+
+    const batchSize = 8;
+    let offset = 0;
+
+    return new Promise(async (resolve) => {
+      while (offset < candidates.length) {
+        const batch = candidates.slice(offset, offset + batchSize);
+        try {
+          const winner = await Promise.any(batch.map(u => loadAsPromise(u)));
+          return resolve(winner); // first non-placeholder
+        } catch {
+          offset += batchSize; // try next batch
         }
+      }
+      resolve(null);
+    });
+  }
 
-        .ffn-image-btn {
-            background-color: rgba(117,7,5, 0.2);
-            color: inherit;
-            border: none;
-            padding: 0.25em;
-            margin: 0 4px;
-            border-radius: 4px;
-            border-bottom: 1px solid #891111;
-            cursor: pointer;
-            font-size: inherit;
-            text-decoration: none;
-            display: inline-block;
-            transition-duration: 0.2s;
-            position: relative;
-        }
+  // ---------- Overlay ----------
+  function createImageOverlay(imageCode) {
+    const overlay = document.createElement('div');
+    overlay.className = 'ffn-image-overlay';
 
-        .ffn-image-btn:hover {
-            color: #111;
-            text-decoration: none;
-            border-bottom: 1px solid;
-            box-shadow: 2px 2px 0px #891111;
-        }
+    const loadingText = document.createElement('div');
+    loadingText.textContent = 'Finding image...';
+    loadingText.className = 'ffn-image-loading';
+    overlay.appendChild(loadingText);
 
-        .ffn-image-btn:active {
-            color: #111;
-            background: #ccc;
-            border-color: #fff;
-            box-shadow: inset 1px 1px 3px #333;
-            transform: translateY(4px);
-        }
+    overlay.addEventListener('click', () => document.body.removeChild(overlay));
+    document.body.appendChild(overlay);
 
-        .ffn-image-btn::before {
-            content: url('https://c.l3n.co/i/vJpYDq.png');
-            transform: scale(0.05);
-            display: inline-block;
-            width: 1em;
-            height: 1em;
-            vertical-align: top;
-            margin-right: 0.5em;
-            position: relative;
-            top: -0.1em;
-        }
+    let done = false;
 
-        .ffn-image-btn::after {
-            content: " ↓";
-        }
+    tryImageUrls(imageCode).then((workingUrl) => {
+      if (!workingUrl) {
+        if (!done) overlay.innerHTML = '<div style="color:#fff;text-align:center;">Image not found on any server</div>';
+        return;
+      }
+      if (done) return;
 
-        .ffn-image-title {
-            font-size: 140%;
-            font-weight: bold;
-            font-family: PT Serif, Georgia;
-            color: #750705;
-        }
+      const img = document.createElement('img');
+      img.alt = 'Chapter Image';
 
-        .ffn-image-loading {
-            color: #666;
-            font-style: italic;
-        }
+      img.onload = () => {
+        if (done) return;
+        done = true;
+        overlay.innerHTML = '';
 
-        .strongred {
-            font-size: 140% !important;
-            font-weight: bold !important;
-            font-family: PT Serif, Georgia !important;
-            color: #750705 !important;
-        }
+        const title = document.createElement('div');
+        title.className = 'ffn-image-title';
+        title.textContent = 'Linked Picture';
 
-        p .red .strongred {
-            font-size: 3em !important;
-            line-height: 1 !important;
-            font-weight: bold !important;
-        }
+        overlay.appendChild(title);
+        overlay.appendChild(img);
+      };
 
-        .ffn-kanji-styled {
-            font-size: 3em !important;
-            line-height: 1 !important;
-            font-weight: bold !important;
-            font-family: PT Serif, Georgia !important;
-            color: #750705 !important;
-        }
-    `;
+      img.onerror = () => {
+        if (!done) overlay.innerHTML = '<div style="color:#fff;text-align:center;">Failed to load image</div>';
+      };
 
-    // Add CSS to page
+      const sep = workingUrl.includes('?') ? '&' : '?';
+      img.src = workingUrl + sep + '_=' + Date.now();
+    });
+  }
+
+  // ---------- Enable text selection ----------
+  function enableTextSelection() {
     const style = document.createElement('style');
-    style.textContent = overlayCSS;
+    style.textContent = `
+      * { -webkit-user-select:text !important; -moz-user-select:text !important; -ms-user-select:text !important; user-select:text !important; }
+    `;
     document.head.appendChild(style);
 
-    // Function to try loading image from different subdomains
-    function tryImageUrls(code, callback) {
-        const subdomains = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-        let currentIndex = 0;
-
-        function tryNext() {
-            if (currentIndex >= subdomains.length) {
-                callback(null); // All failed
-                return;
-            }
-
-            const subdomain = subdomains[currentIndex];
-            const url = `https://${subdomain}.l3n.co/i/${code}.png`;
-
-            // Create a test image to check if URL works
-            const testImg = new Image();
-            testImg.onload = function() {
-                callback(url); // Success!
-            };
-            testImg.onerror = function() {
-                currentIndex++;
-                tryNext(); // Try next subdomain
-            };
-            testImg.src = url;
-        }
-
-        tryNext();
-    }
-
-    // Function to create image overlay
-    function createImageOverlay(imageCode) {
-        const overlay = document.createElement('div');
-        overlay.className = 'ffn-image-overlay';
-
-        // Add loading indicator
-        const loadingText = document.createElement('div');
-        loadingText.textContent = 'Finding image...';
-        loadingText.className = 'ffn-image-loading';
-        overlay.appendChild(loadingText);
-
-        // Close overlay when clicked
-        overlay.addEventListener('click', function() {
-            document.body.removeChild(overlay);
-        });
-
-        document.body.appendChild(overlay);
-
-        // Try to find working image URL
-        tryImageUrls(imageCode, function(workingUrl) {
-            if (workingUrl) {
-                // Success - load the actual image
-                const img = document.createElement('img');
-                img.src = workingUrl;
-                img.alt = 'Chapter Image';
-
-                img.onload = function() {
-                    overlay.innerHTML = '';
-
-                    // Create title element
-                    const title = document.createElement('div');
-                    title.className = 'ffn-image-title';
-                    title.textContent = 'Linked Picture';
-                    title.style.position = 'absolute';
-                    title.style.top = '20px';
-                    title.style.left = '50%';
-                    title.style.transform = 'translateX(-50%)';
-                    title.style.zIndex = '10001';
-                    title.style.textAlign = 'center';
-                    title.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
-                    title.style.padding = '10px 20px';
-                    title.style.borderRadius = '8px';
-
-                    overlay.appendChild(title);
-                    overlay.appendChild(img);
-
-                    // Re-add click handler since we cleared innerHTML
-                    overlay.addEventListener('click', function() {
-                        document.body.removeChild(overlay);
-                    });
-                };
-
-                img.onerror = function() {
-                    overlay.innerHTML = '<div style="color: white; text-align: center;">Failed to load image</div>';
-                };
-            } else {
-                // All subdomains failed
-                overlay.innerHTML = '<div style="color: white; text-align: center;">Image not found on any server</div>';
-            }
-        });
-    }
-
-    // Function to enable text selection
-    function enableTextSelection() {
-        const style = document.createElement('style');
-        style.textContent = `
-            * {
-                -webkit-user-select: text !important;
-                -moz-user-select: text !important;
-                -ms-user-select: text !important;
-                user-select: text !important;
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Also remove any existing user-select CSS
-        const existingStyles = document.querySelectorAll('style');
-        existingStyles.forEach(styleEl => {
-            if (styleEl.textContent.includes('user-select: none')) {
-                styleEl.textContent = styleEl.textContent.replace(/user-select:\s*none/g, 'user-select: text');
-            }
-        });
-
-        console.log('Text selection enabled');
-    }
-
-    // Function to detect and style Japanese characters (kanji, hiragana, katakana)
-    function isJapanese(char) {
-        const code = char.charCodeAt(0);
-        return (code >= 0x3040 && code <= 0x309F) || // Hiragana
-               (code >= 0x30A0 && code <= 0x30FF) || // Katakana
-               (code >= 0x4E00 && code <= 0x9FAF) || // CJK Unified Ideographs (Kanji)
-               (code >= 0x3400 && code <= 0x4DBF);   // CJK Extension A
-    }
-
-    // Function to check if we're on the specific fanfiction that has Y-code titles
-    function isSpecificFanfiction() {
-        return window.location.href.includes('fanfiction.net/s/14396658/') ||
-               window.location.href.includes('m.fanfiction.net/s/14396658/');
-    }
-
-    // Function to check if text matches Y-code pattern (Y[code]AC or Y[code]BC)
-    function isYCodeTitle(text) {
-        return /^Y\d+[AB]C:/.test(text.trim());
-    }
-
-    // Function to check if text is all uppercase (ignoring spaces, numbers, and punctuation)
-    function isAllUppercase(text) {
-        const lettersOnly = text.replace(/[^a-zA-Z]/g, '');
-        return lettersOnly.length > 0 && lettersOnly === lettersOnly.toUpperCase();
-    }
-
-    // Function to check if element is between HR tags
-    function isBetweenHrTags(element) {
-        let prevSibling = element.previousElementSibling;
-        let nextSibling = element.nextElementSibling;
-
-        // Look for HR before this element
-        let hasHrBefore = false;
-        while (prevSibling) {
-            if (prevSibling.tagName === 'HR') {
-                hasHrBefore = true;
-                break;
-            }
-            if (prevSibling.textContent.trim().length > 0) break; // Stop if we find substantial content
-            prevSibling = prevSibling.previousElementSibling;
-        }
-
-        // Look for HR after this element
-        let hasHrAfter = false;
-        while (nextSibling) {
-            if (nextSibling.tagName === 'HR') {
-                hasHrAfter = true;
-                break;
-            }
-            if (nextSibling.textContent.trim().length > 0) break; // Stop if we find substantial content
-            nextSibling = nextSibling.nextElementSibling;
-        }
-
-        return hasHrBefore && hasHrAfter;
-    }
-
-    // Function to style chapter titles and kanji
-    function styleChapterElements() {
-        // Find all centered paragraphs (works on both desktop and mobile)
-        const centeredParagraphs = document.querySelectorAll('p[style*="text-align:center"], p[style*="text-align: center"], .center, .text-center');
-
-        centeredParagraphs.forEach(p => {
-            const textContent = p.textContent.trim();
-            const isBetweenHrs = isBetweenHrTags(p);
-
-            // Check strong elements first
-            const strongElements = p.querySelectorAll('strong');
-            strongElements.forEach(strong => {
-                const strongText = strong.textContent.trim();
-
-                // Skip if already styled
-                if (strong.classList.contains('strongred')) {
-                    return;
-                }
-
-                // Check for Y-code titles on specific fanfiction
-                if (isSpecificFanfiction() && isYCodeTitle(strongText)) {
-                    strong.classList.add('strongred');
-                    console.log('Styled Y-code title:', strongText);
-                }
-                // Only style if text is ALL UPPERCASE (or contains chapter number pattern)
-                else if ((strongText.match(/^\d+\s*[—–-]\s*.+/) && isAllUppercase(strongText.replace(/^\d+\s*[—–-]\s*/, ''))) ||
-                    isAllUppercase(strongText)) {
-                    strong.classList.add('strongred');
-                    console.log('Styled chapter title (strong):', strongText);
-                }
-            });
-
-            // Also check if the entire paragraph matches Y-code pattern (even without strong tags)
-            if (strongElements.length === 0) {
-                // Skip if already has a styled child
-                if (p.querySelector('.strongred')) {
-                    return;
-                }
-
-                if (isSpecificFanfiction() && isYCodeTitle(textContent)) {
-                    const span = document.createElement('span');
-                    span.className = 'strongred';
-                    span.innerHTML = p.innerHTML;
-                    p.innerHTML = '';
-                    p.appendChild(span);
-                    console.log('Styled Y-code title (no strong):', textContent);
-                }
-                else if (isAllUppercase(textContent) && textContent.length > 2) {
-                    // Add a span wrapper to style the text
-                    const span = document.createElement('span');
-                    span.className = 'strongred';
-                    span.innerHTML = p.innerHTML;
-                    p.innerHTML = '';
-                    p.appendChild(span);
-                    console.log('Styled chapter title (full caps):', textContent);
-                }
-                // Special case for text between HR tags - but still must be uppercase
-                else if (isBetweenHrs && isAllUppercase(textContent) && textContent.length > 2) {
-                    const span = document.createElement('span');
-                    span.className = 'strongred';
-                    span.innerHTML = p.innerHTML;
-                    p.innerHTML = '';
-                    p.appendChild(span);
-                    console.log('Styled chapter title (between HRs):', textContent);
-                }
-            }
-        });
-
-        // Find and style Japanese text (kanji, hiragana, katakana)
-        const walker = document.createTreeWalker(
-            document.body,
-            NodeFilter.SHOW_TEXT,
-            null,
-            false
-        );
-
-        const textNodes = [];
-        let node;
-        while (node = walker.nextNode()) {
-            // Skip if inside script, style, or already processed elements
-            if (node.parentNode.tagName === 'SCRIPT' ||
-                node.parentNode.tagName === 'STYLE' ||
-                node.parentNode.classList.contains('ffn-image-btn')) {
-                continue;
-            }
-            textNodes.push(node);
-        }
-
-        textNodes.forEach(textNode => {
-            const text = textNode.textContent;
-            let hasJapanese = false;
-
-            // Skip if already processed or inside styled elements
-            if (textNode.parentNode.classList.contains('ffn-kanji-styled') ||
-                textNode.parentNode.classList.contains('strongred') ||
-                textNode.parentNode.classList.contains('ffn-image-btn')) {
-                return;
-            }
-
-            // Check if text contains Japanese characters
-            for (let char of text) {
-                if (isJapanese(char)) {
-                    hasJapanese = true;
-                    break;
-                }
-            }
-
-            if (hasJapanese) {
-                // Check if it's in a centered paragraph
-                let parent = textNode.parentNode;
-                while (parent && parent !== document.body) {
-                    if (parent.tagName === 'P' &&
-                        (parent.style.textAlign === 'center' ||
-                         parent.getAttribute('style')?.includes('text-align:center') ||
-                         parent.getAttribute('style')?.includes('text-align: center') ||
-                         parent.classList.contains('center') ||
-                         parent.classList.contains('text-center'))) {
-
-                        // Wrap Japanese text in styled span
-                        const span = document.createElement('span');
-                        span.className = 'ffn-kanji-styled';
-                        span.textContent = text;
-                        textNode.parentNode.replaceChild(span, textNode);
-                        console.log('Styled Japanese text:', text.trim());
-                        break;
-                    }
-                    parent = parent.parentNode;
-                }
-            }
-        });
-    }
-
-    // Function to process image codes
-    function processImageCodes() {
-        // Find the chapter content - try multiple selectors for both desktop and mobile fanfiction.net
-        const chapterContent = document.querySelector('#storytext, .storytext, .userstuff, #content, .chapter-content, div[style*="font-family"], .mobile-chapter, .chapter-text');
-
-        if (!chapterContent) {
-            console.log('Could not find chapter content');
-            // Try to find any div containing text in the body
-            const bodyDivs = document.querySelectorAll('body div');
-            let foundContent = false;
-
-            bodyDivs.forEach(div => {
-                if ((div.textContent.includes('i/') || div.textContent.includes('i /')) && div.textContent.length > 100) {
-                    processTextInElement(div);
-                    foundContent = true;
-                }
-            });
-
-            if (!foundContent) {
-                console.log('No content found to process');
-            }
-            return;
-        }
-
-        console.log('Found chapter content, processing...');
-        processTextInElement(chapterContent);
-    }
-
-    // Function to process text in a specific element
-    function processTextInElement(element) {
-
-        // Fixed regex to match i/code or i / code only when 'i' is at word boundary
-        // This prevents matching "Sci-Fi / Fantasy" while still catching "i/D7UmSr" and "i / D7UmSr"
-        const imageRegex = /(?:^|\s)(i\s*\/\s*([A-Za-z0-9]+))/g;
-
-        // Get all text nodes in the element
-        const walker = document.createTreeWalker(
-            element,
-            NodeFilter.SHOW_TEXT,
-            null,
-            false
-        );
-
-        const textNodes = [];
-        let node;
-        while (node = walker.nextNode()) {
-            textNodes.push(node);
-        }
-
-        console.log(`Found ${textNodes.length} text nodes to process`);
-
-        // Process each text node
-        textNodes.forEach(function(textNode) {
-            const text = textNode.textContent;
-            let match;
-            const matches = [];
-
-            // Reset regex lastIndex to avoid issues with global regex
-            imageRegex.lastIndex = 0;
-
-            // Find all matches in this text node
-            while ((match = imageRegex.exec(text)) !== null) {
-                matches.push({
-                    fullMatch: match[1], // The i/code part without the leading space
-                    code: match[2],     // Just the code
-                    index: match.index + (match[0].length - match[1].length) // Adjust for any leading space
-                });
-                console.log(`Found image code: ${match[2]} (from "${match[1]}")`);
-            }
-
-            // If we found matches, replace the text node with HTML
-            if (matches.length > 0) {
-                const parent = textNode.parentNode;
-                const fragment = document.createDocumentFragment();
-
-                let lastIndex = 0;
-
-                matches.forEach(function(match) {
-                    // Add text before the match
-                    if (match.index > lastIndex) {
-                        const beforeText = text.slice(lastIndex, match.index);
-                        fragment.appendChild(document.createTextNode(beforeText));
-                    }
-
-                    // Create the image button
-                    const button = document.createElement('button');
-                    button.className = 'ffn-image-btn';
-                    button.textContent = match.code;
-                    button.title = `Click to view image: ${match.code}`;
-
-                    // Add click event to show image
-                    button.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        createImageOverlay(match.code);
-                    });
-
-                    fragment.appendChild(button);
-
-                    lastIndex = match.index + match.fullMatch.length;
-                });
-
-                // Add remaining text after the last match
-                if (lastIndex < text.length) {
-                    const afterText = text.slice(lastIndex);
-                    fragment.appendChild(document.createTextNode(afterText));
-                }
-
-                // Replace the original text node with our fragment
-                parent.replaceChild(fragment, textNode);
-            }
-        });
-    }
-
-    // Main function to run all enhancements
-    function runAllEnhancements() {
-        enableTextSelection();
-        styleChapterElements();
-        processImageCodes();
-    }
-
-    // Wait for the page to load, then run all enhancements
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', runAllEnhancements);
-    } else {
-        runAllEnhancements();
-    }
-
-    // Also run when navigating between chapters (for sites that use AJAX)
-    let lastUrl = location.href;
-    new MutationObserver(() => {
-        const url = location.href;
-        if (url !== lastUrl) {
-            lastUrl = url;
-            setTimeout(runAllEnhancements, 500); // Small delay to ensure content is loaded
-        }
-    }).observe(document, {subtree: true, childList: true});
-
-    // Add keyboard shortcut to manually trigger the script (Ctrl+Shift+I)
-    document.addEventListener('keydown', function(e) {
-        if (e.ctrlKey && e.shiftKey && e.key === 'I') {
-            console.log('Manual trigger activated');
-            runAllEnhancements();
-        }
+    // Also remove any existing user-select CSS
+    const existingStyles = document.querySelectorAll('style');
+    existingStyles.forEach(styleEl => {
+      if (styleEl.textContent.includes('user-select: none')) {
+        styleEl.textContent = styleEl.textContent.replace(/user-select:\s*none/g, 'user-select: text');
+      }
     });
+  }
+
+  // ---------- Japanese detection ----------
+  function isJapanese(char) {
+    const code = char.charCodeAt(0);
+    return (code >= 0x3040 && code <= 0x309F) || // Hiragana
+           (code >= 0x30A0 && code <= 0x30FF) || // Katakana
+           (code >= 0x4E00 && code <= 0x9FAF) || // CJK Unified Ideographs
+           (code >= 0x3400 && code <= 0x4DBF);   // CJK Ext A
+  }
+
+  // ---------- Title helpers ----------
+  function isSpecificFanfiction() {
+    return location.href.includes('fanfiction.net/s/14396658/') ||
+           location.href.includes('m.fanfiction.net/s/14396658/');
+  }
+  function isYCodeTitle(text) { return /^Y\d+[AB]C:/.test(text.trim()); }
+  function isAllUppercase(text) {
+    const lettersOnly = text.replace(/[^a-zA-Z]/g, '');
+    return lettersOnly.length > 0 && lettersOnly === lettersOnly.toUpperCase();
+  }
+  function isBetweenHrTags(el) {
+    let p = el.previousElementSibling, n = el.nextElementSibling, before=false, after=false;
+    while (p) { if (p.tagName === 'HR') { before = true; break; } if (p.textContent.trim().length > 0) break; p = p.previousElementSibling; }
+    while (n) { if (n.tagName === 'HR') { after = true; break; } if (n.textContent.trim().length > 0) break; n = n.nextElementSibling; }
+    return before && after;
+  }
+
+  // ---------- Style chapter titles + kanji ----------
+  function styleChapterElements() {
+    const centeredParagraphs = document.querySelectorAll('p[style*="text-align:center"], p[style*="text-align: center"], .center, .text-center');
+
+    centeredParagraphs.forEach(p => {
+      const textContent = p.textContent.trim();
+      const between = isBetweenHrTags(p);
+      const strongEls = p.querySelectorAll('strong');
+
+      strongEls.forEach(str => {
+        const t = str.textContent.trim();
+        if (str.classList.contains('strongred')) return;
+        if (isSpecificFanfiction() && isYCodeTitle(t)) { str.classList.add('strongred'); return; }
+        if ((t.match(/^\d+\s*[—–-]\s*.+/) && isAllUppercase(t.replace(/^\d+\s*[—–-]\s*/, ''))) || isAllUppercase(t)) {
+          str.classList.add('strongred');
+        }
+      });
+
+      if (strongEls.length === 0) {
+        if (p.querySelector('.strongred')) return;
+        if (isSpecificFanfiction() && isYCodeTitle(textContent)) {
+          const span = document.createElement('span'); span.className = 'strongred'; span.innerHTML = p.innerHTML; p.innerHTML = ''; p.appendChild(span);
+        } else if (isAllUppercase(textContent) && textContent.length > 2) {
+          const span = document.createElement('span'); span.className = 'strongred'; span.innerHTML = p.innerHTML; p.innerHTML = ''; p.appendChild(span);
+        } else if (between && isAllUppercase(textContent) && textContent.length > 2) {
+          const span = document.createElement('span'); span.className = 'strongred'; span.innerHTML = p.innerHTML; p.innerHTML = ''; p.appendChild(span);
+        }
+      }
+    });
+
+    // Style centered Japanese lines
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+    const nodes = [];
+    let node;
+    while (node = walker.nextNode()) {
+      if (node.parentNode.tagName === 'SCRIPT' || node.parentNode.tagName === 'STYLE' || node.parentNode.classList.contains('ffn-image-btn')) continue;
+      nodes.push(node);
+    }
+    nodes.forEach(tn => {
+      const txt = tn.textContent;
+      if (tn.parentNode.classList.contains('ffn-kanji-styled') || tn.parentNode.classList.contains('strongred') || tn.parentNode.classList.contains('ffn-image-btn')) return;
+
+      let hasJP = false;
+      for (let ch of txt) { if (isJapanese(ch)) { hasJP = true; break; } }
+      if (!hasJP) return;
+
+      let p = tn.parentNode;
+      while (p && p !== document.body) {
+        if (p.tagName === 'P' && (p.style.textAlign === 'center' || p.getAttribute('style')?.includes('text-align:center') || p.getAttribute('style')?.includes('text-align: center') || p.classList.contains('center') || p.classList.contains('text-center'))) {
+          const span = document.createElement('span'); span.className = 'ffn-kanji-styled'; span.textContent = txt; tn.parentNode.replaceChild(span, tn); break;
+        }
+        p = p.parentNode;
+      }
+    });
+  }
+
+  // ---------- Image code processing ----------
+  function processImageCodes() {
+    const chapterContent = document.querySelector('#storytext, .storytext, .userstuff, #content, .chapter-content, div[style*="font-family"], .mobile-chapter, .chapter-text');
+    if (!chapterContent) {
+      const bodyDivs = document.querySelectorAll('body div');
+      let found = false;
+      bodyDivs.forEach(div => {
+        if ((div.textContent.includes('i/') || div.textContent.includes('i /')) && div.textContent.length > 100) { processTextInElement(div); found = true; }
+      });
+      if (!found) console.log('No content found to process');
+      return;
+    }
+    processTextInElement(chapterContent);
+  }
+
+  function processTextInElement(element) {
+    const imageRegex = /(?:^|\s)(i\s*\/\s*([A-Za-z0-9]+))/g;
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+    const textNodes = [];
+    let node;
+    while (node = walker.nextNode()) textNodes.push(node);
+
+    textNodes.forEach(textNode => {
+      const text = textNode.textContent;
+      let m; const matches = [];
+      imageRegex.lastIndex = 0;
+      while ((m = imageRegex.exec(text)) !== null) {
+        matches.push({ fullMatch: m[1], code: m[2], index: m.index + (m[0].length - m[1].length) });
+      }
+      if (!matches.length) return;
+
+      const parent = textNode.parentNode;
+      const frag = document.createDocumentFragment();
+      let last = 0;
+
+      matches.forEach(mm => {
+        if (mm.index > last) frag.appendChild(document.createTextNode(text.slice(last, mm.index)));
+        const btn = document.createElement('button');
+        btn.className = 'ffn-image-btn';
+        btn.textContent = mm.code;
+        btn.title = `Click to view image: ${mm.code}`;
+        btn.addEventListener('click', ev => { ev.preventDefault(); createImageOverlay(mm.code); });
+        frag.appendChild(btn);
+        last = mm.index + mm.fullMatch.length;
+      });
+
+      if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+      parent.replaceChild(frag, textNode);
+    });
+  }
+
+  // ---------- Main ----------
+  function runAllEnhancements() {
+    enableTextSelection();
+    styleChapterElements();
+    processImageCodes();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runAllEnhancements);
+  } else {
+    runAllEnhancements();
+  }
+
+  // Re-run on SPA-like navigations
+  let lastUrl = location.href;
+  new MutationObserver(() => {
+    const url = location.href;
+    if (url !== lastUrl) { lastUrl = url; setTimeout(runAllEnhancements, 500); }
+  }).observe(document, { subtree:true, childList:true });
+
+  // Manual trigger
+  document.addEventListener('keydown', e => {
+    if (e.ctrlKey && e.shiftKey && e.key === 'I') runAllEnhancements();
+  });
 
 })();

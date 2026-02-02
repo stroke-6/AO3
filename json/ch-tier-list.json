@@ -19,7 +19,7 @@
         },
         "shinpachi": {
             "name": "Shinpachi",
-            "fullName": "Shinpachi",
+            "fullName": "Uzumaki Shinpachi",
             "affiliation": "",
             "description": "",
             "image": "./images/CH-Tier-List/shinpachi.png",
@@ -27,7 +27,7 @@
         },
         "gojo": {
             "name": "Gojō",
-            "fullName": "Gojō",
+            "fullName": "Uzumaki Gojō",
             "affiliation": "",
             "description": "",
             "image": "./images/CH-Tier-List/gojo.png",
@@ -43,7 +43,7 @@
         },
         "ryujin": {
             "name": "Ryūjin",
-            "fullName": "Ryūjin",
+            "fullName": "Uzumaki Ryūjin",
             "affiliation": "",
             "description": "",
             "image": "./images/CH-Tier-List/ryujin.png",
@@ -51,7 +51,7 @@
         },
         "shiori": {
             "name": "Shiori",
-            "fullName": "Shiori",
+            "fullName": "Uzumaki Shiori",
             "affiliation": "",
             "description": "",
             "image": "./images/CH-Tier-List/shiori.png",
@@ -59,7 +59,7 @@
         },
         "tenjin": {
             "name": "Tenjin",
-            "fullName": "Tenjin",
+            "fullName": "Uzumaki Tenjin",
             "affiliation": "",
             "description": "",
             "image": "./images/CH-Tier-List/tenjin.png",
@@ -83,7 +83,7 @@
         },
         "waka": {
             "name": "Waka",
-            "fullName": "Waka",
+            "fullName": "Ushiwakamaru",
             "affiliation": "",
             "description": "",
             "image": "./images/CH-Tier-List/waka.png",
@@ -99,7 +99,7 @@
         },
         "sakaeguchi": {
             "name": "Sakaeguchi",
-            "fullName": "Sakaeguchi",
+            "fullName": "Sakaeguchi Kōzō",
             "affiliation": "",
             "description": "",
             "image": "./images/CH-Tier-List/sakaeguchi.png",
@@ -115,7 +115,7 @@
         },
         "kimura": {
             "name": "Kimura",
-            "fullName": "Kimura",
+            "fullName": "Kimura Nagatada",
             "affiliation": "",
             "description": "",
             "image": null,
@@ -123,7 +123,7 @@
         },
         "nao": {
             "name": "Nao",
-            "fullName": "Nao",
+            "fullName": "Kaguya Nao",
             "affiliation": "",
             "description": "",
             "image": "./images/CH-Tier-List/nao.png",
@@ -131,7 +131,7 @@
         },
         "kaizen": {
             "name": "Kaizen",
-            "fullName": "Kaizen",
+            "fullName": "Mizuki Kaizen",
             "affiliation": "",
             "description": "",
             "image": "./images/CH-Tier-List/kaizen.png",
@@ -139,7 +139,7 @@
         },
         "shunryo": {
             "name": "Shunryō",
-            "fullName": "Shunryō",
+            "fullName": "Yakizuru Shunryō",
             "affiliation": "",
             "description": "",
             "image": "./images/CH-Tier-List/shunryo.png",

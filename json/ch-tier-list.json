@@ -137,7 +137,7 @@
     "chapters": [
         {
             "id": 1,
-            "name": "Chapter 1",
+            "name": "Chapter 1 — Snow and Shadows",
             "notes": "Initial power assessment based on early appearances.",
             "rankings": {
                 "S": [],
@@ -151,7 +151,7 @@
 		
 		{
             "id": 10,
-            "name": "Chapter 10",
+            "name": "Chapter 10 — Pillars",
             "notes": "Initial power assessment based on early appearances.",
             "rankings": {
                 "S": [],
@@ -165,7 +165,7 @@
 		
 		{
             "id": 20,
-            "name": "Chapter 20",
+            "name": "Chapter 20 — Sacrifice",
             "notes": "Initial power assessment based on early appearances.",
             "rankings": {
                 "S": ["tenjin", "shiori"],
@@ -180,7 +180,7 @@
 				
 		{
             "id": 30,
-            "name": "Chapter 30",
+            "name": "Chapter 30 — On the Road",
             "notes": "Initial power assessment based on early appearances.",
             "rankings": {
                 "S": ["nagato", "raimei", "tenjin", "genei", "shiori"],
@@ -194,7 +194,7 @@
 		
 		{
             "id": 40,
-            "name": "Chapter 40",
+            "name": "Chapter 40 — City of Night",
             "notes": "Initial power assessment based on early appearances.",
             "rankings": {
                 "S": ["nagato", "raimei", "tenjin", "genei", "shiori"],
@@ -208,7 +208,7 @@
 		
 		{
             "id": 50,
-            "name": "Chapter 50",
+            "name": "Chapter 50 — Midnight",
             "notes": "Initial power assessment based on early appearances.",
             "rankings": {
                 "S": ["nagato", "raimei", "tenjin", "genei", "mifune", "shiori"],
@@ -222,7 +222,7 @@
 		
 		{
             "id": 60,
-            "name": "Chapter 60",
+            "name": "Chapter 60 — Flowers",
             "notes": "Initial power assessment based on early appearances.",
             "rankings": {
                 "S": ["nagato", "raimei", "tenjin", "genei", "mifune", "shiori"],

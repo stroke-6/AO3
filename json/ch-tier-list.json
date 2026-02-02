@@ -185,7 +185,7 @@
         {
             "id": 10,
             "name": "Chapter 10 — Pillars",
-            "notes": "Initial power assessment based on first and last appearances.",
+            "notes": "",
             "powerLevels": {
                 "gojo": 75,
                 "shinpachi": 32,
@@ -195,7 +195,7 @@
         {
             "id": 20,
             "name": "Chapter 20 — Sacrifice",
-            "notes": "Initial power assessment based on first and last appearances.",
+            "notes": "",
             "powerLevels": {
                 "gojo": 76,
                 "shinpachi": 33,
@@ -208,10 +208,10 @@
         {
             "id": 30,
             "name": "Chapter 30 — On the Road",
-            "notes": "Initial power assessment based on first and last appearances.",
+            "notes": "",
             "powerLevels": {
                 "gojo": 74,
-                "shinpachi": 33,
+                "shinpachi": 30,
                 "naruto": 30,
                 "tenjin": 88,
                 "shiori": 81,
@@ -225,10 +225,10 @@
         {
             "id": 40,
             "name": "Chapter 40 — City of Night",
-            "notes": "Initial power assessment based on first and last appearances.",
+            "notes": "",
             "powerLevels": {
                 "gojo": 75,
-                "shinpachi": 33,
+                "shinpachi": 32,
                 "naruto": 35,
                 "tenjin": 88,
                 "shiori": 81,
@@ -244,10 +244,10 @@
         {
             "id": 50,
             "name": "Chapter 50 — Midnight",
-            "notes": "Initial power assessment based on first and last appearances.",
+            "notes": "",
             "powerLevels": {
                 "gojo": 75,
-                "shinpachi": 33,
+                "shinpachi": 34,
                 "naruto": 38,
                 "tenjin": 88,
                 "shiori": 81,
@@ -266,10 +266,10 @@
         {
             "id": 60,
             "name": "Chapter 60 — Flowers",
-            "notes": "Initial power assessment based on first and last appearances.",
+            "notes": "",
             "powerLevels": {
                 "gojo": 75,
-                "shinpachi": 33,
+                "shinpachi": 36,
                 "naruto": 41,
                 "tenjin": 88,
                 "shiori": 81,
@@ -289,10 +289,10 @@
         {
             "id": 63,
             "name": "Chapter 63 — Tidebreaker",
-            "notes": "Initial power assessment based on first and last appearances.",
+            "notes": "",
             "powerLevels": {
                 "gojo": 75,
-                "shinpachi": 33,
+                "shinpachi": 36,
                 "naruto": 44,
                 "tenjin": 89,
                 "shiori": 81,

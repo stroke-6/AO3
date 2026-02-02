@@ -125,6 +125,13 @@
             "image": "./images/CH-Tier-List/kaizen.png",
             "firstAppearance": 54
         },
+		"shunryo": {
+            "name": "Shunryō",
+            "affiliation": "",
+            "description": "",
+            "image": "./images/CH-Tier-List/shunryo.png",
+            "firstAppearance": 59
+        },
         "yasaka": {
             "name": "Yasaka",
             "affiliation": "",

@@ -110,7 +110,7 @@
             <tr>
                 <th>Character Name</th>
                 <th>Birth Year</th>
-                <th>Age in Year <span id="displayYear">211</span></th>
+                <th>Age at end of Year <span id="displayYear"></span></th>
                 <th>Notes</th>
             </tr>
         </thead>
@@ -126,9 +126,9 @@
         const characters = [
             { name: "Naruto", birthYear: 200, notes: "" },
 			{ name: "Shinpachi", birthYear: 201, notes: "" },
-            { name: "Yasaka", birthYear: 191, notes: "" },
-            { name: "Gojō", birthYear: 192, notes: "" },
-			{ name: "Nagato", birthYear: 190, notes: "" },
+            { name: "Yasaka", birthYear: 189, notes: "" },
+            { name: "Gojō", birthYear: 191, notes: "" },
+			{ name: "Nagato", birthYear: 186, notes: "" },
             { name: "Kushina", birthYear: 177, notes: "" },
 			{ name: "Otsuru", birthYear: 197, notes: "" },
 			{ name: "Waka", birthYear: 196, notes: "" },
@@ -146,6 +146,9 @@
             const currentYear = parseInt(document.getElementById('currentYear').value);
             document.getElementById('displayYear').textContent = currentYear;
             
+			    characters.sort((a, b) => a.name.localeCompare(b.name));
+
+			
             const tbody = document.getElementById('tableBody');
             tbody.innerHTML = '';
             

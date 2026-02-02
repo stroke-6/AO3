@@ -159,14 +159,15 @@
             }
         }
 		
+				
 		{
-            "id": 20,
-            "name": "Chapter 20",
+            "id": 30,
+            "name": "Chapter 30",
             "notes": "Initial power assessment based on early appearances.",
             "rankings": {
-                "S": ["nagato", "tenjin", "raimei", "mifune", "shiori"],
-                "A": ["ryujin", "nao", "gojo", "sakaeguchi", "yasaka", "kaizen"],
-                "B": ["waka" ],
+                "S": ["nagato", "tenjin", "raimei", "shiori"],
+                "A": ["gojo", "ryujin"],
+                "B": [],
                 "C": ["otsuru"],
                 "D": ["naruto", "shinpachi"],
                 "F": []
@@ -174,13 +175,27 @@
         }
 		
 		{
-            "id": 30,
-            "name": "Chapter 30",
+            "id": 40,
+            "name": "Chapter 40",
             "notes": "Initial power assessment based on early appearances.",
             "rankings": {
                 "S": ["nagato", "tenjin", "raimei", "shiori"],
-                "A": ["ryujin", "gojo"],
-                "B": [],
+                "A": ["gojo", "ryujin"],
+                "B": ["waka"],
+                "C": ["otsuru"],
+                "D": ["naruto", "shinpachi"],
+                "F": []
+            }
+        }
+		
+		{
+            "id": 50,
+            "name": "Chapter 50",
+            "notes": "Initial power assessment based on early appearances.",
+            "rankings": {
+                "S": ["nagato", "tenjin", "raimei", "shiori"],
+                "A": ["gojo", "ryujin", "yasaka"],
+                "B": ["waka"],
                 "C": ["otsuru"],
                 "D": ["naruto", "shinpachi"],
                 "F": []
@@ -193,7 +208,7 @@
             "notes": "Initial power assessment based on early appearances.",
             "rankings": {
                 "S": ["nagato", "tenjin", "raimei", "mifune", "shiori"],
-                "A": ["ryujin", "nao", "gojo", "sakaeguchi", "yasaka", "kaizen"],
+                "A": ["gojo", "ryujin", "nao", "sakaeguchi", "yasaka", "kaizen"],
                 "B": ["waka" ],
                 "C": ["otsuru"],
                 "D": ["naruto", "shinpachi"],

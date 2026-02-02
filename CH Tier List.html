@@ -23,6 +23,8 @@
             --border-light: #d0d0d0;
             
             /* Tier colors */
+            --tier-s-plus: #ff4757;
+            --tier-s-plus-bg: rgba(255, 71, 87, 0.15);
             --tier-s: #ff6b6b;
             --tier-s-bg: rgba(255, 107, 107, 0.12);
             --tier-a: #ffa94d;
@@ -197,10 +199,15 @@
             background: var(--bg-secondary);
         }
 
+        .tier-row.empty {
+            display: none;
+        }
+
         .tier-label {
             width: 70px;
             min-width: 70px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             font-size: 1.75rem;
@@ -210,6 +217,15 @@
             border-right: 2px solid var(--border);
         }
 
+        .tier-label .tier-range {
+            font-size: 0.6rem;
+            font-weight: 400;
+            opacity: 0.8;
+            margin-top: 2px;
+            text-shadow: none;
+        }
+
+        .tier-label.tier-s-plus { background: var(--tier-s-plus); color: #ffffff; }
         .tier-label.tier-s { background: var(--tier-s); color: #1a1a1a; }
         .tier-label.tier-a { background: var(--tier-a); color: #1a1a1a; }
         .tier-label.tier-b { background: var(--tier-b); color: #1a1a1a; }
@@ -229,6 +245,7 @@
             position: relative;
         }
 
+        .tier-content.tier-s-plus-bg { background: var(--tier-s-plus-bg); }
         .tier-content.tier-s-bg { background: var(--tier-s-bg); }
         .tier-content.tier-a-bg { background: var(--tier-a-bg); }
         .tier-content.tier-b-bg { background: var(--tier-b-bg); }
@@ -294,6 +311,21 @@
             opacity: 0.5;
         }
 
+        /* Power level badge */
+        .power-badge {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: var(--accent);
+            color: white;
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 2px 5px;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            z-index: 5;
+        }
+
         /* Tooltip - centered above card, sized to text */
         .tooltip {
             position: absolute;
@@ -311,6 +343,7 @@
             visibility: hidden;
             transition: opacity 0.15s ease, visibility 0.15s ease;
             white-space: nowrap;
+            text-align: center;
         }
 
         /* Small arrow pointing down */
@@ -343,6 +376,12 @@
             font-weight: 600;
             font-size: 0.85rem;
             color: var(--text-primary);
+            display: block;
+        }
+
+        .tooltip-power {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
         }
 
         .tier-empty {
@@ -372,7 +411,7 @@
 
         .legend-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 0.5rem 1.5rem;
         }
 
@@ -384,15 +423,29 @@
         }
 
         .legend-color {
-            width: 24px;
-            height: 24px;
+            width: 32px;
+            height: 28px;
             border-radius: 4px;
             font-weight: 700;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #1a1a1a;
+            flex-shrink: 0;
+        }
+
+        .legend-color.tier-s-plus { color: #ffffff; }
+
+        .legend-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.3;
+        }
+
+        .legend-range {
+            font-size: 0.75rem;
+            color: var(--text-muted);
         }
 
         .footer {
@@ -420,6 +473,10 @@
                 font-size: 1.4rem;
             }
 
+            .tier-label .tier-range {
+                display: none;
+            }
+
             .character-card {
                 width: 52px;
                 height: 52px;
@@ -427,6 +484,13 @@
 
             .character-card .name-label {
                 display: none;
+            }
+
+            .power-badge {
+                font-size: 0.5rem;
+                padding: 1px 3px;
+                top: -4px;
+                right: -4px;
             }
 
             .controls-inner {
@@ -508,7 +572,7 @@
         </div>
 
         <div class="legend">
-            <h3>Loose Tier Definitions</h3>
+            <h3>Power Level Tiers</h3>
             <div class="legend-grid" id="legend-grid">
                 <!-- Populated by JS -->
             </div>
@@ -540,10 +604,6 @@
                 const response = await fetch(DATA_FILE);
                 if (!response.ok) throw new Error('Failed to load data');
                 TIER_DATA = await response.json();
-                
-                // Debug: log first character to verify fullName exists
-                const firstCharKey = Object.keys(TIER_DATA.characters)[0];
-                console.log('Sample character data:', TIER_DATA.characters[firstCharKey]);
                 
                 populateChapterSelect();
                 populateLegend();
@@ -578,12 +638,25 @@
             TIER_DATA.tiers.forEach(tier => {
                 const item = document.createElement('div');
                 item.className = 'legend-item';
+                const tierClass = tier.id.toLowerCase().replace('+', '-plus');
                 item.innerHTML = `
-                    <div class="legend-color" style="background: var(--tier-${tier.id.toLowerCase()})">${tier.label}</div>
-                    <span>${tier.description}</span>
+                    <div class="legend-color ${tierClass}" style="background: var(--tier-${tierClass})">${tier.label}</div>
+                    <div class="legend-text">
+                        <span>${tier.description}</span>
+                        <span class="legend-range">${tier.min}–${tier.max}</span>
+                    </div>
                 `;
                 legendGrid.appendChild(item);
             });
+        }
+
+        function getTierForPowerLevel(powerLevel) {
+            for (const tier of TIER_DATA.tiers) {
+                if (powerLevel >= tier.min && powerLevel <= tier.max) {
+                    return tier;
+                }
+            }
+            return TIER_DATA.tiers[TIER_DATA.tiers.length - 1]; // Default to lowest tier
         }
 
         function renderTierList(chapterId) {
@@ -595,23 +668,50 @@
                 <p>${chapter.notes}</p>
             `;
 
+            // Build character list with power levels for this chapter
+            const charactersWithPower = [];
+            for (const [charId, powerLevel] of Object.entries(chapter.powerLevels)) {
+                const char = TIER_DATA.characters[charId];
+                if (char && char.firstAppearance <= chapterId) {
+                    charactersWithPower.push({
+                        id: charId,
+                        char: char,
+                        powerLevel: powerLevel,
+                        tier: getTierForPowerLevel(powerLevel)
+                    });
+                }
+            }
+
+            // Sort by power level (highest first)
+            charactersWithPower.sort((a, b) => b.powerLevel - a.powerLevel);
+
+            // Group by tier
+            const tierGroups = {};
+            TIER_DATA.tiers.forEach(tier => {
+                tierGroups[tier.id] = [];
+            });
+            
+            charactersWithPower.forEach(item => {
+                tierGroups[item.tier.id].push(item);
+            });
+
+            // Render tiers
             let html = '';
             TIER_DATA.tiers.forEach(tier => {
-                const tierKey = tier.id;
-                const characterIds = chapter.rankings[tierKey] || [];
+                const characters = tierGroups[tier.id];
+                const tierClass = tier.id.toLowerCase().replace('+', '-plus');
+                const isEmpty = characters.length === 0;
                 
-                const visibleCharacters = characterIds.filter(id => {
-                    const char = TIER_DATA.characters[id];
-                    return char && char.firstAppearance <= chapterId;
-                });
-
                 html += `
-                    <div class="tier-row">
-                        <div class="tier-label tier-${tierKey.toLowerCase()}">${tier.label}</div>
-                        <div class="tier-content tier-${tierKey.toLowerCase()}-bg">
-                            ${visibleCharacters.length === 0 
+                    <div class="tier-row${isEmpty ? ' empty' : ''}">
+                        <div class="tier-label tier-${tierClass}">
+                            ${tier.label}
+                            <span class="tier-range">${tier.min}–${tier.max}</span>
+                        </div>
+                        <div class="tier-content tier-${tierClass}-bg">
+                            ${isEmpty 
                                 ? '<span class="tier-empty">—</span>' 
-                                : visibleCharacters.map(id => renderCharacterCard(id)).join('')
+                                : characters.map(item => renderCharacterCard(item)).join('')
                             }
                         </div>
                     </div>
@@ -621,18 +721,17 @@
             tierListEl.innerHTML = html;
         }
 
-        function renderCharacterCard(characterId) {
-            const char = TIER_DATA.characters[characterId];
-            if (!char) return '';
-            
-            // Use fullName for tooltip, fall back to name if not set
+        function renderCharacterCard(item) {
+            const char = item.char;
             const displayName = char.fullName || char.name;
             
             return `
-                <div class="character-card" data-id="${characterId}">
+                <div class="character-card" data-id="${item.id}">
                     <div class="tooltip">
                         <span class="tooltip-name">${displayName}</span>
+                        <span class="tooltip-power">Power Level: ${item.powerLevel}</span>
                     </div>
+                    <div class="power-badge">${item.powerLevel}</div>
                     <div class="image-area">
                         ${char.image 
                             ? `<img src="${char.image}" alt="${char.name}" loading="lazy">`

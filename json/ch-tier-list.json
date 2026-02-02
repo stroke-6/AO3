@@ -122,7 +122,7 @@
             "name": "Chapter 1",
             "notes": "Initial power assessment based on early appearances.",
             "rankings": {
-                "S": ["tenjin", "raimei", "nagato", "mifune", "shiori"],
+                "S": ["nagato", "tenjin", "raimei", "mifune", "shiori"],
                 "A": ["ryujin", "nao", "gojo", "sakaeguchi", "yasaka", "kaizen"],
                 "B": ["waka" ],
                 "C": ["otsuru"],

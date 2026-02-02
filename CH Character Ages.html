@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crimson Horizons - Character Ages</title>
+		<style>
+        body {
+            font-family: PT Serif, Georgia, serif;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .controls label {
+            font-weight: bold;
+            margin-right: 10px;
+            color: #750705;
+        }
+        
+        .controls input {
+            padding: 8px;
+            font-size: 16px;
+            border: 2px solid #750705;
+            border-radius: 4px;
+            width: 100px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #750705;
+            color: white;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+        }
+        
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .birth-year {
+            font-style: italic;
+            color: #666;
+        }
+        
+        .age-cell {
+            font-weight: bold;
+            color: #750705;
+        }
+        
+        h1 {
+            color: #750705;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .add-character {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #750705;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .add-character:hover {
+            background-color: #5a0504;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Character Ages Timeline</h1>
+    
+    <div class="controls">
+        <label for="currentYear">Current Story Year:</label>
+        <input type="number" id="currentYear" value="211" onchange="updateAges()">
+        <span style="margin-left: 20px; color: #666;">Base Year: 211</span>
+    </div>
+    
+    <table id="ageTable">
+        <thead>
+            <tr>
+                <th>Character Name</th>
+                <th>Birth Year</th>
+                <th>Age in Year <span id="displayYear">211</span></th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <!-- Character rows will be inserted here -->
+        </tbody>
+    </table>
+    
+    <button class="add-character" onclick="addCharacter()">+ Add Character</button>
+
+    <script>
+        // Character data
+        const characters = [
+            { name: "Naruto", birthYear: 200, notes: "" },
+			{ name: "Shinpachi", birthYear: 201, notes: "" },
+            { name: "Yasaka", birthYear: 191, notes: "" },
+            { name: "Gojō", birthYear: 192, notes: "" },
+			{ name: "Nagato", birthYear: 190, notes: "" },
+            { name: "Kushina", birthYear: 177, notes: "" },
+			{ name: "Otsuru", birthYear: 197, notes: "" },
+			{ name: "Waka", birthYear: 196, notes: "" },
+			{ name: "Hanabi", birthYear: 201, notes: "" },
+			{ name: "Neji", birthYear: 205, notes: "" }
+        ];
+        
+        const BASE_YEAR = 211;
+        
+        function calculateAge(birthYear, currentYear) {
+            return currentYear - birthYear;
+        }
+        
+        function updateAges() {
+            const currentYear = parseInt(document.getElementById('currentYear').value);
+            document.getElementById('displayYear').textContent = currentYear;
+            
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+            
+            characters.forEach((char, index) => {
+                const row = tbody.insertRow();
+                const age = calculateAge(char.birthYear, currentYear);
+                
+                row.innerHTML = `
+                    <td>${char.name}</td>
+                    <td class="birth-year">Year ${char.birthYear}</td>
+                    <td class="age-cell">${age} years old</td>
+                    <td>${char.notes}</td>
+                `;
+            });
+        }
+        
+        function addCharacter() {
+            const name = prompt("Enter character name:");
+            if (!name) return;
+            
+            const birthYear = prompt("Enter birth year:");
+            if (!birthYear) return;
+            
+            const notes = prompt("Enter notes (optional):") || "";
+            
+            characters.push({
+                name: name,
+                birthYear: parseInt(birthYear),
+                notes: notes
+            });
+            
+            updateAges();
+        }
+        
+        // Initialize table on load
+        updateAges();
+    </script>
+</body>
+</html>

@@ -116,6 +116,24 @@
         .add-character:hover {
             background-color: #5a0504;
         }
+		
+		.highlight {
+			  position: relative;
+			  display: inline-block;
+		}
+
+		.highlight::before {
+			  content: '';
+			  position: absolute;
+			  left: -3px;
+			  right: -3px;
+			  top: 0;
+			  bottom: 0;
+			  background: rgba(255, 215, 0, 0.55); /* Gold/yellow highlight */
+			  transform: rotate(-2deg);
+			  z-index: -1;
+			  border-radius: 2px;
+		}
     </style>
 
 </head>
@@ -133,7 +151,7 @@
             <tr>
                 <th>Character Name</th>
                 <th>Birth Year</th>
-                <th>Age at end of Year <span id="displayYear"></span></th>
+                <th>Age at <span class="highlight">End</span> of Year <span id="displayYear"></span></th>
                 <th>Notes</th>
             </tr>
         </thead>

@@ -13,49 +13,49 @@
             "name": "Naruto",
             "affiliation": "",
             "description": "",
-            "image": null,
+            "image": "./images/CH-Tier-List/naruto.png",
             "firstAppearance": 3
         },
         "shinpachi": {
             "name": "Shinpachi",
             "affiliation": "",
             "description": "",
-            "image": null,
+            "image": "./images/CH-Tier-List/shinpachi.png",
             "firstAppearance": 5
         },
         "gojo": {
-            "name": "Gojo",
+            "name": "Gojō",
             "affiliation": "",
             "description": "",
-            "image": null,
+            "image": "./images/CH-Tier-List/gojo.png",
             "firstAppearance": 5
         },
         "nagato": {
             "name": "Nagato",
             "affiliation": "",
             "description": "",
-            "image": null,
+            "image": "./images/CH-Tier-List/nagato.png",
             "firstAppearance": 11
         },
         "ryujin": {
-            "name": "Ryujin",
+            "name": "Ryūjin",
             "affiliation": "",
             "description": "",
-            "image": null,
+            "image": "./images/CH-Tier-List/ryujin.png",
             "firstAppearance": 11
         },
         "shiori": {
             "name": "Shiori",
             "affiliation": "",
             "description": "",
-            "image": null,
+            "image": "./images/CH-Tier-List/shiori.png",
             "firstAppearance": 11
         },
         "tenjin": {
             "name": "Tenjin",
             "affiliation": "",
             "description": "",
-            "image": null,
+            "image": "./images/CH-Tier-List/tenjin.png",
             "firstAppearance": 19
         },
         "raimei": {
@@ -78,21 +78,21 @@
             "name": "Waka",
             "affiliation": "",
             "description": "",
-            "image": null,
+            "image": "./images/CH-Tier-List/waka.png",
             "firstAppearance": 34
         },
         "otsuru": {
             "name": "Otsuru",
             "affiliation": "",
             "description": "",
-            "image": null,
+            "image": "./images/CH-Tier-List/otsuru.png",
             "firstAppearance": 26
         },
         "sakaeguchi": {
             "name": "Sakaeguchi",
             "affiliation": "",
             "description": "",
-            "image": null,
+            "image": "./images/CH-Tier-List/sakaeguchi.png",
             "firstAppearance": 37
         },
         "mifune": {
@@ -115,21 +115,21 @@
             "name": "Nao",
             "affiliation": "",
             "description": "",
-            "image": null,
+            "image": "./images/CH-Tier-List/nao.png",
             "firstAppearance": 61
         },
         "kaizen": {
             "name": "Kaizen",
             "affiliation": "",
             "description": "",
-            "image": null,
+            "image": "./images/CH-Tier-List/kaizen.png",
             "firstAppearance": 54
         },
         "yasaka": {
             "name": "Yasaka",
             "affiliation": "",
             "description": "",
-            "image": null,
+            "image": "./images/CH-Tier-List/yasaka.png",
             "firstAppearance": 4
         }
     },

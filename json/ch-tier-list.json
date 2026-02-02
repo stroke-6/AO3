@@ -10,109 +10,109 @@
 
     "characters": {
         "naruto": {
-            "name": "Naruto Uzumaki",
+            "name": "Naruto",
             "affiliation": "",
             "description": "",
             "image": null,
-            "firstAppearance": 1
+            "firstAppearance": 3
         },
         "shinpachi": {
             "name": "Shinpachi",
             "affiliation": "",
             "description": "",
             "image": null,
-            "firstAppearance": 1
+            "firstAppearance": 5
         },
         "gojo": {
             "name": "Gojo",
             "affiliation": "",
             "description": "",
             "image": null,
-            "firstAppearance": 1
+            "firstAppearance": 5
         },
         "nagato": {
             "name": "Nagato",
             "affiliation": "",
             "description": "",
             "image": null,
-            "firstAppearance": 1
+            "firstAppearance": 11
         },
         "ryujin": {
             "name": "Ryujin",
             "affiliation": "",
             "description": "",
             "image": null,
-            "firstAppearance": 1
+            "firstAppearance": 11
         },
         "shiori": {
             "name": "Shiori",
             "affiliation": "",
             "description": "",
             "image": null,
-            "firstAppearance": 1
+            "firstAppearance": 11
         },
         "tenjin": {
             "name": "Tenjin",
             "affiliation": "",
             "description": "",
             "image": null,
-            "firstAppearance": 1
+            "firstAppearance": 19
         },
         "raimei": {
             "name": "Raimei",
             "affiliation": "",
             "description": "",
             "image": null,
-            "firstAppearance": 1
+            "firstAppearance": 20
         },
         "waka": {
             "name": "Waka",
             "affiliation": "",
             "description": "",
             "image": null,
-            "firstAppearance": 1
+            "firstAppearance": 34
         },
         "otsuru": {
             "name": "Otsuru",
             "affiliation": "",
             "description": "",
             "image": null,
-            "firstAppearance": 1
+            "firstAppearance": 26
         },
         "sakaeguchi": {
             "name": "Sakaeguchi",
             "affiliation": "",
             "description": "",
             "image": null,
-            "firstAppearance": 1
+            "firstAppearance": 37
         },
         "mifune": {
             "name": "Mifune",
             "affiliation": "",
             "description": "",
             "image": null,
-            "firstAppearance": 1
+            "firstAppearance": 48
         },
         "nao": {
             "name": "Nao",
             "affiliation": "",
             "description": "",
             "image": null,
-            "firstAppearance": 1
+            "firstAppearance": 61
         },
         "kaizen": {
             "name": "Kaizen",
             "affiliation": "",
             "description": "",
             "image": null,
-            "firstAppearance": 1
+            "firstAppearance": 54
         },
         "yasaka": {
             "name": "Yasaka",
             "affiliation": "",
             "description": "",
             "image": null,
-            "firstAppearance": 1
+            "firstAppearance": 4
         }
     },
 

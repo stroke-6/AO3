@@ -1,0 +1,134 @@
+{
+    "tiers": [
+        { "id": "S", "label": "S", "description": "Kage-level / Legendary" },
+        { "id": "A", "label": "A", "description": "Elite Jonin / Special Forces" },
+        { "id": "B", "label": "B", "description": "Standard Jonin" },
+        { "id": "C", "label": "C", "description": "Chunin / Skilled" },
+        { "id": "D", "label": "D", "description": "Genin / Average" },
+        { "id": "F", "label": "F", "description": "Civilian / Non-combatant" }
+    ],
+
+    "characters": {
+        "naruto": {
+            "name": "Naruto Uzumaki",
+            "affiliation": "",
+            "description": "",
+            "image": null,
+            "firstAppearance": 1
+        },
+        "shinpachi": {
+            "name": "Shinpachi",
+            "affiliation": "",
+            "description": "",
+            "image": null,
+            "firstAppearance": 1
+        },
+        "gojo": {
+            "name": "Gojo",
+            "affiliation": "",
+            "description": "",
+            "image": null,
+            "firstAppearance": 1
+        },
+        "nagato": {
+            "name": "Nagato",
+            "affiliation": "",
+            "description": "",
+            "image": null,
+            "firstAppearance": 1
+        },
+        "ryujin": {
+            "name": "Ryujin",
+            "affiliation": "",
+            "description": "",
+            "image": null,
+            "firstAppearance": 1
+        },
+        "shiori": {
+            "name": "Shiori",
+            "affiliation": "",
+            "description": "",
+            "image": null,
+            "firstAppearance": 1
+        },
+        "tenjin": {
+            "name": "Tenjin",
+            "affiliation": "",
+            "description": "",
+            "image": null,
+            "firstAppearance": 1
+        },
+        "raimei": {
+            "name": "Raimei",
+            "affiliation": "",
+            "description": "",
+            "image": null,
+            "firstAppearance": 1
+        },
+        "waka": {
+            "name": "Waka",
+            "affiliation": "",
+            "description": "",
+            "image": null,
+            "firstAppearance": 1
+        },
+        "otsuru": {
+            "name": "Otsuru",
+            "affiliation": "",
+            "description": "",
+            "image": null,
+            "firstAppearance": 1
+        },
+        "sakaeguchi": {
+            "name": "Sakaeguchi",
+            "affiliation": "",
+            "description": "",
+            "image": null,
+            "firstAppearance": 1
+        },
+        "mifune": {
+            "name": "Mifune",
+            "affiliation": "",
+            "description": "",
+            "image": null,
+            "firstAppearance": 1
+        },
+        "nao": {
+            "name": "Nao",
+            "affiliation": "",
+            "description": "",
+            "image": null,
+            "firstAppearance": 1
+        },
+        "kaizen": {
+            "name": "Kaizen",
+            "affiliation": "",
+            "description": "",
+            "image": null,
+            "firstAppearance": 1
+        },
+        "yasaka": {
+            "name": "Yasaka",
+            "affiliation": "",
+            "description": "",
+            "image": null,
+            "firstAppearance": 1
+        }
+    },
+
+    "chapters": [
+        {
+            "id": 1,
+            "name": "Chapter 1",
+            "notes": "Initial power assessment based on early appearances.",
+            "rankings": {
+                "S": ["tenjin", "raimei", "nagato", "mifune", "shiori"],
+                "A": ["ryujin", "nao", "gojo", "sakaeguchi", "yasaka", "kaizen"],
+                "B": ["waka" ],
+                "C": ["otsuru"],
+                "D": ["naruto", "shinpachi"],
+                "F": []
+            }
+        }
+    ]
+}

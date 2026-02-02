@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crimson Horizons — Character Power Rankings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f8f8;
+            --bg-tertiary: #f0f0f0;
+            --bg-card: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #555555;
+            --text-muted: #888888;
+            --accent: #b01c1c;
+            --accent-light: #d42a2a;
+            --accent-dark: #8a1515;
+            --border: #e0e0e0;
+            --border-light: #d0d0d0;
+            
+            /* Tier colors */
+            --tier-s: #ff6b6b;
+            --tier-s-bg: rgba(255, 107, 107, 0.12);
+            --tier-a: #ffa94d;
+            --tier-a-bg: rgba(255, 169, 77, 0.12);
+            --tier-b: #ffd43b;
+            --tier-b-bg: rgba(255, 212, 59, 0.12);
+            --tier-c: #69db7c;
+            --tier-c-bg: rgba(105, 219, 124, 0.12);
+            --tier-d: #74c0fc;
+            --tier-d-bg: rgba(116, 192, 252, 0.12);
+            --tier-f: #b197fc;
+            --tier-f-bg: rgba(177, 151, 252, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-bottom: 2px solid var(--accent);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: 0.02em;
+            margin-bottom: 0.25rem;
+        }
+
+        .header h1 span {
+            color: var(--accent-light);
+        }
+
+        .header .subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .controls {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .controls-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chapter-select-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .chapter-select-wrapper label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .chapter-select {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-light);
+            color: var(--text-primary);
+            padding: 0.5rem 2rem 0.5rem 0.75rem;
+            font-size: 0.95rem;
+            font-family: inherit;
+            border-radius: 4px;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a0a0a0' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            min-width: 200px;
+        }
+
+        .chapter-select:hover {
+            border-color: var(--accent);
+        }
+
+        .chapter-select:focus {
+            outline: none;
+            border-color: var(--accent-light);
+            box-shadow: 0 0 0 2px rgba(153, 0, 0, 0.2);
+        }
+
+        .spoiler-warning {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            padding: 0.4rem 0.75rem;
+            background: rgba(153, 0, 0, 0.1);
+            border: 1px solid rgba(153, 0, 0, 0.3);
+            border-radius: 4px;
+        }
+
+        .spoiler-warning svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--accent-light);
+        }
+
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem;
+        }
+
+        .chapter-info {
+            margin-bottom: 1.5rem;
+            padding: 1rem 1.25rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .chapter-info h2 {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .chapter-info p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .tier-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .tier-row {
+            display: flex;
+            min-height: 80px;
+            background: var(--bg-secondary);
+        }
+
+        .tier-label {
+            width: 70px;
+            min-width: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            font-family: 'Source Sans 3', sans-serif;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            border-right: 2px solid var(--border);
+        }
+
+        .tier-label.tier-s { background: var(--tier-s); color: #1a1a1a; }
+        .tier-label.tier-a { background: var(--tier-a); color: #1a1a1a; }
+        .tier-label.tier-b { background: var(--tier-b); color: #1a1a1a; }
+        .tier-label.tier-c { background: var(--tier-c); color: #1a1a1a; }
+        .tier-label.tier-d { background: var(--tier-d); color: #1a1a1a; }
+        .tier-label.tier-f { background: var(--tier-f); color: #1a1a1a; }
+
+        .tier-content {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 8px;
+            gap: 8px;
+            min-height: 80px;
+        }
+
+        .tier-content.tier-s-bg { background: var(--tier-s-bg); }
+        .tier-content.tier-a-bg { background: var(--tier-a-bg); }
+        .tier-content.tier-b-bg { background: var(--tier-b-bg); }
+        .tier-content.tier-c-bg { background: var(--tier-c-bg); }
+        .tier-content.tier-d-bg { background: var(--tier-d-bg); }
+        .tier-content.tier-f-bg { background: var(--tier-f-bg); }
+
+        .character-card {
+            width: 64px;
+            height: 64px;
+            background: var(--bg-card);
+            border: 2px solid var(--border-light);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .character-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 10;
+        }
+
+        .character-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .character-card .placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-card) 100%);
+        }
+
+        .tooltip {
+            position: fixed;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.75rem 1rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            z-index: 1000;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.15s ease;
+            max-width: 280px;
+        }
+
+        .tooltip.visible {
+            opacity: 1;
+        }
+
+        .tooltip-name {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+        }
+
+        .tooltip-affiliation {
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .tooltip-description {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .tier-empty {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+            padding: 0.5rem;
+        }
+
+        .legend {
+            margin-top: 2rem;
+            padding: 1.25rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+        }
+
+        .legend h3 {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem 1.5rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .legend-color {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a1a;
+        }
+
+        .footer {
+            margin-top: 3rem;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .tier-label {
+                width: 50px;
+                min-width: 50px;
+                font-size: 1.4rem;
+            }
+
+            .character-card {
+                width: 52px;
+                height: 52px;
+            }
+
+            .controls-inner {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .chapter-select {
+                width: 100%;
+            }
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+        }
+
+        .loading-spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .error {
+            text-align: center;
+            padding: 2rem;
+            color: var(--accent-light);
+            background: rgba(153, 0, 0, 0.1);
+            border: 1px solid rgba(153, 0, 0, 0.3);
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1><span>Crimson Horizons</span> — Power Rankings</h1>
+        <p class="subtitle">Character strength tiers by chapter</p>
+    </header>
+
+    <nav class="controls">
+        <div class="controls-inner">
+            <div class="chapter-select-wrapper">
+                <label for="chapter-select">Reading up to:</label>
+                <select id="chapter-select" class="chapter-select">
+                    <option>Loading...</option>
+                </select>
+            </div>
+            <div class="spoiler-warning">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                <span>Only shows characters revealed up to selected chapter</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main">
+        <div id="chapter-info" class="chapter-info">
+            <h2>Loading...</h2>
+            <p>Please wait while tier data loads.</p>
+        </div>
+
+        <div id="tier-list" class="tier-list">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <p>Loading tier list...</p>
+            </div>
+        </div>
+
+        <div class="legend">
+            <h3>Tier Definitions</h3>
+            <div class="legend-grid" id="legend-grid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>Part of <a href="https://stroke-6.github.io/AO3/">stroke6 — Resources</a></p>
+    </footer>
+
+    <div id="tooltip" class="tooltip">
+        <div class="tooltip-name"></div>
+        <div class="tooltip-affiliation"></div>
+        <div class="tooltip-description"></div>
+    </div>
+
+    <script>
+        // ============================================
+        // CONFIGURATION
+        // ============================================
+        const DATA_FILE = './json/ch-tier-list.json';
+
+        // ============================================
+        // APPLICATION CODE
+        // ============================================
+        let TIER_DATA = null;
+
+        const tooltip = document.getElementById('tooltip');
+        const chapterSelect = document.getElementById('chapter-select');
+        const tierListEl = document.getElementById('tier-list');
+        const chapterInfoEl = document.getElementById('chapter-info');
+        const legendGrid = document.getElementById('legend-grid');
+
+        async function init() {
+            try {
+                const response = await fetch(DATA_FILE);
+                if (!response.ok) throw new Error('Failed to load data');
+                TIER_DATA = await response.json();
+                
+                populateChapterSelect();
+                populateLegend();
+                renderTierList(TIER_DATA.chapters[0].id);
+
+                chapterSelect.addEventListener('change', (e) => {
+                    renderTierList(parseInt(e.target.value));
+                });
+            } catch (error) {
+                console.error('Error loading tier data:', error);
+                tierListEl.innerHTML = `
+                    <div class="error">
+                        <p><strong>Error loading tier data</strong></p>
+                        <p>Make sure data.json exists in the same folder.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function populateChapterSelect() {
+            chapterSelect.innerHTML = '';
+            TIER_DATA.chapters.forEach(chapter => {
+                const option = document.createElement('option');
+                option.value = chapter.id;
+                option.textContent = chapter.name;
+                chapterSelect.appendChild(option);
+            });
+        }
+
+        function populateLegend() {
+            legendGrid.innerHTML = '';
+            TIER_DATA.tiers.forEach(tier => {
+                const item = document.createElement('div');
+                item.className = 'legend-item';
+                item.innerHTML = `
+                    <div class="legend-color" style="background: var(--tier-${tier.id.toLowerCase()})">${tier.label}</div>
+                    <span>${tier.description}</span>
+                `;
+                legendGrid.appendChild(item);
+            });
+        }
+
+        function renderTierList(chapterId) {
+            const chapter = TIER_DATA.chapters.find(c => c.id === chapterId);
+            if (!chapter) return;
+
+            chapterInfoEl.innerHTML = `
+                <h2>${chapter.name}</h2>
+                <p>${chapter.notes}</p>
+            `;
+
+            let html = '';
+            TIER_DATA.tiers.forEach(tier => {
+                const tierKey = tier.id;
+                const characterIds = chapter.rankings[tierKey] || [];
+                
+                const visibleCharacters = characterIds.filter(id => {
+                    const char = TIER_DATA.characters[id];
+                    return char && char.firstAppearance <= chapterId;
+                });
+
+                html += `
+                    <div class="tier-row">
+                        <div class="tier-label tier-${tierKey.toLowerCase()}">${tier.label}</div>
+                        <div class="tier-content tier-${tierKey.toLowerCase()}-bg">
+                            ${visibleCharacters.length === 0 
+                                ? '<span class="tier-empty">—</span>' 
+                                : visibleCharacters.map(id => renderCharacterCard(id)).join('')
+                            }
+                        </div>
+                    </div>
+                `;
+            });
+
+            tierListEl.innerHTML = html;
+
+            document.querySelectorAll('.character-card').forEach(card => {
+                card.addEventListener('mouseenter', showTooltip);
+                card.addEventListener('mouseleave', hideTooltip);
+                card.addEventListener('mousemove', moveTooltip);
+            });
+        }
+
+        function renderCharacterCard(characterId) {
+            const char = TIER_DATA.characters[characterId];
+            if (!char) return '';
+
+            const initials = char.name.split(' ').map(n => n[0]).join('').substring(0, 2);
+            
+            return `
+                <div class="character-card" 
+                     data-id="${characterId}"
+                     data-name="${char.name}"
+                     data-affiliation="${char.affiliation || ''}"
+                     data-description="${char.description || ''}">
+                    ${char.image 
+                        ? `<img src="${char.image}" alt="${char.name}" loading="lazy">`
+                        : `<div class="placeholder">${initials}</div>`
+                    }
+                </div>
+            `;
+        }
+
+        function showTooltip(e) {
+            const card = e.currentTarget;
+            tooltip.querySelector('.tooltip-name').textContent = card.dataset.name;
+            tooltip.querySelector('.tooltip-affiliation').textContent = card.dataset.affiliation;
+            tooltip.querySelector('.tooltip-description').textContent = card.dataset.description;
+            tooltip.classList.add('visible');
+            moveTooltip(e);
+        }
+
+        function hideTooltip() {
+            tooltip.classList.remove('visible');
+        }
+
+        function moveTooltip(e) {
+            const padding = 15;
+            let x = e.clientX + padding;
+            let y = e.clientY + padding;
+
+            const rect = tooltip.getBoundingClientRect();
+            if (x + rect.width > window.innerWidth) {
+                x = e.clientX - rect.width - padding;
+            }
+            if (y + rect.height > window.innerHeight) {
+                y = e.clientY - rect.height - padding;
+            }
+
+            tooltip.style.left = x + 'px';
+            tooltip.style.top = y + 'px';
+        }
+
+        init();
+    </script>
+</body>
+</html>

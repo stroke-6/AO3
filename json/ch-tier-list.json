@@ -233,7 +233,7 @@
             "notes": "Initial power assessment based on first and last appearances.",
             "rankings": {
                 "S": ["nagato", "raimei", "tenjin", "genei", "mifune", "shiori"],
-                "A": ["gojo", "ryujin", "nao", "sakaeguchi", "yasaka", "kimura", "kaizen"],
+                "A": ["gojo", "ryujin", "sakaeguchi", "yasaka", "kimura", "kaizen"],
                 "B": ["waka"],
                 "C": ["naruto", "otsuru"],
                 "D": ["shinpachi"],

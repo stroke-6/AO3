@@ -165,7 +165,7 @@
                 "A": [],
                 "B": [],
                 "C": [],
-                "D": ["naruto", "shinpachi"],
+                "D": ["shinpachi", "naruto"],
                 "F": []
             }
         },
@@ -179,7 +179,7 @@
                 "A": ["ryujin"],
                 "B": [],
                 "C": [],
-                "D": ["naruto", "shinpachi"],
+                "D": ["shinpachi", "naruto"],
                 "F": []
             }
         },
@@ -194,7 +194,7 @@
                 "A": ["gojo", "ryujin"],
                 "B": [],
                 "C": ["otsuru"],
-                "D": ["naruto", "shinpachi"],
+                "D": ["shinpachi", "naruto"],
                 "F": []
             }
         },

@@ -65,6 +65,15 @@
             "image": null,
             "firstAppearance": 20
         },
+		
+		"genei": {
+            "name": "Gen'ei",
+            "affiliation": "",
+            "description": "",
+            "image": null,
+            "firstAppearance": 22
+        },
+		
         "waka": {
             "name": "Waka",
             "affiliation": "",
@@ -93,6 +102,15 @@
             "image": null,
             "firstAppearance": 48
         },
+		
+		"kimura": {
+            "name": "Kimura",
+            "affiliation": "",
+            "description": "",
+            "image": null,
+            "firstAppearance": 47
+        },
+		
         "nao": {
             "name": "Nao",
             "affiliation": "",
@@ -165,7 +183,7 @@
             "name": "Chapter 30",
             "notes": "Initial power assessment based on early appearances.",
             "rankings": {
-                "S": ["nagato", "tenjin", "raimei", "shiori"],
+                "S": ["nagato", "raimei", "tenjin", "genei", "shiori"],
                 "A": ["gojo", "ryujin"],
                 "B": [],
                 "C": ["otsuru"],
@@ -179,8 +197,8 @@
             "name": "Chapter 40",
             "notes": "Initial power assessment based on early appearances.",
             "rankings": {
-                "S": ["nagato", "tenjin", "raimei", "shiori"],
-                "A": ["gojo", "ryujin"],
+                "S": ["nagato", "raimei", "tenjin", "genei", "shiori"],
+                "A": ["gojo", "ryujin", "sakaeuchi"],
                 "B": ["waka"],
                 "C": ["otsuru"],
                 "D": ["naruto", "shinpachi"],
@@ -193,8 +211,8 @@
             "name": "Chapter 50",
             "notes": "Initial power assessment based on early appearances.",
             "rankings": {
-                "S": ["nagato", "tenjin", "raimei", "shiori"],
-                "A": ["gojo", "ryujin", "yasaka"],
+                "S": ["nagato", "raimei", "tenjin", "genei", "mifune", "shiori"],
+                "A": ["gojo", "ryujin", "sakaeuchi", "yasaka", "kimura"],
                 "B": ["waka"],
                 "C": ["otsuru"],
                 "D": ["naruto", "shinpachi"],
@@ -207,7 +225,7 @@
             "name": "Chapter 1",
             "notes": "Initial power assessment based on early appearances.",
             "rankings": {
-                "S": ["nagato", "tenjin", "raimei", "mifune", "shiori"],
+                "S": ["nagato", "raimei", "tenjin", "mifune", "shiori"],
                 "A": ["gojo", "ryujin", "nao", "sakaeguchi", "yasaka", "kaizen"],
                 "B": ["waka" ],
                 "C": ["otsuru"],

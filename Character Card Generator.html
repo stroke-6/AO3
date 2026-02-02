@@ -39,6 +39,24 @@ body {
   overflow-y: auto;
 }
 
+.footer {
+            margin-top: 3rem;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer a {
+            color: var(#b01c1c);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
 /* Typography */
 h1, h2 {
   color: #333;
@@ -1491,5 +1509,11 @@ ${generateShinjutsuHTML()}
             return shinjutsuHTML;
         }
     </script>
+	
+	<footer class="footer">
+        <p>Part of <a href="https://stroke-6.github.io/AO3/">stroke6 — Resources</a></p>
+    </footer>
+	
+	
 </body>
 </html>

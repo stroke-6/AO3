@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crimson Horizons - Character Ages</title>
 		<style>
+		
+		:root {
+			--accent: #b01c1c;
+		}
+		
         body {
             font-family: PT Serif, Georgia, serif;
             max-width: 1200px;
@@ -35,6 +40,24 @@
             width: 100px;
         }
         
+		.footer {
+            margin-top: 3rem;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+		
         table {
             width: 100%;
             border-collapse: collapse;
@@ -193,5 +216,9 @@
         // Initialize table on load
         updateAges();
     </script>
+	
+	<footer class="footer">
+        <p>Part of <a href="https://stroke-6.github.io/AO3/">stroke6 — Resources</a></p>
+    </footer>
 </body>
 </html>

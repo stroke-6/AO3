@@ -240,7 +240,7 @@
             background: var(--bg-card);
             border: 2px solid var(--border-light);
             border-radius: 4px;
-            overflow: hidden;
+            overflow: visible;
             position: relative;
             cursor: pointer;
             transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
@@ -291,41 +291,53 @@
             opacity: 0.5;
         }
 
+        /* Tooltip - centered above card, sized to text */
         .tooltip {
-            position: fixed;
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
             background: var(--bg-primary);
             border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 0.75rem 1rem;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            border-radius: 4px;
+            padding: 0.35rem 0.6rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             z-index: 1000;
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.15s ease;
-            max-width: 280px;
+            white-space: nowrap;
         }
 
-        .tooltip.visible {
+        /* Small arrow pointing down */
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: var(--bg-primary);
+        }
+
+        .tooltip::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 7px solid transparent;
+            border-top-color: var(--border);
+        }
+
+        .character-card:hover .tooltip {
             opacity: 1;
         }
 
         .tooltip-name {
             font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 0.25rem;
-            color: var(--text-primary);
-        }
-
-        .tooltip-affiliation {
-            font-size: 0.8rem;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-
-        .tooltip-description {
             font-size: 0.85rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
+            color: var(--text-primary);
         }
 
         .tier-empty {
@@ -406,6 +418,10 @@
             .character-card {
                 width: 52px;
                 height: 52px;
+            }
+
+            .character-card .name-label {
+                display: none;
             }
 
             .controls-inner {
@@ -494,12 +510,6 @@
         <p>Part of <a href="https://stroke-6.github.io/AO3/">stroke6 — Resources</a></p>
     </footer>
 
-    <div id="tooltip" class="tooltip">
-        <div class="tooltip-name"></div>
-        <div class="tooltip-affiliation"></div>
-        <div class="tooltip-description"></div>
-    </div>
-
     <script>
         // ============================================
         // CONFIGURATION
@@ -511,7 +521,6 @@
         // ============================================
         let TIER_DATA = null;
 
-        const tooltip = document.getElementById('tooltip');
         const chapterSelect = document.getElementById('chapter-select');
         const tierListEl = document.getElementById('tier-list');
         const chapterInfoEl = document.getElementById('chapter-info');
@@ -597,24 +606,20 @@
             });
 
             tierListEl.innerHTML = html;
-
-            document.querySelectorAll('.character-card').forEach(card => {
-                card.addEventListener('mouseenter', showTooltip);
-                card.addEventListener('mouseleave', hideTooltip);
-                card.addEventListener('mousemove', moveTooltip);
-            });
         }
 
         function renderCharacterCard(characterId) {
             const char = TIER_DATA.characters[characterId];
             if (!char) return '';
             
+            // Use fullName for tooltip, fall back to name if not set
+            const displayName = char.fullName || char.name;
+            
             return `
-                <div class="character-card" 
-                     data-id="${characterId}"
-                     data-name="${char.name}"
-                     data-affiliation="${char.affiliation || ''}"
-                     data-description="${char.description || ''}">
+                <div class="character-card" data-id="${characterId}">
+                    <div class="tooltip">
+                        <div class="tooltip-name">${displayName}</div>
+                    </div>
                     <div class="image-area">
                         ${char.image 
                             ? `<img src="${char.image}" alt="${char.name}" loading="lazy">`
@@ -624,36 +629,6 @@
                     <div class="name-label">${char.name}</div>
                 </div>
             `;
-        }
-
-        function showTooltip(e) {
-            const card = e.currentTarget;
-            tooltip.querySelector('.tooltip-name').textContent = card.dataset.name;
-            tooltip.querySelector('.tooltip-affiliation').textContent = card.dataset.affiliation;
-            tooltip.querySelector('.tooltip-description').textContent = card.dataset.description;
-            tooltip.classList.add('visible');
-            moveTooltip(e);
-        }
-
-        function hideTooltip() {
-            tooltip.classList.remove('visible');
-        }
-
-        function moveTooltip(e) {
-            const padding = 15;
-            let x = e.clientX + padding;
-            let y = e.clientY + padding;
-
-            const rect = tooltip.getBoundingClientRect();
-            if (x + rect.width > window.innerWidth) {
-                x = e.clientX - rect.width - padding;
-            }
-            if (y + rect.height > window.innerHeight) {
-                y = e.clientY - rect.height - padding;
-            }
-
-            tooltip.style.left = x + 'px';
-            tooltip.style.top = y + 'px';
         }
 
         init();

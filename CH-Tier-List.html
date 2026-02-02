@@ -265,10 +265,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 0.65rem;
+            font-weight: 600;
             color: var(--text-secondary);
             background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-card) 100%);
+            text-align: center;
+            padding: 4px;
+            line-height: 1.2;
+            word-break: break-word;
         }
 
         .tooltip {
@@ -588,8 +592,6 @@
         function renderCharacterCard(characterId) {
             const char = TIER_DATA.characters[characterId];
             if (!char) return '';
-
-            const initials = char.name.split(' ').map(n => n[0]).join('').substring(0, 2);
             
             return `
                 <div class="character-card" 
@@ -599,7 +601,7 @@
                      data-description="${char.description || ''}">
                     ${char.image 
                         ? `<img src="${char.image}" alt="${char.name}" loading="lazy">`
-                        : `<div class="placeholder">${initials}</div>`
+                        : `<div class="placeholder">${char.name}</div>`
                     }
                 </div>
             `;

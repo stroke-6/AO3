@@ -9,6 +9,22 @@
     ],
 
     "characters": {
+		"hanabi": {
+            "name": "Hanabi",
+            "fullName": "Hyūga Hanabi",
+            "affiliation": "",
+            "description": "",
+            "image": "./images/CH-Tier-List/hanabi.png",
+            "firstAppearance": 1
+        },
+		"naruto": {
+            "name": "Neji",
+            "fullName": "Hyūga Neji",
+            "affiliation": "",
+            "description": "",
+            "image": "./images/CH-Tier-List/neji.png",
+            "firstAppearance": 1
+        },
         "naruto": {
             "name": "Naruto",
             "fullName": "Uzumaki Naruto",
@@ -162,7 +178,7 @@
             "notes": "Initial power assessment based on early appearances. Which we don't really have in this one — select another chapter.",
             "rankings": {
                 "S": [],
-                "A": [],
+                "A": ["hanabi", "neji"],
                 "B": [],
                 "C": [],
                 "D": [],
@@ -175,7 +191,7 @@
             "notes": "Initial power assessment based on early appearances.",
             "rankings": {
                 "S": [],
-                "A": [],
+                "A": ["gojo"],
                 "B": [],
                 "C": [],
                 "D": ["shinpachi", "naruto"],

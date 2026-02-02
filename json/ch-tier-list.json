@@ -114,6 +114,16 @@
             "image": "./images/CH-Tier-List/otsuru.png",
             "firstAppearance": 26
         },
+		
+		"thing": {
+            "name": "That Thing",
+            "fullName": "That Thing",
+            "affiliation": "",
+            "description": "",
+            "image": "./images/CH-Tier-List/thing.png",
+            "firstAppearance": 35
+        },
+		
         "sakaeguchi": {
             "name": "Sakaeguchi",
             "fullName": "Sakaeguchi Kōzō",
@@ -238,6 +248,7 @@
                 "genei": 84,
                 "otsuru": 36,
                 "waka": 55,
+				"thing": 65,
                 "sakaeguchi": 74
             }
         },
@@ -258,6 +269,7 @@
                 "otsuru": 36,
                 "waka": 55,
                 "sakaeguchi": 74,
+				"thing": 80,
                 "mifune": 84,
                 "kimura": 70,
                 "yasaka": 76
@@ -279,6 +291,7 @@
                 "genei": 84,
                 "otsuru": 40,
                 "waka": 52,
+				"thing": 80,
                 "sakaeguchi": 74,
                 "mifune": 84,
                 "kimura": 70,
@@ -302,6 +315,7 @@
                 "genei": 84,
                 "otsuru": 40,
                 "waka": 62,
+				"thing": 80,
                 "sakaeguchi": 74,
                 "mifune": 84,
                 "kimura": 70,

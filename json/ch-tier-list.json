@@ -147,6 +147,20 @@
 		
 		{
             "id": 20,
+            "name": "Chapter 20",
+            "notes": "Initial power assessment based on early appearances.",
+            "rankings": {
+                "S": ["tenjin", "shiori"],
+                "A": ["ryujin"],
+                "B": [],
+                "C": [],
+                "D": ["naruto", "shinpachi"],
+                "F": []
+            }
+        }
+		
+		{
+            "id": 20,
             "name": "Chapter 10",
             "notes": "Initial power assessment based on early appearances.",
             "rankings": {

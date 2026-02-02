@@ -161,12 +161,26 @@
 		
 		{
             "id": 20,
-            "name": "Chapter 10",
+            "name": "Chapter 20",
             "notes": "Initial power assessment based on early appearances.",
             "rankings": {
                 "S": ["nagato", "tenjin", "raimei", "mifune", "shiori"],
                 "A": ["ryujin", "nao", "gojo", "sakaeguchi", "yasaka", "kaizen"],
                 "B": ["waka" ],
+                "C": ["otsuru"],
+                "D": ["naruto", "shinpachi"],
+                "F": []
+            }
+        }
+		
+		{
+            "id": 30,
+            "name": "Chapter 30",
+            "notes": "Initial power assessment based on early appearances.",
+            "rankings": {
+                "S": ["nagato", "tenjin", "raimei", "shiori"],
+                "A": ["ryujin", "gojo"],
+                "B": [],
                 "C": ["otsuru"],
                 "D": ["naruto", "shinpachi"],
                 "F": []

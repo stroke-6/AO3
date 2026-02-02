@@ -1,10 +1,10 @@
 {
     "tiers": [
-        { "id": "S", "label": "S", "description": "Kage-level / Legendary" },
-        { "id": "A", "label": "A", "description": "Elite Jonin / Special Forces" },
-        { "id": "B", "label": "B", "description": "Standard Jonin" },
-        { "id": "C", "label": "C", "description": "Chunin / Skilled" },
-        { "id": "D", "label": "D", "description": "Genin / Average" },
+        { "id": "S", "label": "S", "description": "Kage" },
+        { "id": "A", "label": "A", "description": "Elite Jōnin / Special Forces" },
+        { "id": "B", "label": "B", "description": "Standard Jōnin" },
+        { "id": "C", "label": "C", "description": "Chūnin" },
+        { "id": "D", "label": "D", "description": "Genin" },
         { "id": "F", "label": "F", "description": "Civilian / Non-combatant" }
     ],
 

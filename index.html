@@ -214,6 +214,163 @@
     .card.ftrwl  { --card-accent: var(--color-gold);    --card-bg: var(--color-gold-bg); }
     .card.ch     { --card-accent: var(--color-crimson); --card-bg: var(--color-crimson-bg); }
 
+    .card.legacy {
+      --card-accent: #9ca3af;
+      --card-bg: #f3f4f6;
+      opacity: 0.62;
+      filter: saturate(0.4);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, opacity 0.18s ease, filter 0.18s ease;
+    }
+
+    .card.legacy:hover,
+    .card.legacy[open] {
+      opacity: 1;
+      filter: saturate(1);
+    }
+
+    .card.legacy .card-title { font-weight: 600; }
+    .card.legacy .card-desc  { color: #9ca3af; }
+    .card.legacy .card-desc em,
+    .card.legacy .card-desc code { color: var(--text-soft); }
+
+    details.card.legacy {
+      padding: 0;
+    }
+
+    details.card.legacy > summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 0.6rem 1rem 0.6rem 1.05rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      user-select: none;
+      border-radius: inherit;
+    }
+
+    details.card.legacy > summary::-webkit-details-marker { display: none; }
+    details.card.legacy > summary::marker { content: ""; }
+
+    details.card.legacy summary .card-title {
+      font-family: "Merriweather", Georgia, serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 0;
+      color: var(--card-accent);
+      letter-spacing: -0.005em;
+      flex: 1;
+      min-width: 0;
+    }
+
+    details.card.legacy .expand-arrow {
+      color: var(--text-soft);
+      font-size: 0.75em;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    details.card.legacy[open] .expand-arrow {
+      transform: rotate(90deg);
+    }
+
+    details.card.legacy .legacy-body {
+      padding: 0.7rem 1.05rem 0.85rem;
+      border-top: 1px dashed var(--border);
+    }
+
+    details.card.legacy .legacy-body .card-desc {
+      font-size: 0.92rem;
+    }
+
+    details.card.legacy .legacy-open {
+      display: inline-block;
+      margin-top: 0.65rem;
+      font-size: 0.82rem;
+      color: var(--card-accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    details.card.legacy .legacy-open:hover { text-decoration: underline; }
+
+    .card.combo {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .card.combo .combo-main {
+      display: block;
+      padding: 1.1rem 1.2rem;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.18s ease;
+    }
+
+    .card.combo:hover .combo-main {
+      background: var(--card-bg, var(--surface));
+    }
+
+    .card.combo .combo-extras {
+      border-top: 1px dashed var(--border);
+      padding: 0.55rem 1.2rem 0.85rem;
+    }
+
+    .card.combo summary {
+      cursor: pointer;
+      list-style: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--card-accent);
+      user-select: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.2rem 0;
+    }
+
+    .card.combo summary::-webkit-details-marker { display: none; }
+
+    .card.combo summary::before {
+      content: "▸";
+      display: inline-block;
+      transition: transform 0.2s ease;
+      font-size: 0.85em;
+    }
+
+    .card.combo details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    .card.combo .feature-list {
+      margin: 0.5rem 0 0.1rem;
+      padding-left: 1.2rem;
+      font-size: 0.88rem;
+      color: var(--text-soft);
+      line-height: 1.55;
+    }
+
+    .card.combo .feature-list li { margin-bottom: 0.15rem; }
+    .card.combo .feature-list em { font-style: italic; color: var(--text); }
+
+    .legacy-badge {
+      display: inline-block;
+      margin-left: 0.5rem;
+      padding: 0.05rem 0.5rem;
+      background: rgba(0,0,0,0.04);
+      color: var(--text-soft);
+      font-family: "Inter", sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      vertical-align: middle;
+      line-height: 1.4;
+    }
+
+    .legacy-note { color: var(--text-soft); font-style: italic; }
+
     .subsection {
       margin-left: 1.5rem;
       padding-left: 1.25rem;
@@ -316,22 +473,7 @@
     </aside>
 
     <section class="content">
-      <div class="section">
-        <div class="section-label">
-          <h2>Tools</h2>
-          <div class="line"></div>
-        </div>
-        <div class="cards">
-          <a class="card tool" href="https://stroke-6.github.io/AO3/Character%20Card%20Generator.html">
-            <div class="card-title">Character Card Generator</div>
-            <div class="card-desc">Generates HTML code for character profiles used in <em>From the Ring, With Love</em>.</div>
-          </a>
-          <a class="card tool" href="https://stroke-6.github.io/AO3/Character%20Radar%20Chart.html">
-            <div class="card-title">Character Radar Chart</div>
-            <div class="card-desc">Creates radar charts for visualising character statistics in <em>Crimson Horizons</em>.</div>
-          </a>
-        </div>
-      </div>
+      
 
       <div class="section">
         <div class="section-label">
@@ -339,18 +481,47 @@
           <div class="line"></div>
         </div>
         <div class="cards">
-          <a class="card script" href="https://stroke-6.github.io/AO3/AO3%20Direct%20Chapter%20Index%20Button.user.js">
-            <div class="card-title">AO3 Direct Chapter Index Button</div>
-            <div class="card-desc">Adds a <span class="hover-trigger" data-preview="https://d.l3n.co/i/N8Vc1v.png">convenient button</span> to story &amp; author pages for instant access to the chapter index.</div>
-          </a>
+          <div class="card script combo">
+            <a class="combo-main" href="https://stroke-6.github.io/AO3/stroke6%27s%20AO3%20%2B%20FFN%20All-In-One%20Combined%20%E2%80%94%20Reader%20Version.user.js">
+              <div class="card-title">AO3 + FFN Combined Extension — Reader Version</div>
+              <div class="card-desc">Bundles a stack of personal reading-experience polish across both sites, because I'm too lazy to keep them separate.</div>
+            </a>
+            <details class="combo-extras">
+              <summary>...like what, man?</summary>
+              <ul class="feature-list">
+                <li>Custom fonts for AO3 title &amp; kanji on <em>Indra</em> and <em>Extra</em></li>
+                <li>Adds story covers for my own shit on AO3</li>
+				<li>Adds a more <span class="hover-trigger" data-preview="https://d.l3n.co/i/N8Vc1v.png">convenient button</span> for direct AO3 chapter access and <span class="hover-trigger" data-preview="https://a.l3n.co/i/N8Q65x.png">clickable buttons</span> for FF.net </li>
+                <li>"Sorted by Updated" button on AO3 profile pages</li>
+                <li>Adds an Indent Paragraphs button on AO3</li>
+                <li><em>Crimson Horizons FF.net</em> formatting tweaks (serif titles, restored text selection, &amp; co.)</li>
+              </ul>
+            </details>
+          </div>
           <a class="card script" href="https://stroke-6.github.io/AO3/AO3%20Story%20Downloader.user.js">
             <div class="card-title">AO3 Story Downloader</div>
-            <div class="card-desc">Download huge works (e.g. <em>Crimson Horizons</em>) as well-formatted EPUBs even once AO3's built-in button taps out.</div>
+            <div class="card-desc">Download huge works (*coughs* <em>Crimson Horizons</em> *coughs*) as well-formatted EPUBs even once AO3's built-in button taps out.</div>
           </a>
-          <a class="card script" href="https://stroke-6.github.io/AO3/FanFiction.net%20Enhanced%20Reader.user.js">
-            <div class="card-title">FanFiction.net Enhanced Reader</div>
-            <div class="card-desc">Transforms image codes like <code>i/D7UmSr</code> into <span class="hover-trigger" data-preview="https://a.l3n.co/i/N8Q65x.png">clickable buttons</span>, styles chapter titles in serif, and re-enables text selection.</div>
-          </a>
+          <details class="card script legacy">
+            <summary>
+              <span class="card-title">AO3 Direct Chapter Index Button<span class="legacy-badge">Legacy</span></span>
+              <span class="expand-arrow" aria-hidden="true">▸</span>
+            </summary>
+            <div class="legacy-body">
+              <div class="card-desc">Adds a <span class="hover-trigger" data-preview="https://d.l3n.co/i/N8Vc1v.png">convenient button</span> to story &amp; author pages for instant access to the chapter index. <span class="legacy-note">Folded into the All-In-One Combined script — still up here on its own.</span></div>
+              <a class="legacy-open" href="https://stroke-6.github.io/AO3/AO3%20Direct%20Chapter%20Index%20Button.user.js">Open script ↗</a>
+            </div>
+          </details>
+          <details class="card script legacy">
+            <summary>
+              <span class="card-title">FanFiction.net Enhanced Reader<span class="legacy-badge">Legacy</span></span>
+              <span class="expand-arrow" aria-hidden="true">▸</span>
+            </summary>
+            <div class="legacy-body">
+              <div class="card-desc">Transforms image codes like <code>i/D7UmSr</code> into <span class="hover-trigger" data-preview="https://a.l3n.co/i/N8Q65x.png">clickable buttons</span>, styles chapter titles in serif, and re-enables text selection. <span class="legacy-note">Folded into the All-In-One Combined script — still up here on its own.</span></div>
+              <a class="legacy-open" href="https://stroke-6.github.io/AO3/FanFiction.net%20Enhanced%20Reader.user.js">Open script ↗</a>
+            </div>
+          </details>
         </div>
       </div>
 
@@ -386,6 +557,23 @@
               <div class="card-desc">Character stats and information within the FTRWL universe.</div>
             </a>
           </div>
+        </div>
+      </div>
+	  
+	  <div class="section">
+        <div class="section-label">
+          <h2>Other Tools</h2>
+          <div class="line"></div>
+        </div>
+        <div class="cards">
+          <a class="card tool" href="https://stroke-6.github.io/AO3/Character%20Card%20Generator.html">
+            <div class="card-title">Character Card Generator</div>
+            <div class="card-desc">Generates HTML code for character profiles used in <em>From the Ring, With Love</em>.</div>
+          </a>
+          <a class="card tool" href="https://stroke-6.github.io/AO3/Character%20Radar%20Chart.html">
+            <div class="card-title">Character Radar Chart</div>
+            <div class="card-desc">Creates radar charts for visualising character statistics in <em>Crimson Horizons</em>.</div>
+          </a>
         </div>
       </div>
     </section>

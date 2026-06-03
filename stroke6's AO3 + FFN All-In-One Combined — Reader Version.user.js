@@ -6,7 +6,7 @@
 // @author       stroke6 (combined)
 // @license      MIT
 // @run-at       document-start
-//
+// @downloadURL	 https://stroke-6.github.io/AO3/stroke6%27s%20AO3%20%2B%20FFN%20All-In-One%20Combined%20%E2%80%94%20Reader%20Version.user.js	
 // @match        https://archiveofourown.org/*
 //
 // @match        https://www.fanfiction.net/s/14312002/*

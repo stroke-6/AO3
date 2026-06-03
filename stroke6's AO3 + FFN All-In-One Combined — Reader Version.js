@@ -607,7 +607,7 @@
 
     // =====================================================================
     // MODULE 4 — AO3 Add Updated Bookmarks Link
-    // Original @match: /users/stroke6*, /users/stroke6
+    // Original @match: /users/stroke6*, /users/stroke6, /users/*
     // =====================================================================
     if (isStroke6User()) whenReady(() => (function moduleAddUpdatedBookmarks() {
         setTimeout(function() {

@@ -2,7 +2,7 @@
 // @name         stroke6's AO3 + FFN All-In-One Combined — Reader Version
 // @namespace    http://tampermonkey.net/
 // @version      1.0
-// @description  Combined bundle of 9 user scripts for my own use, and 6 for you: AO3 enhancements + FanFiction.net Enhanced Reader
+// @description  Combined bundle of 10 user scripts for my own use, and 7 for you: AO3 enhancements + FanFiction.net Enhanced Reader
 // @author       stroke6 (combined)
 // @license      MIT
 // @run-at       document-start
@@ -45,6 +45,7 @@
  *   7. [REMOVED]
  *   8. [REMOVED]
  *   9. FanFiction.net Enhanced Reader
+ *  10. FanFiction.net Kanji Title (Indra + Indra: Extra)
  */
 
 (function bundleRoot() {
@@ -72,6 +73,7 @@
         return /\/navigate\/?$/.test(path) || /\/chapters\/\d+\/?$/.test(path);
     };
     const isTargetedFFNStory = () => onUrl(/^https?:\/\/(www\.|m\.)?fanfiction\.net\/s\/(14312002|14396658|14163903|14095149|14285217)\//);
+    const isFFNKanjiTitleStory = () => onUrl(/^https?:\/\/(www\.|m\.)?fanfiction\.net\/s\/(14095149|14163903)\//);
 
 
     // =====================================================================
@@ -1353,6 +1355,483 @@
         document.addEventListener('keydown', e => {
             if (e.ctrlKey && e.shiftKey && e.key === 'I') runAllEnhancements();
         });
+    })());
+
+
+    // =====================================================================
+    // MODULE 10 — FanFiction.net Kanji Title
+    // Original @match: FFN stories 14095149 (Indra), 14163903 (Indra: Extra)
+    // =====================================================================
+    if (isFFNKanjiTitleStory()) whenReady(() => (function moduleFFNKanjiTitle() {
+        const CHAPTERS_14095149 = [
+            { t: "Anatomy of a Disaster", k: "災厄解剖" },
+            { t: "Sarutobi Naruto", k: "猿飛ナルト" },
+            { t: "Burning of the Midnight Flame", k: "焼夜灯" },
+            { t: "Training for the Job", k: "修行ノ業" },
+            { t: "Training for the Job II", k: "修行ノ業・弐" },
+            { t: "Monsoon", k: "雨季" },
+            { t: "Her Last Stand", k: "最後ノ抗イ" },
+            { t: "Life after Death", k: "死後生" },
+            { t: "Hatake Kakashi's Cruel Tutelage", k: "畑鹿驚ノ酷導" },
+            { t: "Into the Forest...!", k: "森ヘ…!" },
+            { t: "Team Eight", k: "第八班" },
+            { t: "The Boy from Suna...!", k: "砂ノ少年…!" },
+            { t: "Pest Control", k: "害虫駆除" },
+            { t: "Interlude", k: "幕間" },
+            { t: "Leaves, Dancing", k: "葉舞" },
+            { t: "Spellbound", k: "呪縛" },
+            { t: "Their Eyes", k: "彼ラノ瞳" },
+            { t: "Chuunin Exams Conclude", k: "中忍試験終幕" },
+            { t: "The Forlorn Oasis", k: "寂寞ノ緑洲" },
+            { t: "Kaleidoscope", k: "万華鏡" },
+            { t: "The Boy who Leapt Through Space and Time", k: "時空跳ビ少年" },
+            { t: "No Place To Call Home", k: "帰ル処無シ" },
+            { t: "Snake's Bargain", k: "蛇ノ取引" },
+            { t: "Under the Moon's Glare", k: "月光ノ下" },
+            { t: "Of Ancient Gods", k: "古キ神々" },
+            { t: "The Blade Itself", k: "刃ソノモノ" },
+            { t: "The Songbird", k: "鳴鳥" },
+            { t: "Ghost Hand", k: "幽手" },
+            { t: "The Elder Son", k: "長子" },
+            { t: "The Snake Sage", k: "蛇仙人" },
+            { t: "The Thunder Gates", k: "雷門" },
+            { t: "Long Way North", k: "北ヘノ長路" },
+            { t: "Sea Change", k: "潮変" },
+            { t: "Close Quarters", k: "接近戦" },
+            { t: "The Place Under the Sun", k: "日向ノ地" },
+            { t: "The Village Hidden in the Sea", k: "海隠レノ里" },
+            { t: "The Relay", k: "継走" },
+            { t: "Lucky Seven", k: "幸運ノ七" },
+            { t: "Realizations", k: "悟リ" },
+            { t: "The Village Hidden in the Leaf", k: "木ノ葉隠レノ里" },
+            { t: "A Conversation With an Old Friend", k: "旧友トノ会話" },
+            { t: "A Really Good Friend", k: "真ノ友" },
+            { t: "The Divide", k: "隔タリ" },
+            { t: "The Gray Zone", k: "灰色地帯" },
+            { t: "To Kill a Shadow", k: "影殺シ" },
+            { t: "The Underbelly", k: "暗部" },
+            { t: "The Spider's Nest", k: "蜘蛛ノ巣" },
+            { t: "Jailbreak", k: "脱獄" },
+            { t: "The Latest Missing Ninja", k: "最新ノ抜ケ忍" },
+            { t: "Remnants of the Bloody Mist", k: "血霧ノ残党" },
+            { t: "Slaves", k: "奴隷" },
+            { t: "No Way Back", k: "帰路無シ" },
+            { t: "Far From Her Home", k: "故郷ヲ遠ク離レテ" },
+            { t: "The Calm Before the Storm", k: "嵐ノ前ノ静寂" },
+            { t: "Long Live Konoha", k: "木ノ葉万歳" },
+            { t: "Down the Rift", k: "裂ケ目ヘ" },
+            { t: "The Living Flame", k: "生キル炎" },
+            { t: "Tales From the Front", k: "戦場便リ" },
+            { t: "River Escape Plan", k: "河逃走計画" },
+            { t: "The Frozen Land", k: "凍土" },
+            { t: "Winter Springs", k: "冬泉" },
+            { t: "Midnight Cat Eyes", k: "真夜中ノ猫眼" },
+            { t: "Jinchuuriki", k: "人柱力" },
+            { t: "Snowstorm", k: "吹雪" },
+            { t: "Snowstorm II", k: "吹雪・弐" },
+            { t: "Snowstorm III", k: "吹雪・参" },
+            { t: "Snowstorm IV", k: "吹雪・四" },
+            { t: "Beneath the Clouds", k: "雲ノ下" },
+            { t: "Above the Clouds", k: "雲ノ上" },
+            { t: "That Look", k: "アノ眼差シ" },
+            { t: "Two of These Days", k: "アノ二日" },
+            { t: "Firepit", k: "焚火" },
+            { t: "Dawnbreaker", k: "暁砕キ" },
+            { t: "Morningstar", k: "明星" },
+            { t: "Twisted Horizon", k: "歪ンダ地平" },
+            { t: "His Lives and Times", k: "彼ノ生涯" },
+            { t: "Purple Noon", k: "紫ノ正午" },
+            { t: "Leaves, Falling", k: "葉落" },
+            { t: "Snake's Disciples", k: "蛇ノ弟子" },
+            { t: "Changes", k: "変化" },
+            { t: "Bonds", k: "絆" },
+            { t: "Baptism by Fire", k: "炎ノ洗礼" },
+            { t: "Unveilings", k: "露見" },
+            { t: "Moonlighter", k: "月夜稼ギ" },
+            { t: "Liminal Space", k: "境界" },
+            { t: "Bad Omens", k: "凶兆" },
+            { t: "Cascades", k: "滝雪崩" },
+            { t: "The Great Fire", k: "大火" },
+            { t: "Crucible", k: "坩堝" },
+            { t: "Flight of Fancy", k: "気紛レノ飛翔" },
+            { t: "Paper Idols", k: "紙ノ偶像" },
+            { t: "Just This Once", k: "今度限リ" },
+            { t: "An Island Unto Himself", k: "孤島ノ男" },
+            { t: "Bonds II", k: "絆・弐" },
+            { t: "The Unfortunate Consequences of Letting Others Handle Your Reputation", k: "他人任セノ評判" },
+            { t: "Best Intentions", k: "最善ノ意図" },
+            { t: "Lay Your Hearts", k: "心ヲ捧ゲヨ" },
+            { t: "Training for the Job III", k: "修行ノ業・参" },
+            { t: "A Terrible Mistake", k: "痛恨ノ過チ" },
+            { t: "Leaves, Crumbling", k: "葉枯" },
+            { t: "Anatomy of a Disaster II", k: "災厄解剖・弐" },
+            { t: "Ashes/The Gathering Storm", k: "灰燼/嵐ノ予兆" },
+            { t: "Ashes/Chasing the Wind", k: "灰燼/風ヲ追ウ者" },
+            { t: "Ashes/An Ideal", k: "灰燼/一ツノ理想" },
+            { t: "Fire, Wind, Lightning", k: "火・風・雷" },
+            { t: "The Shadow of Konoha", k: "木ノ葉ノ影" },
+            { t: "Night of the Long Knives", k: "長刀ノ夜" },
+            { t: "The Furthest Place From Understanding", k: "理解ヨリ最モ遠キ所" },
+            { t: "Faded Lightning", k: "褪セタ雷光" },
+            { t: "To Kill a Shadow II", k: "影殺シ・弐" },
+            { t: "Everything but the Rain", k: "雨以外全テ" },
+            { t: "The Tale of the Four Ninja", k: "四忍ノ譚" },
+            { t: "The Ever-Moving Dawn", k: "不断ノ曙" },
+            { t: "Of Ghosts and Sharks", k: "幽霊ト鮫" },
+            { t: "Family Matters", k: "家族ノ事" },
+            { t: "The World's Problem", k: "世界ノ問題" },
+            { t: "A Cold Alliance", k: "冷タキ同盟" },
+            { t: "The Shape of Water", k: "水ノ形" },
+            { t: "A Bargain", k: "取引" },
+            { t: "Moon Under Water", k: "水面ノ月" },
+            { t: "Thirty Days", k: "三十日" },
+            { t: "Rending Thunder", k: "裂雷" },
+            { t: "Knife in the Dark", k: "闇ノ刃" },
+            { t: "Spellbound II", k: "呪縛・弐" },
+            { t: "Mind/A Stronger Man", k: "心/強キ者" },
+            { t: "Body/Indra", k: "体/インドラ" },
+            { t: "Soul/Uzumaki Naruto", k: "魂/うずまきナルト" },
+            { t: "Out of the Shadows", k: "影ヨリ出デテ" },
+            { t: "Through the Shadows", k: "影ヲ抜ケテ" },
+            { t: "Above the Shadows", k: "影ノ上ヘ" },
+            { t: "A Lesser Godly Feat", k: "小神業" },
+            { t: "Training for the Job IV", k: "修行ノ業・四" },
+            { t: "A Fiery Truce", k: "火炎ノ休戦" },
+            { t: "Spellbound III", k: "呪縛・参" },
+            { t: "The Realm Outside of Time", k: "時ノ外ノ世界" },
+            { t: "Flight/Nine Swords", k: "飛翔/九刀" },
+            { t: "Moonlit Nights", k: "月夜" },
+            { t: "Fire, Smoke, Water", k: "火・煙・水" },
+            { t: "Castle in the Sky", k: "天空ノ城" },
+            { t: "Caged Tiger", k: "檻ノ虎" },
+            { t: "Puppets on Chains", k: "鎖ノ傀儡" },
+            { t: "Tangled", k: "縺レ" },
+            { t: "Heirs to the Sharingan", k: "写輪眼ノ継嗣" },
+            { t: "The Cost of Peace", k: "平和ノ代価" },
+            { t: "Soul Harvest", k: "魂狩リ" },
+            { t: "An Explosion in the Sky", k: "空ノ爆発" },
+            { t: "Storm Chasers", k: "嵐追ウ者" },
+            { t: "Bonds III", k: "絆・参" },
+            { t: "Uzumaki", k: "うずまき" },
+            { t: "Those Who Remain", k: "残ル者" },
+            { t: "Phantom Pains/The Pyre", k: "幻肢痛/火葬" },
+            { t: "Phantom Pains/Time", k: "幻肢痛/時" },
+            { t: "Phantom Pains/The Tenth", k: "幻肢痛/第十" },
+            { t: "Morning and Noon of Existence", k: "生ノ朝ト昼" },
+            { t: "Uzumaki II", k: "うずまき・弐" },
+            { t: "Bonds IV", k: "絆・四" },
+            { t: "A Journey's End", k: "旅路ノ果テ" },
+            { t: "Shōgun", k: "将軍" },
+            { t: "The Ever-Changing World", k: "移リ行ク世" },
+            { t: "The Wind's Call", k: "風ノ呼ビ声" },
+        ];
+
+        const CHAPTERS_14163903 = [
+            { t: "Through the Ninja Glass Darkly", k: "忍ノ闇鏡越シ" },
+            { t: "Through the Mirror's Cracks", k: "鏡ノ罅越シ" },
+            { t: "Through a Decent Night", k: "マシナ夜越シ" },
+            { t: "Domestic Scenes", k: "家庭ノ情景" },
+            { t: "Hold Your Hand Out", k: "手ヲ差シ伸ベヨ" },
+            { t: "Interlude: Hot Springs", k: "幕間：温泉" },
+            { t: "\"We're All Worried About -\"", k: "「皆案ジテイル―」" },
+            { t: "Helping Hands", k: "助ケノ手" },
+            { t: "All for a Good Cause!", k: "大義ノタメ!" },
+            { t: "World Eaters' Den", k: "食世者ノ巣" },
+            { t: "The Paths We Choose", k: "選ビシ道" },
+            { t: "Rivals, Masters and Students", k: "好敵手・師・弟子" },
+            { t: "To Sing a Song About...", k: "唄ニ謳ウハ…" },
+            { t: "Signs", k: "兆シ" },
+            { t: "Journeys", k: "旅路" },
+            { t: "To and From The Beyond", k: "彼岸ト此岸" },
+            { t: "A Really Good Bribe", k: "真ノ賄賂" },
+            { t: "The Frog and the Snake (Are Lost in Space-Time)", k: "蛙ト蛇(時空ニ迷ウ)" },
+            { t: "Child(ren) in Time", k: "時ノ中ノ子等" },
+            { t: "The (Brave) New World", k: "(勇敢ナ)新世界" },
+            { t: "Crossing Back", k: "渡リ戻リ" },
+            { t: "Keeping it in the Family", k: "家族内ノ事" },
+            { t: "Interdimensional Matters", k: "異次元ノ事情" },
+            { t: "From Outer Space", k: "宇宙ノ彼方" },
+            { t: "Do Ōtsutsuki Dream of Hospitable Seed Worlds?", k: "大筒木ハ恵ミノ種界ヲ夢ミルカ?" },
+            { t: "The One (Jutsu) They Feared", k: "畏レラレシ一術" },
+            { t: "The Devil You Know", k: "知ル悪魔" },
+            { t: "Relics", k: "遺物" },
+            { t: "The Emperor's New Heir", k: "帝ノ新キ世継" },
+            { t: "A Bad Case of Whisky", k: "酒ニ酔ウ災イ" },
+            { t: "Gama's Bad Fur Day", k: "ガマノ厄日" },
+            { t: "To Become a Chūnin, I Must", k: "中忍ヘ、我" },
+            { t: "The Not-So-Legendary Trio", k: "半端ナ三忍" },
+            { t: "The Emperor's Watchful Eyes", k: "帝ノ眼差シ" },
+            { t: "The Broken Circle", k: "壊レタ環" },
+            { t: "A Civilian Sort of Mind", k: "民間人ノ心" },
+            { t: "The Illusion of Control", k: "統制ノ幻" },
+            { t: "The Ever-Rising Sun", k: "昇リ続クル日" },
+            { t: "The Lesser Clan Days", k: "小氏族ノ日々" },
+            { t: "Ōmagatoki / Crow 9", k: "逢魔時/鴉九" },
+            { t: "The Road to Solitude", k: "孤独ヘノ道" },
+            { t: "The Waterlogged Maze", k: "水浸シノ迷宮" },
+            { t: "The Invitation", k: "招待状" },
+            { t: "Seashore Serenade", k: "浜辺ノ小夜曲" },
+            { t: "Fireproof", k: "防火" },
+            { t: "Home", k: "故郷" },
+            { t: "Akimichi Chōji and the Terrible Three", k: "秋道チョウジト恐ロシキ三人組" },
+            { t: "A Cozy Night in the Land of Fire", k: "火ノ国ノ安ラカナ夜" },
+            { t: "Stained by Moonlight", k: "月光ニ染マリテ" },
+            { t: "Close Enough to Touch", k: "触レルホド近ク" },
+            { t: "Embracing the Unknown", k: "未知ヲ抱イテ" },
+            { t: "Bound by Ink, Delivered by Thought", k: "墨ニ縛ラレ、念ニ運バレ" },
+            { t: "The Journey Beyond", k: "彼方ヘノ旅" },
+            { t: "Uchiha Sarada and the Goblet of Fire", k: "うちはサラダト炎ノ盃" },
+            { t: "Between Heaven and Earth", k: "天地ノ間ニ" },
+            { t: "The Redhead Who Killed a God", k: "神ヲ殺メシ赤髪" },
+            { t: "Beneath a Scarlet Sky", k: "緋色ノ空ノ下" },
+            { t: "Cat's Eye", k: "猫眼" },
+            { t: "Kagutsuchi", k: "火之迦具土" },
+            { t: "Nacchan's Year of Darkness", k: "ナッチャンノ暗黒年代" },
+            { t: "Uchiha Shisui and the Twin Tyrants", k: "うちはシスイト双暴君" },
+            { t: "Amenonuhoko", k: "天沼矛" },
+            { t: "Highstorm", k: "大嵐" },
+            { t: "Of Dreams and Stardust", k: "夢ト星屑" },
+            { t: "The Lost Boys", k: "失ワレシ少年達" },
+            { t: "In the Wake of Butterflies", k: "蝶ノ航跡" },
+            { t: "Sunder", k: "裂断" },
+            { t: "When Words Fail", k: "言葉尽キル時" },
+            { t: "The Lightning Tree", k: "雷ノ樹" },
+            { t: "Storms and Change", k: "嵐ト変革" },
+            { t: "Stargazer", k: "観星者" },
+            { t: "Above the Silent Heavens", k: "静寂ノ天ノ上" },
+            { t: "Mitsuki and the Tournament Within the Tournament", k: "ミツキト大会内ノ大会" },
+            { t: "The Journey Beyond II", k: "彼方ヘノ旅・弐" },
+            { t: "Lord of the Morning", k: "朝ノ君主" },
+            { t: "Ark", k: "方舟" },
+            { t: "A Glimpse of Heaven", k: "天ノ一瞥" },
+            { t: "The Comforting Caress of Home", k: "安ラギノ抱擁、故郷ノ" },
+            { t: "For Your Eyes Only", k: "汝ノ眼ニノミ" },
+            { t: "Bright Open Skies", k: "開ケタ青空" },
+            { t: "The Wizard Great and Terrible", k: "偉大ニシテ恐ロシキ魔導士" },
+            { t: "Blue Elegy", k: "蒼キ哀歌" },
+            { t: "The Way", k: "道" },
+            { t: "Echoes and Whispers to Reach the Very Heavens", k: "天ニ届ク反響ト囁キ" },
+            { t: "Why the Woodwide Web Was a Mistake", k: "樹網ハ過チナリ" },
+            { t: "Stars of Different Kinds", k: "異ナル星々" },
+            { t: "Parts/Tempered Hearts", k: "部分/鍛エラレシ心" },
+            { t: "Parts/One Month", k: "部分/一月" },
+            { t: "Parts/Good Morning", k: "部分/良キ朝" },
+            { t: "Kings of Heaven", k: "天ノ王者" },
+            { t: "Kings of Hell", k: "地獄ノ王者" },
+            { t: "Fear of the Sage", k: "仙人ヘノ畏レ" },
+            { t: "A Certain Sweetness", k: "或ル甘味" },
+            { t: "Celestials/A Place to Belong", k: "天人/居場所" },
+            { t: "Celestials/Crossing Stars", k: "天人/星渡リ" },
+            { t: "Celestials/Halfway to Heaven", k: "天人/天ノ半バ" },
+            { t: "Before the Dawn", k: "夜明ケ前" },
+            { t: "Takamagahara", k: "高天原" },
+            { t: "The Ocean", k: "大海" },
+            { t: "Wind and Flame", k: "風ト炎" },
+            { t: "Blades of the Celestials", k: "天人ノ刃" },
+            { t: "That Which Shatters Waves", k: "波ヲ砕ク者" },
+            { t: "Into the Storm", k: "嵐ノ中ヘ" },
+            { t: "Kin/Those Who Fight", k: "同胞/戦ウ者" },
+            { t: "Kin/Light and Shadow", k: "同胞/光ト影" },
+            { t: "Kin/A Field of Silvergrass", k: "同胞/芒野" },
+            { t: "The Sword That Cuts Dreams", k: "夢ヲ断ツ剣" },
+            { t: "Home/Sole Survivor", k: "故郷/唯一ノ生存者" },
+            { t: "Home/Legacy", k: "故郷/遺産" },
+            { t: "Home/Ring", k: "故郷/環" },
+            { t: "Home/Bridges", k: "故郷/架ケ橋" },
+            { t: "A Spire to the Stars", k: "星ヘノ尖塔" },
+            { t: "Home II", k: "故郷・弐" },
+            { t: "For Whom the Sun Shines", k: "日ノ照ラス者ヘ" },
+            { t: "Hand in Hand, Heart to Heart", k: "手ニ手ヲ、心ニ心ヲ" },
+            { t: "Pleasant Days", k: "穏ヤカナ日々" },
+            { t: "The Great and Terrible Flame-Bearer", k: "偉大ニシテ恐ロシキ炎ノ担イ手" },
+            { t: "These Invisible Moments", k: "見エザル刹那" },
+            { t: "Uzumaki Naruto vs. Peace", k: "うずまきナルト対平和" },
+            { t: "All the Lights in the Sky", k: "空ノ全テノ光" },
+            { t: "From the Ring, with Love — Ch.1", k: "環ヨリ、愛ヲ込メテ・壱" },
+        ];
+
+        const STORIES = {
+            '14095149': CHAPTERS_14095149,
+            '14163903': CHAPTERS_14163903,
+        };
+
+        const THEMES = {
+            '14095149': { color: 'rgb(106, 85, 124)', shadow: 'rgba(106, 85, 124, 0.2)' },
+            '14163903': { color: 'rgb(137, 70, 87)',  shadow: 'rgba(137, 70, 87, 0.2)' },
+        };
+        const DEFAULT_THEME = { color: 'rgb(106, 85, 124)', shadow: 'rgba(106, 85, 124, 0.2)' };
+
+        function injectStyles(theme) {
+            if (document.getElementById('ffn-kt-styles')) return;
+            const css = `
+                .ffn-kt-wrap {
+                    display: block;
+                    width: 100%;
+                    margin: 1.5em 0 0.75em;
+                    text-align: left;
+                }
+                .ffn-kt-kanji {
+                    writing-mode: vertical-rl;
+                    text-orientation: upright;
+                    color: ${theme.color};
+                    font-size: 2.5em;
+                    font-weight: 200;
+                    font-family: "Yuji Syuku", Meiryo, Osaka, sans-serif;
+                    letter-spacing: 0.15em;
+                    text-shadow: 3px 2px 3px ${theme.shadow};
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    white-space: pre;
+                    position: relative;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: fit-content;
+                }
+                .ffn-kt-title {
+                    font-size: 140%;
+                    font-weight: 600;
+                    font-family: "Noto Serif", Georgia, serif;
+                    color: ${theme.color};
+                    text-transform: uppercase;
+                    position: relative;
+                    text-align: center;
+                    display: inline-block;
+                    margin: 1em auto;
+                    padding: 15px 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-color: rgba(247, 243, 239, 0.1);
+                }
+                .ffn-kt-title::before {
+                    content: '';
+                    position: absolute;
+                    top: 0; left: 0; right: 0; bottom: 0;
+                    border: 1px solid ${theme.color};
+                }
+                .ffn-kt-title::after {
+                    content: '';
+                    position: absolute;
+                    top: 3px; left: 3px; right: 3px; bottom: 3px;
+                    border: 1px solid ${theme.color};
+                }
+            `;
+            const style = document.createElement('style');
+            style.id = 'ffn-kt-styles';
+            style.textContent = css;
+            (document.head || document.documentElement).appendChild(style);
+
+            const fontLink = document.createElement('link');
+            fontLink.rel = 'stylesheet';
+            fontLink.href = 'https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;700&family=Yuji+Syuku&display=swap';
+            (document.head || document.documentElement).appendChild(fontLink);
+        }
+
+        function currentStoryId() {
+            const m = location.pathname.match(/^\/s\/(\d+)\//);
+            return m ? m[1] : null;
+        }
+
+        function currentChapterNumber() {
+            const m = location.pathname.match(/^\/s\/\d+\/(\d+)/);
+            if (m) return parseInt(m[1], 10);
+            const sel = document.querySelector('#chap_select');
+            if (sel && sel.value) {
+                const n = parseInt(sel.value, 10);
+                if (!isNaN(n)) return n;
+            }
+            return null;
+        }
+
+        function animateKanjiAppear(spanEl) {
+            const text = spanEl.textContent;
+            spanEl.textContent = '';
+
+            const letters = [];
+            for (const ch of Array.from(text)) {
+                if (/\s/.test(ch)) {
+                    spanEl.appendChild(document.createTextNode(ch));
+                } else {
+                    const s = document.createElement('span');
+                    s.style.display = 'inline-block';
+                    s.style.opacity = '0';
+                    s.textContent = ch;
+                    spanEl.appendChild(s);
+                    letters.push(s);
+                }
+            }
+
+            const perCharDelay = 70;
+            const charDuration = 950;
+
+            letters.forEach((el, i) => {
+                el.animate(
+                    [
+                        { transform: 'scale(4)', opacity: 0 },
+                        { transform: 'scale(1)', opacity: 1 },
+                    ],
+                    {
+                        duration: charDuration,
+                        delay: perCharDelay * i,
+                        easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+                        fill: 'forwards',
+                    }
+                );
+            });
+        }
+
+        function run() {
+            if (document.getElementById('ffn-kt-wrap')) return true;
+
+            const storyId = currentStoryId();
+            const table = storyId && STORIES[storyId];
+            if (!table || !table.length) return false;
+
+            const n = currentChapterNumber();
+            if (!n) return false;
+            const data = table[n - 1];
+            if (!data) {
+                console.warn('[FFnet kanji title] no entry for chapter', n, 'of story', storyId);
+                return false;
+            }
+
+            const story = document.querySelector('#storytext, .storytext, #storycontent');
+            const firstSel = document.querySelector('[id="chap_select"]');
+            if (!story && !firstSel) return false;
+
+            injectStyles(THEMES[storyId] || DEFAULT_THEME);
+
+            const wrap = document.createElement('div');
+            wrap.className = 'ffn-kt-wrap';
+            wrap.id = 'ffn-kt-wrap';
+
+            const kanji = document.createElement('div');
+            kanji.className = 'ffn-kt-kanji';
+            kanji.setAttribute('aria-hidden', 'true');
+            kanji.textContent = data.k;
+
+            const title = document.createElement('div');
+            title.className = 'ffn-kt-title';
+            title.textContent = `${n} — ${data.t}`;
+
+            wrap.appendChild(kanji);
+            wrap.appendChild(title);
+
+            if (story) {
+                story.insertAdjacentElement('beforebegin', wrap);
+            } else {
+                firstSel.insertAdjacentElement('afterend', wrap);
+            }
+
+            if (document.fonts && document.fonts.ready) {
+                document.fonts.ready.then(() => animateKanjiAppear(kanji));
+            } else {
+                animateKanjiAppear(kanji);
+            }
+            return true;
+        }
+
+        run();
     })());
 
 })();

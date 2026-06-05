@@ -6,7 +6,7 @@
 // @author       stroke6 (combined)
 // @license      MIT
 // @run-at       document-start
-// @downloadURL	 https://stroke-6.github.io/AO3/stroke6%27s%20AO3%20%2B%20FFN%20All-In-One%20Combined%20%E2%80%94%20Reader%20Version.user.js	
+//
 // @match        https://archiveofourown.org/*
 //
 // @match        https://www.fanfiction.net/s/14312002/*
@@ -607,7 +607,7 @@
 
     // =====================================================================
     // MODULE 4 — AO3 Add Updated Bookmarks Link
-    // Original @match: /users/stroke6*, /users/stroke6, /users/*
+    // Original @match: /users/stroke6*, /users/stroke6
     // =====================================================================
     if (isStroke6User()) whenReady(() => (function moduleAddUpdatedBookmarks() {
         setTimeout(function() {
@@ -849,6 +849,10 @@
                 font-family: 'PT Serif', Georgia, serif;
                 color: #750705;
             }
+            .ffn-leadin {
+                color: #750705;
+                text-transform: uppercase;
+            }
         `;
         const style = document.createElement('style');
         style.textContent = overlayCSS;
@@ -983,6 +987,13 @@
         function isSpecificFanfiction() {
             return location.href.includes('fanfiction.net/s/14396658/') ||
                    location.href.includes('m.fanfiction.net/s/14396658/');
+        }
+        // Indra (14095149) and Indra: Extra (14163903) opt out of the red
+        // strong-tag colouring and the kanji / strong reveal animations —
+        // the visual styling is not meant for these two works.
+        function isStyleExemptStory() {
+            return location.href.includes('fanfiction.net/s/14095149/') ||
+                   location.href.includes('fanfiction.net/s/14163903/');
         }
         function isYCodeTitle(text) { return /^Y\d+[AB]C:/.test(text.trim()); }
         function isAllUppercase(text) {
@@ -1151,6 +1162,39 @@
         function applyDropCap(root, title) {
             if (root.querySelector('.ffn-dropcap')) return;
 
+            // True if the text node sits inside italic markup — e.g. an
+            // italicised location line we do NOT want the drop cap on.
+            function isItalic(node) {
+                let el = node.parentElement;
+                while (el) {
+                    if (el.tagName === 'EM' || el.tagName === 'I') return true;
+                    const fs = window.getComputedStyle(el).fontStyle;
+                    if (fs && fs.indexOf('italic') !== -1) return true;
+                    if (el === root) break;
+                    el = el.parentElement;
+                }
+                return false;
+            }
+
+            // Index in `after` (the text following the drop-cap letter) at which
+            // the first `wordsWanted` words of the paragraph end. The drop-cap
+            // letter itself counts as the first word.
+            function leadInSplit(after, wordsWanted) {
+                const isSpace = c => /\s/.test(c);
+                const n = after.length;
+                let i = 0;
+                while (i < n && !isSpace(after[i])) i++; // finish word 1
+                let words = 1;
+                while (words < wordsWanted && i < n) {
+                    while (i < n && isSpace(after[i])) i++;
+                    let started = false;
+                    while (i < n && !isSpace(after[i])) { i++; started = true; }
+                    if (!started) break;
+                    words++;
+                }
+                return i;
+            }
+
             const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
             let pastTitle = false;
             let node;
@@ -1166,6 +1210,10 @@
                 const idx = text.search(/\p{L}/u);
                 if (idx === -1) continue;
 
+                // Skip italicised text (e.g. a location line); the drop cap
+                // belongs on the first plain, upright paragraph text.
+                if (isItalic(node)) continue;
+
                 const before = text.slice(0, idx);
                 const ch = text[idx];
                 const after = text.slice(idx + 1);
@@ -1174,11 +1222,26 @@
                 dropCap.className = 'ffn-dropcap';
                 dropCap.textContent = ch;
 
+                // First few words after the drop cap: same colour, uppercase.
+                const splitAt = leadInSplit(after, 4);
+                const leadInText = after.slice(0, splitAt);
+                const restText = after.slice(splitAt);
+
                 const parent = node.parentNode;
                 if (before) parent.insertBefore(document.createTextNode(before), node);
                 parent.insertBefore(dropCap, node);
-                if (after) parent.insertBefore(document.createTextNode(after), node);
+                if (leadInText) {
+                    const leadIn = document.createElement('span');
+                    leadIn.className = 'ffn-leadin';
+                    leadIn.textContent = leadInText;
+                    parent.insertBefore(leadIn, node);
+                }
+                if (restText) parent.insertBefore(document.createTextNode(restText), node);
                 parent.removeChild(node);
+
+                // Make sure the paragraph carrying the drop cap reads left-aligned.
+                const block = dropCap.closest('p, div, li, blockquote');
+                if (block) block.style.textAlign = 'left';
                 return;
             }
         }
@@ -1271,9 +1334,12 @@
 
         function runAllEnhancements() {
             enableTextSelection();
-            styleChapterElements();
+            // styleChapterElements (strong-tag colouring + kanji animation) and
+            // applyChapterStyling (drop cap + strong colour animation) are skipped
+            // for the style-exempt stories. Image-code buttons stay enabled.
+            if (!isStyleExemptStory()) styleChapterElements();
             processImageCodes();
-            applyChapterStyling();
+            if (!isStyleExemptStory()) applyChapterStyling();
         }
 
         runAllEnhancements();

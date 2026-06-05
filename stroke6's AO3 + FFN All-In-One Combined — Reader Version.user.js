@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         stroke6's AO3 + FFN All-In-One Combined — Reader Version
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.1.1
 // @description  Combined bundle of 10 user scripts for my own use, and 7 for you: AO3 enhancements + FanFiction.net Enhanced Reader
 // @author       stroke6 (combined)
 // @license      MIT
@@ -1535,7 +1535,6 @@
             { t: "Through a Decent Night", k: "マシナ夜越シ" },
             { t: "Domestic Scenes", k: "家庭ノ情景" },
             { t: "Hold Your Hand Out", k: "手ヲ差シ伸ベヨ" },
-            { t: "Interlude: Hot Springs", k: "幕間：温泉" },
             { t: "\"We're All Worried About -\"", k: "「皆案ジテイル―」" },
             { t: "Helping Hands", k: "助ケノ手" },
             { t: "All for a Good Cause!", k: "大義ノタメ!" },
@@ -1550,7 +1549,8 @@
             { t: "The Frog and the Snake (Are Lost in Space-Time)", k: "蛙ト蛇(時空ニ迷ウ)" },
             { t: "Child(ren) in Time", k: "時ノ中ノ子等" },
             { t: "The (Brave) New World", k: "(勇敢ナ)新世界" },
-            { t: "Crossing Back", k: "渡リ戻リ" },
+            { t: "Crossing Back I", k: "渡リ戻リ・壱" },
+			{ t: "Crossing Back II", k: "渡リ戻リ・弐" },
             { t: "Keeping it in the Family", k: "家族内ノ事" },
             { t: "Interdimensional Matters", k: "異次元ノ事情" },
             { t: "From Outer Space", k: "宇宙ノ彼方" },

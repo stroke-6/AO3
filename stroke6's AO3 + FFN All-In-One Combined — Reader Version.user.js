@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         stroke6's AO3 + FFN All-In-One Combined — Reader Version
 // @namespace    http://tampermonkey.net/
-// @version      1.2.0
+// @version      1.2.1
 // @description  Combined bundle of 10 user scripts for my own use, and 7 for you: AO3 enhancements + FanFiction.net Enhanced Reader
 // @author       stroke6 (combined)
 // @license      MIT
@@ -2106,7 +2106,37 @@
             };
         }
 
+        const PREF_KEY = 'cho-illustrations-enabled';
+        function illustrationsEnabled() {
+            return localStorage.getItem(PREF_KEY) !== 'off'; // default ON
+        }
+
+        // Reader toggle, placed just left of the Follow/Fav button. Flipping it
+        // saves the preference locally and reloads so it takes effect cleanly. Hopefully.
+        function addToggleButton() {
+            if (document.getElementById('cho-toggle')) return;
+            const follow = document.querySelector('button.icon-heart')
+                || Array.from(document.querySelectorAll('button')).find((b) => /follow\s*\/\s*fav/i.test(b.textContent || ''));
+            if (!follow) return;
+            const on = illustrationsEnabled();
+            const btn = document.createElement('button');
+            btn.id = 'cho-toggle';
+            btn.type = 'button';
+            btn.className = 'btn pull-right icon-picture';
+            btn.textContent = on ? ' Illustrations: On' : ' Illustrations: Off';
+            btn.title = 'Show story illustrations inline (your choice is remembered on this device)';
+            btn.style.opacity = on ? '' : '0.55';
+            btn.addEventListener('click', () => {
+                localStorage.setItem(PREF_KEY, illustrationsEnabled() ? 'off' : 'on');
+                location.reload();
+            });
+            follow.insertAdjacentElement('afterend', btn);
+        }
+
         function run() {
+            addToggleButton();
+            if (!illustrationsEnabled()) return;
+
             const root = storyRoot();
             if (!root || root.dataset.choDone) return;
             root.dataset.choDone = '1';

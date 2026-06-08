@@ -49,7 +49,7 @@
  *   8. [REMOVED]
  *   9. FanFiction.net Enhanced Reader
  *  10. FanFiction.net Kanji Title (Indra + Indra: Extra)
- *  11. FanFiction.net Illustrations (Crimson Horizons)
+ *  11. FanFiction.net Illustrations (Crimson Horizons/FTRWL)
  */
 
 (function bundleRoot() {
@@ -78,7 +78,7 @@
     };
     const isTargetedFFNStory = () => onUrl(/^https?:\/\/(www\.|m\.)?fanfiction\.net\/s\/(14312002|14396658|14163903|14095149|14285217)\//);
     const isFFNKanjiTitleStory = () => onUrl(/^https?:\/\/(www\.|m\.)?fanfiction\.net\/s\/(14095149|14163903)\//);
-    const isFFNIllustrationStory = () => onUrl(/^https?:\/\/(www\.|m\.)?fanfiction\.net\/s\/(14312002)\//);
+    const isFFNIllustrationStory = () => onUrl(/^https?:\/\/(www\.|m\.)?fanfiction\.net\/s\/(14312002|14396658)\//);
 
 
     // =====================================================================
@@ -1842,7 +1842,7 @@
 
     // =====================================================================
     // MODULE 11 — FanFiction.net Illustrations
-    // Original @match: FFN story 14312002 (Crimson Horizons)
+    // Original @match: FFN stories 14312002 (Crimson Horizons), 14396658 (From the Ring, With Love)
     // =====================================================================
     if (isFFNIllustrationStory()) whenReady(() => (function moduleFFNIllustrations() {
         const INLINE_LABEL = 'i';

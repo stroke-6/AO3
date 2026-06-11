@@ -20,6 +20,8 @@
 // @match        https://m.fanfiction.net/s/14095149/*
 // @match        https://m.fanfiction.net/s/14285217/*
 // @grant        none
+// @updateURL    https://stroke-6.github.io/AO3/stroke6%27s%20AO3%20%2B%20FFN%20All-In-One%20Combined%20%E2%80%94%20Reader%20Version.user.js
+// @downloadURL  https://stroke-6.github.io/AO3/stroke6%27s%20AO3%20%2B%20FFN%20All-In-One%20Combined%20%E2%80%94%20Reader%20Version.user.js
 // ==/UserScript==
 
 (function() {

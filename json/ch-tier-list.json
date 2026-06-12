@@ -179,6 +179,22 @@
             "description": "",
             "image": "./images/CH-Tier-List/yasaka.png",
             "firstAppearance": 4
+        },
+		"kushimaru": {
+            "name": "Kushimaru",
+            "fullName": "Kuriarare Kushimaru",
+            "affiliation": "",
+            "description": "",
+            "image": "./images/CH-Tier-List/kushimaru.png",
+            "firstAppearance": 71
+        },
+		"shigure": {
+            "name": "Shigure",
+            "fullName": "Hoshigaki Shigure",
+            "affiliation": "",
+            "description": "",
+            "image": "./images/CH-Tier-List/shigure.png",
+            "firstAppearance": 74
         }
     },
 
@@ -323,6 +339,34 @@
                 "kaizen": 70,
                 "nao": 77,
                 "shunryo": 72
+            }
+        },
+		{
+            "id": 78,
+            "name": "Chapter 78 — Low and True",
+            "notes": "",
+            "powerLevels": {
+                "gojo": 75,
+                "shinpachi": 36,
+                "naruto": 44,
+                "tenjin": 89,
+                "shiori": 81,
+                "ryujin": 73,
+                "nagato": 92,
+                "raimei": 89,
+                "genei": 84,
+                "otsuru": 40,
+                "waka": 62,
+				"thing": 80,
+                "sakaeguchi": 74,
+                "mifune": 84,
+                "kimura": 70,
+                "yasaka": 77,
+                "kaizen": 70,
+                "nao": 77,
+                "shunryo": 72,
+				"shigure": 80,
+				"kushimaru": 79
             }
         }
     ]

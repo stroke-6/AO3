@@ -180,6 +180,14 @@
             "image": "./images/CH-Tier-List/yasaka.png",
             "firstAppearance": 4
         },
+		"rikiishi": {
+            "name": "Rikiishi",
+            "fullName": "Iwase Rikiishi",
+            "affiliation": "",
+            "description": "",
+            "image": "./images/CH-Tier-List/rikiishi.png",
+            "firstAppearance": 68
+        },		
 		"kushimaru": {
             "name": "Kushimaru",
             "fullName": "Kuriarare Kushimaru",
@@ -366,7 +374,8 @@
                 "nao": 77,
                 "shunryo": 72,
 				"shigure": 80,
-				"kushimaru": 79
+				"kushimaru": 79,
+				"rikiishi": 23
             }
         }
     ]

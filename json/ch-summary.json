@@ -369,7 +369,7 @@
     },
     {
       "id": "konoha-tool",
-      "title": "Konoha's \"tool\"",
+      "title": "Konoha's Tool",
       "chapter": 12,
       "scope": "tale",
       "weight": "master",
@@ -455,7 +455,7 @@
     },
     {
       "id": "uzumaki-bound-yokai",
-      "title": "The Uzumaki bound the yōkai",
+      "title": "Spiral-Bound",
       "chapter": 36,
       "scope": "tale",
       "weight": "master",
@@ -632,8 +632,8 @@
       "text": "The diving curriculum, the Door law, the Iryō and Reikō writings — all of it was taken out of Uzumaki education, recently, after Shiori's generation and before his. Someone decided children should not know."
     },
     {
-      "id": "princess",
-      "title": "The missing princess",
+      "id": "missing-princess",
+      "title": "The Missing Princess",
       "chapter": 67,
       "scope": "tale",
       "weight": "thread",

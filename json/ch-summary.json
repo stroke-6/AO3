@@ -185,8 +185,8 @@
       ]
     },
     {
-      "id": "dictation",
-      "title": "The handwriting and the dictation",
+      "id": "scripture",
+      "title": "Scripture",
       "chapter": 1,
       "scope": "frame",
       "weight": "master",
@@ -216,7 +216,7 @@
     },
     {
       "id": "epithets",
-      "title": "The names the world gave him",
+      "title": "Epithets",
       "chapter": 2,
       "scope": "frame",
       "weight": "thread",
@@ -235,7 +235,7 @@
     },
     {
       "id": "shared-secret",
-      "title": "What the two of them both did",
+      "title": "Guilty",
       "chapter": 7,
       "scope": "frame",
       "weight": "thread",
@@ -243,7 +243,7 @@
     },
     {
       "id": "shinpachi-silence",
-      "title": "Shinpachi never mentioned him",
+      "title": "Never Mentioned",
       "chapter": 7,
       "scope": "frame",
       "weight": "thread",
@@ -322,17 +322,6 @@
       }  
     },
     {
-      "id": "shikigami-man",
-      "title": "The shikigami man's test",
-      "chapter": 5,
-      "scope": "tale",
-      "weight": "thread",
-      "text": "A golden-eyed man in the Library hands a boy a Monkey tag for no stated reason. \"I just wanted to see what you'd do.\" He is watching, or cultivating, or both.",
-	  "updates": [
-        { "chapter": 12, "text": "He might just be a dick." }
-      ]
-    },
-    {
       "id": "gojo",
       "title": "What Gojō is",
       "chapter": 6,
@@ -340,6 +329,7 @@
       "weight": "thread",
       "text": "An outcast, a Hinin, feuding with Denjo, watching Naruto closely, and bound by an **Oath** he keeps hitting.",
       "updates": [
+		{ "chapter": 12, "text": "A golden-eyed man in the Library hands a boy a Monkey tag for no stated reason but a test of some sort. Then again, he might just be a dick." },
         { "chapter": 21, "text": "Tenjin offers him freedom from the Oaths and he *almost* takes it. The resentment is real." },
         { "chapter": 51, "text": "Alive — warped out to open sea — and building a **new Sealed Art** aimed at Tenjin's cell. Then gone \"to the other side of the world.\"" }
       ]
@@ -493,7 +483,7 @@
     },
     {
       "id": "kesshin-curse",
-      "title": "Kesshin's dying curse",
+      "title": "Kesshin's Dying Words",
       "chapter": 50,
       "scope": "tale",
       "weight": "thread",
@@ -713,7 +703,7 @@
     },
     {
       "id": "moon",
-      "title": "The moon that shouldn't be there",
+      "title": "The Moon",
       "chapter": 78,
       "scope": "tale",
       "weight": "master",

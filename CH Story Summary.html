@@ -410,6 +410,229 @@
             border-radius: 6px;
         }
 
+        /* ---------- Timeline ---------- */
+        .tl { position: relative; padding: 0.5rem 0 1rem; }
+
+        /* the grey rail every dated point hangs off, and the red trail over it */
+        .tl-rail {
+            position: absolute;
+            left: 5.5rem;
+            top: 0; bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+        .tl-trail {
+            position: absolute;
+            left: 5.5rem;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent-light), var(--accent));
+            box-shadow: 0 0 6px rgba(176, 28, 28, 0.35);
+            transition: top 0.25s ease, height 0.25s ease;
+        }
+
+        .tl-cycle {
+            position: relative;
+            display: flex;
+            align-items: baseline;
+            gap: 0.6rem;
+            margin: 1.75rem 0 0.6rem;
+            padding-left: 7.25rem;
+        }
+        .tl-cycle:first-child { margin-top: 0.25rem; }
+        .tl-cycle h3 {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .tl-cycle .tl-cycle-note {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .tl-band { position: relative; display: flex; padding: 0.3rem 0; }
+
+        .tl-year {
+            width: 5.5rem;
+            min-width: 5.5rem;
+            text-align: right;
+            padding-right: 1.1rem;
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        .tl-band.is-tale .tl-year { color: var(--accent); }
+        .tl-year small { display: block; font-size: 0.68rem; font-weight: 400; color: var(--text-muted); letter-spacing: 0.04em; }
+
+        /* node marker sits on the rail */
+        .tl-band::before {
+            content: '';
+            position: absolute;
+            left: calc(5.5rem - 4px);
+            top: 0.85rem;
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: var(--bg-primary);
+            border: 2px solid var(--border-light);
+            z-index: 2;
+        }
+        .tl-band.is-tale::before { border-color: var(--accent); background: var(--bg-primary); }
+        .tl-band.is-reign::before { border-radius: 2px; }
+
+        /* the one live dot — the furthest point the tale has reached so far */
+        .tl-dot {
+            position: absolute;
+            left: calc(5.5rem - 6px);
+            width: 14px; height: 14px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px rgba(176, 28, 28, 0.16), 0 0 10px rgba(176, 28, 28, 0.45);
+            z-index: 4;
+            transition: top 0.25s ease;
+        }
+        /* the undated gap between that dot and the nights of the telling */
+        .tl-dotted {
+            position: absolute;
+            left: 5.5rem;
+            width: 0;
+            border-left: 2px dotted var(--accent);
+            opacity: 0.5;
+            transition: top 0.25s ease, height 0.25s ease;
+        }
+        .tl-frame { position: relative; display: flex; align-items: center; margin-top: 3.5rem; }
+        .tl-frame::before {
+            content: '';
+            position: absolute;
+            left: calc(5.5rem - 7px);
+            top: 50%;
+            margin-top: -8px;
+            width: 16px; height: 16px;
+            border-radius: 50%;
+            background: var(--bg-primary);
+            border: 2px solid var(--accent);
+            z-index: 3;
+        }
+        .tl-frame-label {
+            margin-left: 7.25rem;
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .tl-frame-label small {
+            display: block;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        /* cycles with nothing dated in them yet are still named, quietly */
+        .tl-cycle.is-empty h3 { color: var(--text-muted); font-weight: 400; }
+        .tl-empty-cycle {
+            padding-left: 7.25rem;
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        .tl-items { flex: 1; padding-left: 1.75rem; min-width: 0; }
+
+        .tl-item + .tl-item { margin-top: 0.5rem; }
+        .tl-item-head {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .tl-title {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.02rem;
+            font-weight: 600;
+        }
+        .tl-date {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+        .tl-detail { font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.1rem; }
+        .tl-detail strong { color: var(--text-primary); font-weight: 600; }
+        .tl-src {
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+        .tl-kind {
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            padding: 1px 5px;
+            border-radius: 3px;
+            border: 1px solid currentColor;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+        .tl-kind.event { color: var(--accent); }
+
+        /* the anchor spiral at Fire 211 */
+        .tl-anchor {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin: 1.25rem 0 0.5rem;
+        }
+        .tl-anchor .tl-spiral {
+            position: absolute;
+            left: calc(5.5rem - 17px);
+            width: 36px; height: 36px;
+            background: var(--bg-primary);
+            border-radius: 50%;
+            z-index: 3;
+        }
+        .tl-anchor .tl-spiral svg { width: 36px; height: 36px; display: block; }
+        .tl-anchor .tl-anchor-label {
+            margin-left: 7.25rem;
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .tl-anchor .tl-anchor-label small {
+            display: block;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        .tl-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 1.25rem;
+            margin-bottom: 1.25rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            align-items: center;
+        }
+        .tl-legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+        .tl-swatch { width: 22px; height: 3px; border-radius: 2px; background: var(--border); }
+        .tl-swatch.trail { background: var(--accent); }
+        .tl-swatch.dot { width: 11px; height: 11px; border-radius: 50%; background: var(--accent); }
+        .tl-swatch.gap {
+            height: 0;
+            background: none;
+            border-top: 2px dotted var(--accent);
+            opacity: 0.6;
+        }
+
         @media (max-width: 600px) {
             .controls-inner { flex-direction: column; align-items: stretch; }
             .chapter-select { width: 100%; min-width: 0; }
@@ -418,6 +641,20 @@
             .mystery-meta { margin-left: 0; width: 100%; }
             .chapter { grid-template-columns: 2.3rem 1fr; gap: 0 0.7rem; }
             .chapter-num { font-size: 1.1rem; }
+
+            .tl-rail, .tl-trail { left: 3.4rem; }
+            .tl-year { width: 3.4rem; min-width: 3.4rem; padding-right: 0.6rem; font-size: 0.9rem; }
+            .tl-band::before { left: calc(3.4rem - 4px); }
+            .tl-items { padding-left: 1.1rem; }
+            .tl-cycle { padding-left: 4.5rem; }
+            .tl-anchor .tl-spiral { left: calc(3.4rem - 15px); width: 32px; height: 32px; }
+            .tl-anchor .tl-spiral svg { width: 32px; height: 32px; }
+            .tl-anchor .tl-anchor-label { margin-left: 4.5rem; }
+            .tl-dot { left: calc(3.4rem - 6px); }
+            .tl-dotted { left: 3.4rem; }
+            .tl-frame::before { left: calc(3.4rem - 7px); }
+            .tl-frame-label { margin-left: 4.5rem; }
+            .tl-empty-cycle { padding-left: 4.5rem; }
         }
     </style>
 </head>
@@ -445,6 +682,7 @@
     <div class="tabs">
         <button class="tab active" data-panel="summary">Summary</button>
         <button class="tab" data-panel="mysteries">Open Threads<span class="count" id="tab-count"></span></button>
+        <button class="tab" data-panel="timeline">Timeline<span class="count" id="tl-count"></span></button>
     </div>
 
     <main class="main">
@@ -467,6 +705,21 @@
             </div>
             <div id="mystery-list"></div>
         </section>
+
+        <section id="panel-timeline" class="panel">
+            <div class="tl-legend">
+                <span><i class="tl-swatch"></i> Dated record</span>
+                <span><i class="tl-swatch trail"></i> Ground the tale has covered</span>
+                <span><i class="tl-swatch dot"></i> Where the tale has reached</span>
+                <span><i class="tl-swatch gap"></i> Undated gap</span>
+                <span>Every date below is one stated in the text itself.</span>
+            </div>
+            <div class="filters">
+                <button class="filter active" data-tlfilter="story">The story's own dates</button>
+                <button class="filter" data-tlfilter="all">Include the Water Court line</button>
+            </div>
+            <div id="timeline" class="tl"></div>
+        </section>
     </main>
 
     <footer class="footer">
@@ -486,12 +739,15 @@
         let DATA = null;
         let current = 1;          // selected chapter (the spoiler ceiling)
         let filter = 'all';       // active mystery filter
+        let tlFilter = 'story';   // 'story' hides the Water Court genealogy
 
         const chapterSelect = document.getElementById('chapter-select');
         const progressEl    = document.getElementById('progress');
         const summaryEl     = document.getElementById('panel-summary');
         const mysteryEl     = document.getElementById('mystery-list');
         const tabCountEl    = document.getElementById('tab-count');
+        const timelineEl    = document.getElementById('timeline');
+        const tlCountEl     = document.getElementById('tl-count');
 
         // ============================================
         // HELPERS
@@ -539,17 +795,31 @@
                         document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
                         tab.classList.add('active');
                         document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
+                        // offsets only exist once the panel is displayed
+                        if (tab.dataset.panel === 'timeline') positionTrail();
                     });
                 });
 
-                document.querySelectorAll('.filter').forEach(btn => {
+                // scoped to #filters so the timeline's own buttons don't collide
+                document.querySelectorAll('#filters .filter').forEach(btn => {
                     btn.addEventListener('click', () => {
-                        document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
+                        document.querySelectorAll('#filters .filter').forEach(b => b.classList.remove('active'));
                         btn.classList.add('active');
                         filter = btn.dataset.filter;
                         renderMysteries();
                     });
                 });
+
+                document.querySelectorAll('[data-tlfilter]').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        document.querySelectorAll('[data-tlfilter]').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        tlFilter = btn.dataset.tlfilter;
+                        renderTimeline();
+                    });
+                });
+
+                window.addEventListener('resize', positionTrail);
 
                 render();
             } catch (error) {
@@ -576,6 +846,7 @@
             renderProgress();
             renderSummary();
             renderMysteries();
+            renderTimeline();
         }
 
         // ============================================
@@ -694,6 +965,206 @@
                     ${updatesHtml}
                     ${resolutionHtml}
                 </article>`;
+        }
+
+        // ============================================
+        // TIMELINE TAB
+        // ============================================
+        // Entries are ordered by cycle (the cycles rotate lightning → earth → water
+        // → fire → wind), then year, then month/day. Only cycle-dated records the text
+        // states outright appear here.
+        const CYCLE_NOTE = {
+            Deep:      'before the reckoning',
+            Lightning: 'the cycle before Earth',
+            Earth:     'two cycles before Fire',
+            Water:     'the cycle before Fire',
+            Fire:      'the present reckoning',
+            Wind:      'the cycle to come'
+        };
+
+        function cycleRank(c) {
+            const i = DATA.cycles.indexOf(c);
+            return i === -1 ? 99 : i;
+        }
+
+        function visibleTimeline() {
+            return DATA.timeline
+                .filter(e => e.chapter <= current)
+                .filter(e => tlFilter === 'all' || e.group !== 'court')
+                .sort((a, b) =>
+                    cycleRank(a.cycle) - cycleRank(b.cycle) ||
+                    (a.year ?? -1) - (b.year ?? -1) ||
+                    (a.monthIndex || 0) - (b.monthIndex || 0) ||
+                    (a.day || 0) - (b.day || 0));
+        }
+
+        // The tale opens in Ch.3, two days after the nameless woman's burial — an
+        // unspecified day of Fire 210. That is where the spiral sits.
+        const TALE_START_CHAPTER = 3;
+        const ANCHOR_CYCLE = 'Fire';
+        const ANCHOR_YEAR  = 210;
+
+        function cycleHead(cycle, empty) {
+            return `
+                <div class="tl-cycle${empty ? ' is-empty' : ''}">
+                    <h3>${cycle === 'Deep' ? 'Before the cycles' : cycle + ' Cycle'}</h3>
+                    <span class="tl-cycle-note">${CYCLE_NOTE[cycle] || ''}</span>
+                </div>`;
+        }
+
+        function anchorHTML() {
+            return `
+                <div class="tl-anchor">
+                    <span class="tl-spiral">${spiralSVG()}</span>
+                    <span class="tl-anchor-label">Year ${ANCHOR_YEAR} of the Fire Cycle
+                        <small>the tale begins — two days after the nameless woman is buried.
+                        No closer date is ever given.</small>
+                    </span>
+                </div>`;
+        }
+
+        function bandHTML(band) {
+            const isTale  = band.items.some(e => e.tale);
+            const isReign = band.items.every(e => e.kind === 'reign');
+            const span    = band.items[0].yearEnd;
+            // the anchor above already names this year — don't repeat it
+            const isAnchored = band.cycle === ANCHOR_CYCLE && band.year === ANCHOR_YEAR;
+
+            return `
+                <div class="tl-band${isTale ? ' is-tale' : ''}${isReign ? ' is-reign' : ''}">
+                    <div class="tl-year">${isAnchored ? '' : (band.year === null ? '—' : band.year)}${span ? `<small>to ${span}</small>` : ''}</div>
+                    <div class="tl-items">${band.items.map(renderTlItem).join('')}</div>
+                </div>`;
+        }
+
+        function renderTimeline() {
+            const entries = visibleTimeline();
+            tlCountEl.textContent = DATA.timeline.filter(e => e.chapter <= current).length;
+
+            const showAnchor = current >= TALE_START_CHAPTER;
+            if (!entries.length && !showAnchor) {
+                timelineEl.innerHTML = `<p class="empty-note">No dates have been stated yet at chapter ${current}.</p>`;
+                return;
+            }
+
+            // group consecutive entries that share a cycle+year into one band
+            const bands = [];
+            entries.forEach(e => {
+                const prev = bands[bands.length - 1];
+                if (prev && prev.cycle === e.cycle && prev.year === e.year && !e.yearEnd && !prev.items[0].yearEnd) {
+                    prev.items.push(e);
+                } else {
+                    bands.push({ cycle: e.cycle, year: e.year, items: [e] });
+                }
+            });
+
+            let html = '<div class="tl-rail"></div><div class="tl-trail" id="tl-trail"></div>'
+                     + '<div class="tl-dotted" id="tl-dotted"></div><div class="tl-dot" id="tl-dot"></div>';
+
+            // Every cycle is named in turn, in order, whether or not anything is dated
+            // inside it yet — so Lightning always follows "Before the cycles."
+            DATA.cycles.forEach(cycle => {
+                const mine = bands.filter(b => b.cycle === cycle);
+                const anchorsHere = showAnchor && cycle === ANCHOR_CYCLE;
+
+                if (!mine.length && !anchorsHere) {
+                    html += cycleHead(cycle, true) + '<p class="tl-empty-cycle">No dates recorded yet.</p>';
+                    return;
+                }
+
+                html += cycleHead(cycle, false);
+
+                let anchorDone = false;
+                mine.forEach(band => {
+                    if (anchorsHere && !anchorDone && band.year !== null && band.year >= ANCHOR_YEAR) {
+                        html += anchorHTML();
+                        anchorDone = true;
+                    }
+                    html += bandHTML(band);
+                });
+                if (anchorsHere && !anchorDone) html += anchorHTML();
+            });
+
+            // the nights in Komorebi Mura hang off the end, past a gap nobody dates
+            html += `
+                <div class="tl-frame" id="tl-frame">
+                    <span class="tl-frame-label">The telling
+                        <small>Komorebi Mura, after the Fall — the nights Naruto tells this to
+                        Hanabi and Neji. No year is ever given.</small>
+                    </span>
+                </div>`;
+
+            timelineEl.innerHTML = html;
+            positionTrail();
+        }
+
+        function renderTlItem(e) {
+            return `
+                <div class="tl-item${e.tale ? ' is-tale' : ''}">
+                    <div class="tl-item-head">
+                        <span class="tl-title">${fmt(e.title)}</span>
+                        ${e.dateLabel ? `<span class="tl-date">${fmt(e.dateLabel)}</span>` : ''}
+                        <span class="tl-kind ${e.kind}">${e.kind}</span>
+                        <span class="tl-src">CH. ${e.chapter}</span>
+                    </div>
+                    ${e.detail ? `<p class="tl-detail">${fmt(e.detail)}</p>` : ''}
+                </div>`;
+        }
+
+        // The trail runs from the spiral to the single dot — the furthest point the tale
+        // has reached at the selected chapter. Past the dot, a dotted run of unknown
+        // length reaches the nights of the telling.
+        function positionTrail() {
+            const trail  = document.getElementById('tl-trail');
+            const dot    = document.getElementById('tl-dot');
+            const dotted = document.getElementById('tl-dotted');
+            const frame  = document.getElementById('tl-frame');
+            if (!trail || !dot || !dotted || !frame) return;
+
+            const anchor = timelineEl.querySelector('.tl-anchor');
+            if (!anchor) {
+                trail.style.height = '0px';
+                dotted.style.height = '0px';
+                dot.style.display = 'none';
+                return;
+            }
+
+            // measured against the timeline box, since items nest inside bands
+            const base = timelineEl.getBoundingClientRect().top;
+            const midOf  = el => { const r = el.getBoundingClientRect(); return r.top - base + r.height / 2; };
+            const headOf = el => el.getBoundingClientRect().top - base + 10;
+
+            // a year can hold many entries, so the dot tracks the last dated moment of
+            // the tale itself — not the last year band it happens to fall in
+            const taleItems = timelineEl.querySelectorAll('.tl-item.is-tale');
+            const last = taleItems[taleItems.length - 1];
+
+            const frameCentre = midOf(frame);
+            const start = midOf(anchor);
+            const head  = last ? headOf(last) : start;
+
+            trail.style.top = start + 'px';
+            trail.style.height = Math.max(0, head - start) + 'px';
+
+            dot.style.display = '';
+            dot.style.top = (head - 7) + 'px';
+
+            dotted.style.top = head + 'px';
+            dotted.style.height = Math.max(0, frameCentre - head) + 'px';
+        }
+
+        // An Uzumaki spiral: half-turns of steadily growing radius, alternating sides.
+        function spiralSVG() {
+            return `<svg viewBox="0 0 40 40" aria-hidden="true">
+                <path d="M20 20
+                         a2 2 0 0 1 4 0
+                         a3.5 3.5 0 0 1 -7 0
+                         a5 5 0 0 1 10 0
+                         a6.5 6.5 0 0 1 -13 0
+                         a8 8 0 0 1 16 0
+                         a9.5 9.5 0 0 1 -19 0"
+                      fill="none" stroke="#b01c1c" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>`;
         }
 
         init();

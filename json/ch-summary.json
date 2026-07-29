@@ -406,7 +406,7 @@
     },
     {
       "id": "tenjin",
-      "title": "Tenjin is alive, and has turned",
+      "title": "Tenjin",
       "chapter": 18,
       "scope": "tale",
       "weight": "master",
@@ -443,7 +443,7 @@
     },
     {
       "id": "traitor",
-      "title": "A traitor inside Uzushio",
+      "title": "Rats Inside",
       "chapter": 39,
       "scope": "tale",
       "weight": "master",
@@ -661,7 +661,7 @@
     },
     {
       "id": "scattered",
-      "title": "The party is scattered",
+      "title": "A Scattered Party",
       "chapter": 69,
       "scope": "tale",
       "weight": "thread",
@@ -756,7 +756,7 @@
     },
     {
       "id": "betrayal",
-      "title": "Kushimaru's betrayal",
+      "title": "Kushimaru's Betrayal",
       "chapter": 83,
       "scope": "tale",
       "weight": "master",

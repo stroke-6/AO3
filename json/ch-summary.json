@@ -165,7 +165,22 @@
       "chapter": 2,
       "scope": "frame",
       "weight": "master",
-      "text": "The cataclysm that froze and broke the world, a few years before the telling. \"I alone know what truly happened.\" Rumour links it to the Uzumaki in some way.",
+      "text": "The cataclysm that broke the world, years before the telling. \"I alone know what truly happened.\" Rumour links it to the Uzumaki in some way.",
+      "updates": [
+        { "chapter": 2, "text": "Uzushio was already in the sky when Kushina was a child... Or was it?" },
+		{ "chapter": 5, "text": "\"We used to have snow, before.\"" },
+        { "chapter": 7, "text": "\"They are cursed\[...\] Given this truth, is it any wonder that the Uzumaki fled to the heavens…?\"" },
+        { "chapter": 26, "text": "When Shiori was younger, Uzushio was still part of the land." }
+
+      ]
+    },
+	{
+      "id": "the-rise",
+      "title": "The Rise",
+      "chapter": 2,
+      "scope": "frame",
+      "weight": "master",
+      "text": "Uzushio rose to the heavens, years ago. How, and why?",
       "updates": [
         { "chapter": 7, "text": "Named from the Hyūga side: the **Night of Crimson**, the **Shattering**." }
       ]
@@ -185,8 +200,8 @@
       ]
     },
     {
-      "id": "scripture",
-      "title": "Scripture",
+      "id": "soul-scripture",
+      "title": "Soul Scripture",
       "chapter": 1,
       "scope": "frame",
       "weight": "master",
@@ -289,7 +304,7 @@
       "chapter": 2,
       "scope": "frame",
       "weight": "thread",
-      "text": "One of the possible beginnings he considers and discards: \"when I saw her in battle.\" Who?",
+      "text": "One of the possible beginnings Naruto considers and discards: \"when I saw her in battle.\" Who?",
 	  "updates": [
         { "chapter": 14, "text": "Could it be Aiko?" },
 		{ "chapter": 20, "text": "Okay, probably not Aiko." },
@@ -410,7 +425,7 @@
       "chapter": 18,
       "scope": "tale",
       "weight": "master",
-      "text": "Konoha's master Sealweaver, dead and grieved, is the green-eyed man behind the airship. Why he turned — and how he \"died\" — is a mystery.",
+      "text": "Konoha's master Sealweaver, dead and grieved, is the green-eyed man who boarded the airship. Why he turned — and how he \"died\" — is a mystery.",
       "updates": [
         { "chapter": 20, "text": "He hints he knows the hidden cause of Kushina's illness, and offers to teach Naruto." },
         { "chapter": 51, "text": "He carries **two Sealed Arts** and is fully lucid, which by every theory should have destroyed his mind." },
@@ -763,7 +778,7 @@
       "text": "After being tended, carried, and saved from drowning twice, the man turns a Kiri hunter with the daimyō's coin, says *\"Sorry you trusted me,\"* and puts Naruto down with his own lightning — while Yasaka is fighting to keep the Beast off him. He wakes up as cargo, bound for the man who built the whole trap. Nobody who could help him knows he is gone.",
 	  "resolution": {
 		"chapter": 83,
-        "text": "Have you ever read 'The Scorpion and the Frog?'."
+        "text": "Have you ever read 'The Scorpion and the Frog'?"
       }
 	},
     {

@@ -265,7 +265,7 @@
     },
     {
       "id": "nagato-gojo",
-      "title": "Nagato led them, not Gojō",
+      "title": "Nagato led them, not Shiori",
       "chapter": 7,
       "scope": "frame",
       "weight": "thread",
@@ -329,11 +329,10 @@
       "scope": "tale",
       "weight": "master",
       "text": "The test says Naruto is not what he wants to be.",
-	  "updates": [{ "chapter": 9, "text": "Hero found a way!" }],
-      "resolution": {
-        "chapter": 10,
-        "text": "It was Gojō shit."
-      }  
+	  "updates": [
+	  { "chapter": 9, "text": "Hero found a way!" },
+	  { "chapter": 10, "text": "It sure sounds like Gojō shit." }
+	  ]
     },
     {
       "id": "gojo",
@@ -540,7 +539,7 @@
       "chapter": 31,
       "scope": "tale",
       "weight": "thread",
-      "text": "Three spirits in a cave watch him and his seal, and one signs *silence* and traces symbols against his skin in recognition. Otsuru sees nothing.",
+      "text": "Three spirits in a cave watch Naruto and his seal, and one signs *silence* and traces symbols against his skin in recognition. Otsuru sees nothing.",
       "updates": [
 		{ "chapter": 50, "text": "Sanjo can do it too!" },
         { "chapter": 66, "text": "Shunryō senses **yōki clinging to him** — in and around him, and for some time. Which shouldn't be possible unless he reached back." },

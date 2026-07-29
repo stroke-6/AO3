@@ -20,7 +20,7 @@
       "title": "The Silent Tempest",
       "start": 12,
       "end": 25,
-      "blurb": "A company of five leaves the clouds under forged names aboard a Land of Iron airship. What looks like a diplomatic escort is a trap: masked killers, a deer-yōkai, and a green-eyed man who turns out to be **Uzumaki Tenjin**, alive. Naruto learns what sealing costs when it's used on people. **Shiori** and **Ryūjin** die; **Aiko** dies; **Nagato** tears the sky open getting free, and the survivors are scattered. In the frame, the Hyūga discover the telling is doing something to their memories; they choose to keep listening anyway."
+      "blurb": "A company of six leaves the clouds under forged names aboard a Land of Iron airship. What looks like a diplomatic escort is a trap: masked killers, a deer-yōkai, and a green-eyed man who turns out to be **Uzumaki Tenjin**, alive. Naruto learns what sealing costs when it's used on people. **Shiori** and **Ryūjin** die; **Aiko** dies; **Nagato** tears the sky open getting free, and the survivors are scattered. In the frame, the Hyūga discover the telling is doing something to their memories; they choose to keep listening anyway."
     },
     {
       "id": "iron",
@@ -227,7 +227,7 @@
     },
     {
       "id": "hanabi-familiar",
-      "title": "Why Hanabi feels familiar",
+      "title": "A Strange Familiarity",
       "chapter": 1,
       "scope": "frame",
       "weight": "thread",
@@ -243,7 +243,7 @@
     },
     {
       "id": "shinpachi-silence",
-      "title": "Never Mentioned",
+      "title": "Never-Mentioned",
       "chapter": 7,
       "scope": "frame",
       "weight": "thread",
@@ -274,7 +274,7 @@
     },
     {
       "id": "company-of-five",
-      "title": "The company of five",
+      "title": "A Company of Five",
       "chapter": 2,
       "scope": "frame",
       "weight": "thread",
@@ -284,8 +284,8 @@
       ]
     },
     {
-      "id": "woman-in-battle",
-      "title": "The woman he saw in battle",
+      "id": "fierce-as-a-tempest",
+      "title": "Fierce as a Tempest",
       "chapter": 2,
       "scope": "frame",
       "weight": "thread",
@@ -361,7 +361,7 @@
     },
     {
       "id": "selection",
-      "title": "The child Selection",
+      "title": "The Selection",
       "chapter": 5,
       "scope": "tale",
       "weight": "thread",
@@ -430,7 +430,7 @@
     },
     {
       "id": "shiori-gift",
-      "title": "Shiori's dying gift",
+      "title": "Shiori's Dying Gift",
       "chapter": 20,
       "scope": "tale",
       "weight": "master",
@@ -491,7 +491,7 @@
     },
     {
       "id": "cold-voice",
-      "title": "The cold voice is his own",
+      "title": "The Cold Voice Is His Own",
       "chapter": 49,
       "scope": "tale",
       "weight": "thread",
@@ -522,7 +522,7 @@
     },
     {
       "id": "yokai-sight",
-      "title": "He can see them",
+      "title": "To See Beyond the Veil",
       "chapter": 31,
       "scope": "tale",
       "weight": "thread",
@@ -549,7 +549,7 @@
     },
     {
       "id": "ink-blood",
-      "title": "The Ink-Blood nightmare",
+      "title": "Ink-Blood Nightmare",
       "chapter": 30,
       "scope": "tale",
       "weight": "thread",
@@ -625,7 +625,7 @@
     },
     {
       "id": "scrubbed-lore",
-      "title": "Who scrubbed the lore",
+      "title": "Scrubbed Lore",
       "chapter": 67,
       "scope": "tale",
       "weight": "master",
@@ -776,7 +776,7 @@
     },
     {
       "id": "eiji",
-      "title": "The parable of Eiji",
+      "title": "The Parable of Eiji",
       "chapter": 9,
       "scope": "tale",
       "weight": "thread",

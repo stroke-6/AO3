@@ -810,15 +810,15 @@
 
     { "id": "kyosei",      "cycle": "Deep",  "year": null, "dateLabel": "said to be a thousand years old", "chapter": 13, "kind": "lore",
       "title": "Kyosei is born",
-      "detail": "Shinpachi, on why the sealing tongue carried the Five Nations with it." },
+      "detail": "According to Shinpachi." },
 
     { "id": "kosetsu",     "cycle": "Earth", "year": 22,  "dateLabel": "the twenty-second year", "chapter": 82, "kind": "document",
-      "title": "*Of the Great Beasts*, in nine parts — the sixth part ends",
-      "detail": "Uzu no Kōsetsu, Reader of the Third Rank, House of Sealing Arts. The Saiken volume: the Sage's portioning, the Namekuji claim, and \"no seal was ever laid on the Sixth.\"" },
+      "title": "*Of the Great Beasts*, in nine parts — the sixth part is completed",
+      "detail": "by Uzu no Kōsetsu, Reader of the Third Rank, House of Sealing Arts." },
 
     { "id": "daiten",      "cycle": "Water", "year": 47,  "chapter": 61, "kind": "event",
       "title": "Mizuhara Daiten is killed by his own retainers",
-      "detail": "Seventh Head of the Mizuhara Clan — not enemy blades, but sworn men who found their oaths hollow against their grievances." },
+      "detail": "Seventh Head of the Mizuhara Clan, killed not enemy blades, but sworn men who found their oaths hollow against their grievances." },
 
     { "id": "ishume",      "cycle": "Water", "year": 94,  "monthIndex": 6, "dateLabel": "15th of the Rain-Month", "chapter": 29, "kind": "document",
       "title": "Ishume of the Gakusha-ke, on the spiral",
@@ -826,44 +826,15 @@
 
     { "id": "shizuri",     "cycle": "Water", "year": 127, "monthIndex": 11, "dateLabel": "3rd of the Frost-Moon", "chapter": 29, "kind": "document",
       "title": "Shizuri of the Kaihatsu-ke — marginalia on Master Enji's *Sealed Lectures*",
-      "detail": "The Compression school's founding argument. A century later, Naehiro calls her methods outdated." },
+      "detail": "The Compression school's founding argument. Much later, Naehiro calls her methods outdated." },
 
     { "id": "naehiro",     "cycle": "Fire",  "year": 17,  "monthIndex": 12, "dateLabel": "16 December", "chapter": 29, "kind": "document",
       "title": "Naehiro of the Gakusha-ke rules against Compression",
       "detail": "\"Compression holds no inherent superiority over other forms.\" Naruto will reach the opposite conclusion alone, 194 years later." },
 
-    { "id": "hiroaki",     "cycle": "Fire",  "year": 94,  "yearEnd": 118, "chapter": 66, "kind": "reign", "group": "court",
-      "title": "Suzume Hiroaki, \"the Tidebringer\"",
-      "detail": "Not the first to unite the coastal lords, whatever the rumour; said to have regretted it on his deathbed." },
-    { "id": "takeshi-d",   "cycle": "Fire",  "year": 115, "chapter": 66, "kind": "event", "group": "court",
-      "title": "Takeshi dies young and childless" },
-    { "id": "hirotane",    "cycle": "Fire",  "year": 118, "yearEnd": 139, "chapter": 66, "kind": "reign", "group": "court",
-      "title": "Suzume Hirotane, \"of the Calm Waters\"",
-      "detail": "Married Hōzuki Tamae — of the branch that would help found Kiri." },
-    { "id": "yoshiteru",   "cycle": "Fire",  "year": 131, "chapter": 66, "kind": "event", "group": "court",
-      "title": "Yoshiteru drowns at sea",
-      "detail": "Some say a storm. Others whisper piracy." },
-    { "id": "kiyomori",    "cycle": "Fire",  "year": 139, "yearEnd": 162, "chapter": 66, "kind": "reign", "group": "court",
-      "title": "Suzume Kiyomori, \"the Reef-Builder\"",
-      "detail": "Expanded the harbour at Shiosai; through Terumī Shizuka the line gained its thin Terumī connection." },
-    { "id": "akinobu",     "cycle": "Fire",  "year": 158, "chapter": 66, "kind": "event", "group": "court",
-      "title": "Akinobu dies of fever, without an heir" },
-    { "id": "masatsura",   "cycle": "Fire",  "year": 162, "yearEnd": 181, "chapter": 66, "kind": "reign", "group": "court",
-      "title": "Suzume Masatsura, \"the Storm's Eye\"",
-      "detail": "Melancholic, given to long silences and sudden passions." },
-
     { "id": "mito-texts",  "cycle": "Fire",  "year": 174, "chapter": 21, "kind": "document",
       "title": "Master Mito of the Kizoku-ke's barrier texts",
       "detail": "The originals the Sealing-Field manual is compiled from — annotated and applied by later hands." },
-
-    { "id": "harumasa",    "cycle": "Fire",  "year": 179, "chapter": 66, "kind": "event", "group": "court",
-      "title": "Harumasa, frail from birth, succumbs" },
-    { "id": "nobara",      "cycle": "Fire",  "year": 180, "chapter": 66, "kind": "event", "group": "court",
-      "title": "Haruki Nobara dies — Masatsura follows within the year",
-      "detail": "He was not yet forty." },
-    { "id": "harunaga",    "cycle": "Fire",  "year": 181, "yearEnd": 196, "chapter": 66, "kind": "reign", "group": "court",
-      "title": "Kushimoto Harunaga takes the seat",
-      "detail": "Kushimoto rather than Suzume — scandalous to traditionalists, agreeable to the merchant houses that funded him." },
 
     { "id": "shiori-kyosei", "cycle": "Fire", "year": 186, "monthIndex": 2, "dateLabel": "2 February", "chapter": 13, "kind": "document",
       "title": "Shiori of the Kizoku-ke, on Kyosei",
@@ -873,18 +844,13 @@
       "title": "Shiori of the Kizoku-ke, on the Hinin-ke",
       "detail": "The outcast house: waste, burial, the undesirable work — essential, and low. Gojō's people." },
 
-    { "id": "tadakiyo",    "cycle": "Fire",  "year": 196, "yearEnd": 209, "chapter": 66, "kind": "reign", "group": "court",
-      "title": "Kushimoto Tadakiyo, \"the Deep Harbor\"" },
-
     { "id": "kushina-199", "cycle": "Fire",  "year": 199, "monthIndex": 8, "dateLabel": "9 August", "chapter": 46, "kind": "document",
-      "title": "Kushina of the Bushi-ke writes",
+      "title": "Kushina of the Bushi-ke writes about her sister's stubbornness",
       "detail": "\"...I don't have high hopes here.\"" },
 
-    { "id": "saki",        "cycle": "Fire",  "year": 202, "chapter": 66, "kind": "event", "group": "court",
+    { "id": "saki",        "cycle": "Fire",  "year": 202, "chapter": 66, "kind": "event",
       "title": "Arisugawa Saki dies in childbirth",
-      "detail": "Leaving Tadahiro a single daughter: Yukina." },
-    { "id": "sadayuki",    "cycle": "Fire",  "year": 203, "chapter": 66, "kind": "event", "group": "court",
-      "title": "Sadayuki, the daimyō's brother and advisor, dies" },
+      "detail": "Leaving Kushimoto Tadahiro a single daughter: Yukina." },
 
     { "id": "yasaka-204",  "cycle": "Fire",  "year": 204, "monthIndex": 7, "dateLabel": "30 July", "chapter": 46, "kind": "document",
       "title": "Yasaka of the Bushi-ke, on chain work",
@@ -892,27 +858,27 @@
 
     { "id": "kushina-207", "cycle": "Fire",  "year": 207, "monthIndex": 7, "dateLabel": "7 July", "chapter": 45, "kind": "document",
       "title": "Kushina of the Bushi-ke, on her little sister",
-      "detail": "\"She's my little sister, so I get to be proud of her whether she likes it or not!\" — written four years before Naruto learns they are sisters at all." },
+      "detail": "\"She's my little sister, so I get to be proud of her whether she likes it or not!\"" },
 
     { "id": "gojo-208",    "cycle": "Fire",  "year": 208, "monthIndex": 7, "dateLabel": "3 July", "chapter": 17, "kind": "document",
       "title": "Gojō writes on Sealing Fields",
       "detail": "\"Which means finishing the job, usually.\"" },
-
-    { "id": "ordinance",   "cycle": "Fire",  "year": 208, "chapter": 83, "kind": "document",
-      "title": "Standing Ordinance of the Western Fleet, sixth revision",
-      "detail": "Kiri does not leave its own in the sea; what the recovery costs, the Mist collects from the enemy in due season, with interest. The ordinance that sends three hunters onto Naruto's raft." },
-
-    { "id": "tadahiro",    "cycle": "Fire",  "year": 209, "chapter": 66, "kind": "reign", "group": "court",
+	  
+    { "id": "tadahiro",    "cycle": "Fire",  "year": 209, "chapter": 66, "kind": "event",
       "title": "Kushimoto Tadahiro, \"the Young Tide,\" takes the seat",
-      "detail": "Fifty-five years old at the time of compiling. The man who will bait the Shelf with his own daughter." },
+      "detail": "Fifty-five years old at the time of compiling." },
 
     { "id": "census",      "cycle": "Fire",  "year": 210, "chapter": 41, "kind": "document",
       "title": "Kiyoteru census: 87,600",
       "detail": "Administrative Annex 7-C. Mount Tesshi, Iron Country. \"The City of Two Faces.\"" },
+	  
+	{ "id": "brazier",     "cycle": "Fire",  "year": 211, "monthIndex": 6, "dateLabel": "7th Bell, 1st Brazier Cycle", "chapter": 41, "kind": "document", "tale": true,
+      "title": "Joint Council of Kiyoteru — authorization",
+      "detail": "Local reckoning, not the Fire Cycle. Bells and braziers." },
 
     { "id": "shin-nov",    "cycle": "Fire",  "year": 210, "monthIndex": 11, "dateLabel": "12 November", "chapter": 10, "kind": "document", "tale": true,
       "title": "Shinpachi of the Gakusha-ke: sealing connects mind, body, chakra, symbol, world",
-      "detail": "The notes he will hand Naruto on the eve of departure." },
+      "detail": "The notes a rather young Shinpachi will hand Naruto on the eve of their departure." },
     { "id": "shin-dec5",   "cycle": "Fire",  "year": 210, "monthIndex": 12, "dateLabel": "5 December", "chapter": 10, "kind": "document", "tale": true,
       "title": "Shinpachi: the Eight Pillars, all of which may be Awakened",
       "detail": "\"A seal leaning too heavily on one aspect may become unstable or fail.\"" },
@@ -920,8 +886,8 @@
       "title": "Shinpachi's two-part binding combination table" },
 
     { "id": "tenjin-died", "cycle": "Fire",  "year": 211, "monthIndex": 4, "dateLabel": "20 April", "chapter": 6, "kind": "event", "tale": true,
-      "title": "Uzumaki Tenjin dies",
-      "detail": "Konoha's latest master Sealweaver, dispatched east a few days earlier. Konoha's answer is a selection: two children. — He does not die. (Ch.18)" },
+      "title": "Uzumaki Tenjin is declared dead",
+      "detail": "Konoha's latest master Sealweaver, dispatched east a few days earlier. Konoha's answer is a selection: two children." },
 
     { "id": "naruto-may11","cycle": "Fire",  "year": 211, "monthIndex": 5, "day": 11, "dateLabel": "11 May", "chapter": 12, "kind": "document", "tale": true,
       "title": "Naruto of the Hōshi-ke, on a rather elusive craft",
@@ -937,10 +903,6 @@
       "title": "Naruto writes to Shinpachi and to Lady Mito",
       "detail": "\"I don't know if you made it off the airship.\" Smuggled out of Kiyoteru with an assassin's earnings." },
 
-    { "id": "brazier",     "cycle": "Fire",  "year": 211, "monthIndex": 6, "dateLabel": "7th Bell, 1st Brazier Cycle", "chapter": 41, "kind": "document", "tale": true,
-      "title": "Joint Council of Kiyoteru — authorization",
-      "detail": "Local reckoning, not the Fire Cycle. Bells and braziers." },
-
     { "id": "kiyoteru",    "cycle": "Fire",  "year": 211, "monthIndex": 6, "day": 20, "dateLabel": "20 June", "chapter": 50, "kind": "event", "tale": true,
       "title": "Kiyoteru is destroyed",
       "detail": "Three minutes before the second temple bell. Of eighty-nine thousand, a few thousand live. Iron files it as a rogue-shinobi attack; the survivors call it the City of No Face." },
@@ -948,9 +910,14 @@
     { "id": "water-brief", "cycle": "Fire",  "year": 211, "monthIndex": 7, "day": 1, "dateLabel": "1 July", "chapter": 55, "kind": "document", "tale": true,
       "title": "Yasaka of the Bushi-ke, on Water Country",
       "detail": "The long briefing on the civil war, the factions and the Mizukage. \"Shit sucks, Tomato.\"" },
+	  
+	{ "id": "shiho-arrival", "cycle": "Fire",  "year": 211, "monthIndex": 8, "day": 2, "dateLabel": "2 August", "chapter": 70, "kind": "event", "tale": true,
+      "title": "Naruto reaches the Shihō Shelf",
+      "detail": "Alone with Iwase Rikiishi." },
+	  
+	{ "id": "shiho-departure", "cycle": "Fire",  "year": 211, "monthIndex": 8, "day": 16, "dateLabel": "16 August", "chapter": 83, "kind": "event", "tale": true,
+      "title": "Naruto leaves the Shihō Shelf",
+      "detail": "Along with Kuriarare Kushimaru and a Kiri shinobi." }
 
-    { "id": "court-compiled", "cycle": "Fire", "year": 211, "monthIndex": 9, "dateLabel": "Month of the Receding Waters", "chapter": 66, "kind": "document", "group": "court",
-      "title": "Shiomura Genzō, Second Keeper of Tides, compiles the Water Court archives",
-      "detail": "The genealogy Naruto reads on the island — ending on a thirteen-year-old princess and a father who does not seem to be looking very hard." }
   ]
 }

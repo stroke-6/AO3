@@ -482,7 +482,7 @@
         .tl-band.is-tale::before { border-color: var(--accent); background: var(--bg-primary); }
         .tl-band.is-reign::before { border-radius: 2px; }
 
-        /* the one live dot — the furthest point the tale has reached so far */
+        /* the one live dot — the furthest point Naruto's tale has reached so far */
         .tl-dot {
             position: absolute;
             left: calc(5.5rem - 6px);
@@ -712,11 +712,6 @@
                 <span><i class="tl-swatch trail"></i> Ground the tale has covered</span>
                 <span><i class="tl-swatch dot"></i> Where the tale has reached</span>
                 <span><i class="tl-swatch gap"></i> Undated gap</span>
-                <span>Every date below is one stated in the text itself.</span>
-            </div>
-            <div class="filters">
-                <button class="filter active" data-tlfilter="story">The story's own dates</button>
-                <button class="filter" data-tlfilter="all">Include the Water Court line</button>
             </div>
             <div id="timeline" class="tl"></div>
         </section>
@@ -739,7 +734,6 @@
         let DATA = null;
         let current = 1;          // selected chapter (the spoiler ceiling)
         let filter = 'all';       // active mystery filter
-        let tlFilter = 'story';   // 'story' hides the Water Court genealogy
 
         const chapterSelect = document.getElementById('chapter-select');
         const progressEl    = document.getElementById('progress');
@@ -807,15 +801,6 @@
                         btn.classList.add('active');
                         filter = btn.dataset.filter;
                         renderMysteries();
-                    });
-                });
-
-                document.querySelectorAll('[data-tlfilter]').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        document.querySelectorAll('[data-tlfilter]').forEach(b => b.classList.remove('active'));
-                        btn.classList.add('active');
-                        tlFilter = btn.dataset.tlfilter;
-                        renderTimeline();
                     });
                 });
 
@@ -978,7 +963,7 @@
             Lightning: 'the cycle before Earth',
             Earth:     'two cycles before Fire',
             Water:     'the cycle before Fire',
-            Fire:      'the present reckoning',
+            Fire:      'the cycle of Naruto\'s tale',
             Wind:      'the cycle to come'
         };
 
@@ -990,7 +975,6 @@
         function visibleTimeline() {
             return DATA.timeline
                 .filter(e => e.chapter <= current)
-                .filter(e => tlFilter === 'all' || e.group !== 'court')
                 .sort((a, b) =>
                     cycleRank(a.cycle) - cycleRank(b.cycle) ||
                     (a.year ?? -1) - (b.year ?? -1) ||
@@ -1017,8 +1001,7 @@
                 <div class="tl-anchor">
                     <span class="tl-spiral">${spiralSVG()}</span>
                     <span class="tl-anchor-label">Year ${ANCHOR_YEAR} of the Fire Cycle
-                        <small>the tale begins — two days after the nameless woman is buried.
-                        No closer date is ever given.</small>
+                        <small>the tale begins — two days after the nameless woman is buried.</small>
                     </span>
                 </div>`;
         }

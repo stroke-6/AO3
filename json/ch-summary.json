@@ -634,28 +634,6 @@
       ]
     },
     {
-      "id": "mercy",
-      "title": "Mercy",
-      "chapter": 64,
-      "scope": "tale",
-      "weight": "thread",
-      "text": "Over Otsuru's pyre, against everything she believed: \"I don't think I can find it in me to be merciful.\"",
-      "updates": [
-        { "chapter": 65, "text": "In the frame, years later, he says he is only *now* learning she was right." }
-      ]
-    },
-    {
-      "id": "lantern",
-      "title": "Otsuru's lantern",
-      "chapter": 64,
-      "scope": "tale",
-      "weight": "thread",
-      "text": "He keeps the funeral lantern.",
-      "updates": [
-        { "chapter": 65, "text": "He is still carrying it — sealed over his heart — in the frozen present. He shows Hanabi." }
-      ]
-    },
-    {
       "id": "scrubbed-lore",
       "title": "Who scrubbed the lore",
       "chapter": 67,

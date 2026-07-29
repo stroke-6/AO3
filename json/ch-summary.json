@@ -1,0 +1,822 @@
+{
+  "meta": {
+    "title": "Crimson Horizons",
+    "latestChapter": 83,
+    "updated": "2026-07-29"
+  },
+
+  "arcs": [
+    {
+      "id": "uzushio",
+      "numeral": "I",
+      "title": "The Islands in the Sky",
+      "start": 1,
+      "end": 11,
+      "blurb": "The frame story starts after the Fall: two Hyūga come to a frozen hamlet looking for an Uzumaki Sealweaver, and find **Sanjo** — which, as it happens, is not Uzumaki Naruto's real name. His price for Neji's freedom is the whole story. It begins on the sky-islands of **Uzushio**, with a funeral, a boy who wants to be a Sealweaver and is told he can't be, and a mother coughing blood. A yōkai destroys the fishing fleet, **Karin** dies, the Elders bury the truth, and Naruto forces his way onto the roster for Konoha by trading away something of himself."
+    },
+    {
+      "id": "airship",
+      "numeral": "II",
+      "title": "The Silent Tempest",
+      "start": 12,
+      "end": 25,
+      "blurb": "A company of five leaves the clouds under forged names aboard a Land of Iron airship. What looks like a diplomatic escort is a trap: masked killers, a deer-yōkai, and a green-eyed man who turns out to be **Uzumaki Tenjin**, alive. Naruto learns what sealing costs when it's used on people. **Shiori** and **Ryūjin** die; **Aiko** dies; **Nagato** tears the sky open getting free, and the survivors are scattered. In the frame, the Hyūga discover the telling is doing something to their memories; they choose to keep listening anyway."
+    },
+    {
+      "id": "iron",
+      "numeral": "III",
+      "title": "Drifters of the Iron Roads",
+      "start": 26,
+      "end": 39,
+      "blurb": "Half-frozen and hunted, Naruto is taken in by the **Fujiki** nomads, and for the first time his work is useful instead of judged. He rediscovers compression sealing by pouring his own blood into it. With **Otsuru** he crosses the Iron passes, boards a train, meets a ronin called **Waka**, kills a yōkai wearing a man's skin, and finds a caged boy in a vault car who eats disease — which means, at last, a cure for his mother."
+    },
+    {
+      "id": "kiyoteru",
+      "numeral": "IV",
+      "title": "The City of Night",
+      "start": 40,
+      "end": 50,
+      "blurb": "**Kiyoteru**, a city drowning in debt, is where Naruto becomes something else. He takes contracts for a woman named Yūgiri, kills a man and some, and hides all of it from his friends. **Yasaka** finds him; the Tower breaks open; and the boy who absorbs sickness turns out to be the plague itself. Naruto kills his own cure to stop it, four days too late for eighty-nine thousand people."
+    },
+    {
+      "id": "seas",
+      "numeral": "V",
+      "title": "Scavengers of the Eastern Seas",
+      "start": 51,
+      "end": 58,
+      "blurb": "Judgement in the octopus realm, then a long run east by water. Naruto confesses his killings, watches a privateer butcher a slaver crew and feels nothing, and recognises the cold voice in his head as his own. **Mizuki Kaizen** and his sea dragon **Umeha** pull the company into Water Country's civil war. It is, briefly, a good stretch — training, a becalmed sea, a festival, a flute song in a tavern... And good things don't last."
+    },
+    {
+      "id": "tide",
+      "numeral": "VI",
+      "title": "Breaking Tide",
+      "start": 59,
+      "end": 65,
+      "blurb": "An Oathkeeper binds three children to silence about Kiyoteru. Then a false flag, a burning port, summer snow — and **Otsuru dies with a bone spike through her heart**, killed by a girl she tried to save. Waka burns himself alive inside his own armour to make a point of some sort. They escape on a bleeding dragon and leave her body behind. Naruto holds a lantern funeral on a cliff and decides he cannot find mercy in himself; in the frame, decades on, he is still carrying that lantern in a seal over his heart."
+    },
+    {
+      "id": "princess",
+      "numeral": "VII",
+      "title": "Maps Without Ink",
+      "start": 66,
+      "end": 72,
+      "blurb": "A clan broker offers a way out: find the Water Daimyō's missing daughter. The price is leaving Waka behind with her healers. At sea the world goes wrong — an empty ocean, a ghost ship, and a thing in the fog that wears Otsuru's drowned face to make Naruto reach for it. The boat capsizes. He washes up on the **Shihō Shelf** with a navigator, a poison, and no one left to hold him back."
+    },
+    {
+      "id": "shelf",
+      "numeral": "VIII",
+      "title": "The Shihō Shelf",
+      "start": 73,
+      "end": 83,
+      "blurb": "Naruto survives by being useful to the man who murdered his ally. **Kuriarare Kushimaru** marches him across a dying island, purging settlements under a false flag, until **Hoshigaki Shigure** arrives and the two Swordsmen tear each other apart over a boy neither considers a threat. Shigure dies. The Mizukage comes in person for vengeance, and Naruto — cornered — opens the Door. What answers is **Saiken**, the Six-Tails, and the Shelf ceases to exist. The rescue arrives straight into the cataclysm; and at the very end, the man he saved twice sells him."
+    }
+  ],
+
+  "chapters": [
+    { "n": 1,  "title": "Snow and Shadows",  "type": "frame", "summary": "Post-Fall, in the frozen hamlet of **Komorebi Mura**, Hanabi and Neji find the old villager **\"Sanjo.\"** He lifts Neji's Caged Bird Seal at a touch and is revealed as **Uzumaki Naruto**. His price: they hear the whole story, and write down what he tells them to." },
+    { "n": 2,  "title": "Scattered Recollections", "type": "frame", "summary": "A cold open — Naruto nearly dies on a sword and heals with golden chakra. He fences with the Hyūga, tests them with a lie about Kushina, lists his epithets and his crimes, and names Nagato, Morirama and Itachi. Where to begin? With a funeral." },
+    { "n": 3,  "title": "The Boy Who Wanted to Be a Sealweaver", "type": "tale", "summary": "Uzushio. The funeral of a nameless golden-eyed Elder. Naruto wants to weave seals like his father; **Noboru** tests him and returns two verdicts he refuses to accept — his affinity is **Chakra Conduit**, and Minato's death." },
+    { "n": 4,  "title": "Aunt Yasaka", "type": "tale", "summary": "**Yasaka** comes home. Her theory of sealing as restriction and vow, the grass-in-grass seal, the old Indra and Asura lore. Some lessons that might be taken the wrong way." },
+    { "n": 5,  "title": "Bindings", "type": "tale", "summary": "Naruto fails at sealing. **Kushina collapses at the winter matsuri**, coughing blood; the only named cure is **Senju Tsunade**. Yasaka and Kushina fight over letting him leave. Breaking into the Library, he meets a **golden-eyed shikigami man** who hands him a Monkey tag \"to see what you'd do.\"" },
+    { "n": 6,  "title": "Fool", "type": "tale", "summary": "The Fishing Ceremony. Naruto befriends **Karin** and **Shinpachi**; Karin helps him when he nearly drowns. Then a **Bake-kujira** annihilates the fleet — Karin dies — and the golden-eyed stranger falls out of the sky and kills it. \"Name's Gojō.\"" },
+    { "n": 7,  "title": "Hazy Moon", "type": "frame", "summary": "The Hyūga weigh the tale against what they know: **Nagato**, not Shiori, led a group to Konoha, and Shinpachi never once mentioned Naruto. The Fall is named — Night of Crimson, the Shattering. Naruto and Hanabi clash, then find they share a kind of guilt. He starts teaching them sealing." },
+    { "n": 8,  "title": "Monkey", "type": "tale", "summary": "The Elder Council interrogates the survivors and **buries the yōkai attack** as a chakra-bloated animal. Karin's funeral under the Great Tree. Gojō's feud with Denjo, and his creed of strength as absolution. At the urgent second **Selection**, Naruto makes the scroll glow — and Noboru sees what it cost him." },
+    { "n": 9,  "title": "A Silent Undertaking", "type": "tale", "summary": "The parable of **Eiji** and the price of Sacrifice. Noboru disowns him as a student. Naruto pleads before the council to be sent to Konoha for his mother's sake, and no one will vouch for him." },
+    { "n": 10, "title": "Pillars", "type": "tale", "summary": "He is **chosen** anyway, over better children. A brutal goodbye fight with Kushina — \"you're running away, like Yasaka.\" Shinpachi gives him his notes and teaches him the **Eight Pillars**, the Awakenings, and multi-part binds." },
+    { "n": 11, "title": "Long Lasting Gate", "type": "tale", "summary": "Departure eve. He meets **Ryūjin**, reconciles with his mother, and is given **Minato's leather journal**. Gojō flaunts an affair he shouldn't have had, and **Nagato** arrives inside a lightning strike to lead the escort." },
+    { "n": 12, "title": "Departure", "type": "tale", "summary": "The company flies off Uzushio on Gojō's winged shikigami. En route they lay out the danger: assassins, a decoy boat route, alliance politics, **a \"tool\" Konoha is rumoured to be building**, and a poisoned boy named Nobu. They make for an airship." },
+    { "n": 13, "title": "Altitudes", "type": "tale", "summary": "Aboard the Land of Iron airship **Silent Tempest** under forged names. Naruto can barely speak Kyosei; Shiori drills him until he can pass." },
+    { "n": 14, "title": "Sealed Art", "type": "tale", "summary": "Gojō explains the team's Sealed Arts and hedges around the yōkai — his **Oath** won't let him say more. On deck, Naruto befriends a civilian girl, **Aiko**." },
+    { "n": 15, "title": "A Deer in Moonlight", "type": "tale", "summary": "Shiori teaches the **\"Infinity\"** ideal and grieves a dead student named **Tenjin**. At dinner a **deer-yōkai**, a crimson-eyed man and masked killers take the ship; a hoof-tap folds reality and scatters everyone. Naruto is seized — \"the chosen spare.\"" },
+    { "n": 16, "title": "Silver Tongue", "type": "tale", "summary": "Locked in an Eight-Keys bind, Naruto escapes by **splitting his own chakra** to undo it from inside. Ryūjin's water catches him mid-fall and kills his captors. He finds Shinpachi." },
+    { "n": 17, "title": "First Flame, Second Ember", "type": "tale", "summary": "The boys fight through the ship. **Shinpachi kills his first man**; Naruto improvises seals. Overwhelmed, they are saved by **Shiori** unveiling her Sealing Field — she is a kunoichi known as **\"Soothsayer.\"**" },
+    { "n": 18, "title": "To be Chosen", "type": "tale", "summary": "Shiori pulls the enemy's plan out of a corpse: take the Chosen Children alive, **kill Nagato**. In the safe room, Aiko recoils from what Naruto is. Then the masked intruder puts Shiori down and unmasks: **Uzumaki Tenjin, alive.** \"It was a homecoming.\"" },
+    { "n": 19, "title": "Bitter Blood", "type": "tale", "summary": "Tenjin plays with them, holds Shiori in contempt, marks **Aiko**, and fights Shiori crippled — she loses a hand. In the frame, Hanabi and Neji argue fate against choice, and Naruto notes he was only \"chosen\" because Karin died." },
+    { "n": 20, "title": "Sacrifice", "type": "tale", "summary": "Tenjin **kills Aiko** — as a bomb — and then **kills Shiori**, who spends her death transferring a gift to both boys. He hints Kushina's illness has a cause no one has told Naruto, and offers to teach him. Then Gojō and Ryūjin arrive." },
+    { "n": 21, "title": "Sealing of a Different Kind", "type": "tale", "summary": "Masters, three ways. Tenjin tempts Gojō with freedom from the **Oaths**; Gojō refuses, heals Ryūjin, and fights on with a stolen sword." },
+    { "n": 22, "title": "Outcasts", "type": "tale", "summary": "They break Tenjin — and the deer-yōkai negates the water, and **Raimei cuts Ryūjin in half**. The cell is named. **Keishō was sacrificed to seal Nagato** with the Dead Demon Consuming Seal — and Nagato breaks out, tearing the sky." },
+    { "n": 23, "title": "Tempest", "type": "tale", "summary": "Nagato's storm-duel against the cell: Storm Release, a lightning array in the rain, a bone bloodline — held in check by a hostage. Gojō kills the deer and Gen'ei. Nagato seizes the collapsing space and throws everyone across the frozen mainland. Naruto lands alone in the snow." },
+    { "n": 24, "title": "Quiet", "type": "frame", "summary": "The first night ends. Three people, a fire, and the beginning of trust." },
+    { "n": 25, "title": "Trust", "type": "frame", "summary": "Hanabi and Neji work out that **their memories of the tale are being selectively altered** by his tags. They choose to trust him and keep listening." },
+    { "n": 26, "title": "Frost and Flame", "type": "tale", "summary": "Through Shiori's transferred memory, Naruto lives **young Shiori, Yume and Mito** in the old sea-Uzushio, and the Senju marriage-request that made the alliance. He wakes half-frozen in the north, healed by two **Fujiki** sisters, and hunted." },
+    { "n": 27, "title": "Drifters of the Iron Roads", "type": "tale", "summary": "With the Fujiki nomads in Iron. The airship fallout reaches him — Nagato's alias blamed, the Fire border shut — and Tenjin's **anti-summoning seal** has cut him off from Kaito. He barters four days of sealing work for passage." },
+    { "n": 28, "title": "Lamplight and Ink", "type": "tale", "summary": "He fails at storage seals; **Otsuru** befriends him; a lantern rite on a frozen lake for Shiori, Ryūjin and Aiko. First hint that he could anchor a fragment of himself in a seal." },
+    { "n": 29, "title": "Three Days", "type": "tale", "summary": "The real breakthrough: **compression storage**, powered by his own chakra and blood. The Fujiki celebrate him." },
+    { "n": 30, "title": "On the Road", "type": "tale", "summary": "**Otsuru** is chosen to guide him to the Fire border. He builds a personal travel-seal and suffers the **ink-blood nightmare** for the first time. They set out." },
+    { "n": 31, "title": "To Seek the Flame", "type": "tale", "summary": "The Iron passes; she teaches him the **Snow Step**. In a cave, three **yōkai** appear to him and no one else, watching his seal, signing recognition." },
+    { "n": 32, "title": "Under the Moon's Glare", "type": "tale", "summary": "A memory: Shiori **carving the Whisper art into her own skull**. Then a Kuroguma, an avalanche they barely live through, and red-eyed trackers closing in. He tells Otsuru about the spirits." },
+    { "n": 33, "title": "Hagane", "type": "tale", "summary": "They pass **Hagane**, burning thirty years from a war that broke Iron's neutrality. The plan: the train at Tenkūgane, forged courier papers, and chakra-suppressant pills he takes only reluctantly." },
+    { "n": 34, "title": "Silk-Wrapped Shit", "type": "tale", "summary": "In Tenkūgane he secretly **carves another seal into himself**. At the hot springs a ronin called **Waka** makes him, spars with him, extorts him, then covers for him. They board the train — and so does Waka, with the samurai." },
+    { "n": 35, "title": "He Who Tames the Iron Horse", "type": "tale", "summary": "Waka interrogates them; the pills hold. He is hunting his master's killer. And the samurai **Itsuya** is a **yōkai wearing his skin**." },
+    { "n": 36, "title": "Passenger in Skin", "type": "tale", "summary": "The yōkai attacks, speaking of the day the Uzumaki bound its kind and demanding something back. Waka's twin flame-swords, Otsuru, and Naruto's **blood-bullet \"Unseal\"** — which nearly kills him — put it down." },
+    { "n": 37, "title": "Captives", "type": "tale", "summary": "Framed by **Captain Sakaeguchi** and shackled. Waka gives his real name: **Ushiwakamaru**, last of the burned Minamoto. They break chakra-draining shackles with a carved glyph, an Unseal, and Otsuru counting the train's curves." },
+    { "n": 38, "title": "Young Bull", "type": "tale", "summary": "Through the guards to a vault car, where Naruto picks a seal-lock and finds **Kesshin** — a caged boy who **absorbs disease**. Which means he could cure his mother." },
+    { "n": 39, "title": "Cursed Child", "type": "tale", "summary": "The airship route was **betrayed from inside Uzushio**. Sakaeguchi attacks; his suppressed chakra backfires; they jump into a river. Hidden in Kiyoteru by **Yūgiri**, forbidden chakra for two weeks." },
+    { "n": 40, "title": "City of Night", "type": "tale", "summary": "Kiyoteru and its crushing debt. Snubbed by the upper city, Naruto steals a purse — and comes home to Yūgiri saying: \"I want you to kill someone for me.\"" },
+    { "n": 41, "title": "What Silver Cannot Weigh", "type": "tale", "summary": "He assassinates the silk merchant **Daizen** with a hemorrhage seal, then learns he killed the more decent of the two men. A hint of coldness." },
+    { "n": 42, "title": "A Shinobi's Oldest Companion", "type": "tale", "summary": "He keeps killing, in secret, and trades the work for barrier books, intel, and **smuggled letters to Shinpachi and Lady Mito**. The trio plan to go southeast. He tells them nothing." },
+    { "n": 43, "title": "The Tower of Withheld Light", "type": "tale", "summary": "Kesshin is in **Tower Nine**, above the plague tunnels. Infiltrating, Naruto meets an ash-yōkai and reaches a warded hall full of them — and hears the whisper: **\"the Night of the Third Light.\"**" },
+    { "n": 44, "title": "Frozen Hearts", "type": "tale", "summary": "Captured by **Kimura**, who explains what Kesshin actually is: a contamination-vessel, the plague's source, used to cure a dying lord's son. At the block, **Yasaka comes through the wall.**" },
+    { "n": 45, "title": "Sister", "type": "tale", "summary": "**Yasaka is Kushina's sister.** Her chain frees the children; Naruto executes a kneeling man and Waka looks at him differently. Sakaeguchi takes Yasaka's hands and an avalanche buries her — she **regenerates**. \"Now we do battle.\"" },
+    { "n": 46, "title": "Moonlight", "type": "tale", "summary": "Yasaka against Sakaeguchi, who wears **stolen Uzumaki Sealed Armor** — meaning a clan traitor. Waka takes his arm; the duel **breaks Kesshin's wards**, and the yōkai spill into Kiyoteru as **Mifune** approaches." },
+    { "n": 47, "title": "Wind and Flame", "type": "tale", "summary": "Mifune apparently believes them about the spirits — then the train-yōkai takes him and guts Yasaka. Naruto reaches Kesshin and takes his hand: **resonance**." },
+    { "n": 48, "title": "Entropy", "type": "tale", "summary": "Kesshin's story — a village boy called **Sanjo** who absorbed everyone's sickness until it bloomed, killed his sister, and razed his home. He takes Naruto's dying friends' wounds. Then he asks Naruto to help him." },
+    { "n": 49, "title": "Resonance", "type": "tale", "summary": "Trusting that hollowed child was a mistake." },
+    { "n": 50, "title": "Midnight", "type": "tale", "summary": "Kesshin turns the curse loose on all of **Kiyoteru** — some eighty-nine thousand dead. Naruto **kills him** (wearing his sister's face), destroying his own cure to end it. Dying, Kesshin curses him: *only the one who masters gravity can—*" },
+    { "n": 51, "title": "Velvet Darkness", "type": "tale", "summary": "The octopus realm. The council **strips Yasaka's summoning rights** for using the Returning Call with outsiders, and **removes Tenjin's curse-seal** from Naruto. The Elder finds **no mark of prophecy** on him at all. In a scrying pool: **Gojō is alive**, Shinpachi reached Konoha, Nagato is elsewhere." },
+    { "n": 52, "title": "Scavengers of the Eastern Seas", "type": "tale", "summary": "Adrift in a stolen boat, Naruto starts having **drowning fits**. Waka rages about Kiyoteru and Naruto finally **confesses the killings** he did for Yūgiri. A scavenger ship picks them up; they work for passage. He refuses Yasaka's offer to disappear instead of going to Konoha." },
+    { "n": 53, "title": "Consorting", "type": "tale", "summary": "Ship life and tradecraft. Scavenger gossip about Kiri plants a savage Mizukage, a woman called **Hoshigaki Shigure**, and a pretty executioner. He finally writes back to his mother. Yasaka recovered the **stolen Sealed Armor** from Sakaeguchi's body and gives it to him." },
+    { "n": 54, "title": "Driftwood", "type": "tale", "summary": "He makes friends in the crow's nest. At dawn a frigate closes — **Mizuki Kaizen**, the One-Eyed Sea King — and executes the slavers among the crew, including boys Naruto ate with. He feels **nothing**, and recognises the cold voice asking why he should as **his own**. Kaizen takes all four aboard." },
+    { "n": 55, "title": "Sea King", "type": "tale", "summary": "Kaizen's pitch to the Hokage — trade, Kiri intel, a buffer against Water's chaos — and a long read on Water Country's civil war. His real leverage surfaces: **Umeha**, a forty-metre **sea dragon** he raised from an egg." },
+    { "n": 56, "title": "The Deep", "type": "tale", "summary": "The fleet runs the Black Current into a storm. A hull breach; Naruto seals it; something with tentacles drags him through and Umeha kills it. **Waka decides to leave** when they reach land — and admits, \"I would've taken Kesshin's hand too.\"" },
+    { "n": 57, "title": "The Docks at Dusk", "type": "tale", "summary": "Port and tavern. A reveal: the yōkai that wore Mifune **left on its own, before Kesshin died** — it is still out there, it called Naruto \"child of the sea,\" and it mentioned the moon. **Waka plays a song he wrote** and the room weeps — not because he's bad." },
+    { "n": 58, "title": "Still Waters", "type": "tale", "summary": "A becalmed interlude. Yasaka teaches Waka **Kotodama** — and Naruto reveals he **Awakened twice by speaking a promise**, with no yōkai-Oath bound on him. Kaizen lays out the **Wandering Citadel**: 127 ships, fourteen thousand people. The arc closes on a festival, lanterns, good days." },
+    { "n": 59, "title": "Oathkeeper", "type": "tale", "summary": "Blocked by a navy search-grid, they plan to seal a ship to slip past. **Yakizuru Shunryō**, an **Oathkeeper of Uzushio**, finds them and binds Naruto, Waka and Otsuru by Oath **never to reveal that Uzushio's people were at Kiyoteru's destruction.** They swear." },
+    { "n": 60, "title": "Flowers", "type": "tale", "summary": "Otsuru's chapter. Hollowed since Kiyoteru, she dreams of a bleeding girl. Against orders she and Waka **free a slave caravan**, and she kisses him. They come back to a burning port under fake colours, snow falling in summer — and a **bone spike goes through her heart**. **Otsuru is dead.** The girl in the dream was herself." },
+    { "n": 61, "title": "The Devil", "type": "tale", "summary": "Naruto and a grief-mad Waka fight through the burning town. **Kaguya Nao** reveals the **false flag** — Kiri built fake Kaizen ships to frame him — and that she killed Otsuru. Naruto's Awakening Oath **half-breaks** and starts tearing him apart. Shunryō pulls them out. Then Kaizen arrives." },
+    { "n": 62, "title": "Through Storm and Steel", "type": "tale", "summary": "Nao's real objective was **binding Umeha**; Yasaka breaks the bindings in one burst and can't heal right away. Shunryō turns out to be **Yuki-blooded**, fighting on invisible ice-roads. Naruto's chakra **sings** as he kills. Waka says goodbye; Naruto vows they'll kill Nao together." },
+    { "n": 63, "title": "Tidebreaker", "type": "tale", "summary": "He names his Art — **Kesshō, \"Blood Crystal\"** — half for a dead boy. Waka binds his master's sword to flame and cooks himself inside his armour. Shunryō blows his cover to get them out. They flee on Umeha and **leave Otsuru's body**, pursued by a blue-haired, shark-skinned woman at a prow." },
+    { "n": 64, "title": "Descent", "type": "tale", "summary": "Flight on a bleeding dragon, hunted by **blood sharks**. They reach a volcanic island; Umeha leaves as bait. Field surgery on Waka's fused armour. On the cliff Naruto holds a **lantern funeral for Otsuru** — and decides he can't find it in himself to be merciful. He keeps the lantern." },
+    { "n": 65, "title": "Years Apart", "type": "frame", "summary": "The telling pauses. They talk about grief and mercy-as-strength, and he shows Hanabi the lantern — **still sealed near his heart** after all these years. One admission: the Kiyoteru Oath that should kill him for speaking **\"was broken\"** — \"but we're not there yet.\"" },
+    { "n": 66, "title": "The Door You Hold", "type": "tale", "summary": "A Shiori memory of a deep dive for a **Tidal Jewel** fragment, and the law it carries: spirits are real, bound behind the veil, and cannot touch you unless you reach back — at the time, at least. **\"Don't look. Don't acknowledge. Don't give it a door.\"** Shunryō floats merging Kesshō with a mobile Sealing Field — and warns that **yōki has been clinging to Naruto for some time.**" },
+    { "n": 67, "title": "Which Way the Wind Blows", "type": "tale", "summary": "Nine ships ring the island. Naruto realises the **yōkai lore was scrubbed out of his own education**. **Haimura Tsuneko** brings a deal: find the Daimyō's missing daughter, **Princess Kushimoto Yukina**, and win leverage that clears Kaizen. The price is **Waka stays behind**. Konoha says nothing at all." },
+    { "n": 68, "title": "Big Blue", "type": "tale", "summary": "At sea with the navigator **Iwase Rikiishi**. A long read on Water's politics and a warm shared meal. Then the sea goes **empty**: no fish, no birds, no current, no waves." },
+    { "n": 69, "title": "Maps Without Ink", "type": "tale", "summary": "A full deep-yōkai ordeal: a starless warmth, a ghost ship, voices trying to make them look over the side. The thing manifests as a **drowned Otsuru** and wears her voice to break him. The boat capsizes. He wakes on the **Shihō Shelf** with only Rikiishi." },
+    { "n": 70, "title": "The Shelf", "type": "tale", "summary": "Stranded and unreachable. They find the Shelf natives — \"the ones who wait,\" faceless, mutilated, praying to a faceless god, speaking of **\"the Returning\"** and something called **\"Saihē.\"** Rikiishi, bless his soul, drinks the broth. Dragging him out, past his limit, Naruto kills — and then, surrounded, draws the refined Art: *\"Shear. Shear shear shear—\"*" },
+    { "n": 71, "title": "To Thread a Needle", "type": "tale", "summary": "Rikiishi wakes to find Naruto has **killed the whole settlement** and is calmly sealing the bodies — and has amputated two of his fingers. Six days of walking, and the poison's course **mirrors Kushina's illness**. Then **Kuriarare Kushimaru**, a Seven Swordsman, appears. **Rikiishi is dead.**" },
+    { "n": 72, "title": "The Wrong Tool", "type": "tale", "summary": "Over the body, Naruto talks for his life with a layered lie. Kushimaru picks it apart, is amused, and **keeps him as a useful tool** — seal the bodies, follow, southeast. He is hunting the princess too." },
+    { "n": 73, "title": "Hunters", "type": "tale", "summary": "Marched as a tool while Kushimaru **purges the Shelf** and Naruto stages the scenes to frame factions against each other. In an ambush, **resonance** makes him use **Otsuru's technique** without meaning to. A dying man curses their name." },
+    { "n": 74, "title": "Sharkbait", "type": "tale", "summary": "A campfire and a game. Kushimaru already **knows his name**, and tells the **Tale of Mikio** to see whether he's Uzumaki. The natives are fleeing; a blind crone screams **\"Saihe\"** and dies for it. He warns Naruto about **Hoshigaki Shigure**, then vanishes — and Shigure takes him." },
+    { "n": 75, "title": "Hoshigaki", "type": "tale", "summary": "Shigure's life: a gray-skinned persimmon clan, a girl who walked into the Mist at ten, a younger cousin named **Kisame**, and **Shiranami Reiha**, who engineered a Mizukage's death to take the seat. On the Shelf she realises someone is killing in Kiri's name. When Naruto wakes, the **resonance runs both ways** — and she reads his weakness." },
+    { "n": 76, "title": "Swordsmen", "type": "tale", "summary": "Naruto watches as two Swordsmen duel in the fog. Shigure fights **as water**; Kushimaru runs lightning down the wire. **Her sword marks what it cuts**, and she knows where every mark is, for days. She speaks its name — **Sawarabi** — and every mark she made lights at once." },
+    { "n": 77, "title": "Blood in the Water", "type": "tale", "summary": "Shigure dismisses the fog and unmakes the hillside to bare rock. Kushimaru shows everything he has and is still losing. **In turn:** Naruto slightly **opens the Door**, lets the Shelf's dark power in, and puts a Blood Strike through her back — the first grievous wound she has taken all night. Kushimaru takes the opening; she turns into it and calls **\"Reap.\"** He goes down and does not get up." },
+    { "n": 78, "title": "Low and True", "type": "tale", "summary": "Forced to resonance-read a dying man, Naruto pulls them both into a warm memory. He bluffs a Sealing Field he does not have. Kushimaru reveals **Nuibari's true secret — \"Thunder Step\"** — and the wire goes through her sword-arm. Under a moon that shouldn't be there, in a last tricks-less duel, **Hoshigaki Shigure dies.** Kushimaru lives." },
+    { "n": 79, "title": "Answers", "type": "tale", "summary": "Naruto tends the man who killed his ally. Kushimaru wakes and gives him the answers: **the princess was rescued weeks ago**, and the whole affair is **Daimyō Kushimoto Tadahiro's bait-trap**, run under Kiri's flag so Reiha takes the blame. Naruto's group were never fully intended targets — just caught in the wake of the conflict. He inherits **Sawarabi**, which he cannot seal. Reiha has known about Shigure's death for **four days**." },
+    { "n": 80, "title": "Salt", "type": "tale", "summary": "He carries the barely-mobile Kushimaru across a Shelf that **behaves even more strangely** and breeds small faceless yōkai out of his own footprints. He watches a **Saihē rite** — a hundred natives in silent joy burying a willing girl in salt and washing her away into slurry — and understands what the broth was made of. At the cove, three boats wrecked and one fine hull sitting untouched." },
+    { "n": 81, "title": "Undertow", "type": "tale", "summary": "They take another boat and row — except it's a **genjutsu**, and Naruto is weeping with joy because he believes he is rowing home to his mother. A cold hand wakes him: he never moved. The dreaded \"she\" is **Shiranami Reiha, the Mizukage**, in person, for vengeance. She tortures Kushimaru and goes into Naruto's mind for his mother. Cornered, he reaches for **the Door.**" },
+    { "n": 82, "title": "Saihē", "type": "tale", "summary": "The Door opens onto no place, and **swings both ways** — a many-jointed hand comes through and walks graves. A tower of drowned faces wears them to make him reach further; he refuses. What stops it is something rising at the horizon. **\"Saihē\" is Saiken, the Six-Tails**, and the Shelf ceases to exist. The salt-rites had been generating yōki for generations, and **Naruto was the spark.** Umeha arrives carrying Yasaka, Shunryō and Kaizen — straight into it. And the Beast's sightless regard finds **Naruto**." },
+    { "n": 83, "title": "Children of Water", "type": "tale", "summary": "The full battle: Reiha's fleet and one sea dragon fighting a Great Beast in an unspoken alliance. Kaizen **holds back** from killing Reiha; she spares Umeha in turn; her real goal is buying time to evacuate her men. Yasaka finds Naruto for one moment, then goes back into it. **Then the betrayal:** Kushimaru turns a Kiri hunter with the daimyō's coin, drops Naruto with his lightning while Yasaka is fighting to protect him, and has him carried off." }
+  ],
+
+  "mysteries": [
+    {
+      "id": "the-fall",
+      "title": "The Fall",
+      "chapter": 2,
+      "scope": "frame",
+      "weight": "master",
+      "text": "The cataclysm that froze and broke the world, a few years before the telling. \"I alone know what truly happened.\" Rumour links it to the Uzumaki in some way.",
+      "updates": [
+        { "chapter": 7, "text": "Named from the Hyūga side: the **Night of Crimson**, the **Shattering**." }
+      ]
+    },
+    {
+      "id": "cure",
+      "title": "The cure for Kushina",
+      "chapter": 5,
+      "scope": "frame",
+      "weight": "master",
+      "text": "The reason for the whole journey. Kushina is dying; the only named hope is **Senju Tsunade**, who no one can find. Surely it will end well.",
+      "updates": [
+        { "chapter": 20, "text": "Tenjin hints her illness has a **hidden cause** — something may have been done to her." },
+        { "chapter": 38, "text": "A second, closer lead: **Kesshin**, the boy who absorbs disease." },
+        { "chapter": 50, "text": "Naruto kills Kesshin to stop Kiyoteru. The clearest lead is gone, by his own hand." },
+        { "chapter": 71, "text": "The Shelf poison's course **mirrors his mother's illness** exactly. A clue?" }
+      ]
+    },
+    {
+      "id": "dictation",
+      "title": "The handwriting and the dictation",
+      "chapter": 1,
+      "scope": "frame",
+      "weight": "master",
+      "text": "Naruto, possibly fearing they don't have the attention span for a story that long, isn't satisfied with Neji and Hanabi just listening — they must **write down what he tells them to**, in their own hands, because \"each person's script bears the invisible signature of their soul.\"",
+      "updates": [
+        { "chapter": 25, "text": "The tags are a **memory seal**: parts of the tale are being altered from the Hyūga as they hear it, tied to the Oaths." }
+      ]
+    },
+    {
+      "id": "sanjo-jutsu",
+      "title": "\"Sanjo\" and the concealment jutsu",
+      "chapter": 2,
+      "scope": "frame",
+      "weight": "master",
+      "text": "The aged pallor is the cost of a jutsu he promises to explain \"hopefully tonight,\" and doesn't. What he's hiding from, and why here. Why now, and why this name?",
+      "updates": [
+        { "chapter": 48, "text": "**Sanjo** was the boy who became Kesshin." }
+      ]
+    },
+    {
+      "id": "kage",
+      "title": "\"Slain a Kage — and mine\"",
+      "chapter": 2,
+      "scope": "frame",
+      "weight": "master",
+      "text": "Among the deeds he lists: he killed a Kage. No context given. A classic."
+    },
+    {
+      "id": "epithets",
+      "title": "The names the world gave him",
+      "chapter": 2,
+      "scope": "frame",
+      "weight": "thread",
+      "text": "Binding Sage. Vanishing Blade. Red Death. — \"We will get there.\"",
+      "updates": [
+        { "chapter": 77, "text": "A proleptic tightening: the world would hand him colder names \"until there was a red one no one said where he could hear it.\"" }
+      ]
+    },
+    {
+      "id": "hanabi-familiar",
+      "title": "Why Hanabi feels familiar",
+      "chapter": 1,
+      "scope": "frame",
+      "weight": "thread",
+      "text": "A mutual half-recognition between Naruto and Hanabi that neither can place. Might be hormones, knowing the author."
+    },
+    {
+      "id": "shared-secret",
+      "title": "What the two of them both did",
+      "chapter": 7,
+      "scope": "frame",
+      "weight": "thread",
+      "text": "Naruto and Hanabi recognise a specific guilt in each other. She shields her right index and middle fingers when it comes up."
+    },
+    {
+      "id": "shinpachi-silence",
+      "title": "Shinpachi never mentioned him",
+      "chapter": 7,
+      "scope": "frame",
+      "weight": "thread",
+      "text": "The Hyūga knew Shinpachi. He never once spoke of a red-haired boy who was supposedly on that journey with him. Either he grew to be a massive dick, or...?"
+    },
+    {
+      "id": "nagato-gojo",
+      "title": "Nagato led them, not Gojō",
+      "chapter": 7,
+      "scope": "frame",
+      "weight": "thread",
+      "text": "History, as Konoha tells it, says **Nagato** led the escort to Konoha.",
+	  "resolution": {
+        "chapter": 27,
+        "text": "Naruto got kinda lost on the way."
+      }
+	},
+    {
+      "id": "journal",
+      "title": "Minato's journal",
+      "chapter": 2,
+      "scope": "frame",
+      "weight": "thread",
+      "text": "A leather journal \"from home\" sits on his shelf in the frozen present, and darkens his eyes when he looks at it.",
+      "updates": [
+        { "chapter": 11, "text": "Kushina gives it to him at his departure — it was **Minato's**. \"Keep it safe.\"" }
+      ]
+    },
+    {
+      "id": "company-of-five",
+      "title": "The company of five",
+      "chapter": 2,
+      "scope": "frame",
+      "weight": "thread",
+      "text": "Five went to Konoha.",
+	  "updates": [
+        { "chapter": 12, "text": "They were six to leave? Does author not know how to count?" }
+      ]
+    },
+    {
+      "id": "woman-in-battle",
+      "title": "The woman he saw in battle",
+      "chapter": 2,
+      "scope": "frame",
+      "weight": "thread",
+      "text": "One of the possible beginnings he considers and discards: \"when I saw her in battle.\" Who?",
+	  "updates": [
+        { "chapter": 14, "text": "Could it be Aiko?" },
+		{ "chapter": 20, "text": "Okay, probably not Aiko." },
+		{ "chapter": 31, "text": "Could it be Otsuru?" },
+		{ "chapter": 60, "text": "Okay, probably not Otsuru." }
+      ]
+    },
+    {
+      "id": "golden-eyes",
+      "title": "Goldeneye",
+      "chapter": 3,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "The nameless Elder who rebuilt Uzushio had golden eyes and never took a student.",
+      "updates": [
+        { "chapter": 6, "text": "Gojō has golden eyes?" }
+      ]
+    },
+    {
+      "id": "affinity",
+      "title": "Chakra Conduit, not Sealweaver",
+      "chapter": 3,
+      "scope": "tale",
+      "weight": "master",
+      "text": "The test says Naruto is not what he wants to be.",
+	  "updates": [{ "chapter": 9, "text": "Hero found a way!" }],
+      "resolution": {
+        "chapter": 10,
+        "text": "It was Gojō shit."
+      }  
+    },
+    {
+      "id": "shikigami-man",
+      "title": "The shikigami man's test",
+      "chapter": 5,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "A golden-eyed man in the Library hands a boy a Monkey tag for no stated reason. \"I just wanted to see what you'd do.\" He is watching, or cultivating, or both.",
+	  "updates": [
+        { "chapter": 12, "text": "He might just be a dick." }
+      ]
+    },
+    {
+      "id": "gojo",
+      "title": "What Gojō is",
+      "chapter": 6,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "An outcast, a Hinin, feuding with Denjo, watching Naruto closely, and bound by an **Oath** he keeps hitting.",
+      "updates": [
+        { "chapter": 21, "text": "Tenjin offers him freedom from the Oaths and he *almost* takes it. The resentment is real." },
+        { "chapter": 51, "text": "Alive — warped out to open sea — and building a **new Sealed Art** aimed at Tenjin's cell. Then gone \"to the other side of the world.\"" }
+      ]
+    },
+    {
+      "id": "yokai-coverup",
+      "title": "The Yōkai Cover-up",
+      "chapter": 8,
+      "scope": "tale",
+      "weight": "master",
+      "text": "The Elders knowingly file a monster that ate a fishing fleet as \"a chakra-bloated animal.\" Naruto becomes the smallest cog in a very large secret about what is breaching, and how long it has been.",
+	  "updates": [
+        { "chapter": 18, "text": "Shiori is Bound, too." },
+		{ "chapter": 59, "text": "Shunryō is Bound, too." },
+		{ "chapter": 66, "text": "Fishy Uzumaki business." }		
+      ]
+    },
+    {
+      "id": "karin",
+      "title": "\"I hesitated\"",
+      "chapter": 6,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "Karin dies, other die, Naruto survives, and he does not let himself off for it.",
+	  "resolution": {
+        "chapter": 51,
+        "text": "It was a precedent."
+      }  
+    },
+    {
+      "id": "selection",
+      "title": "The child Selection",
+      "chapter": 5,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "Uzushio hands chosen sealing children to Konoha at a certain age. The villagers dread it for their kids, and nobody says plainly what the children are for. Eating?"
+    },
+    {
+      "id": "konoha-tool",
+      "title": "Konoha's \"tool\"",
+      "chapter": 12,
+      "scope": "tale",
+      "weight": "master",
+      "text": "Konoha is rumoured to be building something, and the chosen sealing children may be \"part of the making\" of it, as Lady Mito ages.",
+      "updates": [
+        { "chapter": 18, "text": "The attackers' orders are to take the Chosen Children **alive**. Whatever it is, perhaps others want it too." }
+      ]
+    },
+    {
+      "id": "nagato",
+      "title": "Nagato and the Prophecy",
+      "chapter": 12,
+      "scope": "tale",
+      "weight": "master",
+      "text": "The Great Sage's two paths, and a doubted savior. \"A threat that cannot be permitted to mature.\"",
+      "updates": [
+        { "chapter": 22, "text": "A codenamed cell sacrifices one of their own to seal him with the **Dead Demon Consuming Seal**, acting on \"the Sage's words.\" He breaks out anyway." },
+        { "chapter": 51, "text": "Set against him: the octopus Elder finds **no thread of fate** on Naruto at all — \"not the child of calamity, nor the bridge between worlds.\"" }
+      ]
+    },
+    {
+      "id": "oaths",
+      "title": "The Oaths",
+      "chapter": 14,
+      "scope": "tale",
+      "weight": "master",
+      "text": "Binding Uzumaki oaths that stop people mid-sentence to author's great narrative delight. Gojō is \"a special case.\" Tenjin wants to break them entirely.",
+      "updates": [
+        { "chapter": 58, "text": "Anomaly: Naruto **Awakened twice by speaking a promise**, and **no Oath was ever placed on him** — Shiori was supposed to." },
+        { "chapter": 59, "text": "An Oathkeeper binds three children to silence about Kiyoteru, on pain of death." },
+        { "chapter": 61, "text": "His Awakening vow — *I will never be this weak again* — **half-breaks** and nearly kills him." },
+        { "chapter": 65, "text": "In the frame he speaks of Kiyoteru freely. The death-Oath **\"was broken.\"** By whom is not said — \"we're not there yet.\"" }
+      ]
+    },
+    {
+      "id": "tenjin",
+      "title": "Tenjin is alive, and has turned",
+      "chapter": 18,
+      "scope": "tale",
+      "weight": "master",
+      "text": "Konoha's master Sealweaver, dead and grieved, is the green-eyed man behind the airship. Why he turned — and how he \"died\" — is a mystery.",
+      "updates": [
+        { "chapter": 20, "text": "He hints he knows the hidden cause of Kushina's illness, and offers to teach Naruto." },
+        { "chapter": 51, "text": "He carries **two Sealed Arts** and is fully lucid, which by every theory should have destroyed his mind." },
+        { "chapter": 53, "text": "He claimed to know **what happened to Naruto's parents**." }
+      ]
+    },
+    {
+      "id": "red-eyes",
+      "title": "Red-Eyed",
+      "chapter": 15,
+      "scope": "tale",
+      "weight": "master",
+      "text": "Masked, mind-shattering killers fighting alongside a deer-yōkai and a human mastermind. Spirits cooperating with people. \"Something is changing.\"",
+	  "updates": [
+        { "chapter": 21, "text": "Don't look into the red light, hero!" }
+      ]
+    },
+    {
+      "id": "shiori-gift",
+      "title": "Shiori's dying gift",
+      "chapter": 20,
+      "scope": "tale",
+      "weight": "master",
+      "text": "She splits something between Naruto and Shinpachi as she dies — memory, power, burden, unspecified. It will shape them \"in different ways.\"",
+      "updates": [
+        { "chapter": 26, "text": "Her **memories** begin surfacing in him as his own — old Uzushio, young Mito and Yume. Explicitly *not* possession, because author wrote such a story already." },
+        { "chapter": 39, "text": "The memories place her with the Senju founders, and with a boy who is probably young **Minato**." },
+        { "chapter": 66, "text": "A memory of a deep dive, and a drowned yōkai holding a gleam." }
+      ]
+    },
+    {
+      "id": "traitor",
+      "title": "A traitor inside Uzushio",
+      "chapter": 39,
+      "scope": "tale",
+      "weight": "master",
+      "text": "The airship route was leaked from within the clan.",
+      "updates": [
+        { "chapter": 46, "text": "Sakaeguchi wears **stolen Uzumaki Sealed Armor**, which only works for clan blood — so someone sold clan secrets, and modified them for an outsider. Yasaka is sure it isn't Tenjin." },
+        { "chapter": 53, "text": "The armor is recovered and given to Naruto — still bearing the traitor's modifications." }
+      ]
+    },
+    {
+      "id": "uzumaki-bound-yokai",
+      "title": "The Uzumaki bound the yōkai",
+      "chapter": 36,
+      "scope": "tale",
+      "weight": "master",
+      "text": "A spirit wearing a dead man's skin speaks of the day the clan bound its kind, \"in salt circles and scarlet ink\" — they were \"once family\" — and demands something **back**.",
+      "updates": [
+        { "chapter": 57, "text": "It called him **\"child of the sea,\"** and mentioned the following: *when the mirror is whole…*" },
+        { "chapter": 67, "text": "The dive-and-spirit curriculum was **erased from his education**, recently. Shunryō's theory: Uzushio hid not the yōkai, but **what was done to them**." }
+      ]
+    },
+    {
+      "id": "loose-yokai",
+      "title": "Possessing Yōkai, Still On the Loose",
+      "chapter": 57,
+      "scope": "tale",
+      "weight": "master",
+      "text": "The spirit that wore the train corpse and then General Mifune **left on its own, before Kesshin died**. It is intelligent, it knows the clan, and it appears to be looking for him."
+    },
+    {
+      "id": "third-light",
+      "title": "The Night of the Third Light",
+      "chapter": 43,
+      "scope": "tale",
+      "weight": "master",
+      "text": "A prophecy whispered by warded yōkai in Tower Nine. That is when the mirror is whole."
+    },
+    {
+      "id": "kesshin-curse",
+      "title": "Kesshin's dying curse",
+      "chapter": 50,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "\"They'll use you too… they'll put someone like you behind you with their own knife… only the one who **masters gravity** can—\" He doesn't finish."
+    },
+    {
+      "id": "cold-voice",
+      "title": "The cold voice is his own",
+      "chapter": 49,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "An intrusive logic starts answering his conscience: *why should you care?*",
+      "updates": [
+        { "chapter": 54, "text": "Watching a crew he ate with get butchered, he feels nothing — and recognises the voice as unmistakably **his**. Not the foreign one." }
+      ],
+	  "resolution": {
+        "chapter": 83,
+        "text": "Naruto's had a rough few months."
+      }
+    },
+    {
+      "id": "resonance",
+      "title": "Resonance",
+      "chapter": 49,
+      "scope": "tale",
+      "weight": "master",
+      "text": "Reaching into people sounds like a great idea.",
+      "updates": [
+        { "chapter": 60, "text": "Otsuru." },
+		{ "chapter": 71, "text": "Reaching into Rikiishi didn't help much." },
+		{ "chapter": 73, "text": "Naruto uses Otsuru's art involuntarily. \"That wasn't mine.\"" },
+        { "chapter": 75, "text": "Reaching into Shigure let her read him." },
+		{ "chapter": 78, "text": "Reaching into Kushimaru let him give him an opening." },
+		{ "chapter": 81, "text": "Uh oh, Reiha did something similar." }
+      ]
+    },
+    {
+      "id": "yokai-sight",
+      "title": "He can see them",
+      "chapter": 31,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "Three spirits in a cave watch him and his seal, and one signs *silence* and traces symbols against his skin in recognition. Otsuru sees nothing.",
+      "updates": [
+		{ "chapter": 50, "text": "Sanjo can do it too!" },
+        { "chapter": 66, "text": "Shunryō senses **yōki clinging to him** — in and around him, and for some time. Which shouldn't be possible unless he reached back." },
+        { "chapter": 82, "text": "No one but Naruto sees them on the Shelf?" }
+      ]
+    },
+    {
+      "id": "door",
+      "title": "The Door",
+      "chapter": 66,
+      "scope": "tale",
+      "weight": "master",
+      "text": "The old law says the following of yōkai encounters: they cannot touch you unless **you reach back**. The door only opens from the mortal side. *Don't look. Don't acknowledge. Don't give it a door.*",
+      "updates": [
+        { "chapter": 69, "text": "The deep thing wears Otsuru's drowned face and voice to make him reach." },
+        { "chapter": 77, "text": "He opens it **on purpose**, to wound Shigure, realising the island had been answering him all along." },
+        { "chapter": 79, "text": "It goes quiet — but it \"turned its head,\" it didn't shut." },
+        { "chapter": 82, "text": "It opens onto **no place**, and swings **both ways**: a many-jointed hand comes through and walks his graves. It also released the Shelf's stored yōki and attracted the Beast." }
+      ]
+    },
+    {
+      "id": "ink-blood",
+      "title": "The Ink-Blood nightmare",
+      "chapter": 30,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "A recurring dream of seals crawling across his body, written in his own blood, corrupting outward."
+    },
+    {
+      "id": "waka-revenge",
+      "title": "Waka's Revenge",
+      "chapter": 35,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "Ushiwakamaru, last of the burned Minamoto, is hunting the man who killed his master Shingetsu Kōji over a stolen scroll.",
+      "updates": [
+        { "chapter": 42, "text": "Naruto quietly puts Yūgiri on finding the killer — and doesn't tell him." },
+        { "chapter": 62, "text": "A second revenge is added: he and Naruto swear to kill **Kaguya Nao** together." }
+      ]
+    },
+    {
+      "id": "waka-rift",
+      "title": "Naruto and Waka",
+      "chapter": 45,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "He executes a kneeling, beaten man, and Waka's opinion of him changes.",
+      "updates": [
+        { "chapter": 56, "text": "Waka decides to leave once they reach land — and admits, \"I would've taken Kesshin's hand too.\"" },
+        { "chapter": 67, "text": "He is left behind, burnt and helpless, in a broker's hands. \"We'll have him walk again.\"" },
+        { "chapter": 79, "text": "And is now an exposed loose end in the daimyō's trap, along with Tsuneko. Naruto can't reach him and mustn't name him." }
+      ]
+    },
+    
+    {
+      "id": "kaizen-deal",
+      "title": "Kaizen's Bid",
+      "chapter": 55,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "A pirate confederation — 127 ships, fourteen thousand people — wants Konoha's backing to become a fourth power in Water's civil war. Preliminary approval comes through Lady Mito.",
+      "updates": [
+        { "chapter": 61, "text": "Kiri's **false flag** pins razed towns on him, witnessed and spread by a fleeing navy." },
+        { "chapter": 67, "text": "The Citadel is destroyed for the most part." },
+        { "chapter": 83, "text": "Given a clean kill on the Mizukage, he **holds back** — Umeha's safety is worth more." }
+      ]
+    },
+    {
+      "id": "umeha",
+      "title": "Umeha",
+      "chapter": 55,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "A forty-metre sea dragon raised from an egg by an orphan boy. Kaizen wants a master Sealweaver to forge her a **summoning contract**, which Yasaka says is very nearly impossible. The dragon also recognises something in Naruto."
+    },
+    {
+      "id": "kotodama-waka",
+      "title": "Kotodama, and a Song",
+      "chapter": 57,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "Yasaka starts teaching Waka the word-soul art — suited to him, she says. He also writes a flute song that empties a tavern's eyes."
+    },
+    {
+      "id": "kesshou",
+      "title": "Kesshō",
+      "chapter": 63,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "Naruto names his Art — **Blood Crystal** — half for a dead boy, and binds it to a spoken word.",
+      "updates": [
+        { "chapter": 66, "text": "Shunryō names the direction it's heading: a **flowing, mobile Sealing Field** — protection that doesn't prevent offense. A Tenjin-shaped Art." },
+        { "chapter": 70, "text": "The slicing variant gets its own word, and he turns it on a crowd. **\"Shear.\"**" },
+        { "chapter": 78, "text": "He **bluffs** a Sealing Field he does not have, and a Swordsman believes it." }
+      ]
+    },
+    {
+      "id": "mercy",
+      "title": "Mercy",
+      "chapter": 64,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "Over Otsuru's pyre, against everything she believed: \"I don't think I can find it in me to be merciful.\"",
+      "updates": [
+        { "chapter": 65, "text": "In the frame, years later, he says he is only *now* learning she was right." }
+      ]
+    },
+    {
+      "id": "lantern",
+      "title": "Otsuru's lantern",
+      "chapter": 64,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "He keeps the funeral lantern.",
+      "updates": [
+        { "chapter": 65, "text": "He is still carrying it — sealed over his heart — in the frozen present. He shows Hanabi." }
+      ]
+    },
+    {
+      "id": "scrubbed-lore",
+      "title": "Who scrubbed the lore",
+      "chapter": 67,
+      "scope": "tale",
+      "weight": "master",
+      "text": "The diving curriculum, the Door law, the Iryō and Reikō writings — all of it was taken out of Uzumaki education, recently, after Shiori's generation and before his. Someone decided children should not know."
+    },
+    {
+      "id": "princess",
+      "title": "The missing princess",
+      "chapter": 67,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "The Water Daimyō's daughter, **Kushimoto Yukina**, 13, vanished near the Sotoba Narrows — her ship struck **from below**, wreckage drifting toward the Shihō Shelf. Find her, and the leverage clears Kaizen.",
+      "updates": [
+        { "chapter": 72, "text": "Kushimaru is hunting her too." },
+        { "chapter": 74, "text": "He behaves like a man who already knows where she is." }
+      ],
+      "resolution": {
+        "chapter": 79,
+        "text": "**She was not missing for long.** Her ship did come down on the north reach, but she was rescued weeks ago and is safe in Shiosai. Her \"disappearance\" was **Daimyō Kushimoto Tadahiro's bait**, leaked to flush ambitious rivals and purge them under Kiri's flag so the Mizukage takes the blame. Naruto's group were never targets. Rikiishi died for nothing."
+      }
+    },
+    {
+      "id": "north-reach",
+      "title": "What sank the princess' escort",
+      "chapter": 79,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "Something rose under the princess's ship at the north reach.",
+	  "resolution": {
+        "chapter": 83,
+        "text": "No yōkai or Beast will likely confess to the crime."
+      }
+    },
+    {
+      "id": "scattered",
+      "title": "The party is scattered",
+      "chapter": 69,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "The capsizing splits them. Naruto washes up with a navigator; Yasaka, Kaizen and Shunryō are gone, and Kaito can't relay to a woman whose contract was voided.",
+      "updates": [
+        { "chapter": 82, "text": "They arrive on Umeha — straight into the Beast." }
+      ],
+      "resolution": {
+        "chapter": 83,
+        "text": "Yasaka finds him on a basalt raft for one brief moment, then goes back into the fight to pull the Beast off him. She has no idea what happens next."
+      }
+    },
+    {
+      "id": "unanchored",
+      "title": "Naruto Unchained",
+      "chapter": 70,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "With no Otsuru, no Waka, no Yasaka to check him... Naruto does what he does best.",
+      "updates": [
+        { "chapter": 71, "text": "He kills the whole settlement and seals the bodies, calmly and well." },
+        { "chapter": 72, "text": "He found a mentor!" }
+      ],
+	  "resolution": {
+        "chapter": 83,
+        "text": "Never mind."
+      }
+    },
+    {
+      "id": "kisame",
+      "title": "Kisame",
+      "chapter": 75,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "Shigure's younger Hoshigaki cousin — a sort of idealist, if a shinobi one — walked off Kiri's roster and vanished.",
+      "updates": [
+        { "chapter": 77, "text": "A corpse thrown wearing his face makes her balk for half a beat. She still feels the absence." }
+      ]
+    },
+    {
+      "id": "moon",
+      "title": "The moon that shouldn't be there",
+      "chapter": 78,
+      "scope": "tale",
+      "weight": "master",
+      "text": "The Shelf has no moon. Normally. Right before Shigure dies, it appears.",
+      "updates": [
+        { "chapter": 82, "text": "An impossible crescent stands over the risen Beast." }
+      ]
+    },
+    {
+      "id": "saihe",
+      "title": "Saihē",
+      "chapter": 70,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "A faceless people who paste over their features and cut off their ears, praying to a faceless god, waiting for something they call **Saihē** — and \"the Returning.\" The water, they say, has been speaking more than usual.",
+      "updates": [
+        { "chapter": 80, "text": "The rite: a hundred of them bury a willing girl in salt and **wash her away** into slurry that seeps into the rock. The broth is made of people." }
+      ],
+      "resolution": {
+        "chapter": 82,
+        "text": "**Saihē is Saiken, the Six-Tails** — one of nine Great Beasts the Sage portioned out of one terrible whole \"so no one should carry it alone.\" The salt-rites had been storing generations of yōki like grain; when the salt washed away, the charge drew the Beast, which burns the island clean."
+      }
+    },
+    {
+      "id": "great-beasts",
+      "title": "\"You must refuse them, whoever they are\"",
+      "chapter": 82,
+      "scope": "tale",
+      "weight": "master",
+      "text": "From the epigraph: the Sage divided the one beast so that no one should ever be enough to carry it alone — and a dying teacher warns that someone will try anyway."
+    },
+    {
+      "id": "saiken-regard",
+      "title": "A mistake it was sent to correct",
+      "chapter": 82,
+      "scope": "tale",
+      "weight": "master",
+      "text": "The Beast's sightless attention passes over a Kage and hundreds of shinobi and settles on a ten-year-old."
+    },
+    {
+      "id": "reiha-entranced",
+      "title": "What Reiha Wants",
+      "chapter": 82,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "Facing a Great Beast, the Mizukage steps back exactly once and then stares, **entranced** rather than afraid. Issues?",
+      "updates": [
+        {  }
+      ]
+    },
+    {
+      "id": "betrayal",
+      "title": "Kushimaru's betrayal",
+      "chapter": 83,
+      "scope": "tale",
+      "weight": "master",
+      "text": "After being tended, carried, and saved from drowning twice, the man turns a Kiri hunter with the daimyō's coin, says *\"Sorry you trusted me,\"* and puts Naruto down with his own lightning — while Yasaka is fighting to keep the Beast off him. He wakes up as cargo, bound for the man who built the whole trap. Nobody who could help him knows he is gone.",
+	  "resolution": {
+		"chapter": 83,
+        "text": "Have you ever read 'The Scorpion and the Frog?'."
+      }
+	},
+    {
+      "id": "diary",
+      "title": "The Thief",
+      "chapter": 14,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "Several epigraphs, coming from a hungry child stealing at the Konoha Academy. \"No one ever caught me… I can't go back empty-handed.\"."
+    },
+    {
+      "id": "eiji",
+      "title": "The parable of Eiji",
+      "chapter": 9,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "An Uzumaki whose war-winning seal demanded a Sacrifice, and erased his wife and daughter to pay it. He drowned himself. The ground is still cursed and an infant ghost is still waiting. Told as a lesson... or a warning.",
+	  "resolution": {
+		"chapter": 83,
+        "text": "Answered in 74 with the tale of Mikio: Naruto can't listen to warnings."
+      }
+    }
+  ]
+}

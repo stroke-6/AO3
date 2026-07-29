@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crimson Horizons — Story So Far</title>
+    <link rel="icon" type="image/x-icon" href="https://stroke-6.github.io/AO3/images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f8f8;
+            --bg-tertiary: #f0f0f0;
+            --bg-card: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #555555;
+            --text-muted: #888888;
+            --accent: #b01c1c;
+            --accent-light: #d42a2a;
+            --accent-dark: #8a1515;
+            --border: #e0e0e0;
+            --border-light: #d0d0d0;
+
+            /* Status colors */
+            --open: #c47f1a;
+            --open-bg: rgba(196, 127, 26, 0.12);
+            --answered: #3f8f4f;
+            --answered-bg: rgba(63, 143, 79, 0.12);
+            --frame: #6c7a89;
+            --tale: #a3541f;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ---------- Header ---------- */
+        .header {
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-bottom: 2px solid var(--accent);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        .header h1 {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.25rem;
+        }
+        .header h1 span { color: var(--accent); }
+        .header .subtitle { font-size: 0.9rem; color: var(--text-secondary); font-style: italic; }
+
+        /* ---------- Sticky controls ---------- */
+        .controls {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .controls-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .chapter-select-wrapper { display: flex; align-items: center; gap: 0.75rem; }
+        .chapter-select-wrapper label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .chapter-select {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-light);
+            color: var(--text-primary);
+            padding: 0.5rem 2rem 0.5rem 0.75rem;
+            font-size: 0.95rem;
+            font-family: inherit;
+            border-radius: 4px;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a0a0a0' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            min-width: 260px;
+            max-width: 100%;
+        }
+        .chapter-select:hover { border-color: var(--accent); }
+        .chapter-select:focus {
+            outline: none;
+            border-color: var(--accent-light);
+            box-shadow: 0 0 0 2px rgba(153, 0, 0, 0.2);
+        }
+        .spoiler-warning {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            padding: 0.4rem 0.75rem;
+            background: rgba(153, 0, 0, 0.1);
+            border: 1px solid rgba(153, 0, 0, 0.3);
+            border-radius: 4px;
+        }
+        .spoiler-warning svg { width: 14px; height: 14px; fill: var(--accent-light); flex-shrink: 0; }
+
+        /* ---------- Tabs ---------- */
+        .tabs {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            gap: 0.25rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .tab {
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            padding: 0.75rem 1.1rem;
+            cursor: pointer;
+            transition: color 0.15s ease, border-color 0.15s ease;
+        }
+        .tab:hover { color: var(--text-primary); }
+        .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+        .tab .count {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            background: var(--bg-tertiary);
+            border-radius: 10px;
+            padding: 1px 7px;
+            margin-left: 0.4rem;
+            vertical-align: 1px;
+        }
+
+        .main { max-width: 1000px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+
+        .panel { display: none; }
+        .panel.active { display: block; }
+
+        /* ---------- Progress banner ---------- */
+        .progress {
+            margin-bottom: 1.75rem;
+            padding: 1rem 1.25rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 4px 4px 0;
+        }
+        .progress h2 {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.15rem;
+        }
+        .progress p { font-size: 0.9rem; color: var(--text-secondary); }
+
+        /* ---------- Arcs ---------- */
+        .arc { margin-bottom: 2.5rem; }
+        .arc-head {
+            display: flex;
+            align-items: baseline;
+            gap: 0.6rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 0.9rem;
+            flex-wrap: wrap;
+        }
+        .arc-numeral {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+            line-height: 1;
+        }
+        .arc-title {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .arc-range {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-left: auto;
+            white-space: nowrap;
+        }
+        .arc-blurb {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            padding: 0.9rem 1.1rem;
+            margin-bottom: 1.1rem;
+        }
+        .arc-blurb.pending { font-style: italic; color: var(--text-muted); font-size: 0.95rem; }
+
+        /* ---------- Chapter entries ---------- */
+        .chapter {
+            display: grid;
+            grid-template-columns: 3.1rem 1fr;
+            gap: 0 0.9rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .chapter:last-child { border-bottom: none; }
+        .chapter-num {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--border-light);
+            text-align: right;
+            line-height: 1.35;
+        }
+        .chapter-title {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .chapter-summary { font-size: 0.95rem; color: var(--text-secondary); grid-column: 2; }
+        .chapter-summary strong { color: var(--text-primary); font-weight: 600; }
+
+        .badge {
+            font-size: 0.62rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            padding: 1px 6px;
+            border-radius: 3px;
+            border: 1px solid currentColor;
+            font-family: 'Source Sans 3', sans-serif;
+            white-space: nowrap;
+        }
+        .badge.frame { color: var(--frame); }
+        .badge.tale  { color: var(--tale); }
+
+        /* ---------- Hidden-content notice ---------- */
+        .veil {
+            margin-top: 1.5rem;
+            padding: 1.1rem;
+            text-align: center;
+            border: 1px dashed var(--border-light);
+            border-radius: 6px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-style: italic;
+            background: repeating-linear-gradient(45deg, var(--bg-secondary), var(--bg-secondary) 10px, var(--bg-primary) 10px, var(--bg-primary) 20px);
+        }
+
+        /* ---------- Mystery filters ---------- */
+        .filters { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
+        .filter {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            font-family: inherit;
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 0.35rem 0.8rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .filter:hover { border-color: var(--accent); color: var(--text-primary); }
+        .filter.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+        /* ---------- Mystery cards ---------- */
+        .mystery {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--open);
+            border-radius: 0 5px 5px 0;
+            padding: 1rem 1.15rem;
+            margin-bottom: 0.85rem;
+        }
+        .mystery.answered { border-left-color: var(--answered); }
+        .mystery.master { background: var(--bg-secondary); }
+
+        .mystery-head {
+            display: flex;
+            align-items: baseline;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.35rem;
+        }
+        .mystery-title {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+        .pill {
+            font-size: 0.62rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            padding: 2px 7px;
+            border-radius: 3px;
+            white-space: nowrap;
+        }
+        .pill.open     { color: var(--open);     background: var(--open-bg); }
+        .pill.answered { color: var(--answered); background: var(--answered-bg); }
+        .pill.master   { color: var(--accent);   background: rgba(176, 28, 28, 0.1); }
+
+        .mystery-meta {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-left: auto;
+            white-space: nowrap;
+        }
+        .mystery-text { font-size: 0.95rem; color: var(--text-secondary); }
+        .mystery-text strong { color: var(--text-primary); font-weight: 600; }
+
+        .updates { margin-top: 0.75rem; border-left: 2px solid var(--border); padding-left: 0.9rem; }
+        .update { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.4rem; }
+        .update:last-child { margin-bottom: 0; }
+        .update strong { color: var(--text-primary); font-weight: 600; }
+        .update-ch {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            margin-right: 0.4rem;
+        }
+
+        .resolution {
+            margin-top: 0.8rem;
+            padding: 0.75rem 0.9rem;
+            background: var(--answered-bg);
+            border-radius: 4px;
+            font-size: 0.93rem;
+            color: var(--text-secondary);
+        }
+        .resolution strong { color: var(--text-primary); font-weight: 600; }
+        .resolution-label {
+            display: block;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--answered);
+            margin-bottom: 0.2rem;
+        }
+
+        .empty-note {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* ---------- Footer / states ---------- */
+        .footer {
+            margin-top: 3rem;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        .footer a { color: var(--accent); text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+
+        .loading { text-align: center; padding: 3rem; color: var(--text-secondary); }
+        .loading-spinner {
+            width: 32px; height: 32px;
+            border: 3px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .error {
+            text-align: center;
+            padding: 2rem;
+            color: var(--accent-light);
+            background: rgba(153, 0, 0, 0.1);
+            border: 1px solid rgba(153, 0, 0, 0.3);
+            border-radius: 6px;
+        }
+
+        @media (max-width: 600px) {
+            .controls-inner { flex-direction: column; align-items: stretch; }
+            .chapter-select { width: 100%; min-width: 0; }
+            .tabs { overflow-x: auto; }
+            .arc-range { margin-left: 0; width: 100%; }
+            .mystery-meta { margin-left: 0; width: 100%; }
+            .chapter { grid-template-columns: 2.3rem 1fr; gap: 0 0.7rem; }
+            .chapter-num { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1><span>Crimson Horizons</span> — The Story So Far</h1>
+        <p class="subtitle">A spoiler-gated recap, hopefully.</p>
+    </header>
+
+    <nav class="controls">
+        <div class="controls-inner">
+            <div class="chapter-select-wrapper">
+                <label for="chapter-select">Reading up to:</label>
+                <select id="chapter-select" class="chapter-select">
+                    <option>Loading…</option>
+                </select>
+            </div>
+            <div class="spoiler-warning">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                <span>Everything beyond the selected chapter stays hidden</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="tabs">
+        <button class="tab active" data-panel="summary">Summary</button>
+        <button class="tab" data-panel="mysteries">Open Threads<span class="count" id="tab-count"></span></button>
+    </div>
+
+    <main class="main">
+        <div id="progress" class="progress">
+            <h2>Loading…</h2>
+            <p>Fetching the story data.</p>
+        </div>
+
+        <section id="panel-summary" class="panel active">
+            <div class="loading"><div class="loading-spinner"></div><p>Loading summary…</p></div>
+        </section>
+
+        <section id="panel-mysteries" class="panel">
+            <div class="filters" id="filters">
+                <button class="filter active" data-filter="all">All</button>
+                <button class="filter" data-filter="open">Unanswered</button>
+                <button class="filter" data-filter="answered">Answered</button>
+                <button class="filter" data-filter="master">Master mysteries</button>
+                <button class="filter" data-filter="frame">Frame</button>
+            </div>
+            <div id="mystery-list"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Part of <a href="https://stroke-6.github.io/AO3/">Resources</a></p>
+    </footer>
+
+    <script>
+        // ============================================
+        // CONFIGURATION
+        // ============================================
+        const DATA_FILE = './json/ch-summary.json';
+        const STORAGE_KEY = 'ch-summary-chapter';
+
+        // ============================================
+        // STATE + ELEMENTS
+        // ============================================
+        let DATA = null;
+        let current = 1;          // selected chapter (the spoiler ceiling)
+        let filter = 'all';       // active mystery filter
+
+        const chapterSelect = document.getElementById('chapter-select');
+        const progressEl    = document.getElementById('progress');
+        const summaryEl     = document.getElementById('panel-summary');
+        const mysteryEl     = document.getElementById('mystery-list');
+        const tabCountEl    = document.getElementById('tab-count');
+
+        // ============================================
+        // HELPERS
+        // ============================================
+        // Escapes HTML, then renders the **bold** / *italic* used in the data file.
+        function fmt(str) {
+            return String(str)
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                .replace(/(^|[^*])\*([^*]+?)\*/g, '$1<em>$2</em>');
+        }
+
+        // A mystery counts as answered only once its resolution chapter is unlocked.
+        function isAnswered(m) { return !!(m.resolution && m.resolution.chapter <= current); }
+
+        // Everything visible is filtered through this ceiling.
+        function visibleMysteries() {
+            return DATA.mysteries.filter(m => m.chapter <= current);
+        }
+
+        // ============================================
+        // INIT
+        // ============================================
+        async function init() {
+            try {
+                const response = await fetch(DATA_FILE);
+                if (!response.ok) throw new Error('Failed to load data');
+                DATA = await response.json();
+
+                const saved = parseInt(localStorage.getItem(STORAGE_KEY), 10);
+                current = (saved && DATA.chapters.some(c => c.n === saved)) ? saved : DATA.chapters[0].n;
+
+                populateChapterSelect();
+                chapterSelect.value = current;
+
+                chapterSelect.addEventListener('change', e => {
+                    current = parseInt(e.target.value, 10);
+                    localStorage.setItem(STORAGE_KEY, current);
+                    render();
+                });
+
+                document.querySelectorAll('.tab').forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+                        tab.classList.add('active');
+                        document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
+                    });
+                });
+
+                document.querySelectorAll('.filter').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        filter = btn.dataset.filter;
+                        renderMysteries();
+                    });
+                });
+
+                render();
+            } catch (error) {
+                console.error('Error loading story data:', error);
+                summaryEl.innerHTML = `
+                    <div class="error">
+                        <p><strong>Error loading story data</strong></p>
+                        <p>Make sure <code>json/ch-summary.json</code> is reachable from this page.</p>
+                    </div>`;
+            }
+        }
+
+        function populateChapterSelect() {
+            chapterSelect.innerHTML = '';
+            DATA.chapters.forEach(ch => {
+                const option = document.createElement('option');
+                option.value = ch.n;
+                option.textContent = `Chapter ${ch.n} — ${ch.title}`;
+                chapterSelect.appendChild(option);
+            });
+        }
+
+        function render() {
+            renderProgress();
+            renderSummary();
+            renderMysteries();
+        }
+
+        // ============================================
+        // PROGRESS BANNER
+        // ============================================
+        function renderProgress() {
+            const total   = DATA.chapters.length;
+            const arc     = DATA.arcs.find(a => current >= a.start && current <= a.end);
+            const open    = visibleMysteries().filter(m => !isAnswered(m)).length;
+            const hidden  = total - current;
+
+            progressEl.innerHTML = `
+                <h2>Chapter ${current} — ${fmt(DATA.chapters.find(c => c.n === current).title)}</h2>
+                <p>${arc ? `${arc.numeral}. ${fmt(arc.title)} · ` : ''}${current} of ${total} chapters ·
+                   ${open} thread${open === 1 ? '' : 's'} still open ·
+                   ${hidden ? `${hidden} chapter${hidden === 1 ? '' : 's'} hidden` : 'fully caught up'}</p>`;
+        }
+
+        // ============================================
+        // SUMMARY TAB
+        // ============================================
+        function renderSummary() {
+            let html = '';
+
+            DATA.arcs.forEach(arc => {
+                if (arc.start > current) return;                        // arc not reached yet
+                const chapters = DATA.chapters.filter(c => c.n >= arc.start && c.n <= arc.end && c.n <= current);
+                if (!chapters.length) return;
+
+                const complete = current >= arc.end;                    // arc blurbs summarise the whole arc,
+                const blurb = complete                                  // so they only unlock once it's finished
+                    ? `<div class="arc-blurb">${fmt(arc.blurb)}</div>`
+                    : `<div class="arc-blurb pending">This arc is still unfolding — its summary unlocks at chapter ${arc.end}.</div>`;
+
+                html += `
+                    <section class="arc">
+                        <div class="arc-head">
+                            <span class="arc-numeral">${arc.numeral}</span>
+                            <span class="arc-title">${fmt(arc.title)}</span>
+                            <span class="arc-range">Ch. ${arc.start}–${arc.end}</span>
+                        </div>
+                        ${blurb}
+                        ${chapters.map(renderChapter).join('')}
+                    </section>`;
+            });
+
+            const hidden = DATA.chapters.length - current;
+            if (hidden > 0) {
+                html += `<div class="veil">${hidden} further chapter${hidden === 1 ? '' : 's'} withheld. Move the selector up when you've read further.</div>`;
+            }
+
+            summaryEl.innerHTML = html;
+        }
+
+        function renderChapter(ch) {
+            return `
+                <article class="chapter">
+                    <div class="chapter-num">${ch.n}</div>
+                    <div class="chapter-title">
+                        ${fmt(ch.title)}
+                        <span class="badge ${ch.type}">${ch.type === 'frame' ? 'Frame' : 'The Tale'}</span>
+                    </div>
+                    <p class="chapter-summary">${fmt(ch.summary)}</p>
+                </article>`;
+        }
+
+        // ============================================
+        // MYSTERIES TAB
+        // ============================================
+        function renderMysteries() {
+            const all = visibleMysteries();
+
+            const shown = all.filter(m => {
+                if (filter === 'open')     return !isAnswered(m);
+                if (filter === 'answered') return isAnswered(m);
+                if (filter === 'master')   return m.weight === 'master';
+                if (filter === 'frame')    return m.scope === 'frame';
+                return true;
+            });
+
+            // Unanswered first, then most recently raised.
+            shown.sort((a, b) => (isAnswered(a) - isAnswered(b)) || (b.chapter - a.chapter));
+
+            tabCountEl.textContent = all.filter(m => !isAnswered(m)).length;
+
+            mysteryEl.innerHTML = shown.length
+                ? shown.map(renderMystery).join('')
+                : `<p class="empty-note">Nothing here yet at chapter ${current}.</p>`;
+        }
+
+        function renderMystery(m) {
+            const answered = isAnswered(m);
+
+            // Updates are gated individually.
+            const updates = (m.updates || []).filter(u => u.chapter <= current);
+            const updatesHtml = updates.length ? `
+                <div class="updates">
+                    ${updates.map(u => `<p class="update"><span class="update-ch">CH. ${u.chapter}</span>${fmt(u.text)}</p>`).join('')}
+                </div>` : '';
+
+            const resolutionHtml = answered ? `
+                <div class="resolution">
+                    <span class="resolution-label">Answered in chapter ${m.resolution.chapter}</span>
+                    ${fmt(m.resolution.text)}
+                </div>` : '';
+
+            return `
+                <article class="mystery ${answered ? 'answered' : ''} ${m.weight === 'master' ? 'master' : ''}">
+                    <div class="mystery-head">
+                        <span class="mystery-title">${fmt(m.title)}</span>
+                        <span class="pill ${answered ? 'answered' : 'open'}">${answered ? 'Answered' : 'Open'}</span>
+                        ${m.weight === 'master' ? '<span class="pill master">Master mystery</span>' : ''}
+                        <span class="mystery-meta">Raised Ch. ${m.chapter} · ${m.scope === 'frame' ? 'Frame' : 'The Tale'}</span>
+                    </div>
+                    <p class="mystery-text">${fmt(m.text)}</p>
+                    ${updatesHtml}
+                    ${resolutionHtml}
+                </article>`;
+        }
+
+        init();
+    </script>
+</body>
+</html>

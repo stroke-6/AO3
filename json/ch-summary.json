@@ -169,7 +169,7 @@
       "updates": [
         { "chapter": 2, "text": "Uzushio was already in the sky when Kushina was a child... Or was it?" },
 		{ "chapter": 5, "text": "\"We used to have snow, before.\"" },
-        { "chapter": 7, "text": "\"They are cursed\[...\] Given this truth, is it any wonder that the Uzumaki fled to the heavens…?\"" },
+        { "chapter": 7, "text": "\"They are cursed[...] Given this truth, is it any wonder that the Uzumaki fled to the heavens…?\"" },
         { "chapter": 26, "text": "When Shiori was younger, Uzushio was still part of the land." }
       ]
     },
@@ -186,7 +186,7 @@
     },
     {
       "id": "cure",
-      "title": "The cure for Kushina",
+      "title": "A Cure for Kushina",
       "chapter": 5,
       "scope": "frame",
       "weight": "master",
@@ -439,7 +439,7 @@
       "weight": "master",
       "text": "Masked, mind-shattering killers fighting alongside a deer-yōkai and a human mastermind. Spirits cooperating with people. \"Something is changing.\"",
 	  "updates": [
-        { "chapter": 21, "text": "Don't look into the red light, hero!" }
+        { "chapter": 21, "text": "Don't look into the red light, Naruto!" }
       ]
     },
     {

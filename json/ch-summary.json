@@ -33,7 +33,7 @@
     {
       "id": "kiyoteru",
       "numeral": "IV",
-      "title": "The City of Night",
+      "title": "City of Night",
       "start": 40,
       "end": 50,
       "blurb": "**Kiyoteru**, a city drowning in debt, is where Naruto becomes something else. He takes contracts for a woman named Yūgiri, kills a man and some, and hides all of it from his friends. **Yasaka** finds him; the Tower breaks open; and the boy who absorbs sickness turns out to be the plague itself. Naruto kills his own cure to stop it, four days too late for eighty-nine thousand people."
@@ -171,7 +171,6 @@
 		{ "chapter": 5, "text": "\"We used to have snow, before.\"" },
         { "chapter": 7, "text": "\"They are cursed\[...\] Given this truth, is it any wonder that the Uzumaki fled to the heavens…?\"" },
         { "chapter": 26, "text": "When Shiori was younger, Uzushio was still part of the land." }
-
       ]
     },
 	{

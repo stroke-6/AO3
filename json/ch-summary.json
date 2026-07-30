@@ -28,7 +28,7 @@
       "title": "Drifters of the Iron Roads",
       "start": 26,
       "end": 39,
-      "blurb": "Half-frozen and hunted, Naruto is taken in by the **Fujiki** nomads, and for the first time his work is useful instead of judged. He rediscovers compression sealing by pouring his own blood into it. With **Otsuru** he crosses the Iron passes, boards a train, meets a ronin called **Waka**, kills a yōkai wearing a man's skin, and finds a caged boy in a vault car who eats disease — which means, at last, a cure for his mother."
+      "blurb": "Half-frozen and hunted, Naruto is taken in by the **Fujiki** nomads, and for the first time his work is useful instead of judged. He rediscovers compression sealing by pouring his own blood into it. With **Otsuru** he crosses the Iron passes, boards a train, meets a ronin called **Waka**, defeats a yōkai wearing a man's skin, and finds a caged boy in a vault car who eats disease — which means, at last, a cure for his mother."
     },
     {
       "id": "kiyoteru",
@@ -36,7 +36,7 @@
       "title": "City of Night",
       "start": 40,
       "end": 50,
-      "blurb": "**Kiyoteru**, a city drowning in debt, is where Naruto becomes something else. He takes contracts for a woman named Yūgiri, kills a man and some, and hides all of it from his friends. **Yasaka** finds him; the Tower breaks open; and the boy who absorbs sickness turns out to be the plague itself. Naruto kills his own cure to stop it, four days too late for eighty-nine thousand people."
+      "blurb": "**Kiyoteru**, a segregated city, is where Naruto becomes something else. He takes contracts for a woman named Yūgiri, kills a man and some, and hides all of it from his friends. **Yasaka** finds him; the Tower breaks open; and the boy who absorbs sickness turns out to be the plague itself. Naruto kills his own cure to stop it, four days too late for eighty-nine thousand people."
     },
     {
       "id": "seas",
@@ -68,7 +68,7 @@
       "title": "The Shihō Shelf",
       "start": 73,
       "end": 83,
-      "blurb": "Naruto survives by being useful to the man who murdered his ally. **Kuriarare Kushimaru** marches him across a dying island, purging settlements under a false flag, until **Hoshigaki Shigure** arrives and the two Swordsmen tear each other apart over a boy neither considers a threat. Shigure dies. The Mizukage comes in person for vengeance, and Naruto — cornered — opens the Door. What answers is **Saiken**, the Six-Tails, and the Shelf ceases to exist. The rescue arrives straight into the cataclysm; and at the very end, the man he saved twice sells him."
+      "blurb": "Naruto survives by being useful to the man who murdered his ally. **Kuriarare Kushimaru** marches him across a dying island, purging settlements under a false flag, until **Hoshigaki Shigure** arrives and the two Swordsmen tear each other apart over a boy neither considers a threat. Shigure dies. The Mizukage comes in person for vengeance, and Naruto — cornered — opens the Door. What answers draws back because of **Saiken**, the Six-Tails, and the Shelf ceases to exist. The rescue arrives straight into the cataclysm; and at the very end, the man he saved twice sells him."
     }
   ],
 
@@ -95,7 +95,7 @@
     { "n": 20, "title": "Sacrifice", "type": "tale", "summary": "Tenjin **kills Aiko** — as a bomb — and then **kills Shiori**, who spends her death transferring a gift to both boys. He hints Kushina's illness has a cause no one has told Naruto, and offers to teach him. Then Gojō and Ryūjin arrive." },
     { "n": 21, "title": "Sealing of a Different Kind", "type": "tale", "summary": "Masters, three ways. Tenjin tempts Gojō with freedom from the **Oaths**; Gojō refuses, heals Ryūjin, and fights on with a stolen sword." },
     { "n": 22, "title": "Outcasts", "type": "tale", "summary": "They break Tenjin — and the deer-yōkai negates the water, and **Raimei cuts Ryūjin in half**. The cell is named. **Keishō was sacrificed to seal Nagato** with the Dead Demon Consuming Seal — and Nagato breaks out, tearing the sky." },
-    { "n": 23, "title": "Tempest", "type": "tale", "summary": "Nagato's storm-duel against the cell: Storm Release, a lightning array in the rain, a bone bloodline — held in check by a hostage. Gojō kills the deer and Gen'ei. Nagato seizes the collapsing space and throws everyone across the frozen mainland. Naruto lands alone in the snow." },
+    { "n": 23, "title": "Tempest", "type": "tale", "summary": "Nagato's storm-duel against the cell: Storm Release, a lightning array in the rain, a bone bloodline — held in check by a hostage. Gojō kills the deer. Nagato seizes the collapsing space and throws everyone across the frozen mainland. Naruto lands alone in the snow." },
     { "n": 24, "title": "Quiet", "type": "frame", "summary": "The first night ends. Three people, a fire, and the beginning of trust." },
     { "n": 25, "title": "Trust", "type": "frame", "summary": "Hanabi and Neji work out that **their memories of the tale are being selectively altered** by his tags. They choose to trust him and keep listening." },
     { "n": 26, "title": "Frost and Flame", "type": "tale", "summary": "Through Shiori's transferred memory, Naruto lives **young Shiori, Yume and Mito** in the old sea-Uzushio, and the Senju marriage-request that made the alliance. He wakes half-frozen in the north, healed by two **Fujiki** sisters, and hunted." },
@@ -108,16 +108,16 @@
     { "n": 33, "title": "Hagane", "type": "tale", "summary": "They pass **Hagane**, burning thirty years from a war that broke Iron's neutrality. The plan: the train at Tenkūgane, forged courier papers, and chakra-suppressant pills he takes only reluctantly." },
     { "n": 34, "title": "Silk-Wrapped Shit", "type": "tale", "summary": "In Tenkūgane he secretly **carves another seal into himself**. At the hot springs a ronin called **Waka** makes him, spars with him, extorts him, then covers for him. They board the train — and so does Waka, with the samurai." },
     { "n": 35, "title": "He Who Tames the Iron Horse", "type": "tale", "summary": "Waka interrogates them; the pills hold. He is hunting his master's killer. And the samurai **Itsuya** is a **yōkai wearing his skin**." },
-    { "n": 36, "title": "Passenger in Skin", "type": "tale", "summary": "The yōkai attacks, speaking of the day the Uzumaki bound its kind and demanding something back. Waka's twin flame-swords, Otsuru, and Naruto's **blood-bullet \"Unseal\"** — which nearly kills him — put it down." },
+    { "n": 36, "title": "Passenger in Skin", "type": "tale", "summary": "The yōkai attacks, speaking of the day the Uzumaki bound its kind and demanding something back. Waka's twin flame-swords, Otsuru, and Naruto's **blood-bullet \"Unseal\"** — which makes him pass out." },
     { "n": 37, "title": "Captives", "type": "tale", "summary": "Framed by **Captain Sakaeguchi** and shackled. Waka gives his real name: **Ushiwakamaru**, last of the burned Minamoto. They break chakra-draining shackles with a carved glyph, an Unseal, and Otsuru counting the train's curves." },
     { "n": 38, "title": "Young Bull", "type": "tale", "summary": "Through the guards to a vault car, where Naruto picks a seal-lock and finds **Kesshin** — a caged boy who **absorbs disease**. Which means he could cure his mother." },
     { "n": 39, "title": "Cursed Child", "type": "tale", "summary": "The airship route was **betrayed from inside Uzushio**. Sakaeguchi attacks; his suppressed chakra backfires; they jump into a river. Hidden in Kiyoteru by **Yūgiri**, forbidden chakra for two weeks." },
-    { "n": 40, "title": "City of Night", "type": "tale", "summary": "Kiyoteru and its crushing debt. Snubbed by the upper city, Naruto steals a purse — and comes home to Yūgiri saying: \"I want you to kill someone for me.\"" },
+    { "n": 40, "title": "City of Night", "type": "tale", "summary": "Kiyoteru and its crushing social issues. Snubbed by the upper city, Naruto steals a purse — and comes home to Yūgiri saying: \"I want you to kill someone for me.\"" },
     { "n": 41, "title": "What Silver Cannot Weigh", "type": "tale", "summary": "He assassinates the silk merchant **Daizen** with a hemorrhage seal, then learns he killed the more decent of the two men. A hint of coldness." },
     { "n": 42, "title": "A Shinobi's Oldest Companion", "type": "tale", "summary": "He keeps killing, in secret, and trades the work for barrier books, intel, and **smuggled letters to Shinpachi and Lady Mito**. The trio plan to go southeast. He tells them nothing." },
     { "n": 43, "title": "The Tower of Withheld Light", "type": "tale", "summary": "Kesshin is in **Tower Nine**, above the plague tunnels. Infiltrating, Naruto meets an ash-yōkai and reaches a warded hall full of them — and hears the whisper: **\"the Night of the Third Light.\"**" },
     { "n": 44, "title": "Frozen Hearts", "type": "tale", "summary": "Captured by **Kimura**, who explains what Kesshin actually is: a contamination-vessel, the plague's source, used to cure a dying lord's son. At the block, **Yasaka comes through the wall.**" },
-    { "n": 45, "title": "Sister", "type": "tale", "summary": "**Yasaka is Kushina's sister.** Her chain frees the children; Naruto executes a kneeling man and Waka looks at him differently. Sakaeguchi takes Yasaka's hands and an avalanche buries her — she **regenerates**. \"Now we do battle.\"" },
+    { "n": 45, "title": "Sister", "type": "tale", "summary": "**Yasaka is Kushina's sister** indeed. Her chain frees the children; Naruto executes a kneeling man and Waka looks at him differently. Sakaeguchi takes Yasaka's hands and an avalanche buries her — she **regenerates**. \"Now we do battle.\"" },
     { "n": 46, "title": "Moonlight", "type": "tale", "summary": "Yasaka against Sakaeguchi, who wears **stolen Uzumaki Sealed Armor** — meaning a clan traitor. Waka takes his arm; the duel **breaks Kesshin's wards**, and the yōkai spill into Kiyoteru as **Mifune** approaches." },
     { "n": 47, "title": "Wind and Flame", "type": "tale", "summary": "Mifune apparently believes them about the spirits — then the train-yōkai takes him and guts Yasaka. Naruto reaches Kesshin and takes his hand: **resonance**." },
     { "n": 48, "title": "Entropy", "type": "tale", "summary": "Kesshin's story — a village boy called **Sanjo** who absorbed everyone's sickness until it bloomed, killed his sister, and razed his home. He takes Naruto's dying friends' wounds. Then he asks Naruto to help him." },
@@ -167,10 +167,7 @@
       "weight": "master",
       "text": "The cataclysm that broke the world, years before the telling. \"I alone know what truly happened.\" Rumour links it to the Uzumaki in some way.",
       "updates": [
-        { "chapter": 2, "text": "Uzushio was already in the sky when Kushina was a child... Or was it?" },
-		{ "chapter": 5, "text": "\"We used to have snow, before.\"" },
-        { "chapter": 7, "text": "\"They are cursed[...] Given this truth, is it any wonder that the Uzumaki fled to the heavens…?\"" },
-        { "chapter": 26, "text": "When Shiori was younger, Uzushio was still part of the land." }
+		{ "chapter": 7, "text": "Named from the Hyūga side: the **Night of Crimson**, the **Shattering**." }
       ]
     },
 	{
@@ -181,7 +178,10 @@
       "weight": "master",
       "text": "Uzushio rose to the heavens, years ago. How, and why?",
       "updates": [
-        { "chapter": 7, "text": "Named from the Hyūga side: the **Night of Crimson**, the **Shattering**." }
+		{ "chapter": 2, "text": "Uzushio was already in the sky when Kushina was a child... Or was it?" },
+		{ "chapter": 5, "text": "\"We used to have snow, before.\"" },
+        { "chapter": 7, "text": "\"They are cursed[...] Given this truth, is it any wonder that the Uzumaki fled to the heavens…?\"" },
+        { "chapter": 26, "text": "When Shiori was younger, Uzushio was still part of the land." }
       ]
     },
     {
@@ -586,7 +586,7 @@
       "chapter": 45,
       "scope": "tale",
       "weight": "thread",
-      "text": "He executes a kneeling, beaten man, and Waka's opinion of him changes.",
+      "text": "Naruto executes a kneeling, beaten man, and Waka's opinion of him changes.",
       "updates": [
         { "chapter": 56, "text": "Waka decides to leave once they reach land — and admits, \"I would've taken Kesshin's hand too.\"" },
         { "chapter": 67, "text": "He is left behind, burnt and helpless, in a broker's hands. \"We'll have him walk again.\"" },

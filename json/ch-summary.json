@@ -662,14 +662,14 @@
     },
     {
       "id": "north-reach",
-      "title": "What sank the princess' escort",
+      "title": "To Sink a Princess",
       "chapter": 79,
       "scope": "tale",
       "weight": "thread",
       "text": "Something rose under the princess's ship at the north reach.",
 	  "resolution": {
         "chapter": 83,
-        "text": "No yōkai or Beast will likely confess to the crime."
+        "text": "No yōkai or Beast will likely confess to the crime openly..."
       }
     },
     {

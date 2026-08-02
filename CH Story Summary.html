@@ -864,7 +864,7 @@
                 const complete = current >= arc.end;                    // arc blurbs summarise the whole arc,
                 const blurb = complete                                  // so they only unlock once it's finished
                     ? `<div class="arc-blurb">${fmt(arc.blurb)}</div>`
-                    : `<div class="arc-blurb pending">This arc is still unfolding — its summary unlocks at chapter ${arc.end}.</div>`;
+                    : `<div class="arc-blurb pending">This arc is still ongoing — its summary unlocks later.</div>`;
 
                 html += `
                     <section class="arc">

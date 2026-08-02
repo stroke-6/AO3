@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Crimson Horizons",
-    "latestChapter": 83,
-    "updated": "2026-07-29"
+    "latestChapter": 84,
+    "updated": "2026-08-02"
   },
 
   "arcs": [
@@ -69,6 +69,14 @@
       "start": 73,
       "end": 83,
       "blurb": "Naruto survives by being useful to the man who murdered his ally. **Kuriarare Kushimaru** marches him across a dying island, purging settlements under a false flag, until **Hoshigaki Shigure** arrives and the two Swordsmen tear each other apart over a boy neither considers a threat. Shigure dies. The Mizukage comes in person for vengeance, and Naruto — cornered — opens the Door. What answers draws back because of **Saiken**, the Six-Tails, and the Shelf ceases to exist. The rescue arrives straight into the cataclysm; and at the very end, the man he saved twice sells him."
+    },
+    {
+      "id": "harvest",
+      "numeral": "IX",
+      "title": "The Harvest Festival",
+      "start": 84,
+      "end": 95,
+      "blurb": "Sold to the man who built the trap, Naruto arrives at **Shiosai** — a capital of bridges, canals and bells. He is washed, catalogued, and dressed; set on a mat in front of nine men who spend two hours deciding, in an unfamiliar language, whether to use him, sell him, or cut his throat. He talks them out of it, perhaps, or perhaps he did only what they wanted from the beginning. No matter what it is, he has agreed to tell whatever he is told to at the upcoming Harvest Festival."
     }
   ],
 
@@ -155,7 +163,8 @@
     { "n": 80, "title": "Salt", "type": "tale", "summary": "He carries the barely-mobile Kushimaru across a Shelf that **behaves even more strangely** and breeds small faceless yōkai out of his own footprints. He watches a **Saihē rite** — a hundred natives in silent joy burying a willing girl in salt and washing her away into slurry — and understands what the broth was made of. At the cove, three boats wrecked and one fine hull sitting untouched." },
     { "n": 81, "title": "Undertow", "type": "tale", "summary": "They take another boat and row — except it's a **genjutsu**, and Naruto is weeping with joy because he believes he is rowing home to his mother. A cold hand wakes him: he never moved. The dreaded \"she\" is **Shiranami Reiha, the Mizukage**, in person, for vengeance. She tortures Kushimaru and goes into Naruto's mind for his mother. Cornered, he reaches for **the Door.**" },
     { "n": 82, "title": "Saihē", "type": "tale", "summary": "The Door opens onto no place, and **swings both ways** — a many-jointed hand comes through and walks graves. A tower of drowned faces wears them to make him reach further; he refuses. What stops it is something rising at the horizon. **\"Saihē\" is Saiken, the Six-Tails**, and the Shelf ceases to exist. The salt-rites had been generating yōki for generations, and **Naruto was the spark.** Umeha arrives carrying Yasaka, Shunryō and Kaizen — straight into it. And the Beast's sightless regard finds **Naruto**." },
-    { "n": 83, "title": "Children of Water", "type": "tale", "summary": "The full battle: Reiha's fleet and one sea dragon fighting a Great Beast in an unspoken alliance. Kaizen **holds back** from killing Reiha; she spares Umeha in turn; her real goal is buying time to evacuate her men. Yasaka finds Naruto for one moment, then goes back into it. **Then the betrayal:** Kushimaru turns a Kiri hunter with the daimyō's coin, drops Naruto with his lightning while Yasaka is fighting to protect him, and has him carried off." }
+    { "n": 83, "title": "Children of Water", "type": "tale", "summary": "The full battle: Reiha's fleet and one sea dragon fighting a Great Beast in an unspoken alliance. Kaizen **holds back** from killing Reiha; she spares Umeha in turn; her real goal is buying time to evacuate her men. Yasaka finds Naruto for one moment, then goes back into it. **Then the betrayal:** Kushimaru turns a Kiri hunter with the daimyō's coin, drops Naruto with his lightning while Yasaka is fighting to protect him, and has him carried off." },
+    { "n": 84, "title": "The Guest", "type": "tale", "summary": "Delivered to **Shiosai**, the Imperial Capital of Water. They do not put him in a cell — they bathe him, burn his clothes, wash the dye out of his hair, write down every mark on his body, and sit him in front of **nine men** who argue for two hours, most of it in a court tongue he cannot understand, over whether to teach him, sell him to Fire, or cut his throat. He listens for names. Then he interrupts, and **sells them a leash on purpose**: everything they want, in exchange for any healer in the country. Asked who is sick, he tells the daimyō the truth — his mother. He is entered as a **guest**." }
   ],
 
   "mysteries": [
@@ -778,11 +787,41 @@
       "scope": "tale",
       "weight": "master",
       "text": "After being tended, carried, and saved from drowning twice, the man turns a Kiri hunter with the daimyō's coin, vaguely apologizes, and puts Naruto down with his own lightning — while Yasaka is fighting to keep the Beast off him. He wakes up bound for the man who built the whole trap. Nobody who could help him likely knows he is gone (or where).",
+      "updates": [
+        {
+          "chapter": 84,
+          "text": "The face behind the mask is ordinary; a tired man who looks fifty though he's younger, unreadable, with **nothing in it that Naruto could have missed**. At court he speaks *for* keeping Naruto, and offers no apology."
+        }
+      ],
 	  "resolution": {
 		"chapter": 83,
         "text": "Have you ever read 'The Scorpion and the Frog'?"
       }
 	},
+    {
+      "id": "umezu",
+      "title": "The Scholar",
+      "chapter": 84,
+      "scope": "tale",
+      "weight": "master",
+      "text": "**Umezu Hakuin** sits silent for most of the meeting, then asks only two questions: where Naruto was standing when the red light came down, and what he did just before it. He notes that the examiners found **nothing left of Reiha's illusions on either Naruto or Kushimaru** — and Kushimaru was in no condition to scrub anything off himself. Naruto deflects. Umezu says \"Thank you,\" sits back, and **tells the room nothing of what he concluded.** Afterwards he stops watching Naruto."
+    },
+    {
+      "id": "segawa",
+      "title": "\"See That It Is True\"",
+      "chapter": 84,
+      "scope": "tale",
+      "weight": "master",
+      "text": "The daimyō gives **Segawa Kagen** — the man who built the Shihō Shelf trap in the first place — the job of making certain that **no man alive can prove this house holds Naruto.** Segawa bows, comes up smiling, and the smile means nothing."
+    },
+    {
+      "id": "harvest-testimony",
+      "title": "Nine Weeks to the Harvest",
+      "chapter": 84,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "The main factions will come to Shiosai in nine weeks, to sit on this matting and drink this tea. Naruto has agreed to stand in front of them and say **whatever the house writes down for him.**.""
+    },
     {
       "id": "diary",
       "title": "The Thief",
@@ -921,7 +960,11 @@
 	  
 	{ "id": "shiho-departure", "cycle": "Fire",  "year": 211, "monthIndex": 8, "day": 16, "dateLabel": "16 August", "chapter": 83, "kind": "event", "tale": true,
       "title": "Naruto leaves the Shihō Shelf",
-      "detail": "Along with Kuriarare Kushimaru and a Kiri shinobi." }
+      "detail": "Along with Kuriarare Kushimaru and a Kiri shinobi." },
+
+	{ "id": "shiosai-arrival", "cycle": "Fire",  "year": 211, "monthIndex": 8, "day": 20, "dateLabel": "20 August", "chapter": 84, "kind": "event", "tale": true,
+      "title": "Naruto is delivered to Shiosai",
+      "detail": "Received under the Rites of the Water Court and entered as a guest of Daimyō Kushimoto Tadahiro." }
 
   ]
 }

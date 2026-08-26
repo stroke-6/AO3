@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Crimson Horizons",
-    "latestChapter": 84,
-    "updated": "2026-08-02"
+    "latestChapter": 85,
+    "updated": "2026-08-26"
   },
 
   "arcs": [
@@ -164,7 +164,8 @@
     { "n": 81, "title": "Undertow", "type": "tale", "summary": "They take another boat and row — except it's a **genjutsu**, and Naruto is weeping with joy because he believes he is rowing home to his mother. A cold hand wakes him: he never moved. The dreaded \"she\" is **Shiranami Reiha, the Mizukage**, in person, for vengeance. She tortures Kushimaru and goes into Naruto's mind for his mother. Cornered, he reaches for **the Door.**" },
     { "n": 82, "title": "Saihē", "type": "tale", "summary": "The Door opens onto no place, and **swings both ways** — a many-jointed hand comes through and walks graves. A tower of drowned faces wears them to make him reach further; he refuses. What stops it is something rising at the horizon. **\"Saihē\" is Saiken, the Six-Tails**, and the Shelf ceases to exist. The salt-rites had been generating yōki for generations, and **Naruto was the spark.** Umeha arrives carrying Yasaka, Shunryō and Kaizen — straight into it. And the Beast's sightless regard finds **Naruto**." },
     { "n": 83, "title": "Children of Water", "type": "tale", "summary": "The full battle: Reiha's fleet and one sea dragon fighting a Great Beast in an unspoken alliance. Kaizen **holds back** from killing Reiha; she spares Umeha in turn; her real goal is buying time to evacuate her men. Yasaka finds Naruto for one moment, then goes back into it. **Then the betrayal:** Kushimaru turns a Kiri hunter with the daimyō's coin, drops Naruto with his lightning while Yasaka is fighting to protect him, and has him carried off." },
-    { "n": 84, "title": "The Guest", "type": "tale", "summary": "Delivered to **Shiosai**, the Imperial Capital of Water. They do not put him in a cell — they bathe him, burn his clothes, wash the dye out of his hair, write down every mark on his body, and sit him in front of **nine men** who argue for two hours, most of it in a court tongue he cannot understand, over whether to teach him, sell him to Fire, or cut his throat. He listens for names. Then he interrupts, and **sells them a leash on purpose**: everything they want, in exchange for any healer in the country. Asked who is sick, he tells the daimyō the truth — his mother. He is entered as a **guest**." }
+    { "n": 84, "title": "The Guest", "type": "tale", "summary": "Delivered to **Shiosai**, the Imperial Capital of Water. They do not put him in a cell — they bathe him, burn his clothes, wash the dye out of his hair, write down every mark on his body, and sit him in front of **nine men** who argue for two hours, most of it in a court tongue he cannot understand, over whether to teach him, sell him to Fire, or cut his throat. He listens for names. Then he interrupts, and **sells them a leash on purpose**: everything they want, in exchange for any healer in the country. Asked who is sick, he tells the daimyō the truth — his mother. He is entered as a **guest**." },
+    { "n": 85, "title": "Yukina", "type": "tale", "summary": "Nineteen wards live in the east court and Naruto makes twenty. He learns the house's economy, and still, within a day he tells an eleven-year-old **Karatachi** that the Harvest is theater and his father is coming a long way to sit where he's put. At night, as agreed upon, he summons **Kaito** out of a salt pond and sends his mother a letter the household has approved. Then a physician asks plain questions about her four-year illness and the answers stop fitting in Naruto's mind. The daimyō's daughter walks into the court, empties it, and asks what happened on the Shihō Shelf." }
   ],
 
   "mysteries": [
@@ -204,7 +205,8 @@
         { "chapter": 20, "text": "Tenjin hints her illness has a **hidden cause** — something may have been done to her." },
         { "chapter": 38, "text": "A second, closer lead: **Kesshin**, the boy who absorbs disease." },
         { "chapter": 50, "text": "Naruto kills Kesshin to stop Kiyoteru. The clearest lead is gone, by his own hand." },
-        { "chapter": 71, "text": "The Shelf poison's effects remind Naruto of his mother's illness. A clue, or a traumatized child's projection?" }
+        { "chapter": 71, "text": "The Shelf poison's effects remind Naruto of his mother's illness. A clue, or a traumatized child's projection?" },
+        { "chapter": 85, "text": "A **Hōzuki** physician asks plain questions and nothing fits. Four years of a wasting course that **comes and goes**, which no wasting disease does." }
       ]
     },
     {
@@ -976,7 +978,7 @@
 
 	{ "id": "shiosai-arrival", "cycle": "Fire",  "year": 211, "monthIndex": 8, "day": 20, "dateLabel": "20 August", "chapter": 84, "kind": "event", "tale": true,
       "title": "Naruto is delivered to Shiosai",
-      "detail": "Received under the Rites of the Water Court and entered as a guest of Daimyō Kushimoto Tadahiro." }
+      "detail": "Received under the Rites of the Water Court and entered as a guest of Daimyō Kushimoto Tadahiro. One other name on that hull, struck through." }
 
   ]
 }

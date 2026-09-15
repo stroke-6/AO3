@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Crimson Horizons",
-    "latestChapter": 85,
-    "updated": "2026-08-26"
+    "latestChapter": 86,
+    "updated": "2026-09-15"
   },
 
   "arcs": [
@@ -76,7 +76,7 @@
       "title": "The Harvest Festival",
       "start": 84,
       "end": 95,
-      "blurb": "Sold to the man who built the trap, Naruto arrives at **Shiosai** — a capital of bridges, canals and bells. He is washed, catalogued, and dressed; set on a mat in front of nine men who spend two hours deciding, in an unfamiliar language, whether to use him, sell him, or cut his throat. He talks them out of it, perhaps, or perhaps he did only what they wanted from the beginning. No matter what it is, he has agreed to tell whatever he is told to at the upcoming Harvest Festival."
+      "blurb": "Sold to the man who built the trap, Naruto arrives at **Shiosai** — a capital of bridges, canals and bells. He is washed, catalogued, and dressed; set on a mat in front of nine men who spend two hours deciding, in an unfamiliar language, whether to use him, sell him, or cut his throat. He talks them out of it, perhaps, or perhaps he did only what they wanted from the beginning. No matter what it is, he has agreed to tell whatever he is told to at the upcoming Harvest Festival. Then the daimyō's daughter walks into his court with a question about the Shihō Shelf, and the two of them begin to try and talk."
     }
   ],
 
@@ -165,7 +165,8 @@
     { "n": 82, "title": "Saihē", "type": "tale", "summary": "The Door opens onto no place, and **swings both ways** — a many-jointed hand comes through and walks graves. A tower of drowned faces wears them to make him reach further; he refuses. What stops it is something rising at the horizon. **\"Saihē\" is Saiken, the Six-Tails**, and the Shelf ceases to exist. The salt-rites had been generating yōki for generations, and **Naruto was the spark.** Umeha arrives carrying Yasaka, Shunryō and Kaizen — straight into it. And the Beast's sightless regard finds **Naruto**." },
     { "n": 83, "title": "Children of Water", "type": "tale", "summary": "The full battle: Reiha's fleet and one sea dragon fighting a Great Beast in an unspoken alliance. Kaizen **holds back** from killing Reiha; she spares Umeha in turn; her real goal is buying time to evacuate her men. Yasaka finds Naruto for one moment, then goes back into it. **Then the betrayal:** Kushimaru turns a Kiri hunter with the daimyō's coin, drops Naruto with his lightning while Yasaka is fighting to protect him, and has him carried off." },
     { "n": 84, "title": "The Guest", "type": "tale", "summary": "Delivered to **Shiosai**, the Imperial Capital of Water. They do not put him in a cell — they bathe him, burn his clothes, wash the dye out of his hair, write down every mark on his body, and sit him in front of **nine men** who argue for two hours, most of it in a court tongue he cannot understand, over whether to teach him, sell him to Fire, or cut his throat. He listens for names. Then he interrupts, and **sells them a leash on purpose**: everything they want, in exchange for any healer in the country. Asked who is sick, he tells the daimyō the truth — his mother. He is entered as a **guest**." },
-    { "n": 85, "title": "Yukina", "type": "tale", "summary": "Nineteen wards live in the east court and Naruto makes twenty. He learns the house's economy, and still, within a day he tells an eleven-year-old **Karatachi** that the Harvest is theater and his father is coming a long way to sit where he's put. At night, as agreed upon, he summons **Kaito** out of a salt pond and sends his mother a letter the household has approved. Then a physician asks plain questions about her four-year illness and the answers stop fitting in Naruto's mind. The daimyō's daughter walks into the court, empties it, and asks what happened on the Shihō Shelf." }
+    { "n": 85, "title": "Yukina", "type": "tale", "summary": "Nineteen wards live in the east court and Naruto makes twenty. He learns the house's economy, and still, within a day he tells an eleven-year-old **Karatachi** that the Harvest is theater and his father is coming a long way to sit where he's put. At night, as agreed upon, he summons **Kaito** out of a salt pond and sends his mother a letter the household has approved. Then a physician asks plain questions about her four-year illness and the answers stop fitting in Naruto's mind. The daimyō's daughter walks into the court, empties it, and asks what happened on the Shihō Shelf." },
+    { "n": 86, "title": "Bells and Cages", "type": "tale", "summary": "Yes is true and a bad idea; no is an obvious lie. So Naruto gives the daimyō's daughter her father's own words back, and waits four seconds to find out whether she is clever enough to catch it. His keeper, Ōura Naozane, catches it too. The next morning he goes up the rites house — a stair with a trough of salt on every landing — and from the roof he sees **Shiosai** entire for the first time. She tells him about the night her ship went down and her foster mother. As is customary, with his usual grace, he asks her for anatomy books. On the way down, his fingers find paper in the sixth trough." }
   ],
 
   "mysteries": [
@@ -206,7 +207,8 @@
         { "chapter": 38, "text": "A second, closer lead: **Kesshin**, the boy who absorbs disease." },
         { "chapter": 50, "text": "Naruto kills Kesshin to stop Kiyoteru. The clearest lead is gone, by his own hand." },
         { "chapter": 71, "text": "The Shelf poison's effects remind Naruto of his mother's illness. A clue, or a traumatized child's projection?" },
-        { "chapter": 85, "text": "A **Hōzuki** physician asks plain questions and nothing fits. Four years of a wasting course that **comes and goes**, which no wasting disease does." }
+        { "chapter": 85, "text": "A **Hōzuki** physician asks plain questions and nothing fits. Four years of a wasting course that **comes and goes**, which no wasting disease does." },
+        { "chapter": 86, "text": "With *mother* in front of him, he asks a princess for books on physic — \"*how it's put together, what moves what*\". She doesn't know why, but will remember that he did." }
       ]
     },
     {
@@ -690,6 +692,9 @@
       "scope": "tale",
       "weight": "thread",
       "text": "Something rose under the princess's ship at the north reach.",
+      "updates": [
+        { "chapter": 86, "text": "Yukina's own account. She was below decks, in a room with no window." }
+      ],
 	  "resolution": {
         "chapter": 83,
         "text": "No yōkai or Beast will likely confess to the crime openly..."
@@ -826,7 +831,10 @@
       "chapter": 84,
       "scope": "tale",
       "weight": "thread",
-      "text": "The daimyō gives **Segawa Kagen** — the man who built the Shihō Shelf trap in the first place — the job of making certain that **no man alive can prove this house holds Naruto.** Segawa bows, comes up smiling, and the smile means nothing."
+      "text": "The daimyō gives **Segawa Kagen** — the man who built the Shihō Shelf trap in the first place — the job of making certain that **no man alive can prove this house holds Naruto.** Segawa bows, comes up smiling, and the smile means nothing.",
+      "updates": [
+        { "chapter": 86, "text": "The keeper of the east court has seen five \"the keeper objected\" lines written in forty years. \"*It would not survive one afternoon in a room with Lord Segawa.*\"" }
+      ]
     },
     {
       "id": "harvest-testimony",
@@ -834,7 +842,21 @@
       "chapter": 84,
       "scope": "tale",
       "weight": "thread",
-      "text": "The main factions will come to Shiosai in nine weeks, to sit on this matting and drink this tea. Naruto has agreed to stand in front of them and say **whatever the house writes down for him**."
+      "text": "The main factions will come to Shiosai in nine weeks, to sit on this matting and drink this tea. Naruto has agreed to stand in front of them and say **whatever the house writes down for him**.",
+      "updates": [
+        { "chapter": 86, "text": "Per Yukina, the Harvest is not about who is blamed for what. It is when the **rice charges fall due** and next year's allocations are set; \"the politics are draped over that.\"" }
+      ]
+    },
+    {
+      "id": "yukina",
+      "title": "\"Did My Father Lie to Me?\"",
+      "chapter": 85,
+      "scope": "tale",
+      "weight": "master",
+      "text": "**Kushimoto Yukina** reconstructed Naruto's arrival from the household registers alone — one boat, four days from the Shelf — and knows that nobody ever came to that place to hunt for her. Her father says the reports don't agree. She asks the one person under the roof who knows.",
+      "updates": [
+        { "chapter": 86, "text": "\"*The reports don't agree,*\" says Naruto, as the daimyō once said to Yukina. She catches it. So does **Ōura**, who tells Naruto to his face. Then a note in a salt trough: **Kane-bashi, the east end, two in the night** — the issue is... Naruto is not allowed out of the court." }
+      ]
     },
     {
       "id": "diary",
@@ -978,7 +1000,11 @@
 
 	{ "id": "shiosai-arrival", "cycle": "Fire",  "year": 211, "monthIndex": 8, "day": 20, "dateLabel": "20 August", "chapter": 84, "kind": "event", "tale": true,
       "title": "Naruto is delivered to Shiosai",
-      "detail": "Received under the Rites of the Water Court and entered as a guest of Daimyō Kushimoto Tadahiro. One other name on that hull, struck through." }
+      "detail": "Received under the Rites of the Water Court and entered as a guest of Daimyō Kushimoto Tadahiro. One other name on that hull, struck through." },
+
+	{ "id": "rites-house", "cycle": "Fire",  "year": 211, "monthIndex": 8, "day": 24, "dateLabel": "24 August", "chapter": 86, "kind": "event", "tale": true,
+      "title": "Naruto sees Shiosai from the rites-house roof",
+      "detail": "With Kushimoto Yukina and her guard Sagara. Thirteen great bridges, ninety-odd small, sixty kilometers of sea. A note in the sixth trough names Kane-bashi, two in the night, four days hence." }
 
   ]
 }

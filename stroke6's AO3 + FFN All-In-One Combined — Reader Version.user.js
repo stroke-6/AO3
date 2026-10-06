@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         stroke6's AO3 + FFN All-In-One Combined — Reader Version
 // @namespace    http://tampermonkey.net/
-// @version      1.3.3
+// @version      1.4.0
 // @description  Combined bundle of 11 user scripts for my own use, and 8 for you: AO3 enhancements + FanFiction.net Enhanced Reader
 // @author       stroke6 (combined)
 // @license      MIT
@@ -24,6 +24,9 @@
 // @match        https://m.fanfiction.net/s/14163903/*
 // @match        https://m.fanfiction.net/s/14095149/*
 // @match        https://m.fanfiction.net/s/14285217/*
+// @match        https://www.fanfiction.net/story/story_preview.php*
+// @match        https://fanfiction.net/story/story_preview.php*
+// @match        https://m.fanfiction.net/story/story_preview.php*
 //
 // @updateURL    https://stroke-6.github.io/AO3/stroke6%27s%20AO3%20%2B%20FFN%20All-In-One%20Combined%20%E2%80%94%20Reader%20Version.user.js
 // @downloadURL  https://stroke-6.github.io/AO3/stroke6%27s%20AO3%20%2B%20FFN%20All-In-One%20Combined%20%E2%80%94%20Reader%20Version.user.js
@@ -78,7 +81,11 @@
     };
     const isTargetedFFNStory = () => onUrl(/^https?:\/\/(www\.|m\.)?fanfiction\.net\/s\/(14312002|14396658|14163903|14095149|14285217)\//);
     const isFFNKanjiTitleStory = () => onUrl(/^https?:\/\/(www\.|m\.)?fanfiction\.net\/s\/(14095149|14163903)\//);
-    const isFFNIllustrationStory = () => onUrl(/^https?:\/\/(www\.|m\.)?fanfiction\.net\/s\/(14312002|14396658)\//);
+    // Live chapters, plus the author's story previews
+    // (/story/story_preview.php?storyid=14312002&chapter=85).
+    const isFFNIllustrationStory = () =>
+        onUrl(/^https?:\/\/(www\.|m\.)?fanfiction\.net\/s\/(14312002|14396658)\//) ||
+        onUrl(/^https?:\/\/(www\.|m\.)?fanfiction\.net\/story\/story_preview\.php\?(?:[^#]*&)?storyid=(14312002|14396658)(?!\d)/);
 
 
     // =====================================================================
@@ -1843,12 +1850,29 @@
     // =====================================================================
     // MODULE 11 — FanFiction.net Illustrations
     // Original @match: FFN stories 14312002 (Crimson Horizons), 14396658 (From the Ring, With Love)
+    // + their story_preview.php pages
     // =====================================================================
     if (isFFNIllustrationStory()) whenReady(() => (function moduleFFNIllustrations() {
         const INLINE_LABEL = 'i';
         const EXTRA_WORD   = /\bextra\b/i;
         const TOKEN_RE = new RegExp(`(?:^|\\s)((${INLINE_LABEL})\\s*\\/\\s*([A-Za-z0-9]+))`, 'gi');
         const AN_PATTERN = /\bAN\s*:|A\s*\/\s*N\s*:|A\.\s*N\.|author'?s?\s+note/i;
+
+        // s/FILENAME — a named illustration hosted on the GitHub Pages site.
+        // The name runs to the end of the line, so it may hold spaces, dashes,
+        // em-dashes, etc. ("s/87 — Extra — Bruises"). No extension → try
+        // .png first, then the other formats. "s/he", "s/him" etc. are prose.
+        // e/FILENAME — same lookup, but goes in a collapsible "Extra" box at
+        // the very end of the chapter. s/ always goes in the normal gallery,
+        // whatever its name says; only i/ codes still use the "Extra" keyword.
+        // h/FILENAME — same lookup, but becomes a hover layer laid over the
+        // nearest s/ image before it (same width, fades in over 1s).
+        // eh/FILENAME — the same, but laid over the nearest e/ image instead.
+        // A name stops early if another s/, e/, h/ or eh/ follows on the line.
+        const SITE_IMG_BASE = 'https://stroke-6.github.io/AO3/images/CH-Illustrations/';
+        const SITE_TOKEN_RE = /(?:^|\s)((eh|[seh])\s*\/\s*(?!(?:he|him|his|her|hers|they|them)\b)((?:(?!\s+(?:eh|[seh])\s*\/)[^\n\r])+))/gi;
+        const SITE_EXTS = ['png', 'jpg', 'jpeg', 'webp', 'gif'];
+        const HAS_EXT_RE = /\.(png|jpe?g|webp|gif)$/i;
 
         const PLACEHOLDER_SIZES = new Set(['400x200', '200x400']);
         const MIN_AREA_OK = 350 * 350;
@@ -1899,8 +1923,44 @@
             });
         }
 
+        // Resolve an s/ name to a working URL on the GitHub Pages site.
+        // Tried in order (not in parallel) so .png wins whenever it exists.
+        function trySiteImageUrls(name) {
+            const urls = HAS_EXT_RE.test(name)
+                ? [SITE_IMG_BASE + encodeURIComponent(name)]
+                : SITE_EXTS.map((ext) => SITE_IMG_BASE + encodeURIComponent(name) + '.' + ext);
+
+            const probe = (url, timeoutMs = 10000) => new Promise((resolve) => {
+                const img = new Image();
+                const timer = setTimeout(() => { try { img.src = ''; } catch (_) {} resolve(false); }, timeoutMs);
+                img.onload = () => { clearTimeout(timer); resolve((img.naturalWidth || 0) > 0); };
+                img.onerror = () => { clearTimeout(timer); resolve(false); };
+                img.src = url;
+            });
+
+            return (async () => {
+                for (const u of urls) if (await probe(u)) return u;
+                return null;
+            })();
+        }
+
+        function resolveRef(ref) {
+            return ref.site ? trySiteImageUrls(ref.code) : tryImageUrls(ref.code);
+        }
+
+        // Fallback (e.g. a story-preview page laid out differently): the
+        // element holding the most direct <p> children.
         function storyRoot() {
-            return document.querySelector('#storytext, .storytext, #storycontent');
+            const known = document.querySelector('#storytext, .storytext, #storycontent');
+            if (known) return known;
+            let best = null, bestCount = 2;
+            document.querySelectorAll('p').forEach((p) => {
+                const parent = p.parentElement;
+                if (!parent || parent === best) return;
+                const count = Array.from(parent.children).filter((c) => c.tagName === 'P').length;
+                if (count > bestCount) { best = parent; bestCount = count; }
+            });
+            return best;
         }
 
         function isExtraContext(block) {
@@ -1965,6 +2025,17 @@
                     display: flex; align-items: center; justify-content: center; cursor: zoom-out;
                 }
                 .cho-overlay img { max-width: 92%; max-height: 92%; border-radius: 8px; box-shadow: 0 6px 30px rgba(0,0,0,.6); }
+                .cho-hover-wrap {
+                    position: relative; display: inline-block; max-width: 100%;
+                    line-height: 0; vertical-align: top;
+                }
+                .cho-hover-wrap > img { display: block; }
+                .cho-hover-wrap > img.cho-hover-img {
+                    position: absolute; top: 0; left: 0; width: 100%; height: auto;
+                    opacity: 0; transition: opacity 1s;
+                }
+                .cho-hover-wrap:hover > img.cho-hover-img,
+                .cho-hover-wrap.cho-hover-on > img.cho-hover-img { opacity: 1; }
             `;
             const style = document.createElement('style');
             style.id = 'cho-styles';
@@ -1987,7 +2058,29 @@
             document.body.appendChild(overlay);
         }
 
-        function buildIllustration(code, opts = {}) {
+        // Lay the h/ image over the s/ one. On mouse devices it fades in on
+        // hover and a click zooms it; on touch screens (no hover) a tap
+        // toggles it instead.
+        function addHoverLayer(wrap, name, caption) {
+            trySiteImageUrls(name).then((url) => {
+                if (!url) return;
+                const himg = document.createElement('img');
+                himg.className = 'cho-hover-img';
+                himg.alt = caption || name;
+                himg.addEventListener('click', () => {
+                    if (window.matchMedia && window.matchMedia('(hover: none)').matches) {
+                        wrap.classList.toggle('cho-hover-on');
+                    } else {
+                        openImageOverlay(url);
+                    }
+                });
+                himg.src = url;
+                wrap.appendChild(himg);
+            });
+        }
+
+        function buildIllustration(ref, opts = {}) {
+            const code = ref.code;
             const extra = !!opts.extra;
             const caption = opts.caption || '';
 
@@ -1999,14 +2092,22 @@
             loading.textContent = 'Loading image…';
             fig.appendChild(loading);
 
-            tryImageUrls(code).then((url) => {
+            resolveRef(ref).then((url) => {
                 loading.remove();
                 if (!url) return;
                 const img = document.createElement('img');
                 img.alt = caption || code;
                 img.addEventListener('click', () => openImageOverlay(url));
                 img.src = url;
-                fig.appendChild(img);
+                if (ref.hoverCode) {
+                    const wrap = document.createElement('div');
+                    wrap.className = 'cho-hover-wrap';
+                    wrap.appendChild(img);
+                    fig.appendChild(wrap);
+                    addHoverLayer(wrap, ref.hoverCode, caption);
+                } else {
+                    fig.appendChild(img);
+                }
                 if (caption) {
                     const cap = document.createElement('figcaption');
                     cap.className = 'cho-caption';
@@ -2040,8 +2141,10 @@
             const touched = new Set();
             const codesByBlock = new Map();
 
-            function register(code, block) {
-                refs.push({ code, extra: isExtraContext(block), block });
+            // kind: 'i' (l3n code), or 's' / 'e' / 'h' / 'eh' (named site image).
+            function register(code, block, kind = 'i') {
+                const extra = kind === 'i' ? isExtraContext(block) : (kind === 'e' || kind === 'eh');
+                refs.push({ code, kind, site: kind !== 'i', hover: kind === 'h' || kind === 'eh', extra, block });
                 if (block) {
                     touched.add(block);
                     if (!codesByBlock.has(block)) codesByBlock.set(block, []);
@@ -2067,21 +2170,35 @@
             }
             textNodes.forEach((tn) => {
                 const text = tn.textContent;
-                TOKEN_RE.lastIndex = 0;
-                const hits = [];
+                const found = [];
                 let m;
+                TOKEN_RE.lastIndex = 0;
                 while ((m = TOKEN_RE.exec(text)) !== null) {
                     const start = m.index + (m[0].length - m[1].length);
-                    hits.push({ code: m[3], start, end: start + m[1].length });
+                    found.push({ code: m[3], start, end: start + m[1].length });
                 }
-                if (!hits.length) return;
+                SITE_TOKEN_RE.lastIndex = 0;
+                while ((m = SITE_TOKEN_RE.exec(text)) !== null) {
+                    const name = m[3].replace(/\s+/g, ' ').trim(); // \s also folds NBSP into a space
+                    if (!name) continue;
+                    const start = m.index + (m[0].length - m[1].length);
+                    found.push({ code: name, kind: m[2].toLowerCase(), start, end: start + m[1].length });
+                }
+                if (!found.length) return;
+
+                // In document order; drop any token swallowed by an earlier s/ name.
+                found.sort((a, b) => a.start - b.start);
+                const hits = [];
+                found.forEach((h) => {
+                    if (!hits.length || h.start >= hits[hits.length - 1].end) hits.push(h);
+                });
 
                 const block = tn.parentNode.closest ? tn.parentNode.closest('p, div, li, blockquote') : null;
                 let out = '';
                 let last = 0;
                 hits.forEach((h) => {
                     out += text.slice(last, h.start);
-                    register(h.code, block);
+                    register(h.code, block, h.kind);
                     last = h.end;
                 });
                 out += text.slice(last);
@@ -2100,9 +2217,26 @@
                 if ((residualFor.get(b) || '').length <= CAPTION_MAX) b.remove();
             });
 
+            // Fold each h/ into the nearest s/ before it, and each eh/ into the
+            // nearest e/. One with no free base to sit on (none yet, or that
+            // one already has a hover) just shows as an ordinary image, in the
+            // gallery (h/) or an Extra box (eh/).
+            const shown = [];
+            const lastBase = { s: null, e: null };
+            refs.forEach((r) => {
+                const baseKind = r.kind === 'h' ? 's' : r.kind === 'eh' ? 'e' : null;
+                const base = baseKind && lastBase[baseKind];
+                if (base && !base.hoverCode) {
+                    base.hoverCode = r.code;
+                    return;
+                }
+                shown.push(r);
+                if (r.kind === 's' || r.kind === 'e') lastBase[r.kind] = r;
+            });
+
             return {
-                normals: refs.filter((r) => !r.extra),
-                extras: refs.filter((r) => r.extra),
+                normals: shown.filter((r) => !r.extra),
+                extras: shown.filter((r) => r.extra),
             };
         }
 
@@ -2133,6 +2267,25 @@
             follow.insertAdjacentElement('afterend', btn);
         }
 
+        // TEST-ONLY hook: #cho-test=LINE1;;LINE2 in the URL appends each line as
+        // a fake paragraph at the end of the chapter before scanning, e.g.
+        //   …/s/14312002/87/#cho-test=s/87 — Extra — Bruises
+        // The hash never reaches FFN. Editing the hash reloads the page.
+        const TEST_HASH_RE = /^#cho-test=/;
+        function injectTestLines(root) {
+            if (!TEST_HASH_RE.test(location.hash)) return;
+            let raw = location.hash.replace(TEST_HASH_RE, '');
+            try { raw = decodeURIComponent(raw); } catch (_) {}
+            raw.split(';;').map((s) => s.trim()).filter(Boolean).forEach((line) => {
+                const p = document.createElement('p');
+                p.textContent = line;
+                root.appendChild(p);
+            });
+        }
+        window.addEventListener('hashchange', () => {
+            if (TEST_HASH_RE.test(location.hash)) location.reload();
+        });
+
         function run() {
             addToggleButton();
             if (!illustrationsEnabled()) return;
@@ -2142,19 +2295,20 @@
             root.dataset.choDone = '1';
 
             injectStyles();
+            injectTestLines(root);
             const { normals, extras } = collectCodes(root);
             if (!normals.length && !extras.length) return;
 
             if (normals.length) {
                 const gallery = document.createElement('div');
                 gallery.className = 'cho-gallery';
-                normals.forEach((r) => gallery.appendChild(buildIllustration(r.code, { caption: r.caption })));
+                normals.forEach((r) => gallery.appendChild(buildIllustration(r, { caption: r.caption })));
                 const an = anInsertionPoint(root);
                 if (an) root.insertBefore(gallery, an);
                 else root.appendChild(gallery);
             }
 
-            extras.forEach((r) => root.appendChild(buildIllustration(r.code, { extra: true, caption: r.caption })));
+            extras.forEach((r) => root.appendChild(buildIllustration(r, { extra: true, caption: r.caption })));
         }
 
         run();

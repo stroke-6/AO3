@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CH Illustrations</title>
+<style>
+  body { margin: 0; padding: 16px; background: #111; color: #ddd; font-family: Georgia, serif; }
+  h1 { font-weight: normal; }
+  #grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+  figure { margin: 0; background: #1b1b1b; padding: 8px; border-radius: 6px; }
+  img { width: 100%; height: 220px; object-fit: contain; display: block; }
+  figcaption { font-size: 13px; margin-top: 6px; word-break: break-all; }
+  a { color: inherit; text-decoration: none; }
+</style>
+</head>
+<body>
+<h1>CH Illustrations</h1>
+<div id="grid">Loading…</div>
+<script>
+fetch('https://api.github.com/repos/stroke-6/AO3/contents/images/CH-Illustrations')
+  .then(r => r.json())
+  .then(files => {
+    const grid = document.getElementById('grid');
+    grid.textContent = '';
+    files
+      .filter(f => /\.(png|jpe?g|gif|webp|svg)$/i.test(f.name))
+      .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }))
+      .forEach(f => {
+        const fig = document.createElement('figure');
+        fig.innerHTML = `<a href="${f.name}" target="_blank"><img loading="lazy" src="${f.name}" alt=""><figcaption>${f.name}</figcaption></a>`;
+        grid.appendChild(fig);
+      });
+  })
+  .catch(() => { document.getElementById('grid').textContent = 'Could not load the image list.'; });
+</script>
+</body>
+</html>

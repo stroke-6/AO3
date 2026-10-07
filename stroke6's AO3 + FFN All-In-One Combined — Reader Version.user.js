@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         stroke6's AO3 + FFN All-In-One Combined — Reader Version
 // @namespace    http://tampermonkey.net/
-// @version      1.5.0
+// @version      1.6.0
 // @description  Combined bundle of 11 user scripts for my own use, and 8 for you: AO3 enhancements + FanFiction.net Enhanced Reader
 // @author       stroke6 (combined)
 // @license      MIT
@@ -53,6 +53,7 @@
  *   9. FanFiction.net Enhanced Reader
  *  10. FanFiction.net Kanji Title (Indra + Indra: Extra)
  *  11. FanFiction.net Illustrations (Crimson Horizons/FTRWL)
+ *  12. AO3 Illustrations from GitHub (replaces lensdump images on AO3 work in case)
  */
 
 (function bundleRoot() {
@@ -2213,6 +2214,63 @@
         }
 
         run();
+    })());
+
+
+    // =====================================================================
+    // MODULE 12 — AO3 Illustrations from GitHub
+    // On previous AO3 works, images (and links to images) hosted on
+    // lensdump / l3n.co are switched to the same file in that story's
+    // GitHub folder. A file that isn't on GitHub yet keeps its original
+    // address, so nothing breaks while the folders fill up.
+    // =====================================================================
+    const AO3_ILLUS_FOLDERS = {
+        '39294225': 'Indra-Illustrations',      // Indra
+        '42794847': 'IndraExtra-Illustrations', // Indra: Extra
+        '52616674': 'CH-Illustrations',         // Crimson Horizons
+        '59274742': 'FTRWL-Illustrations',      // From the Ring, With Love
+        '50560177': 'ITQCOTHO-Illustrations',   // In the Quiet Confines of the Hokage's Office
+    };
+    const ao3WorkId = () => (location.pathname.match(/^\/works\/(\d+)/) || [])[1] || '';
+
+    if (isAO3WorkOrChap() && AO3_ILLUS_FOLDERS[ao3WorkId()]) whenReady(() => (function moduleAO3IllustrationsFromGitHub() {
+        const folder = AO3_ILLUS_FOLDERS[ao3WorkId()];
+        const LENSDUMP_RE = /^https?:\/\/(?:[a-z0-9]+\.)*(?:lensdump\.com|l3n\.co)\/(?:i\/)?([A-Za-z0-9]+)(\.(?:png|jpe?g|webp|gif))?(?:[?#].*)?$/i;
+
+        // Same filename first; if that isn't on GitHub, any other extension.
+        function githubUrlFor(code, ext) {
+            return (ext ? findIllustrationUrl(code + ext, folder) : Promise.resolve(null))
+                .then((url) => url || findIllustrationUrl(code, folder));
+        }
+
+        function swapImage(img) {
+            const original = img.getAttribute('src') || '';
+            const m = original.match(LENSDUMP_RE);
+            if (!m || img.dataset.ghSwapped) return;
+            img.dataset.ghSwapped = '1';
+            const [, code, ext] = m;
+
+            // Fast path: point straight at the same filename on GitHub.
+            img.addEventListener('error', function fallback() {
+                img.removeEventListener('error', fallback);
+                githubUrlFor(code, '').then((url) => {
+                    img.src = (url && url !== img.src) ? url : original;
+                });
+            });
+            img.src = ILLUS_ROOT + folder + '/' + code + (ext || '.png').toLowerCase();
+        }
+
+        function swapLink(a) {
+            const original = a.getAttribute('href') || '';
+            const m = original.match(LENSDUMP_RE);
+            if (!m || a.dataset.ghSwapped) return;
+            a.dataset.ghSwapped = '1';
+            githubUrlFor(m[1], m[2] && m[2].toLowerCase()).then((url) => { if (url) a.href = url; });
+        }
+
+        const root = document.getElementById('main') || document.body;
+        root.querySelectorAll('img[src]').forEach(swapImage);
+        root.querySelectorAll('a[href]').forEach(swapLink);
     })());
 
 })();

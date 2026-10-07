@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         stroke6's AO3 + FFN All-In-One Combined — Reader Version
 // @namespace    http://tampermonkey.net/
-// @version      1.4.0
+// @version      1.5.0
 // @description  Combined bundle of 11 user scripts for my own use, and 8 for you: AO3 enhancements + FanFiction.net Enhanced Reader
 // @author       stroke6 (combined)
 // @license      MIT
@@ -86,6 +86,57 @@
     const isFFNIllustrationStory = () =>
         onUrl(/^https?:\/\/(www\.|m\.)?fanfiction\.net\/s\/(14312002|14396658)\//) ||
         onUrl(/^https?:\/\/(www\.|m\.)?fanfiction\.net\/story\/story_preview\.php\?(?:[^#]*&)?storyid=(14312002|14396658)(?!\d)/);
+
+    // Illustration hosting (GitHub Pages) — one folder per story. Used by the
+    // i/ buttons (module 9) and the inline illustrations (module 11).
+    // Named s/ e/ h/ eh/ images always come from CH-Illustrations.
+    const ILLUS_ROOT = 'https://stroke-6.github.io/AO3/images/';
+    const ILLUS_FOLDERS = {
+        '14312002': 'CH-Illustrations',         // Crimson Horizons
+        '14396658': 'FTRWL-Illustrations',      // From the Ring, With Love
+        '14095149': 'Indra-Illustrations',      // Indra
+        '14163903': 'IndraExtra-Illustrations', // Indra: Extra
+        '14285217': 'ITQCOTHO-Illustrations',   // In the Quiet Confines of the Hokage's Office
+    };
+    const NAMED_ILLUS_FOLDER = 'CH-Illustrations';
+    const ILLUS_EXTS = ['png', 'jpg', 'jpeg', 'webp', 'gif'];
+    const ILLUS_HAS_EXT = /\.(png|jpe?g|webp|gif)$/i;
+
+    function ffnStoryId() {
+        const m = location.href.match(/fanfiction\.net\/s\/(\d+)/) || location.href.match(/[?&]storyid=(\d+)/);
+        return m ? m[1] : '';
+    }
+
+    // This story's illustration folder URL, or null if it has none.
+    function illustrationBase() {
+        const folder = ILLUS_FOLDERS[ffnStoryId()];
+        return folder ? ILLUS_ROOT + folder + '/' : null;
+    }
+
+    // Resolve an image name ("bFH8cc", "bFH8cc.jpg", "87 — Extra — Bruises")
+    // to a working URL in `folder` (default: this story's folder). No
+    // extension → .png first, then the other formats, tried in order.
+    // Resolves to null if none load.
+    function findIllustrationUrl(name, folder) {
+        const base = folder ? ILLUS_ROOT + folder + '/' : illustrationBase();
+        if (!base) return Promise.resolve(null);
+        const urls = ILLUS_HAS_EXT.test(name)
+            ? [base + encodeURIComponent(name)]
+            : ILLUS_EXTS.map((ext) => base + encodeURIComponent(name) + '.' + ext);
+
+        const probe = (url, timeoutMs = 10000) => new Promise((resolve) => {
+            const img = new Image();
+            const timer = setTimeout(() => { try { img.src = ''; } catch (_) {} resolve(false); }, timeoutMs);
+            img.onload = () => { clearTimeout(timer); resolve((img.naturalWidth || 0) > 0); };
+            img.onerror = () => { clearTimeout(timer); resolve(false); };
+            img.src = url;
+        });
+
+        return (async () => {
+            for (const u of urls) if (await probe(u)) return u;
+            return null;
+        })();
+    }
 
 
     // =====================================================================
@@ -502,23 +553,23 @@
     if (isStroke6User()) whenReady(() => (function moduleStoryImageDisplay() {
         const storyData = {
             "Indra": {
-                img: "https://a.l3n.co/i/D8fgtM.png",
+                img: "https://stroke-6.github.io/AO3/images/Indra-Illustrations/D8fgtM.png",
                 url: "https://archiveofourown.org/works/39294225/chapters/98328066"
             },
             "Indra: Extra": {
-                img: "https://b.l3n.co/i/D8PicP.png",
+                img: "https://stroke-6.github.io/AO3/images/IndraExtra-Illustrations/D8PicP.png",
                 url: "https://archiveofourown.org/works/42794847/chapters/107503575"
             },
             "From the Ring, With Love": {
-                img: "https://d.l3n.co/i/D8PWHZ.png",
+                img: "https://stroke-6.github.io/AO3/images/FTRWL-Illustrations/D8PWHZ.png",
                 url: "https://archiveofourown.org/works/59274742/chapters/151165909"
             },
             "Crimson Horizons": {
-                img: "https://a.l3n.co/i/D8P25c.png",
+                img: "https://stroke-6.github.io/AO3/images/CH-Illustrations/D8P25c.png",
                 url: "https://archiveofourown.org/works/52616674/chapters/133092478"
             },
             "In the Quiet Confines of the Hokage's Office": {
-                img: "https://d.l3n.co/DiQ2uH.png",
+                img: "https://stroke-6.github.io/AO3/images/ITQCOTHO-Illustrations/DiQ2uH.png",
                 url: "https://archiveofourown.org/works/50560177"
             }
         };
@@ -827,7 +878,7 @@
             }
             .ffn-image-btn:hover { color:#111; border-bottom:1px solid; box-shadow: 2px 2px 0 #891111; }
             .ffn-image-btn:active { color:#111; background:#ccc; border-color:#fff; box-shadow: inset 1px 1px 3px #333; transform: translateY(4px); }
-            .ffn-image-btn::before { content: url('https://c.l3n.co/i/vJpYDq.png'); transform: scale(.05); display:inline-block; width:1em; height:1em; vertical-align:top; margin-right:.5em; position:relative; top:-.1em; }
+            .ffn-image-btn::before { content: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/vJpYDq.png'); transform: scale(.05); display:inline-block; width:1em; height:1em; vertical-align:top; margin-right:.5em; position:relative; top:-.1em; }
             .ffn-image-btn::after { content:" ↓"; }
             .ffn-image-title {
                 font-size: 140%; font-weight: bold; font-family: PT Serif, Georgia; color: #750705;
@@ -878,66 +929,6 @@
         ffnFontLink.href = 'https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Yuji+Syuku&display=swap';
         document.head.appendChild(ffnFontLink);
 
-        const PLACEHOLDER_SIZES = new Set(['400x200','200x400']);
-        const MIN_AREA_OK = 350 * 350;
-
-        function looksLikePlaceholder(w, h) {
-            const tag = `${w}x${h}`;
-            if (PLACEHOLDER_SIZES.has(tag)) return true;
-            if ((w * h) < MIN_AREA_OK) return true;
-            const ar = w > h ? (w / h) : (h / w);
-            if (ar >= 1.95 && ar <= 2.05 && (w * h) < (500 * 500)) return true;
-            return false;
-        }
-
-        function tryImageUrls(code) {
-            const subs = 'abcdefghijklmnopqrstuvwxyz'.split('');
-            const exts = ['png','jpg','jpeg','webp','gif'];
-            const candidates = [];
-            for (const s of subs) {
-                for (const ext of exts) {
-                    candidates.push(`https://${s}.l3n.co/i/${code}.${ext}`);
-                }
-            }
-            candidates.push(`https://c.l3n.co/i/${code}`);
-
-            const loadAsPromise = (url, timeoutMs = 8000) => new Promise((resolve, reject) => {
-                const img = new Image();
-                let timedOut = false;
-                const timer = setTimeout(() => { timedOut = true; try { img.src = ''; } catch(_){}; reject(new Error('timeout')); }, timeoutMs);
-                img.onload = () => {
-                    if (!timedOut) {
-                        clearTimeout(timer);
-                        const w = img.naturalWidth || 0;
-                        const h = img.naturalHeight || 0;
-                        if (w > 0 && h > 0 && !looksLikePlaceholder(w, h)) {
-                            resolve(url);
-                        } else {
-                            reject(new Error('placeholder-or-tiny'));
-                        }
-                    }
-                };
-                img.onerror = () => { clearTimeout(timer); reject(new Error('error')); };
-                const sep = url.includes('?') ? '&' : '?';
-                img.src = url + sep + '_=' + Date.now();
-            });
-
-            const batchSize = 8;
-            let offset = 0;
-            return new Promise(async (resolve) => {
-                while (offset < candidates.length) {
-                    const batch = candidates.slice(offset, offset + batchSize);
-                    try {
-                        const winner = await Promise.any(batch.map(u => loadAsPromise(u)));
-                        return resolve(winner);
-                    } catch {
-                        offset += batchSize;
-                    }
-                }
-                resolve(null);
-            });
-        }
-
         function createImageOverlay(imageCode) {
             const overlay = document.createElement('div');
             overlay.className = 'ffn-image-overlay';
@@ -949,7 +940,7 @@
             document.body.appendChild(overlay);
 
             let done = false;
-            tryImageUrls(imageCode).then((workingUrl) => {
+            findIllustrationUrl(imageCode).then((workingUrl) => {
                 if (!workingUrl) {
                     if (!done) overlay.innerHTML = '<div style="color:#fff;text-align:center;">Image not found on any server</div>';
                     return;
@@ -1129,7 +1120,7 @@
         }
 
         function processTextInElement(element) {
-            const imageRegex = /(?:^|\s)(i\s*\/\s*([A-Za-z0-9]+))/g;
+            const imageRegex = /(?:^|\s)(i\s*\/\s*([A-Za-z0-9]+(?:\.(?:png|jpe?g|webp|gif))?))/g;
             const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
             const textNodes = [];
             let node;
@@ -1855,10 +1846,12 @@
     if (isFFNIllustrationStory()) whenReady(() => (function moduleFFNIllustrations() {
         const INLINE_LABEL = 'i';
         const EXTRA_WORD   = /\bextra\b/i;
-        const TOKEN_RE = new RegExp(`(?:^|\\s)((${INLINE_LABEL})\\s*\\/\\s*([A-Za-z0-9]+))`, 'gi');
+        const TOKEN_RE = new RegExp(`(?:^|\\s)((${INLINE_LABEL})\\s*\\/\\s*([A-Za-z0-9]+(?:\\.(?:png|jpe?g|webp|gif))?))`, 'gi');
         const AN_PATTERN = /\bAN\s*:|A\s*\/\s*N\s*:|A\.\s*N\.|author'?s?\s+note/i;
 
-        // s/FILENAME — a named illustration hosted on the GitHub Pages site.
+        // i/CODE — a short image name ("i/bFH8cc", or "i/bFH8cc.jpg").
+        // s/FILENAME — a named illustration (a full filename).
+        // i/ looks in this story's folder; s/ (and e/ h/ eh/ below) always in CH-Illustrations.
         // The name runs to the end of the line, so it may hold spaces, dashes,
         // em-dashes, etc. ("s/87 — Extra — Bruises"). No extension → try
         // .png first, then the other formats. "s/he", "s/him" etc. are prose.
@@ -1869,83 +1862,11 @@
         // nearest s/ image before it (same width, fades in over 1s).
         // eh/FILENAME — the same, but laid over the nearest e/ image instead.
         // A name stops early if another s/, e/, h/ or eh/ follows on the line.
-        const SITE_IMG_BASE = 'https://stroke-6.github.io/AO3/images/CH-Illustrations/';
         const SITE_TOKEN_RE = /(?:^|\s)((eh|[seh])\s*\/\s*(?!(?:he|him|his|her|hers|they|them)\b)((?:(?!\s+(?:eh|[seh])\s*\/)[^\n\r])+))/gi;
-        const SITE_EXTS = ['png', 'jpg', 'jpeg', 'webp', 'gif'];
-        const HAS_EXT_RE = /\.(png|jpe?g|webp|gif)$/i;
-
-        const PLACEHOLDER_SIZES = new Set(['400x200', '200x400']);
-        const MIN_AREA_OK = 350 * 350;
         const CAPTION_MAX = 80;
 
-        function looksLikePlaceholder(w, h) {
-            if (PLACEHOLDER_SIZES.has(`${w}x${h}`)) return true;
-            if ((w * h) < MIN_AREA_OK) return true;
-            const ar = w > h ? (w / h) : (h / w);
-            if (ar >= 1.95 && ar <= 2.05 && (w * h) < (500 * 500)) return true;
-            return false;
-        }
-
-        function tryImageUrls(code) {
-            const subs = 'abcdefghijklmnopqrstuvwxyz'.split('');
-            const exts = ['png', 'jpg', 'jpeg', 'webp', 'gif'];
-            const candidates = [];
-            for (const s of subs) {
-                for (const ext of exts) candidates.push(`https://${s}.l3n.co/i/${code}.${ext}`);
-            }
-            candidates.push(`https://c.l3n.co/i/${code}`);
-
-            const probe = (url, timeoutMs = 8000) => new Promise((resolve, reject) => {
-                const img = new Image();
-                let timedOut = false;
-                const timer = setTimeout(() => { timedOut = true; try { img.src = ''; } catch (_) {} reject(new Error('timeout')); }, timeoutMs);
-                img.onload = () => {
-                    if (timedOut) return;
-                    clearTimeout(timer);
-                    const w = img.naturalWidth || 0, h = img.naturalHeight || 0;
-                    if (w > 0 && h > 0 && !looksLikePlaceholder(w, h)) resolve(url);
-                    else reject(new Error('placeholder-or-tiny'));
-                };
-                img.onerror = () => { clearTimeout(timer); reject(new Error('error')); };
-                const sep = url.includes('?') ? '&' : '?';
-                img.src = url + sep + '_=' + Date.now();
-            });
-
-            const batchSize = 8;
-            let offset = 0;
-            return new Promise(async (resolve) => {
-                while (offset < candidates.length) {
-                    const batch = candidates.slice(offset, offset + batchSize);
-                    try { return resolve(await Promise.any(batch.map(u => probe(u)))); }
-                    catch { offset += batchSize; }
-                }
-                resolve(null);
-            });
-        }
-
-        // Resolve an s/ name to a working URL on the GitHub Pages site.
-        // Tried in order (not in parallel) so .png wins whenever it exists.
-        function trySiteImageUrls(name) {
-            const urls = HAS_EXT_RE.test(name)
-                ? [SITE_IMG_BASE + encodeURIComponent(name)]
-                : SITE_EXTS.map((ext) => SITE_IMG_BASE + encodeURIComponent(name) + '.' + ext);
-
-            const probe = (url, timeoutMs = 10000) => new Promise((resolve) => {
-                const img = new Image();
-                const timer = setTimeout(() => { try { img.src = ''; } catch (_) {} resolve(false); }, timeoutMs);
-                img.onload = () => { clearTimeout(timer); resolve((img.naturalWidth || 0) > 0); };
-                img.onerror = () => { clearTimeout(timer); resolve(false); };
-                img.src = url;
-            });
-
-            return (async () => {
-                for (const u of urls) if (await probe(u)) return u;
-                return null;
-            })();
-        }
-
         function resolveRef(ref) {
-            return ref.site ? trySiteImageUrls(ref.code) : tryImageUrls(ref.code);
+            return findIllustrationUrl(ref.code, ref.site ? NAMED_ILLUS_FOLDER : undefined);
         }
 
         // Fallback (e.g. a story-preview page laid out differently): the
@@ -2062,7 +1983,7 @@
         // hover and a click zooms it; on touch screens (no hover) a tap
         // toggles it instead.
         function addHoverLayer(wrap, name, caption) {
-            trySiteImageUrls(name).then((url) => {
+            findIllustrationUrl(name, NAMED_ILLUS_FOLDER).then((url) => {
                 if (!url) return;
                 const himg = document.createElement('img');
                 himg.className = 'cho-hover-img';
@@ -2141,7 +2062,7 @@
             const touched = new Set();
             const codesByBlock = new Map();
 
-            // kind: 'i' (l3n code), or 's' / 'e' / 'h' / 'eh' (named site image).
+            // kind: 'i' (short code), or 's' / 'e' / 'h' / 'eh' (full filename).
             function register(code, block, kind = 'i') {
                 const extra = kind === 'i' ? isExtraContext(block) : (kind === 'e' || kind === 'eh');
                 refs.push({ code, kind, site: kind !== 'i', hover: kind === 'h' || kind === 'eh', extra, block });
@@ -2267,25 +2188,6 @@
             follow.insertAdjacentElement('afterend', btn);
         }
 
-        // TEST-ONLY hook: #cho-test=LINE1;;LINE2 in the URL appends each line as
-        // a fake paragraph at the end of the chapter before scanning, e.g.
-        //   …/s/14312002/87/#cho-test=s/87 — Extra — Bruises
-        // The hash never reaches FFN. Editing the hash reloads the page.
-        const TEST_HASH_RE = /^#cho-test=/;
-        function injectTestLines(root) {
-            if (!TEST_HASH_RE.test(location.hash)) return;
-            let raw = location.hash.replace(TEST_HASH_RE, '');
-            try { raw = decodeURIComponent(raw); } catch (_) {}
-            raw.split(';;').map((s) => s.trim()).filter(Boolean).forEach((line) => {
-                const p = document.createElement('p');
-                p.textContent = line;
-                root.appendChild(p);
-            });
-        }
-        window.addEventListener('hashchange', () => {
-            if (TEST_HASH_RE.test(location.hash)) location.reload();
-        });
-
         function run() {
             addToggleButton();
             if (!illustrationsEnabled()) return;
@@ -2295,7 +2197,6 @@
             root.dataset.choDone = '1';
 
             injectStyles();
-            injectTestLines(root);
             const { normals, extras } = collectCodes(root);
             if (!normals.length && !extras.length) return;
 

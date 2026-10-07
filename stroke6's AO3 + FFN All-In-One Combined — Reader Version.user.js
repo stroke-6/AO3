@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         stroke6's AO3 + FFN All-In-One Combined — Reader Version
 // @namespace    http://tampermonkey.net/
-// @version      1.6.0
+// @version      1.6.1
 // @description  Combined bundle of 11 user scripts for my own use, and 8 for you: AO3 enhancements + FanFiction.net Enhanced Reader
 // @author       stroke6 (combined)
 // @license      MIT
@@ -1121,7 +1121,10 @@
         }
 
         function processTextInElement(element) {
-            const imageRegex = /(?:^|\s)(i\s*\/\s*([A-Za-z0-9]+(?:\.(?:png|jpe?g|webp|gif))?))/g;
+            // "i/CODE" (optionally "i/CODE.jpg"), or the older spaced form
+            // "i CODE" (Indra: Extra) — that one only for a 6-character code
+            // with at least one capital or digit, so prose like "i imgur" is skipped.
+            const imageRegex = /(?:^|\s)(i(?:\s*\/\s*([A-Za-z0-9]+(?:\.(?:png|jpe?g|webp|gif))?)|\s+((?=[A-Za-z0-9]{0,5}[A-Z0-9])[A-Za-z0-9]{6})(?![A-Za-z0-9])))/g;
             const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
             const textNodes = [];
             let node;
@@ -1132,7 +1135,7 @@
                 let m; const matches = [];
                 imageRegex.lastIndex = 0;
                 while ((m = imageRegex.exec(text)) !== null) {
-                    matches.push({ fullMatch: m[1], code: m[2], index: m.index + (m[0].length - m[1].length) });
+                    matches.push({ fullMatch: m[1], code: m[2] || m[3], index: m.index + (m[0].length - m[1].length) });
                 }
                 if (!matches.length) return;
 

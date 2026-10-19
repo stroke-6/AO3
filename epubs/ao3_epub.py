@@ -16,7 +16,6 @@ For each story in stories.json:
 
 Usage:
   python ao3_epub.py                  # all stories (only rebuilds changed ones)
-  python ao3_epub.py --only daily     # only stories with "check": "daily"
   python ao3_epub.py --story Indra    # one story
   python ao3_epub.py --force          # rebuild even without changes
   python ao3_epub.py --local some.epub --story "Crimson Horizons"
@@ -419,17 +418,15 @@ def main():
     ap.add_argument("--force", action="store_true", help="rebuild even if nothing changed")
     ap.add_argument("--local", help="format this EPUB file instead of downloading")
     ap.add_argument("--story", help="only this story (by name)")
-    ap.add_argument("--only", help='only stories whose "check" is this (e.g. daily, manual)')
     ap.add_argument("--ci", action="store_true",
                     help="GitHub mode: skip on unchanged state even if no output file exists")
+    ap.add_argument("--state", default=STATE_PATH, help="state file to use (default: state.json)")
     args = ap.parse_args()
 
     config = load_json(CONFIG_PATH, None)
     out_dir = os.path.join(HERE, config.get("output_dir", "output"))
     os.makedirs(out_dir, exist_ok=True)
-    stories = [s for s in config["stories"]
-               if (not args.story or s["name"] == args.story)
-               and (not args.only or s.get("check", "manual") == args.only)]
+    stories = [s for s in config["stories"] if not args.story or s["name"] == args.story]
     if not stories:
         sys.exit("no matching story in stories.json")
 
@@ -440,7 +437,7 @@ def main():
         log("{}: formatted local file -> {} ({})".format(s["name"], dest, stats_text(stats)))
         return 0
 
-    state = load_json(STATE_PATH, {})
+    state = load_json(args.state, {})
     failures = 0
     for i, story in enumerate(stories):
         if i:
@@ -450,7 +447,7 @@ def main():
         except Exception as e:
             failures += 1
             log("{}: FAILED - {}".format(story["name"], e))
-        save_json(STATE_PATH, state)
+        save_json(args.state, state)
     return 1 if failures else 0
 
 

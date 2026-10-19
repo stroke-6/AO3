@@ -1,20 +1,23 @@
 Formatted EPUBs
 ===============
 
-GitHub runs .github/workflows/epubs.yml, which:
-  1. reads each AO3 work page listed in stories.json,
+Each story has its own workflow in .github/workflows/:
+  epub-ch.yml      EPUB · Crimson Horizons          every day at 05:17 UTC, or by hand
+  epub-ftrwl.yml   EPUB · From the Ring, With Love  by hand only
+  epub-ie.yml      EPUB · Indra: Extra              by hand only
+  epub-indra.yml   EPUB · Indra                     by hand only
+They all use the shared steps in epub-build.yml, which:
+  1. reads the story's AO3 work page,
   2. if AO3 has a new version (or the story's formatting settings changed),
-     downloads it and formats it,
-  3. uploads it to the "epubs" release.
+     downloads it and formats it with ao3_epub.py,
+  3. uploads it to the "epubs" release, with its own state-<file>.json.
 
-When stories are checked (set with "check" in stories.json):
-  daily   - every day at 05:17 UTC        (Crimson Horizons)
-  manual  - only when you run the workflow (From the Ring, With Love; Indra: Extra; Indra)
+Running one by hand:
+  GitHub > Actions > pick the story's workflow > Run workflow
+  ("Rebuild" rebuilds even if nothing changed on AO3)
 
-Running it by hand:
-  GitHub > Actions > "Build formatted EPUBs" > Run workflow
-  - "Which story to check": one story, or All stories
-  - "Rebuild": rebuild even if nothing changed on AO3
+Changing a schedule: edit the "schedule" / "cron" lines in that story's workflow file
+(e.g. copy the schedule block from epub-ch.yml to make another story daily).
 
 Reader links (permanent, always the newest version):
   https://github.com/stroke-6/AO3/releases/download/epubs/Crimson_Horizons.epub
@@ -25,9 +28,8 @@ Reader links (permanent, always the newest version):
 
 Story settings (stories.json)
 -----------------------------
-  "name"             story name (also used in the "Which story" menu of the workflow)
+  "name"             story name (the workflow file refers to it by this name)
   "work_id"          AO3 work number
-  "check"            "daily" or "manual"
   "color"            colour of bold text (strong), e.g. "#750705"
   "cover_dir"        folder whose files are all added to the EPUB (cover pages + images)
   optional:
@@ -44,7 +46,8 @@ Updating the decorative titles: paste the new workskin into workskins/Indra.css 
 Changing any setting, cover file or workskin makes the next run rebuild that story.
 
 Adding a story: put its cover files in covers/<Short>/, add an entry to stories.json,
-and add its name to the "options" list in .github/workflows/epubs.yml.
+then copy epub-indra.yml to epub-<short>.yml and change its name, concurrency group,
+story and file lines.
 
 If a run fails (e.g. AO3 down all day), GitHub emails you.
 

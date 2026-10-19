@@ -1,0 +1,25 @@
+# Indra: checked only by hand (Actions > EPUB · Indra > Run workflow)
+name: "EPUB · Indra"
+
+on:
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Rebuild even if nothing changed on AO3"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: epub-indra
+  cancel-in-progress: false
+
+jobs:
+  build:
+    uses: ./.github/workflows/epub-build.yml
+    with:
+      story: "Indra"
+      file: "Indra"
+      force: ${{ inputs.force == true }}

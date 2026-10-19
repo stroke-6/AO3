@@ -1,0 +1,60 @@
+# Shared steps for the per-story EPUB workflows (epub-*.yml). Not run on its own.
+#
+# Checks AO3 for one story, formats it (epubs/ao3_epub.py) if it changed, and uploads it
+# to the "epubs" release, which gives the story a permanent link:
+#   https://github.com/<owner>/<repo>/releases/download/epubs/<file>.epub
+# Each story keeps its own state file (state-<file>.json) in the release.
+name: EPUB build (shared)
+
+on:
+  workflow_call:
+    inputs:
+      story:
+        description: "Story name, as in epubs/stories.json"
+        type: string
+        required: true
+      file:
+        description: "Output file name without .epub"
+        type: string
+        required: true
+      force:
+        type: boolean
+        default: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
+      TAG: epubs
+      STORY: ${{ inputs.story }}
+      FILE: ${{ inputs.file }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create the release on first run
+        run: |
+          gh release view "$TAG" >/dev/null 2>&1 \
+            || gh release create "$TAG" --title "Formatted EPUBs" \
+                 --notes "Always-current formatted EPUBs, rebuilt automatically when a story updates on AO3." \
+            || gh release view "$TAG" >/dev/null   # another story's run may have just created it
+
+      - name: Fetch last known AO3 version
+        run: gh release download "$TAG" --pattern "state-$FILE.json" --dir epubs --clobber || echo "No state yet, building"
+
+      - name: Check AO3 and build
+        working-directory: epubs
+        run: |
+          args=(--ci --story "$STORY" --state "state-$FILE.json")
+          if [ "${{ inputs.force }}" = "true" ]; then args+=(--force); fi
+          python3 ao3_epub.py "${args[@]}"
+
+      - name: Upload
+        run: |
+          if [ -f "epubs/output/$FILE.epub" ]; then
+            gh release upload "$TAG" "epubs/output/$FILE.epub" "epubs/state-$FILE.json" --clobber
+          else
+            echo "No change on AO3, nothing to upload"
+          fi

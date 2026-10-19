@@ -1,0 +1,25 @@
+# From the Ring, With Love: checked only by hand (Actions > EPUB · From the Ring, With Love > Run workflow)
+name: "EPUB · From the Ring, With Love"
+
+on:
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Rebuild even if nothing changed on AO3"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: epub-ftrwl
+  cancel-in-progress: false
+
+jobs:
+  build:
+    uses: ./.github/workflows/epub-build.yml
+    with:
+      story: "From the Ring, With Love"
+      file: "From_the_Ring_With_Love"
+      force: ${{ inputs.force == true }}

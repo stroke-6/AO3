@@ -1,0 +1,502 @@
+#workskin .chapter .preface.group {
+  position: relative;
+}
+
+#workskin .chapter .preface.group:first-of-type::before {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  color: rgb(137, 70, 87);
+  font-size: 2.5em;
+  font-weight: 200;
+  font-family: "Noto Serif JP", Meiryo, Osaka, sans-serif;
+  letter-spacing: 0.15em;
+  text-shadow: 3px 2px 3px rgba(137, 70, 87, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: pre;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+}
+
+#workskin #chapter-1 .preface.group:first-of-type::before {
+  content: "忍ノ闇鏡越シ";
+}
+
+#workskin #chapter-2 .preface.group:first-of-type::before {
+  content: "鏡ノ罅越シ";
+}
+
+#workskin #chapter-3 .preface.group:first-of-type::before {
+  content: "マシナ夜越シ";
+}
+
+#workskin #chapter-4 .preface.group:first-of-type::before {
+  content: "家庭ノ情景";
+}
+
+#workskin #chapter-5 .preface.group:first-of-type::before {
+  content: "手ヲ差シ伸ベヨ";
+}
+
+#workskin #chapter-6 .preface.group:first-of-type::before {
+  content: "幕間：温泉";
+}
+
+#workskin #chapter-7 .preface.group:first-of-type::before {
+  content: "「皆案ジテイル―」";
+}
+
+#workskin #chapter-8 .preface.group:first-of-type::before {
+  content: "助ケノ手";
+}
+
+#workskin #chapter-9 .preface.group:first-of-type::before {
+  content: "大義ノタメ!";
+}
+
+#workskin #chapter-10 .preface.group:first-of-type::before {
+  content: "食世者ノ巣";
+}
+
+#workskin #chapter-11 .preface.group:first-of-type::before {
+  content: "選ビシ道";
+}
+
+#workskin #chapter-12 .preface.group:first-of-type::before {
+  content: "好敵手・師・弟子";
+}
+
+#workskin #chapter-13 .preface.group:first-of-type::before {
+  content: "唄ニ謳ウハ…";
+}
+
+#workskin #chapter-14 .preface.group:first-of-type::before {
+  content: "兆シ";
+}
+
+#workskin #chapter-15 .preface.group:first-of-type::before {
+  content: "旅路";
+}
+
+#workskin #chapter-16 .preface.group:first-of-type::before {
+  content: "彼岸ト此岸";
+}
+
+#workskin #chapter-17 .preface.group:first-of-type::before {
+  content: "真ノ賄賂";
+}
+
+#workskin #chapter-18 .preface.group:first-of-type::before {
+  content: "蛙ト蛇(時空ニ迷ウ)";
+}
+
+#workskin #chapter-19 .preface.group:first-of-type::before {
+  content: "時ノ中ノ子等";
+}
+
+#workskin #chapter-20 .preface.group:first-of-type::before {
+  content: "(勇敢ナ)新世界";
+}
+
+#workskin #chapter-21 .preface.group:first-of-type::before {
+  content: "渡リ戻リ";
+}
+
+#workskin #chapter-22 .preface.group:first-of-type::before {
+  content: "家族内ノ事";
+}
+
+#workskin #chapter-23 .preface.group:first-of-type::before {
+  content: "異次元ノ事情";
+}
+
+#workskin #chapter-24 .preface.group:first-of-type::before {
+  content: "宇宙ノ彼方";
+}
+
+#workskin #chapter-25 .preface.group:first-of-type::before {
+  content: "大筒木ハ恵ミノ種界ヲ夢ミルカ?";
+}
+
+#workskin #chapter-26 .preface.group:first-of-type::before {
+  content: "畏レラレシ一術";
+}
+
+#workskin #chapter-27 .preface.group:first-of-type::before {
+  content: "知ル悪魔";
+}
+
+#workskin #chapter-28 .preface.group:first-of-type::before {
+  content: "遺物";
+}
+
+#workskin #chapter-29 .preface.group:first-of-type::before {
+  content: "帝ノ新キ世継";
+}
+
+#workskin #chapter-30 .preface.group:first-of-type::before {
+  content: "酒ニ酔ウ災イ";
+}
+
+#workskin #chapter-31 .preface.group:first-of-type::before {
+  content: "ガマノ厄日";
+}
+
+#workskin #chapter-32 .preface.group:first-of-type::before {
+  content: "中忍ヘ、我";
+}
+
+#workskin #chapter-33 .preface.group:first-of-type::before {
+  content: "半端ナ三忍";
+}
+
+#workskin #chapter-34 .preface.group:first-of-type::before {
+  content: "帝ノ眼差シ";
+}
+
+#workskin #chapter-35 .preface.group:first-of-type::before {
+  content: "壊レタ環";
+}
+
+#workskin #chapter-36 .preface.group:first-of-type::before {
+  content: "民間人ノ心";
+}
+
+#workskin #chapter-37 .preface.group:first-of-type::before {
+  content: "統制ノ幻";
+}
+
+#workskin #chapter-38 .preface.group:first-of-type::before {
+  content: "昇リ続クル日";
+}
+
+#workskin #chapter-39 .preface.group:first-of-type::before {
+  content: "小氏族ノ日々";
+}
+
+#workskin #chapter-40 .preface.group:first-of-type::before {
+  content: "逢魔時/鴉九";
+}
+
+#workskin #chapter-41 .preface.group:first-of-type::before {
+  content: "孤独ヘノ道";
+}
+
+#workskin #chapter-42 .preface.group:first-of-type::before {
+  content: "水浸シノ迷宮";
+}
+
+#workskin #chapter-43 .preface.group:first-of-type::before {
+  content: "招待状";
+}
+
+#workskin #chapter-44 .preface.group:first-of-type::before {
+  content: "浜辺ノ小夜曲";
+}
+
+#workskin #chapter-45 .preface.group:first-of-type::before {
+  content: "防火";
+}
+
+#workskin #chapter-46 .preface.group:first-of-type::before {
+  content: "故郷";
+}
+
+#workskin #chapter-47 .preface.group:first-of-type::before {
+  content: "秋道チョウジト恐ロシキ三人組";
+}
+
+#workskin #chapter-48 .preface.group:first-of-type::before {
+  content: "火ノ国ノ安ラカナ夜";
+}
+
+#workskin #chapter-49 .preface.group:first-of-type::before {
+  content: "月光ニ染マリテ";
+}
+
+#workskin #chapter-50 .preface.group:first-of-type::before {
+  content: "触レルホド近ク";
+}
+
+#workskin #chapter-51 .preface.group:first-of-type::before {
+  content: "未知ヲ抱イテ";
+}
+
+#workskin #chapter-52 .preface.group:first-of-type::before {
+  content: "墨ニ縛ラレ、念ニ運バレ";
+}
+
+#workskin #chapter-53 .preface.group:first-of-type::before {
+  content: "彼方ヘノ旅";
+}
+
+#workskin #chapter-54 .preface.group:first-of-type::before {
+  content: "うちはサラダト炎ノ盃";
+}
+
+#workskin #chapter-55 .preface.group:first-of-type::before {
+  content: "天地ノ間ニ";
+}
+
+#workskin #chapter-56 .preface.group:first-of-type::before {
+  content: "神ヲ殺メシ赤髪";
+}
+
+#workskin #chapter-57 .preface.group:first-of-type::before {
+  content: "緋色ノ空ノ下";
+}
+
+#workskin #chapter-58 .preface.group:first-of-type::before {
+  content: "猫眼";
+}
+
+#workskin #chapter-59 .preface.group:first-of-type::before {
+  content: "火之迦具土";
+}
+
+#workskin #chapter-60 .preface.group:first-of-type::before {
+  content: "ナッチャンノ暗黒年代";
+}
+
+#workskin #chapter-61 .preface.group:first-of-type::before {
+  content: "うちはシスイト双暴君";
+}
+
+#workskin #chapter-62 .preface.group:first-of-type::before {
+  content: "天沼矛";
+}
+
+#workskin #chapter-63 .preface.group:first-of-type::before {
+  content: "大嵐";
+}
+
+#workskin #chapter-64 .preface.group:first-of-type::before {
+  content: "夢ト星屑";
+}
+
+#workskin #chapter-65 .preface.group:first-of-type::before {
+  content: "失ワレシ少年達";
+}
+
+#workskin #chapter-66 .preface.group:first-of-type::before {
+  content: "蝶ノ航跡";
+}
+
+#workskin #chapter-67 .preface.group:first-of-type::before {
+  content: "裂断";
+}
+
+#workskin #chapter-68 .preface.group:first-of-type::before {
+  content: "言葉尽キル時";
+}
+
+#workskin #chapter-69 .preface.group:first-of-type::before {
+  content: "雷ノ樹";
+}
+
+#workskin #chapter-70 .preface.group:first-of-type::before {
+  content: "嵐ト変革";
+}
+
+#workskin #chapter-71 .preface.group:first-of-type::before {
+  content: "観星者";
+}
+
+#workskin #chapter-72 .preface.group:first-of-type::before {
+  content: "静寂ノ天ノ上";
+}
+
+#workskin #chapter-73 .preface.group:first-of-type::before {
+  content: "ミツキト大会内ノ大会";
+}
+
+#workskin #chapter-74 .preface.group:first-of-type::before {
+  content: "彼方ヘノ旅・弐";
+}
+
+#workskin #chapter-75 .preface.group:first-of-type::before {
+  content: "朝ノ君主";
+}
+
+#workskin #chapter-76 .preface.group:first-of-type::before {
+  content: "方舟";
+}
+
+#workskin #chapter-77 .preface.group:first-of-type::before {
+  content: "天ノ一瞥";
+}
+
+#workskin #chapter-78 .preface.group:first-of-type::before {
+  content: "安ラギノ抱擁、故郷ノ";
+}
+
+#workskin #chapter-79 .preface.group:first-of-type::before {
+  content: "汝ノ眼ニノミ";
+}
+
+#workskin #chapter-80 .preface.group:first-of-type::before {
+  content: "開ケタ青空";
+}
+
+#workskin #chapter-81 .preface.group:first-of-type::before {
+  content: "偉大ニシテ恐ロシキ魔導士";
+}
+
+#workskin #chapter-82 .preface.group:first-of-type::before {
+  content: "蒼キ哀歌";
+}
+
+#workskin #chapter-83 .preface.group:first-of-type::before {
+  content: "道";
+}
+
+#workskin #chapter-84 .preface.group:first-of-type::before {
+  content: "天ニ届ク反響ト囁キ";
+}
+
+#workskin #chapter-85 .preface.group:first-of-type::before {
+  content: "樹網ハ過チナリ";
+}
+
+#workskin #chapter-86 .preface.group:first-of-type::before {
+  content: "異ナル星々";
+}
+
+#workskin #chapter-87 .preface.group:first-of-type::before {
+  content: "部分/鍛エラレシ心";
+}
+
+#workskin #chapter-88 .preface.group:first-of-type::before {
+  content: "部分/一月";
+}
+
+#workskin #chapter-89 .preface.group:first-of-type::before {
+  content: "部分/良キ朝";
+}
+
+#workskin #chapter-90 .preface.group:first-of-type::before {
+  content: "天ノ王者";
+}
+
+#workskin #chapter-91 .preface.group:first-of-type::before {
+  content: "地獄ノ王者";
+}
+
+#workskin #chapter-92 .preface.group:first-of-type::before {
+  content: "仙人ヘノ畏レ";
+}
+
+#workskin #chapter-93 .preface.group:first-of-type::before {
+  content: "或ル甘味";
+}
+
+#workskin #chapter-94 .preface.group:first-of-type::before {
+  content: "天人/居場所";
+}
+
+#workskin #chapter-95 .preface.group:first-of-type::before {
+  content: "天人/星渡リ";
+}
+
+#workskin #chapter-96 .preface.group:first-of-type::before {
+  content: "天人/天ノ半バ";
+}
+
+#workskin #chapter-97 .preface.group:first-of-type::before {
+  content: "夜明ケ前";
+}
+
+#workskin #chapter-98 .preface.group:first-of-type::before {
+  content: "高天原";
+}
+
+#workskin #chapter-99 .preface.group:first-of-type::before {
+  content: "大海";
+}
+
+#workskin #chapter-100 .preface.group:first-of-type::before {
+  content: "風ト炎";
+}
+
+#workskin #chapter-101 .preface.group:first-of-type::before {
+  content: "天人ノ刃";
+}
+
+#workskin #chapter-102 .preface.group:first-of-type::before {
+  content: "波ヲ砕ク者";
+}
+
+#workskin #chapter-103 .preface.group:first-of-type::before {
+  content: "嵐ノ中ヘ";
+}
+
+#workskin #chapter-104 .preface.group:first-of-type::before {
+  content: "同胞/戦ウ者";
+}
+
+#workskin #chapter-105 .preface.group:first-of-type::before {
+  content: "同胞/光ト影";
+}
+
+#workskin #chapter-106 .preface.group:first-of-type::before {
+  content: "同胞/芒野";
+}
+
+#workskin #chapter-107 .preface.group:first-of-type::before {
+  content: "夢ヲ断ツ剣";
+}
+
+#workskin #chapter-108 .preface.group:first-of-type::before {
+  content: "故郷/唯一ノ生存者";
+}
+
+#workskin #chapter-109 .preface.group:first-of-type::before {
+  content: "故郷/遺産";
+}
+
+#workskin #chapter-110 .preface.group:first-of-type::before {
+  content: "故郷/環";
+}
+
+#workskin #chapter-111 .preface.group:first-of-type::before {
+  content: "故郷/架ケ橋";
+}
+
+#workskin #chapter-112 .preface.group:first-of-type::before {
+  content: "星ヘノ尖塔";
+}
+
+#workskin #chapter-113 .preface.group:first-of-type::before {
+  content: "故郷・弐";
+}
+
+#workskin #chapter-114 .preface.group:first-of-type::before {
+  content: "日ノ照ラス者ヘ";
+}
+
+#workskin #chapter-115 .preface.group:first-of-type::before {
+  content: "手ニ手ヲ、心ニ心ヲ";
+}
+
+#workskin #chapter-116 .preface.group:first-of-type::before {
+  content: "穏ヤカナ日々";
+}
+
+#workskin #chapter-117 .preface.group:first-of-type::before {
+  content: "偉大ニシテ恐ロシキ炎ノ担イ手";
+}
+
+#workskin #chapter-118 .preface.group:first-of-type::before {
+  content: "見エザル刹那";
+}
+
+#workskin #chapter-119 .preface.group:first-of-type::before {
+  content: "うずまきナルト対平和";
+}
+
+#workskin #chapter-120 .preface.group:first-of-type::before {
+  content: "空ノ全テノ光";
+}

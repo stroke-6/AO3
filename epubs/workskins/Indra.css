@@ -1,0 +1,662 @@
+#workskin .chapter .preface.group {
+  position: relative;
+}
+
+#workskin .chapter .preface.group:first-of-type::before {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  color: rgb(106, 85, 124);
+  font-size: 2.5em;
+  font-weight: 200;
+  font-family: "Noto Serif JP", Meiryo, Osaka, sans-serif;
+  letter-spacing: 0.15em;
+  text-shadow: 3px 2px 3px rgba(106, 85, 124, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: pre;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+}
+
+#workskin #chapter-1 .preface.group:first-of-type::before {
+  content: "災厄解剖";
+}
+
+#workskin #chapter-2 .preface.group:first-of-type::before {
+  content: "猿飛ナルト";
+}
+
+#workskin #chapter-3 .preface.group:first-of-type::before {
+  content: "焼夜灯";
+}
+
+#workskin #chapter-4 .preface.group:first-of-type::before {
+  content: "修行ノ業";
+}
+
+#workskin #chapter-5 .preface.group:first-of-type::before {
+  content: "修行ノ業・弐";
+}
+
+#workskin #chapter-6 .preface.group:first-of-type::before {
+  content: "雨季";
+}
+
+#workskin #chapter-7 .preface.group:first-of-type::before {
+  content: "最後ノ抗イ";
+}
+
+#workskin #chapter-8 .preface.group:first-of-type::before {
+  content: "死後生";
+}
+
+#workskin #chapter-9 .preface.group:first-of-type::before {
+  content: "畑鹿驚ノ酷導";
+}
+
+#workskin #chapter-10 .preface.group:first-of-type::before {
+  content: "森ヘ…!";
+}
+
+#workskin #chapter-11 .preface.group:first-of-type::before {
+  content: "第八班";
+}
+
+#workskin #chapter-12 .preface.group:first-of-type::before {
+  content: "砂ノ少年…!";
+}
+
+#workskin #chapter-13 .preface.group:first-of-type::before {
+  content: "害虫駆除";
+}
+
+#workskin #chapter-14 .preface.group:first-of-type::before {
+  content: "幕間";
+}
+
+#workskin #chapter-15 .preface.group:first-of-type::before {
+  content: "葉舞";
+}
+
+#workskin #chapter-16 .preface.group:first-of-type::before {
+  content: "呪縛";
+}
+
+#workskin #chapter-17 .preface.group:first-of-type::before {
+  content: "彼ラノ瞳";
+}
+
+#workskin #chapter-18 .preface.group:first-of-type::before {
+  content: "中忍試験終幕";
+}
+
+#workskin #chapter-19 .preface.group:first-of-type::before {
+  content: "寂寞ノ緑洲";
+}
+
+#workskin #chapter-20 .preface.group:first-of-type::before {
+  content: "万華鏡";
+}
+
+#workskin #chapter-21 .preface.group:first-of-type::before {
+  content: "時空跳ビ少年";
+}
+
+#workskin #chapter-22 .preface.group:first-of-type::before {
+  content: "帰ル処無シ";
+}
+
+#workskin #chapter-23 .preface.group:first-of-type::before {
+  content: "蛇ノ取引";
+}
+
+#workskin #chapter-24 .preface.group:first-of-type::before {
+  content: "月光ノ下";
+}
+
+#workskin #chapter-25 .preface.group:first-of-type::before {
+  content: "古キ神々";
+}
+
+#workskin #chapter-26 .preface.group:first-of-type::before {
+  content: "刃ソノモノ";
+}
+
+#workskin #chapter-27 .preface.group:first-of-type::before {
+  content: "鳴鳥";
+}
+
+#workskin #chapter-28 .preface.group:first-of-type::before {
+  content: "幽手";
+}
+
+#workskin #chapter-29 .preface.group:first-of-type::before {
+  content: "長子";
+}
+
+#workskin #chapter-30 .preface.group:first-of-type::before {
+  content: "蛇仙人";
+}
+
+#workskin #chapter-31 .preface.group:first-of-type::before {
+  content: "雷門";
+}
+
+#workskin #chapter-32 .preface.group:first-of-type::before {
+  content: "北ヘノ長路";
+}
+
+#workskin #chapter-33 .preface.group:first-of-type::before {
+  content: "潮変";
+}
+
+#workskin #chapter-34 .preface.group:first-of-type::before {
+  content: "接近戦";
+}
+
+#workskin #chapter-35 .preface.group:first-of-type::before {
+  content: "日向ノ地";
+}
+
+#workskin #chapter-36 .preface.group:first-of-type::before {
+  content: "海隠レノ里";
+}
+
+#workskin #chapter-37 .preface.group:first-of-type::before {
+  content: "継走";
+}
+
+#workskin #chapter-38 .preface.group:first-of-type::before {
+  content: "幸運ノ七";
+}
+
+#workskin #chapter-39 .preface.group:first-of-type::before {
+  content: "悟リ";
+}
+
+#workskin #chapter-40 .preface.group:first-of-type::before {
+  content: "木ノ葉隠レノ里";
+}
+
+#workskin #chapter-41 .preface.group:first-of-type::before {
+  content: "旧友トノ会話";
+}
+
+#workskin #chapter-42 .preface.group:first-of-type::before {
+  content: "真ノ友";
+}
+
+#workskin #chapter-43 .preface.group:first-of-type::before {
+  content: "隔タリ";
+}
+
+#workskin #chapter-44 .preface.group:first-of-type::before {
+  content: "灰色地帯";
+}
+
+#workskin #chapter-45 .preface.group:first-of-type::before {
+  content: "影殺シ";
+}
+
+#workskin #chapter-46 .preface.group:first-of-type::before {
+  content: "暗部";
+}
+
+#workskin #chapter-47 .preface.group:first-of-type::before {
+  content: "蜘蛛ノ巣";
+}
+
+#workskin #chapter-48 .preface.group:first-of-type::before {
+  content: "脱獄";
+}
+
+#workskin #chapter-49 .preface.group:first-of-type::before {
+  content: "最新ノ抜ケ忍";
+}
+
+#workskin #chapter-50 .preface.group:first-of-type::before {
+  content: "血霧ノ残党";
+}
+
+#workskin #chapter-51 .preface.group:first-of-type::before {
+  content: "奴隷";
+}
+
+#workskin #chapter-52 .preface.group:first-of-type::before {
+  content: "帰路無シ";
+}
+
+#workskin #chapter-53 .preface.group:first-of-type::before {
+  content: "故郷ヲ遠ク離レテ";
+}
+
+#workskin #chapter-54 .preface.group:first-of-type::before {
+  content: "嵐ノ前ノ静寂";
+}
+
+#workskin #chapter-55 .preface.group:first-of-type::before {
+  content: "木ノ葉万歳";
+}
+
+#workskin #chapter-56 .preface.group:first-of-type::before {
+  content: "裂ケ目ヘ";
+}
+
+#workskin #chapter-57 .preface.group:first-of-type::before {
+  content: "生キル炎";
+}
+
+#workskin #chapter-58 .preface.group:first-of-type::before {
+  content: "戦場便リ";
+}
+
+#workskin #chapter-59 .preface.group:first-of-type::before {
+  content: "河逃走計画";
+}
+
+#workskin #chapter-60 .preface.group:first-of-type::before {
+  content: "凍土";
+}
+
+#workskin #chapter-61 .preface.group:first-of-type::before {
+  content: "冬泉";
+}
+
+#workskin #chapter-62 .preface.group:first-of-type::before {
+  content: "真夜中ノ猫眼";
+}
+
+#workskin #chapter-63 .preface.group:first-of-type::before {
+  content: "人柱力";
+}
+
+#workskin #chapter-64 .preface.group:first-of-type::before {
+  content: "吹雪";
+}
+
+#workskin #chapter-65 .preface.group:first-of-type::before {
+  content: "吹雪・弐";
+}
+
+#workskin #chapter-66 .preface.group:first-of-type::before {
+  content: "吹雪・参";
+}
+
+#workskin #chapter-67 .preface.group:first-of-type::before {
+  content: "吹雪・四";
+}
+
+#workskin #chapter-68 .preface.group:first-of-type::before {
+  content: "雲ノ下";
+}
+
+#workskin #chapter-69 .preface.group:first-of-type::before {
+  content: "雲ノ上";
+}
+
+#workskin #chapter-70 .preface.group:first-of-type::before {
+  content: "アノ眼差シ";
+}
+
+#workskin #chapter-71 .preface.group:first-of-type::before {
+  content: "アノ二日";
+}
+
+#workskin #chapter-72 .preface.group:first-of-type::before {
+  content: "焚火";
+}
+
+#workskin #chapter-73 .preface.group:first-of-type::before {
+  content: "暁砕キ";
+}
+
+#workskin #chapter-74 .preface.group:first-of-type::before {
+  content: "明星";
+}
+
+#workskin #chapter-75 .preface.group:first-of-type::before {
+  content: "歪ンダ地平";
+}
+
+#workskin #chapter-76 .preface.group:first-of-type::before {
+  content: "彼ノ生涯";
+}
+
+#workskin #chapter-77 .preface.group:first-of-type::before {
+  content: "紫ノ正午";
+}
+
+#workskin #chapter-78 .preface.group:first-of-type::before {
+  content: "葉落";
+}
+
+#workskin #chapter-79 .preface.group:first-of-type::before {
+  content: "蛇ノ弟子";
+}
+
+#workskin #chapter-80 .preface.group:first-of-type::before {
+  content: "変化";
+}
+
+#workskin #chapter-81 .preface.group:first-of-type::before {
+  content: "絆";
+}
+
+#workskin #chapter-82 .preface.group:first-of-type::before {
+  content: "炎ノ洗礼";
+}
+
+#workskin #chapter-83 .preface.group:first-of-type::before {
+  content: "露見";
+}
+
+#workskin #chapter-84 .preface.group:first-of-type::before {
+  content: "月夜稼ギ";
+}
+
+#workskin #chapter-85 .preface.group:first-of-type::before {
+  content: "境界";
+}
+
+#workskin #chapter-86 .preface.group:first-of-type::before {
+  content: "凶兆";
+}
+
+#workskin #chapter-87 .preface.group:first-of-type::before {
+  content: "滝雪崩";
+}
+
+#workskin #chapter-88 .preface.group:first-of-type::before {
+  content: "大火";
+}
+
+#workskin #chapter-89 .preface.group:first-of-type::before {
+  content: "坩堝";
+}
+
+#workskin #chapter-90 .preface.group:first-of-type::before {
+  content: "気紛レノ飛翔";
+}
+
+#workskin #chapter-91 .preface.group:first-of-type::before {
+  content: "紙ノ偶像";
+}
+
+#workskin #chapter-92 .preface.group:first-of-type::before {
+  content: "今度限リ";
+}
+
+#workskin #chapter-93 .preface.group:first-of-type::before {
+  content: "孤島ノ男";
+}
+
+#workskin #chapter-94 .preface.group:first-of-type::before {
+  content: "絆・弐";
+}
+
+#workskin #chapter-95 .preface.group:first-of-type::before {
+  content: "他人任セノ評判";
+}
+
+#workskin #chapter-96 .preface.group:first-of-type::before {
+  content: "最善ノ意図";
+}
+
+#workskin #chapter-97 .preface.group:first-of-type::before {
+  content: "心ヲ捧ゲヨ";
+}
+
+#workskin #chapter-98 .preface.group:first-of-type::before {
+  content: "修行ノ業・参";
+}
+
+#workskin #chapter-99 .preface.group:first-of-type::before {
+  content: "痛恨ノ過チ";
+}
+
+#workskin #chapter-100 .preface.group:first-of-type::before {
+  content: "葉枯";
+}
+
+#workskin #chapter-101 .preface.group:first-of-type::before {
+  content: "災厄解剖・弐";
+}
+
+#workskin #chapter-102 .preface.group:first-of-type::before {
+  content: "灰燼/嵐ノ予兆";
+}
+
+#workskin #chapter-103 .preface.group:first-of-type::before {
+  content: "灰燼/風ヲ追ウ者";
+}
+
+#workskin #chapter-104 .preface.group:first-of-type::before {
+  content: "灰燼/一ツノ理想";
+}
+
+#workskin #chapter-105 .preface.group:first-of-type::before {
+  content: "火・風・雷";
+}
+
+#workskin #chapter-106 .preface.group:first-of-type::before {
+  content: "木ノ葉ノ影";
+}
+
+#workskin #chapter-107 .preface.group:first-of-type::before {
+  content: "長刀ノ夜";
+}
+
+#workskin #chapter-108 .preface.group:first-of-type::before {
+  content: "理解ヨリ最モ遠キ所";
+}
+
+#workskin #chapter-109 .preface.group:first-of-type::before {
+  content: "褪セタ雷光";
+}
+
+#workskin #chapter-110 .preface.group:first-of-type::before {
+  content: "影殺シ・弐";
+}
+
+#workskin #chapter-111 .preface.group:first-of-type::before {
+  content: "雨以外全テ";
+}
+
+#workskin #chapter-112 .preface.group:first-of-type::before {
+  content: "四忍ノ譚";
+}
+
+#workskin #chapter-113 .preface.group:first-of-type::before {
+  content: "不断ノ曙";
+}
+
+#workskin #chapter-114 .preface.group:first-of-type::before {
+  content: "幽霊ト鮫";
+}
+
+#workskin #chapter-115 .preface.group:first-of-type::before {
+  content: "家族ノ事";
+}
+
+#workskin #chapter-116 .preface.group:first-of-type::before {
+  content: "世界ノ問題";
+}
+
+#workskin #chapter-117 .preface.group:first-of-type::before {
+  content: "冷タキ同盟";
+}
+
+#workskin #chapter-118 .preface.group:first-of-type::before {
+  content: "水ノ形";
+}
+
+#workskin #chapter-119 .preface.group:first-of-type::before {
+  content: "取引";
+}
+
+#workskin #chapter-120 .preface.group:first-of-type::before {
+  content: "水面ノ月";
+}
+
+#workskin #chapter-121 .preface.group:first-of-type::before {
+  content: "三十日";
+}
+
+#workskin #chapter-122 .preface.group:first-of-type::before {
+  content: "裂雷";
+}
+
+#workskin #chapter-123 .preface.group:first-of-type::before {
+  content: "闇ノ刃";
+}
+
+#workskin #chapter-124 .preface.group:first-of-type::before {
+  content: "呪縛・弐";
+}
+
+#workskin #chapter-125 .preface.group:first-of-type::before {
+  content: "心/強キ者";
+}
+
+#workskin #chapter-126 .preface.group:first-of-type::before {
+  content: "体/インドラ";
+}
+
+#workskin #chapter-127 .preface.group:first-of-type::before {
+  content: "魂/うずまきナルト";
+}
+
+#workskin #chapter-128 .preface.group:first-of-type::before {
+  content: "影ヨリ出デテ";
+}
+
+#workskin #chapter-129 .preface.group:first-of-type::before {
+  content: "影ヲ抜ケテ";
+}
+
+#workskin #chapter-130 .preface.group:first-of-type::before {
+  content: "影ノ上ヘ";
+}
+
+#workskin #chapter-131 .preface.group:first-of-type::before {
+  content: "小神業";
+}
+
+#workskin #chapter-132 .preface.group:first-of-type::before {
+  content: "修行ノ業・四";
+}
+
+#workskin #chapter-133 .preface.group:first-of-type::before {
+  content: "火炎ノ休戦";
+}
+
+#workskin #chapter-134 .preface.group:first-of-type::before {
+  content: "呪縛・参";
+}
+
+#workskin #chapter-135 .preface.group:first-of-type::before {
+  content: "時ノ外ノ世界";
+}
+
+#workskin #chapter-136 .preface.group:first-of-type::before {
+  content: "飛翔/九刀";
+}
+
+#workskin #chapter-137 .preface.group:first-of-type::before {
+  content: "月夜";
+}
+
+#workskin #chapter-138 .preface.group:first-of-type::before {
+  content: "火・煙・水";
+}
+
+#workskin #chapter-139 .preface.group:first-of-type::before {
+  content: "天空ノ城";
+}
+
+#workskin #chapter-140 .preface.group:first-of-type::before {
+  content: "檻ノ虎";
+}
+
+#workskin #chapter-141 .preface.group:first-of-type::before {
+  content: "鎖ノ傀儡";
+}
+
+#workskin #chapter-142 .preface.group:first-of-type::before {
+  content: "縺レ";
+}
+
+#workskin #chapter-143 .preface.group:first-of-type::before {
+  content: "写輪眼ノ継嗣";
+}
+
+#workskin #chapter-144 .preface.group:first-of-type::before {
+  content: "平和ノ代価";
+}
+
+#workskin #chapter-145 .preface.group:first-of-type::before {
+  content: "魂狩リ";
+}
+
+#workskin #chapter-146 .preface.group:first-of-type::before {
+  content: "空ノ爆発";
+}
+
+#workskin #chapter-147 .preface.group:first-of-type::before {
+  content: "嵐追ウ者";
+}
+
+#workskin #chapter-148 .preface.group:first-of-type::before {
+  content: "絆・参";
+}
+
+#workskin #chapter-149 .preface.group:first-of-type::before {
+  content: "うずまき";
+}
+
+#workskin #chapter-150 .preface.group:first-of-type::before {
+  content: "残ル者";
+}
+
+#workskin #chapter-151 .preface.group:first-of-type::before {
+  content: "幻肢痛/火葬";
+}
+
+#workskin #chapter-152 .preface.group:first-of-type::before {
+  content: "幻肢痛/時";
+}
+
+#workskin #chapter-153 .preface.group:first-of-type::before {
+  content: "幻肢痛/第十";
+}
+
+#workskin #chapter-154 .preface.group:first-of-type::before {
+  content: "生ノ朝ト昼";
+}
+
+#workskin #chapter-155 .preface.group:first-of-type::before {
+  content: "うずまき・弐";
+}
+
+#workskin #chapter-156 .preface.group:first-of-type::before {
+  content: "絆・四";
+}
+
+#workskin #chapter-157 .preface.group:first-of-type::before {
+  content: "旅路ノ果テ";
+}
+
+#workskin #chapter-158 .preface.group:first-of-type::before {
+  content: "将軍";
+}
+
+#workskin #chapter-159 .preface.group:first-of-type::before {
+  content: "移リ行ク世";
+}
+
+#workskin #chapter-160 .preface.group:first-of-type::before {
+  content: "風ノ呼ビ声";
+}

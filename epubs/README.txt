@@ -3,13 +3,18 @@ Formatted EPUBs
 
 GitHub runs .github/workflows/epubs.yml, which:
   1. reads each AO3 work page listed in stories.json,
-  2. if AO3 has a new version, downloads it and applies the Sigil formatting
-     (cover pages first, custom CSS, chapter notes + chapter titles removed),
+  2. if AO3 has a new version (or the story's formatting settings changed),
+     downloads it and formats it,
   3. uploads it to the "epubs" release.
 
-Schedule (set per story with "check" in stories.json):
-  daily   - every day, 05:17 UTC       (Crimson Horizons)
-  weekly  - every Monday, 05:47 UTC    (From the Ring, With Love; Indra: Extra; Indra)
+When stories are checked (set with "check" in stories.json):
+  daily   - every day at 05:17 UTC        (Crimson Horizons)
+  manual  - only when you run the workflow (From the Ring, With Love; Indra: Extra; Indra)
+
+Running it by hand:
+  GitHub > Actions > "Build formatted EPUBs" > Run workflow
+  - "Which story to check": one story, or All stories
+  - "Rebuild": rebuild even if nothing changed on AO3
 
 Reader links (permanent, always the newest version):
   https://github.com/stroke-6/AO3/releases/download/epubs/Crimson_Horizons.epub
@@ -17,20 +22,31 @@ Reader links (permanent, always the newest version):
   https://github.com/stroke-6/AO3/releases/download/epubs/Indra_Extra.epub
   https://github.com/stroke-6/AO3/releases/download/epubs/Indra.epub
 
-Adding a story:
-  - put its cover files in epubs/covers/<Short>/ (everything in that folder is added to the EPUB)
-  - add an entry to stories.json, e.g.
-      { "name": "My Story", "work_id": 12345678, "check": "weekly", "cover_dir": "covers/MS" }
-    optional:
-      "file": "My_Story"                              download file name (default: name, spaces -> _)
-      "cover_pages": ["cover.xhtml", "cover2.xhtml"]  pages put first, in this order (default: cover.xhtml)
-      "cover_image": "something.png"                  thumbnail image (default: cover_image.png)
 
-Running it by hand:
-  GitHub > Actions > "Build formatted EPUBs" > Run workflow
-  (checks every story; tick "Rebuild" to rebuild even without an AO3 update)
+Story settings (stories.json)
+-----------------------------
+  "name"             story name (also used in the "Which story" menu of the workflow)
+  "work_id"          AO3 work number
+  "check"            "daily" or "manual"
+  "color"            colour of bold text (strong), e.g. "#750705"
+  "cover_dir"        folder whose files are all added to the EPUB (cover pages + images)
+  optional:
+  "file"             download file name without .epub (default: name, spaces -> _)
+  "cover_pages"      pages put first, in this order (default: ["cover.xhtml"])
+  "cover_image"      thumbnail image (default: cover_image.png)
+  "cleanup": false   do NOT remove chapter notes / chapter titles (Indra, IE)
+  "chapter_titles"   AO3 workskin CSS with per-chapter decorative titles (workskins/*.css);
+                     each "#chapter-N ... content: "..."" becomes a title above chapter N,
+                     styled like the workskin's ::before rule
+  "remove_chapters"  chapter numbers to drop entirely, e.g. [121]
 
-If a run fails (e.g. AO3 down all day), GitHub emails you; the next scheduled run tries again.
+Updating the decorative titles: paste the new workskin into workskins/Indra.css or IE.css.
+Changing any setting, cover file or workskin makes the next run rebuild that story.
+
+Adding a story: put its cover files in covers/<Short>/, add an entry to stories.json,
+and add its name to the "options" list in .github/workflows/epubs.yml.
+
+If a run fails (e.g. AO3 down all day), GitHub emails you.
 
 
 Cards for index.html (paste inside each story's <div class="cards">):

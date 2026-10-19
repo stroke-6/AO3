@@ -5,28 +5,37 @@
       "name": "Crimson Horizons",
       "work_id": 52616674,
       "check": "daily",
+      "color": "#750705",
       "cover_dir": "covers/CH"
     },
     {
       "name": "From the Ring, With Love",
       "file": "From_the_Ring_With_Love",
       "work_id": 59274742,
-      "check": "weekly",
+      "check": "manual",
+      "color": "#9E524E",
       "cover_dir": "covers/FTRWL"
     },
     {
       "name": "Indra: Extra",
       "file": "Indra_Extra",
       "work_id": 42794847,
-      "check": "weekly",
-      "cover_dir": "covers/IE"
+      "check": "manual",
+      "color": "#9B5566",
+      "cover_dir": "covers/IE",
+      "cleanup": false,
+      "chapter_titles": "workskins/IE.css",
+      "remove_chapters": [121]
     },
     {
       "name": "Indra",
       "work_id": 39294225,
-      "check": "weekly",
+      "check": "manual",
+      "color": "#6D3B6A",
       "cover_dir": "covers/Indra",
-      "cover_pages": ["cover.xhtml", "cover2.xhtml"]
+      "cover_pages": ["cover.xhtml", "cover2.xhtml"],
+      "cleanup": false,
+      "chapter_titles": "workskins/Indra.css"
     }
   ]
 }

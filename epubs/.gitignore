@@ -1,0 +1,4 @@
+output/
+state.json
+log.txt
+__pycache__/

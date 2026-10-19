@@ -22,16 +22,23 @@
       "cover_dir": "covers/IE",
       "cleanup": false,
       "chapter_titles": "workskins/IE.css",
-      "remove_chapters": [121]
+      "remove_chapters": [
+        121
+      ],
+      "chapter_headings": "numbered"
     },
     {
       "name": "Indra",
       "work_id": 39294225,
       "color": "#6D3B6A",
       "cover_dir": "covers/Indra",
-      "cover_pages": ["cover.xhtml", "cover2.xhtml"],
+      "cover_pages": [
+        "cover.xhtml",
+        "cover2.xhtml"
+      ],
       "cleanup": false,
-      "chapter_titles": "workskins/Indra.css"
+      "chapter_titles": "workskins/Indra.css",
+      "chapter_headings": "numbered"
     }
   ]
 }

@@ -41,6 +41,9 @@ Story settings (stories.json)
                      each "#chapter-N ... content: "..."" becomes a title above chapter N,
                      styled like the workskin's ::before rule
   "remove_chapters"  chapter numbers to drop entirely, e.g. [121]
+  "chapter_headings": "numbered"
+                     show "Chapter 88: Title" as "88" over "Title", in small caps,
+                     slightly spaced, in the story's colour (Indra, IE)
 
 Updating the decorative titles: paste the new workskin into workskins/Indra.css or IE.css.
 Changing any setting, cover file or workskin makes the next run rebuild that story.

@@ -72,6 +72,36 @@ RE_CHAPTER_NOTES = re.compile(
 RE_CHAPTER_TITLES = re.compile(r'(<h2 class="heading" id="calibre_toc_\d+">)[\s\S]*?(</h2>)')
 # A chapter heading in AO3's EPUB, capturing the chapter number
 RE_CHAPTER_HEADING = re.compile(r'<h2 class="heading" id="calibre_toc_\d+">\s*Chapter (\d+)\b')
+# A whole chapter heading: number and (optional) chapter name
+RE_CHAPTER_HEADING_FULL = re.compile(
+    r'(<h2 class="heading" id="calibre_toc_\d+">)\s*Chapter (\d+)(?::\s*([\s\S]*?))?\s*(</h2>)')
+
+
+def number_headings(text):
+    """'Chapter 88: The Only True Things' -> '88', line break, 'The Only True Things'."""
+    def fmt(m):
+        name = '<br/>\n<span class="chapter-name">{}</span>'.format(m.group(3)) if m.group(3) else ""
+        return '{}<span class="chapter-num">{}</span>{}{}'.format(m.group(1), m.group(2), name, m.group(4))
+    return RE_CHAPTER_HEADING_FULL.subn(fmt, text)
+
+
+def number_headings_css(color):
+    return """
+h2.heading {
+  font-family: "PT Serif", Georgia, serif;
+  font-variant: small-caps;
+  font-weight: normal;
+  letter-spacing: 0.06em;
+  color: %s;
+  text-align: center;
+  text-indent: 0;
+  line-height: 1.4;
+}
+h2.heading .chapter-num {
+  font-size: 0.6em;
+  letter-spacing: 0.2em;
+}
+""" % color
 
 
 # ---------------------------------------------------------------------------
@@ -273,7 +303,9 @@ def format_epub(src, dest, story):
     titles, title_decls = ({}, None)
     if story.get("chapter_titles"):
         titles, title_decls = load_chapter_titles(os.path.join(HERE, story["chapter_titles"]))
-    stats = {"chapter_notes": 0, "chapter_titles": 0, "deco_titles": 0, "removed_files": 0}
+    numbered = story.get("chapter_headings") == "numbered"
+    stats = {"chapter_notes": 0, "chapter_titles": 0, "deco_titles": 0, "numbered_headings": 0,
+             "removed_files": 0}
 
     zin = zipfile.ZipFile(src)
     names = zin.namelist()
@@ -307,12 +339,17 @@ def format_epub(src, dest, story):
                     css = (CUSTOM_CSS % color) + css
                     if title_decls is not None:
                         css += chapter_titles_css(title_decls)
+                    if numbered:
+                        css += number_headings_css(color)
                 data = css.encode("utf-8")
             elif name.endswith((".xhtml", ".html")):
                 text = data.decode("utf-8")
                 if titles:
                     text, n = add_chapter_titles(text, titles)
                     stats["deco_titles"] += n
+                if numbered:
+                    text, n = number_headings(text)
+                    stats["numbered_headings"] += n
                 if cleanup:
                     text, n1 = RE_CHAPTER_NOTES.subn("", text)
                     text, n2 = RE_CHAPTER_TITLES.subn(r"\1\n\n  \2", text)
@@ -374,6 +411,8 @@ def stats_text(stats):
             stats["chapter_notes"], stats["chapter_titles"]))
     if stats["deco_titles"]:
         parts.append("added {} decorative chapter titles".format(stats["deco_titles"]))
+    if stats["numbered_headings"]:
+        parts.append("restyled {} chapter headings".format(stats["numbered_headings"]))
     if stats["removed_files"]:
         parts.append("removed {} files of dropped chapters".format(stats["removed_files"]))
     return "; ".join(parts) or "no text changes"

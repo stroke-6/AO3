@@ -7,7 +7,7 @@ For each story in stories.json:
      (it carries an ?updated_at= stamp that changes with each update).
   2. If that stamp is the same as last time and the output exists, skip.
   3. Otherwise download the EPUB and apply the Sigil steps:
-       - add cover.xhtml + cover_image.png (cover first in reading order)
+       - add the files in the story's cover folder (cover pages first in reading order)
        - prepend the custom CSS to stylesheet.css
        - "Remove Chapter Notes" and "Remove Chapter Titles" regexes
   4. Write output/<Name_With_Underscores>.epub and remember the stamp in state.json.
@@ -15,6 +15,7 @@ For each story in stories.json:
 Usage:
   python ao3_epub.py            # normal run (only rebuilds updated stories)
   python ao3_epub.py --force    # rebuild everything
+  python ao3_epub.py --only weekly   # only stories with "check": "weekly"
   python ao3_epub.py --local some.epub --story "Crimson Horizons"
                                 # format an EPUB you already downloaded
 """
@@ -95,7 +96,8 @@ def http_get(url, dest=None, tries=6):
     for attempt in range(1, tries + 1):
         req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
         try:
-            with _opener.open(req, timeout=120) as resp:
+            # big EPUBs can stall while AO3 generates them, so allow longer for downloads
+            with _opener.open(req, timeout=120 if dest is None else 300) as resp:
                 if dest is None:
                     return resp.read().decode("utf-8", "replace")
                 with open(dest, "wb") as f:
@@ -134,21 +136,39 @@ def find_epub_link(work_id):
 # EPUB transformation
 # ---------------------------------------------------------------------------
 
-def transform_opf(opf):
-    if 'href="cover.xhtml"' in opf:
+MEDIA_TYPES = {
+    ".xhtml": "application/xhtml+xml", ".html": "application/xhtml+xml", ".css": "text/css",
+    ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".gif": "image/gif",
+    ".svg": "image/svg+xml",
+}
+IMAGE_EXTS = (".png", ".jpg", ".jpeg", ".gif")
+
+
+def cover_files(story):
+    """Files to add from the story's cover folder, and the cover pages in spine order."""
+    cover_dir = os.path.join(HERE, story["cover_dir"])
+    files = sorted(f for f in os.listdir(cover_dir)
+                   if os.path.splitext(f)[1].lower() in MEDIA_TYPES)
+    pages = story.get("cover_pages", ["cover.xhtml"])
+    images = [f for f in files if f.lower().endswith(IMAGE_EXTS)]
+    cover_image = story.get("cover_image") or (
+        "cover_image.png" if "cover_image.png" in images else (images[0] if images else None))
+    return cover_dir, files, pages, cover_image
+
+
+def transform_opf(opf, files, pages, cover_image):
+    if 'href="{}"'.format(pages[0]) in opf:
         return opf
-    items = (
-        '    <item id="cover.xhtml" href="cover.xhtml" media-type="application/xhtml+xml"/>\n'
-        '    <item id="cover_image.png" href="cover_image.png" media-type="image/png"/>\n'
-    )
+    items = "".join('    <item id="{0}" href="{0}" media-type="{1}"/>\n'.format(
+        f, MEDIA_TYPES[os.path.splitext(f)[1].lower()]) for f in files)
+    refs = "".join('    <itemref idref="{}"/>\n'.format(p) for p in pages)
     opf = re.sub(r"(<manifest[^>]*>\s*\n)", lambda m: m.group(1) + items, opf, count=1)
-    opf = re.sub(r"(<spine[^>]*>\s*\n)",
-                 lambda m: m.group(1) + '    <itemref idref="cover.xhtml"/>\n', opf, count=1)
+    opf = re.sub(r"(<spine[^>]*>\s*\n)", lambda m: m.group(1) + refs, opf, count=1)
     # Mark the cover so readers/library views show it as the book's thumbnail
-    if 'name="cover"' not in opf:
+    if cover_image and 'name="cover"' not in opf:
         opf = opf.replace("</metadata>",
-                          '  <meta name="cover" content="cover_image.png"/>\n  </metadata>', 1)
-    ref = '<reference type="cover" title="Cover" href="cover.xhtml"/>'
+                          '  <meta name="cover" content="{}"/>\n  </metadata>'.format(cover_image), 1)
+    ref = '<reference type="cover" title="Cover" href="{}"/>'.format(pages[0])
     if "<guide>" in opf:
         opf = opf.replace("<guide>", "<guide>\n    " + ref, 1)
     elif "<guide/>" in opf:
@@ -158,8 +178,9 @@ def transform_opf(opf):
     return opf
 
 
-def format_epub(src, dest, cover_dir):
+def format_epub(src, dest, story):
     """Apply the Sigil steps to src, write dest. Returns stats dict."""
+    cover_dir, files, pages, cover_image = cover_files(story)
     stats = {"chapter_notes": 0, "chapter_titles": 0}
     zin = zipfile.ZipFile(src)
     names = zin.namelist()
@@ -179,7 +200,7 @@ def format_epub(src, dest, cover_dir):
                 continue
             data = zin.read(name)
             if name == opf_name:
-                data = transform_opf(data.decode("utf-8")).encode("utf-8")
+                data = transform_opf(data.decode("utf-8"), files, pages, cover_image).encode("utf-8")
             elif os.path.basename(name) == "stylesheet.css":
                 css = data.decode("utf-8")
                 if "#750705" not in css:
@@ -193,13 +214,12 @@ def format_epub(src, dest, cover_dir):
                 stats["chapter_titles"] += n2
                 data = text.encode("utf-8")
             # images are already compressed; store them to save time
-            ctype = zipfile.ZIP_STORED if name.lower().endswith(
-                (".png", ".jpg", ".jpeg", ".gif")) else zipfile.ZIP_DEFLATED
+            ctype = zipfile.ZIP_STORED if name.lower().endswith(IMAGE_EXTS) else zipfile.ZIP_DEFLATED
             zout.writestr(zin.getinfo(name), data, compress_type=ctype)
-        for fname in ("cover.xhtml", "cover_image.png"):
+        for fname in files:
             target = in_opf_dir(fname)
             if target not in names:
-                ctype = zipfile.ZIP_STORED if fname.endswith(".png") else zipfile.ZIP_DEFLATED
+                ctype = zipfile.ZIP_STORED if fname.lower().endswith(IMAGE_EXTS) else zipfile.ZIP_DEFLATED
                 zout.write(os.path.join(cover_dir, fname), target, compress_type=ctype)
     zin.close()
     os.replace(tmp, dest)
@@ -229,7 +249,6 @@ def output_path(story, out_dir):
 
 def process(story, out_dir, state, force, ci):
     name = story["name"]
-    cover_dir = os.path.join(HERE, story["cover_dir"])
     dest = output_path(story, out_dir)
     log("{}: checking AO3 work {}".format(name, story["work_id"]))
     url, stamp, chapters = find_epub_link(story["work_id"])
@@ -246,7 +265,7 @@ def process(story, out_dir, state, force, ci):
         http_get(url, dest=raw)
         if not zipfile.is_zipfile(raw):
             raise RuntimeError("download is not an EPUB (AO3 may have sent an error page)")
-        stats = format_epub(raw, dest, cover_dir)
+        stats = format_epub(raw, dest, story)
     finally:
         os.remove(raw)
     log("{}: wrote {} ({:.1f} MB) - removed {} chapter-note blocks, emptied {} chapter titles"
@@ -263,6 +282,8 @@ def main():
     ap.add_argument("--force", action="store_true", help="rebuild even if AO3 has no update")
     ap.add_argument("--local", help="format this EPUB file instead of downloading")
     ap.add_argument("--story", help="only this story (by name)")
+    ap.add_argument("--only", choices=["daily", "weekly"],
+                    help="only stories whose \"check\" is this (stories without one count as daily)")
     ap.add_argument("--ci", action="store_true",
                     help="GitHub mode: skip on unchanged AO3 stamp even if no output file exists")
     args = ap.parse_args()
@@ -270,14 +291,16 @@ def main():
     config = load_json(CONFIG_PATH, None)
     out_dir = os.path.join(HERE, config.get("output_dir", "output"))
     os.makedirs(out_dir, exist_ok=True)
-    stories = [s for s in config["stories"] if not args.story or s["name"] == args.story]
+    stories = [s for s in config["stories"]
+               if (not args.story or s["name"] == args.story)
+               and (not args.only or s.get("check", "daily") == args.only)]
     if not stories:
         sys.exit("no matching story in stories.json")
 
     if args.local:
         s = stories[0]
         dest = output_path(s, out_dir)
-        stats = format_epub(args.local, dest, os.path.join(HERE, s["cover_dir"]))
+        stats = format_epub(args.local, dest, s)
         log("{}: formatted local file -> {} {}".format(s["name"], dest, stats))
         return 0
 

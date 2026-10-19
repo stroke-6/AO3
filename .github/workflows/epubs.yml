@@ -1,11 +1,15 @@
-# Daily: checks AO3 for story updates, formats the EPUBs (epubs/ao3_epub.py)
+# Checks AO3 for story updates, formats the EPUBs (epubs/ao3_epub.py)
 # and uploads them to the "epubs" release, which gives each story a permanent link:
-#   https://github.com/<owner>/<repo>/releases/download/epubs/<Story_Name>.epub
+#   https://github.com/<owner>/<repo>/releases/download/epubs/<file>.epub
+#
+# Stories marked "check": "daily" in epubs/stories.json are checked every day,
+# "weekly" ones every Monday. A manual run checks all of them.
 name: Build formatted EPUBs
 
 on:
   schedule:
-    - cron: "17 5 * * *"   # every day at 05:17 UTC
+    - cron: "17 5 * * *"   # daily, 05:17 UTC
+    - cron: "47 5 * * 1"   # weekly, Monday 05:47 UTC
   workflow_dispatch:
     inputs:
       force:
@@ -23,7 +27,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     env:
       GH_TOKEN: ${{ github.token }}
       TAG: epubs
@@ -42,7 +46,13 @@ jobs:
 
       - name: Check AO3 and build
         working-directory: epubs
-        run: python3 ao3_epub.py --ci ${{ inputs.force && '--force' || '' }}
+        run: |
+          case "${{ github.event.schedule }}" in
+            "17 5 * * *") ONLY="--only daily" ;;
+            "47 5 * * 1") ONLY="--only weekly" ;;
+            *)            ONLY="" ;;
+          esac
+          python3 ao3_epub.py --ci $ONLY ${{ inputs.force && '--force' || '' }}
 
       - name: Upload new EPUBs
         if: always()

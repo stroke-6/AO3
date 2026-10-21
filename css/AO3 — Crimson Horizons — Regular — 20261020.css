@@ -1,0 +1,2616 @@
+#workskin .iiron,
+#workskin .iironi,
+#workskin .ifire,
+#workskin .isword,
+#workskin .iwater,
+#workskin .icrane {
+  width: 100px;
+  height: 100px;
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#workskin .iiron::after,
+#workskin .iironi::after,
+#workskin .ifire::after,
+#workskin .isword:after,
+#workskin .iwater:after,
+#workskin .icrane:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+#workskin .iiron:hover::after,
+#workskin .iironi:hover::after,
+#workskin .ifire:hover::after,
+#workskin .isword:hover::after,
+#workskin .iwater:hover::after,
+#workskin .icrane:hover::after {
+  opacity: 1;
+}
+
+#workskin .iiron::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/o1IufD.png');
+}
+
+#workskin .iironi::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/NhETmc.png');
+}
+
+#workskin .ifire::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/NhR8X0.png');
+}
+
+#workskin .isword::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/PimUC7.png');
+}
+
+#workskin .iwater::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/PVmstr.png');
+}
+
+#workskin .icrane::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/f6XrGe.png');
+}
+
+#workskin .landmark.heading + p img {
+  transition: transform 1s ease-in-out;
+}
+
+#workskin .landmark.heading + p img:hover {
+  transform: scale(1.2);
+}
+
+#workskin .epigraph + .hr5 + p > strong > img,
+#workskin .epigraph + .hr6 + p > strong > img {
+  transition: 1s;
+  transition-timing-function: ease-in-out;
+}
+
+#workskin .epigraph + .hr5 + p > strong > img:hover,
+#workskin .epigraph + .hr6 + p > strong > img:hover {
+  filter: drop-shadow(1em 1em #7507);
+  transition-duration: 2s;
+  transition-timing-function: ease-in-out;
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred {
+  transition: 1s ease-out;
+  display: inline-block;
+  text-shadow: 0 0 transparent;
+  position: relative;
+  padding: 10px 0;
+  color: #750705;
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred.shiori {
+  color: #bd1212;
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred.entropy {
+  color: #454b51;
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred.crane {
+  color: #AD452D;
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred.rope {
+  color: #64816a;
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred.persimmon {
+  color: #ab6e94;
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred.wire {
+  color: #aea580;
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred:hover {
+  transform: translateY(-2px);
+  text-shadow: 2px 2px 3px #7507;
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred::before,
+#workskin p[align="center"]:not(:has(img)) strong.strongred::after {
+  content: '';
+  position: absolute;
+  left: 12.5%;
+  width: 75%;
+  height: 1px;
+  background-color: #750705;
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred::before {
+  top: 0;
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred::after {
+  bottom: 0;
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred.shiori::before,
+#workskin p[align="center"]:not(:has(img)) strong.strongred.shiori::after {
+  background-color: #bd1212;
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred.entropy::before,
+#workskin p[align="center"]:not(:has(img)) strong.strongred.entropy::after {
+  background-color: #454b51;
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred.crane::before,
+#workskin p[align="center"]:not(:has(img)) strong.strongred.crane::after {
+  background-color: #AD452D;
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred.rope::before,
+#workskin p[align="center"]:not(:has(img)) strong.strongred.rope::after {
+  background-color: #64816a;
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred.persimmon::before,
+#workskin p[align="center"]:not(:has(img)) strong.strongred.persimmon::after {
+  background-color: #ab6e94;
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred.wire::before,
+#workskin p[align="center"]:not(:has(img)) strong.strongred.wire::after {
+  background-color: #aea580;
+}
+
+#workskin ::selection {
+  background: rgba(168, 10, 6, 0.5);
+}
+
+#workskin .userstuff hr {
+  width: 100%;
+  margin: auto;
+}
+
+#workskin .hr5,
+#workskin .hr6 {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+  height: 18px;
+  border: 0;
+  position: relative;
+  transition-duration: 2s;
+  transition-timing-function: linear;
+}
+
+#workskin .hr5 {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/vJpYDq.png');
+}
+
+#workskin .hr5.hrfire {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/NhRZ9Q.png');
+}
+
+#workskin .hr5.hrcrane {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/fkK0pK.png');
+}
+
+#workskin .hr5.hrrope {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/UXRdfD.png');
+}
+
+#workskin .hr5.hrpersimmon {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/cpKKCo.png');
+}
+
+#workskin .hr6 {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/vJphGm.png');
+}
+
+#workskin .hr5::before,
+#workskin .hr5::after,
+#workskin .hr6::before,
+#workskin .hr6::after {
+  content: '';
+  display: block;
+  position: absolute;
+  background: linear-gradient(90deg, transparent, #000 30%, #000 70%, transparent);
+  height: 1px;
+  top: 8px;
+  transition-duration: 2s;
+  transition-timing-function: linear;
+}
+
+#workskin .hr5::before,
+#workskin .hr6::before {
+  left: 0;
+  right: 50%;
+  margin-right: 10px;
+}
+
+#workskin .hr5::after,
+#workskin .hr6::after {
+  right: 0;
+  left: 50%;
+  margin-left: 10px;
+}
+
+#workskin .hr5:hover {
+  height: 5em;
+  transition-delay: 4s;
+  transition-duration: 2s;
+  transition-timing-function: ease-in-out;
+}
+
+#workskin .hr6:hover {
+  height: 10em;
+  filter: drop-shadow(1em 1em #750705);
+  transition-delay: 4s;
+  transition-duration: 2s;
+  transition-timing-function: ease-in-out;
+}
+
+#workskin .hr5:hover::before,
+#workskin .hr6:hover::before {
+  transform: translateX(-800px);
+  transition-duration: 2s;
+  transition-timing-function: linear;
+}
+
+#workskin .hr5:hover::after,
+#workskin .hr6:hover::after {
+  transform: translateX(800px);
+  transition-duration: 2s;
+  transition-timing-function: linear;
+}
+
+#workskin .epigraph + .hr5,
+#workskin .epigraph + .hr6,
+#workskin .hr5.hrdouble {
+  background: none;
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  height: 3px;
+  width: 100%;
+}
+
+#workskin .eye {
+  transition: 2s;
+  transition-timing-function: ease-in-out;
+}
+
+#workskin .eye:hover {
+  filter: drop-shadow(1em 1em #750705);
+}
+
+#workskin .title.heading {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/D8P25c.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-indent: -9999px;
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  display: block;
+  transition-timing-function: ease-in-out;
+  transition-duration: 2s;
+}
+
+#workskin .title.heading:hover {
+  filter: brightness(1.3) contrast(1.1);
+  transform: scale(1.05);
+  transition-timing-function: ease-in-out;
+}
+
+#workskin .title.heading + .byline {
+  font-family: Georgia;
+  transition-duration: 3s;
+}
+
+#workskin .title.heading:hover + .byline {
+  filter: brightness(0);
+  transition-duration: 3s;
+}
+
+#workskin .hr4 {
+  background: #a80a06;
+  border: 0;
+  height: 1px;
+  width: 100%;
+}
+
+#workskin .preface.group div h3 {
+  display: none;
+}
+
+#workskin .preface.group a {
+  border: none;
+  font-weight: bold;
+  color: #a80a06;
+  font-family: arial,helvetica,sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.7px;
+}
+
+#workskin .preface.group h3.byline.heading a {
+  display: inline;
+  margin-bottom: 0;
+  color: black;
+  text-transform: lowercase;
+  letter-spacing: 0;
+  font-size: 16px;
+}
+
+#workskin .preface.group {
+  padding: 15px;
+}
+
+#workskin div.preface {
+  margin: 0px;
+  padding: .643em .643em 0;
+  float: none;
+}
+
+#workskin .notes {
+  font-size: 13px;
+}
+
+#workskin .summary {
+  padding: 0;
+  border-radius: 5px;
+  border: 1px solid #7a100e;
+  margin: 1.5em auto;
+  max-width: 50em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  background: transparent;
+  text-shadow: 2px 2px 2px rgba(255, 255, 255, 1.3);
+  overflow: hidden;
+  transition: transform 1s ease, filter 0.2s ease;
+}
+
+#workskin .summary p {
+  color: #333;
+}
+
+#workskin .summary::before,
+#workskin .summary::after {
+  content: "";
+  width: 4em;
+  background-size: cover;
+  background-repeat: repeat-y;
+  background-position: center;
+  flex-shrink: 1;
+}
+
+#workskin .summary::before {
+  background-image: url("https://stroke-6.github.io/AO3/images/CH-Illustrations/fBLmdT.png");
+}
+
+#workskin .summary::after {
+  background-image: url("https://stroke-6.github.io/AO3/images/CH-Illustrations/fBLsLb.png");
+}
+
+#workskin .summary blockquote {
+  flex: 1 1 300px;
+  min-width: 0;
+  padding: 2em 2.5em;
+  margin: 0;
+  background: #fefdfb;
+  background-image: linear-gradient(rgba(254, 253, 251, 0.89), rgba(254, 253, 251, 0.99), rgba(254, 253, 251, 0.95), rgba(254, 253, 251, 0.99), rgba(254, 253, 251, 0.75)),
+    url("https://stroke-6.github.io/AO3/images/CH-Illustrations/fBL8va.png");
+  background-size: cover;
+  background-position: center;
+}
+
+#workskin .summary h3 {
+  margin-top: 0;
+}
+
+#workskin .summary p:first-child {
+  text-indent: 0;
+  margin-top: 2em;
+  padding-top: 3em;
+}
+
+#workskin .summary p:last-child {
+  text-indent: 0;
+  margin-bottom: 1.5em;
+  padding-bottom: 1.8em;
+}
+
+#workskin .summary p:first-child::first-letter {
+  font-size: 0;
+  visibility: hidden;
+}
+
+#workskin .summary p:first-child::before {
+  content: "";
+  float: left;
+  width: 3.5em;
+  height: 3.5em;
+  background-image: url("https://stroke-6.github.io/AO3/images/CH-Illustrations/fBA9B5.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 0.5em;
+}
+
+#workskin .summary:hover {
+  transform: scale(1.03);
+  transition: transform 1s ease, filter 0.2s ease;
+}
+
+#workskin .summary:hover::before,
+#workskin .summary:hover::after,
+#workskin .summary:hover p:first-child::before,
+#workskin .summary:hover a {
+  filter: brightness(1.1) contrast(1.1) saturate(1.2);
+  transition: filter 1s ease;
+}
+
+#workskin .notes.notes.module p a {
+  text-transform: lowercase;
+  font-weight: normal;
+  font-size: inherit;
+  color: inherit;
+  text-decoration: none;
+}
+
+#workskin .strongserif {
+  font-size: 105%;
+  font-weight: bold;
+}
+
+#workskin .notes u:hover,
+#workskin .end.notes.module:hover u {
+  color: #750705;
+}
+
+#workskin .notes u:hover::after,
+#workskin .end.notes.module:hover u::after {
+  content: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/vJpYDq.png');
+  transform: scale(0.05);
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: top;
+  margin-right: 0.5em;
+  position: relative;
+  top: -0.1em;
+  transition: ease-in-out 1s;
+}
+
+#workskin .letter {
+  margin: 1.5em auto;
+  background-color: transparent;
+  padding: 20px 30px;
+}
+
+#workskin .letter p:first-child {
+  text-indent: 0;
+}
+
+#workskin .letter p:not(:first-child):not(:last-child) {
+  text-indent: 30px;
+}
+
+#workskin .no-text-decoration {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+#workskin .strongred {
+  font-size: 1.4em;
+  font-weight: 700;
+  font-family: 'PT Serif', Georgia, serif;
+  color: #750705;
+}
+
+#workskin p .red .strongred {
+  font-size: 3em;
+  line-height: 1;
+}
+
+#workskin .red {
+  font-weight: 600;
+  font-family: 'PT Serif', Georgia, serif;
+  color: #750705;
+  font-size: 1.2em;
+}
+
+#workskin .yokai {
+  font-style: italic;
+  letter-spacing: 0.2px;
+  word-spacing: 2px;
+  color: #242424;
+  text-shadow: 0px 0px 2px rgba(20, 20, 20, 0.1),
+               0.6px 0.6px 0px rgba(100, 0, 50, 0.15);
+  transform: skew(0.5deg, 0.5deg);
+  transition: 2s;
+}
+
+#workskin .yokai:hover {
+  letter-spacing: 0.8px;
+  word-spacing: 1.2px;
+  text-shadow: 1.1px 0.8px 0px rgba(150, 0, 50, 0.4), 
+               -0.6px -0.7px 0px rgba(0, 80, 110, 0.4);
+  color: #222;
+  transition: 2s;
+}
+
+#workskin .red.shiori,
+#workskin .strongred.shiori {
+  color: #bd1212;
+}
+
+#workskin .red.entropy,
+#workskin .strongred.entropy {
+  color: #454b51;
+}
+
+#workskin .red.crane,
+#workskin .strongred.crane {
+  color: #AD452D;
+}
+
+#workskin .red.rope,
+#workskin .strongred.rope {
+  color: #64816a;
+}
+
+#workskin .red.persimmon,
+#workskin .strongred.persimmon {
+  color: #ab6e94;
+}
+
+#workskin .red.wire,
+#workskin .strongred.wire {
+  color: #aea580;
+}
+
+#workskin .hr7 {
+  border: 0;
+  height: 1px;
+  width: 40%;
+  background: linear-gradient(to right, rgba(117, 7, 5, 0) 0%, rgba(117, 7, 5, 1) 25%, rgba(117, 7, 5, 1) 75%, rgba(117, 7, 5, 0) 100%);
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(117, 7, 5, 0.5);
+}
+
+#workskin .redsup {
+  color: #750705;
+  padding: 0.2em;
+  font-size: 0.8em;
+}
+
+#workskin .fnotes-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+#workskin .fnotes {
+  font-size: 0.75rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  width: 85%;
+  margin: 0 auto;
+  position: relative;
+  line-height: 1.6;
+}
+
+#workskin div.chapter.preface.group:has(div.end.notes.module) {
+  border-top: none;
+}
+
+#workskin .end.notes.module {
+  font-size: 0.75rem;
+  border-radius: 5px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.94)),
+    url("https://stroke-6.github.io/AO3/images/CH-Illustrations/fBL8va.png");
+  background-size: cover;
+  background-position: center;
+  border: 1px solid #7a100e;
+  padding: 1.5em;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  margin: 0 auto;
+  position: relative;
+  line-height: 1.6;
+  transition: ease-in-out 1s;
+}
+
+#workskin .end.notes.module::before,
+#workskin .end.notes.module::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  min-width: 3em;
+  background-size: 100%;
+  background-repeat: repeat-y;
+  background-position: left;
+}
+
+#workskin .end.notes.module::after {
+  right: 0px;
+  background-image: url("https://stroke-6.github.io/AO3/images/CH-Illustrations/fBLsLb.png");
+}
+
+#workskin .end.notes.module:hover {
+  transform: scale(1.02);
+  transition: transform 1s ease, filter 0.2s ease;
+}
+
+#workskin .end.notes.module:hover::before,
+#workskin .end.notes.module:hover::after {
+  filter: brightness(1.1) contrast(1.1) saturate(1.2);
+  transition: filter 1s ease;
+}
+
+#workskin .end.notes.module p {
+  font-size: 1.21em;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  color: #333;
+}
+
+#workskin .end.notes.module details p {
+  color: #750705;
+}
+
+#workskin .end.notes.module img {
+  box-shadow: 0px 0px 25px white,              
+    inset 0 0 20px 10px white;
+  opacity: 0.99;
+}
+
+#workskin .notes .fnotes {
+  width: 95%;
+}
+
+#workskin .tbc-img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 12px;
+  font-family: Arial;
+  text-align: right;
+}
+
+#workskin .epigraph {
+  width: 90%;
+  font-size: 110%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'PT Serif', Garamond, Georgia, serif;
+}
+
+#workskin .summary {
+  -webkit-border-radius: 5px;
+  float: none;
+  text-shadow: 2px 2px 2px rgba(255, 255, 255, 1.3);
+}
+
+#workskin .summary p:first-child {
+  text-indent: 0;
+}
+
+#workskin .summary p:first-child::first-letter {
+  font-size: 0;
+  visibility: hidden;
+}
+
+#workskin .summary p:first-child::before {
+  content: "";
+  float: left;
+  width: 4em;
+  height: 4em;
+  background-image: url("https://stroke-6.github.io/AO3/images/CH-Illustrations/fBA9B5.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 0.5em;
+}
+
+#workskin .notes {
+  padding: 0.643em 0.643em 0;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: none;
+  margin: 1.5em 3em;
+  float: none;
+}
+
+#workskin .notes p {
+  font-size: 12px;
+  font-family: Arial;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#workskin .notes img {
+  width: 120%;
+}
+
+#workskin .notes img.no-resize {
+  width: auto;
+}
+
+#workskin .float-right {
+  float: right;
+}
+
+#workskin .image-right img {
+  float: right;
+  width: 100px;
+  height: 100px;
+  margin-left: 10px;
+  clear: right;
+  position: relative;
+  padding: 20px;
+}
+
+#workskin .notes details {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #750705;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  width: 75%;
+  margin: 1rem auto;
+}
+
+#workskin .notes summary {
+  background: rgba(117, 7, 5, 0.12);
+  display: inline-block;
+  transform: rotate(-2deg);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid rgba(137, 17, 17, 0.3);
+  border-bottom: 4px solid rgba(137, 17, 17, 0.3);
+  cursor: pointer;
+}
+
+#workskin .notes summary:hover {
+  background: rgba(117, 7, 5, 0.12);
+  transform: rotate(-2deg) translateY(-2px);
+  box-shadow: 0 4px 8px rgba(137, 17, 17, 0.2);
+  border-right: 2px solid rgba(137, 17, 17, 0.3);
+  border-bottom: 5px solid rgba(137, 17, 17, 0.3);
+}
+
+#workskin .notes summary:active {
+  transform: rotate(-2deg) translateY(0);
+  box-shadow: 0 1px 2px rgba(137, 17, 17, 0.2);
+  transition: ease-in-out 1s;
+}
+
+#workskin .notes summary::before {
+  content: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/vJpYDq.png');
+  transform: scale(0.05);
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: top;
+  margin-right: 0.5em;
+  position: relative;
+  top: -0.1em;
+}
+
+#workskin .notes summary::after {
+  content: " ↓";
+}
+
+#workskin .email {
+  padding: 0em 0.643em 0em;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+  float: none;
+}
+
+#workskin .circle {
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#workskin .circle2 {
+  display: block;
+  border: 1px solid #a80a06;
+  height: 60px;
+  width: 60px;
+  line-height: 60px;
+  _1px solid_
+    -moz-border-radius: 30px;
+  border-radius: 30px;
+  background-color: transparent;
+  color: white;
+  text-align: center;
+  font-size: 2em;
+}
+
+#workskin .image-container {
+  width: 75%;
+  height: 25px;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ssrp2Q.png');
+  background-repeat: repeat-x;
+  background-size: 25px 25px;
+  background-position: center;
+  display: flex;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#workskin .containerb {
+  margin: 0px 0px 0px 0px;
+  position: relative;
+  text-align: center;
+  font-size: 250%;
+  font-color: #2a2a2a;
+  font-family: GeorgiaGeorgia;
+}
+
+#workskin .centeredb {
+  margin: 0px 0px 0px 0px;
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#workskin .containerb p {
+  margin: 0px;
+  padding: 0px;
+}
+
+#workskin .centeredb p {
+  margin: 0px;
+  padding: 0px;
+}
+
+#workskin h3.title {
+  display: none;
+}
+
+#workskin #notes {
+  display: none;
+}
+
+#workskin .flashback {
+  border-right: 2px dotted rgba(0, 0, 0, 0.15);
+  padding: 0 1rem;
+  margin: 1.5rem 0;
+  color: #555;
+}
+
+#workskin .userstuff dl,
+#workskin .userstuff dd,
+#workskin .userstuff dt {
+  font-weight: 400;
+}
+
+#workskin dl {
+  margin: 1rem;
+}
+
+#workskin dd {
+  margin: 1rem;
+  line-height: 1.6;
+}
+
+#workskin dt {
+  background: rgba(0, 0, 0, 0.02);
+  color: #750705;
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+#workskin .userstuff blockquote {
+  border-inline-start: 3px solid #750705;
+  padding-inline-start: 1.5rem;
+  margin-inline-start: 0;
+}
+
+#workskin table-container {
+  overflow-x: auto;
+  width: 100%;
+  border-radius: 8px;
+}
+
+#workskin table {
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#workskin th,
+#workskin td {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+#workskin .thick-border-top {
+  border-top: 3px double rgba(0, 0, 0, 0.2);
+}
+
+#workskin .thick-border-bottom {
+  border-bottom: 3px double rgba(0, 0, 0, 0.2);
+}
+
+#workskin th {
+  background: rgba(0, 0, 0, 0.03);
+  font-weight: 600;
+}
+
+#workskin .manga-box3 {
+  padding: 1rem 1.5rem;
+  font-size: 0.75rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  width: 75%;
+  float: none;
+  margin: 1rem auto;
+  line-height: 1.6;
+}
+
+#workskin .fnotes details p,
+#workskin .fnotes details table {
+  font-size: 1.2em;
+}
+
+#workskin .summaryred {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #750705;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid rgba(51, 51, 51, 0.2);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+#workskin .summaryred:hover {
+  color: #a80a06;
+}
+
+#workskin .sidenote {
+  width: 45%;
+  margin: 0 0 1em 1.5em;
+  padding: 0.1em 1em;
+  font-size: 1em;
+  font-style: italic;
+  color: #666;
+  border-left: 2px solid #750705;
+  background: #fafafa;
+  transform: rotate(-2deg);
+}
+
+#workskin .yasaka-stamp {
+  position: relative;
+  text-align: right;
+  padding-right: 4.5em;
+}
+
+#workskin .yasaka-stamp::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 30%;
+  transform: translateY(-50%);
+  width: 4em;
+  height: 4em;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/URatJ5.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 2;
+  opacity: 0.9;
+}
+
+#workskin .vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  padding: 0.75rem;
+  font-weight: 600;
+}
+
+#workskin .noble-house {
+  background: rgba(128, 0, 0, 0.08);
+}
+
+#workskin .essential-house {
+  background: rgba(188, 143, 143, 0.08);
+}
+
+#workskin .support-house {
+  background: rgba(255, 228, 225, 0.08);
+}
+
+#workskin .category {
+  background: rgba(255, 228, 225, 0.08);
+}
+
+#workskin .centered-container {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+}
+
+#workskin .centered-content {
+  max-width: 600px;
+}
+
+#workskin .centered-content p {
+  line-height: 1.5;
+  margin-bottom: 1em;
+  color: #333;
+}
+
+#workskin li::marker {
+  color: #750705;
+  font-weight: bold;
+}
+
+#workskin .img-hover20,
+#workskin .img-hover21,
+#workskin .img-hover22,
+#workskin .img-hover25,
+#workskin .img-hover26,
+#workskin .img-hover27,
+#workskin .img-hover28,
+#workskin .img-hover29,
+#workskin .img-hover30,
+#workskin .img-hover31,
+#workskin .img-hover32,
+#workskin .img-hover33,
+#workskin .img-hover34,
+#workskin .img-hover35,
+#workskin .img-hover36,
+#workskin .img-hover37,
+#workskin .img-hover38,
+#workskin .img-hover39,
+#workskin .img-hover40,
+#workskin .img-hover41,
+#workskin .img-hover42,
+#workskin .img-hover43,
+#workskin .img-hover44,
+#workskin .img-hover45,
+#workskin .img-hover46,
+#workskin .img-hover47,
+#workskin .img-hover48,
+#workskin .img-hover49,
+#workskin .img-hover50,
+#workskin .img-hover51,
+#workskin .img-hover52,
+#workskin .img-hover53,
+#workskin .img-hover54,
+#workskin .img-hover55,
+#workskin .img-hover56,
+#workskin .img-hover57,
+#workskin .img-hover58,
+#workskin .img-hover59,
+#workskin .img-hover60,
+#workskin .img-hover61,
+#workskin .img-hover62,
+#workskin .img-hover63,
+#workskin .img-hover63s,
+#workskin .img-hover64,
+#workskin .img-hover64e,
+#workskin .img-hover65,
+#workskin .img-hover66,
+#workskin .img-hover66e,
+#workskin .img-hover67,
+#workskin .img-hover68,
+#workskin .img-hover69,
+#workskin .img-hover70,
+#workskin .img-hover71,
+#workskin .img-hover72,
+#workskin .img-hover73,
+#workskin .img-hover74,
+#workskin .img-hover75,
+#workskin .img-hover76,
+#workskin .img-hover77,
+#workskin .img-hover78,
+#workskin .img-hover79,
+#workskin .img-hover80,
+#workskin .img-hover81,
+#workskin .img-hover81e,
+#workskin .img-hover82,
+#workskin .img-hover83,
+#workskin .img-hover84,
+#workskin .img-hover85,
+#workskin .img-hover86,
+#workskin .img-hover87,
+#workskin .img-hover88,
+#workskin .img-hover89,
+#workskin .img-hover90,
+#workskin .img-hover91,
+#workskin .img-hover92,
+#workskin .img-hover93,
+#workskin .img-hover94,
+#workskin .img-hover95,
+#workskin .img-hover96,
+#workskin .img-hover97,
+#workskin .img-hover98,
+#workskin .img-hover99,
+#workskin .img-hover100 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover20::after,
+#workskin .img-hover21::after,
+#workskin .img-hover22::after,
+#workskin .img-hover25::after,
+#workskin .img-hover26::after,
+#workskin .img-hover27::after,
+#workskin .img-hover28::after,
+#workskin .img-hover29::after,
+#workskin .img-hover30::after,
+#workskin .img-hover31::after,
+#workskin .img-hover32::after,
+#workskin .img-hover33::after,
+#workskin .img-hover34::after,
+#workskin .img-hover35::after,
+#workskin .img-hover36::after,
+#workskin .img-hover37::after,
+#workskin .img-hover38::after,
+#workskin .img-hover39::after,
+#workskin .img-hover40::after,
+#workskin .img-hover41::after,
+#workskin .img-hover42::after,
+#workskin .img-hover43::after,
+#workskin .img-hover44::after,
+#workskin .img-hover45::after,
+#workskin .img-hover46::after,
+#workskin .img-hover47::after,
+#workskin .img-hover48::after,
+#workskin .img-hover49::after,
+#workskin .img-hover50::after,
+#workskin .img-hover51::after,
+#workskin .img-hover52::after,
+#workskin .img-hover53::after,
+#workskin .img-hover54::after,
+#workskin .img-hover55::after,
+#workskin .img-hover56::after,
+#workskin .img-hover57::after,
+#workskin .img-hover58::after,
+#workskin .img-hover59::after,
+#workskin .img-hover60::after,
+#workskin .img-hover61::after,
+#workskin .img-hover62::after,
+#workskin .img-hover63::after,
+#workskin .img-hover63s::after,
+#workskin .img-hover64::after,
+#workskin .img-hover64e::after,
+#workskin .img-hover65::after,
+#workskin .img-hover66::after,
+#workskin .img-hover66e::after,
+#workskin .img-hover67::after,
+#workskin .img-hover68::after,
+#workskin .img-hover69::after,
+#workskin .img-hover70::after,
+#workskin .img-hover71::after,
+#workskin .img-hover72::after,
+#workskin .img-hover73::after,
+#workskin .img-hover74::after,
+#workskin .img-hover75::after,
+#workskin .img-hover76::after,
+#workskin .img-hover77::after,
+#workskin .img-hover78::after,
+#workskin .img-hover79::after,
+#workskin .img-hover80::after,
+#workskin .img-hover81::after,
+#workskin .img-hover81e::after,
+#workskin .img-hover82::after,
+#workskin .img-hover83::after,
+#workskin .img-hover84::after,
+#workskin .img-hover85::after,
+#workskin .img-hover86::after,
+#workskin .img-hover87::after,
+#workskin .img-hover88::after,
+#workskin .img-hover89::after,
+#workskin .img-hover90::after,
+#workskin .img-hover91::after,
+#workskin .img-hover92::after,
+#workskin .img-hover93::after,
+#workskin .img-hover94::after,
+#workskin .img-hover95::after,
+#workskin .img-hover96::after,
+#workskin .img-hover97::after,
+#workskin .img-hover98::after,
+#workskin .img-hover99::after,
+#workskin .img-hover100::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+#workskin .img-hover20:hover::after,
+#workskin .img-hover21:hover::after,
+#workskin .img-hover22:hover::after,
+#workskin .img-hover25:hover::after,
+#workskin .img-hover26:hover::after,
+#workskin .img-hover27:hover::after,
+#workskin .img-hover28:hover::after,
+#workskin .img-hover29:hover::after,
+#workskin .img-hover30:hover::after,
+#workskin .img-hover31:hover::after,
+#workskin .img-hover32:hover::after,
+#workskin .img-hover33:hover::after,
+#workskin .img-hover34:hover::after,
+#workskin .img-hover35:hover::after,
+#workskin .img-hover36:hover::after,
+#workskin .img-hover37:hover::after,
+#workskin .img-hover38:hover::after,
+#workskin .img-hover39:hover::after,
+#workskin .img-hover40:hover::after,
+#workskin .img-hover41:hover::after,
+#workskin .img-hover42:hover::after,
+#workskin .img-hover43:hover::after,
+#workskin .img-hover44:hover::after,
+#workskin .img-hover45:hover::after,
+#workskin .img-hover46:hover::after,
+#workskin .img-hover47:hover::after,
+#workskin .img-hover48:hover::after,
+#workskin .img-hover49:hover::after,
+#workskin .img-hover50:hover::after,
+#workskin .img-hover51:hover::after,
+#workskin .img-hover52:hover::after,
+#workskin .img-hover53:hover::after,
+#workskin .img-hover54:hover::after,
+#workskin .img-hover55:hover::after,
+#workskin .img-hover56:hover::after,
+#workskin .img-hover57:hover::after,
+#workskin .img-hover58:hover::after,
+#workskin .img-hover59:hover::after,
+#workskin .img-hover60:hover::after,
+#workskin .img-hover61:hover::after,
+#workskin .img-hover62:hover::after,
+#workskin .img-hover63:hover::after,
+#workskin .img-hover63s:hover::after,
+#workskin .img-hover64:hover::after,
+#workskin .img-hover64e:hover::after,
+#workskin .img-hover65:hover::after,
+#workskin .img-hover66:hover::after,
+#workskin .img-hover66e:hover::after,
+#workskin .img-hover67:hover::after,
+#workskin .img-hover68:hover::after,
+#workskin .img-hover69:hover::after,
+#workskin .img-hover70:hover::after,
+#workskin .img-hover71:hover::after,
+#workskin .img-hover72:hover::after,
+#workskin .img-hover73:hover::after,
+#workskin .img-hover74:hover::after,
+#workskin .img-hover75:hover::after,
+#workskin .img-hover76:hover::after,
+#workskin .img-hover77:hover::after,
+#workskin .img-hover78:hover::after,
+#workskin .img-hover79:hover::after,
+#workskin .img-hover80:hover::after,
+#workskin .img-hover81:hover::after,
+#workskin .img-hover81e:hover::after,
+#workskin .img-hover82:hover::after,
+#workskin .img-hover83:hover::after,
+#workskin .img-hover84:hover::after,
+#workskin .img-hover85:hover::after,
+#workskin .img-hover86:hover::after,
+#workskin .img-hover87:hover::after,
+#workskin .img-hover88:hover::after,
+#workskin .img-hover89:hover::after,
+#workskin .img-hover90:hover::after,
+#workskin .img-hover91:hover::after,
+#workskin .img-hover92:hover::after,
+#workskin .img-hover93:hover::after,
+#workskin .img-hover94:hover::after,
+#workskin .img-hover95:hover::after,
+#workskin .img-hover96:hover::after,
+#workskin .img-hover97:hover::after,
+#workskin .img-hover98:hover::after,
+#workskin .img-hover99:hover::after,
+#workskin .img-hover100:hover::after {
+  opacity: 1;
+}
+
+#workskin .img-hover20::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/Lyj0Px.png');
+}
+
+#workskin .img-hover21::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/Mn9lJC.png');
+}
+
+#workskin .img-hover22::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/Mws2Yb.png');
+}
+
+#workskin .img-hover25::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/YBygZz.png');
+}
+
+#workskin .img-hover26::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/Yl4jtF.png');
+}
+
+#workskin .img-hover27::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/YoEzCQ.png');
+}
+
+#workskin .img-hover28 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover28::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/YXkSpC.png');
+  z-index: 1;
+  transition: opacity 2s linear;
+}
+
+#workskin .img-hover28::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/YXK46D.png');
+  z-index: 2;
+  transition: opacity 6s ease-in-out 2s;
+}
+
+#workskin .img-hover28:hover::before {
+  opacity: 1;
+}
+
+#workskin .img-hover28:hover::after {
+  opacity: 1;
+}
+
+#workskin .img-hover29 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover29::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 1;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/oiPY21.png');
+  z-index: 1;
+  transition: opacity 1.5s;
+}
+
+#workskin .img-hover29::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/oiPLYH.png');
+  z-index: 2;
+  transition: opacity 1.5s;
+}
+
+#workskin .img-hover29:hover::before {
+  opacity: 0;
+}
+
+#workskin .img-hover29:hover::after {
+  opacity: 1;
+}
+
+#workskin .img-hover30::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/oQ4i3P.png');
+}
+
+#workskin .img-hover31::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/o4eXdm.png');
+}
+
+#workskin .img-hover32 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover32::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 1;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/oeqMXC.png');
+  z-index: 1;
+  transition: opacity 1.5s;
+}
+
+#workskin .img-hover32::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/oeqog5.png');
+  z-index: 2;
+  transition: opacity 1.5s;
+}
+
+#workskin .img-hover32:hover::before {
+  opacity: 0;
+}
+
+#workskin .img-hover32:hover::after {
+  opacity: 1;
+}
+
+#workskin .img-hover33::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/oNiUcQ.png');
+}
+
+#workskin .img-hover34 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover34::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 1;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/oXhBIM.png');
+  z-index: 1;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover34::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/oXhdUA.png');
+  z-index: 2;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover34:hover::before {
+  opacity: 0;
+}
+
+#workskin .img-hover34:hover::after {
+  opacity: 1;
+}
+
+#workskin .img-hover35::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/uAJWA2.png');
+}
+
+#workskin .img-hover36 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover36::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 1;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/uZPsXb.png');
+  z-index: 1;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover36::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/uZPmlT.png');
+  z-index: 2;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover36:hover::before {
+  opacity: 0;
+}
+
+#workskin .img-hover36:hover::after {
+  opacity: 1;
+}
+
+#workskin .img-hover37 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover37::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 1;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/uVGNvi.png');
+  z-index: 1;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover37::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/uVGDVm.png');
+  z-index: 2;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover37:hover::before {
+  opacity: 0;
+}
+
+#workskin .img-hover37:hover::after {
+  opacity: 1;
+}
+
+#workskin .img-hover38 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover38::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 1;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/uLJexZ.png');
+  z-index: 1;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover38::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/uLJv1P.png');
+  z-index: 2;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover38:hover::before {
+  opacity: 0;
+}
+
+#workskin .img-hover38:hover::after {
+  opacity: 1;
+}
+
+#workskin .img-hover-sakaeguchi {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover-sakaeguchi::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover-sakaeguchi:hover::after {
+  opacity: 1;
+}
+
+#workskin .img-hover-sakaeguchi::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/DI6FBF.png');
+}
+
+#workskin .img-hover39 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover39::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 1;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/DImNUC.png');
+  z-index: 1;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover39::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/DZxI1Q.png');
+  z-index: 2;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover39:hover::before {
+  opacity: 0;
+}
+
+#workskin .img-hover39:hover::after {
+  opacity: 1;
+}
+
+#workskin .img-hover40::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/DkqRxz.png');
+}
+
+#workskin .img-hover40 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover41::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/DqOqgm.png');
+}
+
+#workskin .img-hover41 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover42::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/DlgHSm.png');
+}
+
+#workskin .img-hover42 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover43::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/DY6uY5.png');
+}
+
+#workskin .img-hover43 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover44::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/DFGW2o.png');
+}
+
+#workskin .img-hover44 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover45::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/DhxpYH.png');
+}
+
+#workskin .img-hover45 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover46::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/NZ8mN9.png');
+}
+
+#workskin .img-hover46 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover47::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/NOaavZ.png');
+}
+
+#workskin .img-hover47 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover48::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/NaWcKi.png');
+  transition: opacity 3.5s;
+}
+
+#workskin .img-hover48 {
+  max-width: 100%;
+  position: relative;
+  transition: opacity 3.5s;
+}
+
+#workskin .img-hover50::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/P0Un9v.png');
+}
+
+#workskin .img-hover50 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover51::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/PTGabQ.png');
+}
+
+#workskin .img-hover51 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover52::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/PVmpj0.png');
+}
+
+#workskin .img-hover52 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover53::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/P4ypdH.png');
+}
+
+#workskin .img-hover53 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover54 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover54::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 1;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/PnWnOT.png');
+  z-index: 1;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover54::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/PnWeTz.png');
+  z-index: 2;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover54:hover::before {
+  opacity: 0;
+}
+
+#workskin .img-hover54:hover::after {
+  opacity: 1;
+}
+
+#workskin .img-hover55 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover55::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 1;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/Pu7BVD.png');
+  z-index: 1;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover55::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/Pu7qW0.png');
+  z-index: 2;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover55:hover::before {
+  opacity: 0;
+}
+
+#workskin .img-hover55:hover::after {
+  opacity: 1;
+}
+
+#workskin .img-hover56 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover56::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 1;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/PFOYHv.png');
+  z-index: 1;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover56::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/PFOoXC.png');
+  z-index: 2;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover56:hover::before {
+  opacity: 0;
+}
+
+#workskin .img-hover56:hover::after {
+  opacity: 1;
+}
+
+#workskin .img-hover561::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/PUYYvc.png');
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+#workskin .img-hover561:hover::after {
+  opacity: 1;
+}
+
+#workskin .img-hover561 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover57 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover57::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 1;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/P5DSQQ.png');
+  z-index: 1;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover57::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/PGrlnA.png');
+  z-index: 2;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover57:hover::before {
+  opacity: 0;
+}
+
+#workskin .img-hover57:hover::after {
+  opacity: 1;
+}
+
+#workskin .img-hover58::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/fiWP93.png');
+}
+
+#workskin .img-hover58 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover59::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ftjbSm.png');
+}
+
+#workskin .img-hover59 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover60::after {
+  transition: opacity 4s;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/f6ZWjb.png');
+}
+
+#workskin .img-hover60 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover61::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/fsbLub.png');
+  transition: opacity 4s;
+}
+
+#workskin .img-hover61 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover62 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover62::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 1;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/F3Yoa7.png');
+  z-index: 1;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover62::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/F3YYLb.png');
+  z-index: 2;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover62:hover::before {
+  opacity: 0;
+}
+
+#workskin .img-hover62:hover::after {
+  opacity: 1;
+}
+
+#workskin .img-hover63::after {
+  transition: opacity 1s;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/FDUVqi.png');
+}
+
+#workskin .img-hover63 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover63s::after {
+  transition: opacity 2s;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/FDUQjm.png');
+}
+
+#workskin .img-hover63s {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover64.ch-title-hover {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+#workskin .img-hover64.ch-title-hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("https://stroke-6.github.io/AO3/images/CH-Illustrations/FxvpQa.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 5s ease;
+  transition-delay: 4s;
+  z-index: 1;
+}
+
+#workskin .img-hover64.ch-title-hover::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 55%;
+  transform: translateY(-50%);
+  background-image: url("https://stroke-6.github.io/AO3/images/CH-Illustrations/Fxv3uM.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 2s ease;
+  transition-delay: 0s;
+  z-index: 2;
+}
+
+#workskin .img-hover64.ch-title-hover:hover::before {
+  opacity: 1;
+  transition-delay: 0s;
+}
+
+#workskin .img-hover64.ch-title-hover:hover::after {
+  opacity: 1;
+  transition-delay: 10s;
+}
+
+#workskin .img-hover64e::after {
+  transition: opacity 3s;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/FxcTse.png');
+}
+
+#workskin .img-hover64e {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover65::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/UiussA.png');
+  transition: opacity 5s;
+}
+
+#workskin .img-hover65 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover66::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/U1wmBA.png');
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover66 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover66e::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/UtHPUD.png');
+  transition: opacity 2s;
+}
+
+#workskin .img-hover66e {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover67::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/UQDN8K.png');
+  transition: opacity 2s;
+}
+
+#workskin .img-hover67 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover68::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/UsLwmk.png');
+  transition: opacity 2s;
+}
+
+#workskin .img-hover68 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover69::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/UlFeVH.png');
+  transition: opacity 2s;
+}
+
+#workskin .img-hover69 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover70 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover70::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/Uuu3fC.png');
+  z-index: 1;
+  transition: opacity 3s linear 1s;
+}
+
+#workskin .img-hover70::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/UuuKj5.png');
+  z-index: 2;
+  transition: opacity 0.1s;
+}
+
+#workskin .img-hover70:hover::before {
+  opacity: 1;
+  transition: opacity 3s linear;
+}
+
+#workskin .img-hover70:hover::after {
+  opacity: 1;
+  transition: opacity 0.1s 5.5s;
+}
+
+#workskin .img-hover71::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/UXRKCa.png');
+  transition: opacity 2s;
+}
+
+#workskin .img-hover71 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover72::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/c0G0ix.png');
+  transition: opacity 4s;
+}
+
+#workskin .img-hover72 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover73::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ckwb12.png');
+  transition: opacity 4s;
+}
+
+#workskin .img-hover73 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover74 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover74::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 1;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/cq1V21.png');
+  z-index: 1;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover74::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/cq19Cc.png');
+  z-index: 2;
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover74:hover::before {
+  opacity: 0;
+}
+
+#workskin .img-hover74:hover::after {
+  opacity: 1;
+}
+
+#workskin .img-hover75::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/cpL1aq.png');
+  transition: opacity 4s;
+}
+
+#workskin .img-hover75 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover76::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/cbhpwr.png');
+  transition: opacity 2s;
+}
+
+#workskin .img-hover76 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover77::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/XZTVKv.png');
+  transition: opacity 0.5s;
+}
+
+#workskin .img-hover77 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover78::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/XEVGUC.png');
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover78 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover79::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/X9BGZQ.png');
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover79 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover80::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/XsukLm.png');
+  transition: opacity 4.5s;
+}
+
+#workskin .img-hover80 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover81::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/XOUN0P.png');
+  transition: opacity 4.5s;
+}
+
+#workskin .img-hover81 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover81e::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/XHECj5.png');
+  transition: opacity 0.1s;
+}
+
+#workskin .img-hover81e {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover82 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover82::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 1;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/XNU9um.png');
+  z-index: 1;
+  transition: opacity 3.5s;
+}
+
+#workskin .img-hover82::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/XNUBQo.png');
+  z-index: 2;
+  transition: opacity 3.5s;
+}
+
+#workskin .img-hover82:hover::before {
+  opacity: 0;
+}
+
+#workskin .img-hover82:hover::after {
+  opacity: 1;
+}
+
+#workskin .img-hover83 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover83::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 1;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/XxxMzv.png');
+  z-index: 1;
+  transition: opacity 3.5s;
+}
+
+#workskin .img-hover83::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/XxoAEe.png');
+  z-index: 2;
+  transition: opacity 1s;
+}
+
+#workskin .img-hover83:hover::before {
+  opacity: 0;
+}
+
+#workskin .img-hover83:hover::after {
+  opacity: 1;
+}
+
+#workskin .img-hover84::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/b0NNpF.png');
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover84 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover85::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/bRytY5.png');
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover85 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover86::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/bUVKaZ.png');
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover86 {
+  max-width: 100%;
+  position: relative;
+}
+
+#workskin .img-hover87::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/87Hover.png');
+  transition: opacity 2.5s;
+}
+
+#workskin .img-hover87 {
+  max-width: 100%;
+  position: relative;
+}

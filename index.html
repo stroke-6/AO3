@@ -27,6 +27,10 @@
       --color-gold-bg: #fffbeb;
       --color-crimson: #be123c;
       --color-crimson-bg: #fff1f2;
+      --color-indra: #6d3b6a;
+      --color-indra-bg: #faf5fa;
+      --color-ie: #9b5566;
+      --color-ie-bg: #fcf4f6;
     }
 
     * { box-sizing: border-box; }
@@ -213,6 +217,58 @@
     .card.script { --card-accent: var(--color-blue);    --card-bg: var(--color-blue-bg); }
     .card.ftrwl  { --card-accent: var(--color-gold);    --card-bg: var(--color-gold-bg); }
     .card.ch     { --card-accent: var(--color-crimson); --card-bg: var(--color-crimson-bg); }
+
+    .shelf {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.8rem;
+    }
+
+    .book {
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-bottom: 4px solid var(--card-accent, var(--text-soft));
+      border-radius: 10px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .book:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.09);
+    }
+
+    .book img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      background: var(--card-bg, var(--surface));
+    }
+
+    .book-body { padding: 0.6rem 0.7rem 0.7rem; }
+
+    .book-title {
+      font-family: "Merriweather", Georgia, serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--card-accent, var(--text));
+    }
+
+    .book-meta {
+      font-size: 0.72rem;
+      color: var(--text-soft);
+      margin-top: 0.2rem;
+    }
+
+    .book.ch    { --card-accent: var(--color-crimson); --card-bg: var(--color-crimson-bg); }
+    .book.ftrwl { --card-accent: var(--color-gold);    --card-bg: var(--color-gold-bg); }
+    .book.indra { --card-accent: var(--color-indra);   --card-bg: var(--color-indra-bg); }
+    .book.ie    { --card-accent: var(--color-ie);      --card-bg: var(--color-ie-bg); }
 
     .card.legacy {
       --card-accent: #9ca3af;
@@ -473,7 +529,42 @@
     </aside>
 
     <section class="content">
-      
+      <div class="section">
+        <div class="section-label">
+          <h2>EPUBs</h2>
+          <div class="line"></div>
+        </div>
+        <div class="shelf">
+          <a class="book ch" href="https://github.com/stroke-6/AO3/releases/download/epubs/Crimson_Horizons.epub">
+            <img src="https://stroke-6.github.io/AO3/images/epub-covers/CH.jpg" alt="" loading="lazy">
+            <div class="book-body">
+              <div class="book-title">Crimson Horizons</div>
+              <div class="book-meta" data-epub="Crimson_Horizons.epub">EPUB</div>
+            </div>
+          </a>
+          <a class="book ftrwl" href="https://github.com/stroke-6/AO3/releases/download/epubs/From_the_Ring_With_Love.epub">
+            <img src="https://stroke-6.github.io/AO3/images/epub-covers/FTRWL.jpg" alt="" loading="lazy">
+            <div class="book-body">
+              <div class="book-title">From the Ring, With Love</div>
+              <div class="book-meta" data-epub="From_the_Ring_With_Love.epub">EPUB</div>
+            </div>
+          </a>
+          <a class="book indra" href="https://github.com/stroke-6/AO3/releases/download/epubs/Indra.epub">
+            <img src="https://stroke-6.github.io/AO3/images/epub-covers/Indra.jpg" alt="" loading="lazy">
+            <div class="book-body">
+              <div class="book-title">Indra</div>
+              <div class="book-meta" data-epub="Indra.epub">EPUB</div>
+            </div>
+          </a>
+          <a class="book ie" href="https://github.com/stroke-6/AO3/releases/download/epubs/Indra_Extra.epub">
+            <img src="https://stroke-6.github.io/AO3/images/epub-covers/IE.jpg" alt="" loading="lazy">
+            <div class="book-body">
+              <div class="book-title">Indra: Extra</div>
+              <div class="book-meta" data-epub="Indra_Extra.epub">EPUB</div>
+            </div>
+          </a>
+        </div>
+      </div>
 
       <div class="section">
         <div class="section-label">
@@ -629,6 +720,18 @@
         });
       });
     })();
+
+    // Fill in each EPUB's size from the "epubs" release; the labels stay "EPUB" if this fails.
+    fetch("https://api.github.com/repos/stroke-6/AO3/releases/tags/epubs")
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (release) {
+        if (!release) return;
+        release.assets.forEach(function (asset) {
+          var meta = document.querySelector('[data-epub="' + asset.name + '"]');
+          if (meta) meta.textContent = "EPUB · " + Math.max(1, Math.round(asset.size / 1e6)) + " MB";
+        });
+      })
+      .catch(function () {});
   </script>
 </body>
 </html>

@@ -221,25 +221,31 @@
     .shelf {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 0.8rem;
+      gap: 1rem;
+      padding: 0 6px 6px 0;
     }
 
     .book {
       display: block;
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-bottom: 4px solid var(--card-accent, var(--text-soft));
-      border-right: 4px solid var(--card-accent, var(--text-soft));
+      border: 2px solid var(--card-accent, var(--text-soft));
       border-radius: 10px;
       overflow: hidden;
       text-decoration: none;
       color: inherit;
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      box-shadow: 6px 6px 0 var(--card-accent, var(--text-soft));
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
     }
 
-    .book:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.09);
+    .book:hover,
+    .book:focus-visible {
+      transform: translate(3px, 3px);
+      box-shadow: 3px 3px 0 var(--card-accent, var(--text-soft));
+    }
+
+    .book:active {
+      transform: translate(6px, 6px);
+      box-shadow: 0 0 0 var(--card-accent, var(--text-soft));
     }
 
     .book img {
@@ -250,11 +256,15 @@
       background: var(--card-bg, var(--surface));
     }
 
-    .book-body { padding: 0.6rem 0.7rem 0.7rem; }
+    .book-body {
+      padding: 0.45rem 0.65rem;
+      border-top: 2px solid var(--card-accent, var(--text-soft));
+    }
 
     .book-meta {
       font-size: 0.72rem;
-      color: var(--text-soft);
+      font-weight: 700;
+      color: var(--card-accent, var(--text-soft));
     }
 
     .book.ch    { --card-accent: var(--color-crimson); --card-bg: var(--color-crimson-bg); }

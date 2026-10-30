@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         stroke6's AO3 + FFN All-In-One Combined — Reader Version
 // @namespace    http://tampermonkey.net/
-// @version      1.6.1
-// @description  Combined bundle of 11 user scripts for my own use, and 8 for you: AO3 enhancements + FanFiction.net Enhanced Reader
+// @version      1.7.0
+// @description  Combined bundle of 12 user scripts for my own use, and 9 for you: AO3 enhancements + FanFiction.net Enhanced Reader
 // @author       stroke6 (combined)
 // @license      MIT
 // @run-at       document-start
@@ -27,6 +27,12 @@
 // @match        https://www.fanfiction.net/story/story_preview.php*
 // @match        https://fanfiction.net/story/story_preview.php*
 // @match        https://m.fanfiction.net/story/story_preview.php*
+// @match        https://www.fanfiction.net/~stroke6*
+// @match        https://fanfiction.net/~stroke6*
+// @match        https://m.fanfiction.net/~stroke6*
+// @match        https://www.fanfiction.net/u/15463812*
+// @match        https://fanfiction.net/u/15463812*
+// @match        https://m.fanfiction.net/u/15463812*
 //
 // @updateURL    https://stroke-6.github.io/AO3/stroke6%27s%20AO3%20%2B%20FFN%20All-In-One%20Combined%20%E2%80%94%20Reader%20Version.user.js
 // @downloadURL  https://stroke-6.github.io/AO3/stroke6%27s%20AO3%20%2B%20FFN%20All-In-One%20Combined%20%E2%80%94%20Reader%20Version.user.js
@@ -54,6 +60,7 @@
  *  10. FanFiction.net Kanji Title (Indra + Indra: Extra)
  *  11. FanFiction.net Illustrations (Crimson Horizons/FTRWL)
  *  12. AO3 Illustrations from GitHub (replaces lensdump images on AO3 work in case)
+ *  13. FanFiction.net Profile Website Button (stroke-6.github.io)
  */
 
 (function bundleRoot() {
@@ -82,6 +89,7 @@
     };
     const isTargetedFFNStory = () => onUrl(/^https?:\/\/(www\.|m\.)?fanfiction\.net\/s\/(14312002|14396658|14163903|14095149|14285217)\//);
     const isFFNKanjiTitleStory = () => onUrl(/^https?:\/\/(www\.|m\.)?fanfiction\.net\/s\/(14095149|14163903)\//);
+    const isFFNStroke6Profile = () => onUrl(/^https?:\/\/(www\.|m\.)?fanfiction\.net\/(~stroke6|u\/15463812)(\/|\?|#|$)/i);
     // Live chapters, plus the author's story previews
     // (/story/story_preview.php?storyid=14312002&chapter=85).
     const isFFNIllustrationStory = () =>
@@ -2274,6 +2282,66 @@
         const root = document.getElementById('main') || document.body;
         root.querySelectorAll('img[src]').forEach(swapImage);
         root.querySelectorAll('a[href]').forEach(swapLink);
+    })());
+
+
+    // =====================================================================
+    // MODULE 13 — FanFiction.net Profile Website Button
+    // Original @match: FFN profile ~stroke6 / u/15463812 (desktop + mobile)
+    // Turns "stroke-6 (dot) github (dot) io" into a link to stroke-6.github.io
+    // =====================================================================
+    if (isFFNStroke6Profile()) whenReady(() => (function moduleFFNProfileSiteButton() {
+        const SITE_URL = 'https://stroke-6.github.io/';
+        const SITE_LABEL = 'stroke-6.github.io';
+        const SITE_RE = /stroke-6\s*\(\s*dot\s*\)\s*github\s*\(\s*dot\s*\)\s*io/i;
+
+        const style = document.createElement('style');
+        style.textContent = `
+            .ffn-site-btn {
+                background-color: rgba(117,7,5,.2);
+                color: inherit !important; border: none; padding: .25em .5em; margin: 0 4px;
+                border-radius: 4px; border-bottom: 1px solid #891111;
+                cursor: pointer; font-size: inherit; text-decoration: none !important;
+                display: inline-block; transition: .2s; position: relative;
+            }
+            .ffn-site-btn:hover { color:#111 !important; border-bottom:1px solid; box-shadow: 2px 2px 0 #891111; }
+            .ffn-site-btn:active { color:#111 !important; background:#ccc; border-color:#fff; box-shadow: inset 1px 1px 3px #333; transform: translateY(4px); }
+            .ffn-site-btn::before { content: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/vJpYDq.png'); transform: scale(.05); display:inline-block; width:1em; height:1em; vertical-align:top; margin-right:.5em; position:relative; top:-.1em; }
+            .ffn-site-btn::after { content:" ↗"; }
+        `;
+        document.head.appendChild(style);
+
+        function processTextNodes() {
+            const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+                acceptNode(node) {
+                    const parent = node.parentNode;
+                    if (!parent || /^(SCRIPT|STYLE|TEXTAREA)$/.test(parent.tagName)) return NodeFilter.FILTER_REJECT;
+                    if (parent.closest('.ffn-site-btn')) return NodeFilter.FILTER_REJECT;
+                    return SITE_RE.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+                }
+            });
+            const nodes = [];
+            while (walker.nextNode()) nodes.push(walker.currentNode);
+
+            nodes.forEach((node) => {
+                const m = node.nodeValue.match(SITE_RE);
+                if (!m) return;
+                const after = node.splitText(m.index);
+                after.nodeValue = after.nodeValue.slice(m[0].length);
+
+                const btn = document.createElement('a');
+                btn.className = 'ffn-site-btn';
+                btn.href = SITE_URL;
+                btn.target = '_blank';
+                btn.rel = 'noopener';
+                btn.textContent = SITE_LABEL;
+                btn.title = `Visit ${SITE_LABEL}`;
+                node.parentNode.insertBefore(btn, after);
+            });
+        }
+
+        processTextNodes();
+        window.addEventListener('load', processTextNodes, { once: true });
     })());
 
 })();

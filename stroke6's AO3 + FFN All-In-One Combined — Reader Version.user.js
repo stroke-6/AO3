@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         stroke6's AO3 + FFN All-In-One Combined — Reader Version
 // @namespace    http://tampermonkey.net/
-// @version      1.8.0
+// @version      1.8.2
 // @description  Combined bundle of 12 user scripts for my own use, and 9 for you: AO3 enhancements + FanFiction.net Enhanced Reader
 // @author       stroke6
 // @license      MIT
@@ -2312,7 +2312,7 @@
         style.textContent = `
             .s6-shelf {
                 display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
-                gap: 14px; max-width: 680px; margin: 12px 0 16px; padding: 0 6px 6px 0;
+                gap: 14px; max-width: 680px; margin: 12px 12em 16px; padding: 0 6px 6px 0;
                 font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
                 text-align: left; line-height: 1.2;
             }
@@ -2363,24 +2363,14 @@
                 shelf.appendChild(c.a);
             });
 
-            // Drawn to sit with the covers: wave-patterned tile, emblem, serif title.
+            // Drawn to sit with the covers: emblem and serif title.
             const face = document.createElement('div');
             face.className = 's6-face';
             face.innerHTML = `
                 <svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true">
-                    <defs>
-                        <pattern id="s6-waves" width="16" height="8" patternUnits="userSpaceOnUse">
-                            <g fill="none" stroke="currentColor" stroke-width=".7" opacity=".22">
-                                <path d="M0 8a8 8 0 0 1 16 0M3 8a5 5 0 0 1 10 0M6 8a2 2 0 0 1 4 0"/>
-                                <path d="M-8 4a8 8 0 0 1 16 0M-5 4a5 5 0 0 1 10 0M8 4a8 8 0 0 1 16 0M11 4a5 5 0 0 1 10 0"/>
-                            </g>
-                        </pattern>
-                    </defs>
-                    <rect x="7" y="7" width="86" height="86" rx="9" fill="url(#s6-waves)" stroke="currentColor" stroke-width="2"/>
                     <circle cx="50" cy="40" r="19" fill="#fff" stroke="currentColor" stroke-width="2.5"/>
                     <circle cx="50" cy="40" r="14" fill="none" stroke="currentColor" stroke-width="1" opacity=".5"/>
                     <path d="M43 47l14-14M46 33h11v11" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                    <rect x="16" y="66" width="68" height="18" rx="3" fill="#fff"/>
                     <text x="50" y="80" text-anchor="middle" fill="currentColor"
                           font-family="Merriweather, Georgia, serif" font-weight="700" font-size="14" letter-spacing=".5">MY LINKS</text>
                 </svg>`;

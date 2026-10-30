@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         stroke6's AO3 + FFN All-In-One Combined — Reader Version
 // @namespace    http://tampermonkey.net/
-// @version      1.8.2
+// @version      1.8.3
 // @description  Combined bundle of 12 user scripts for my own use, and 9 for you: AO3 enhancements + FanFiction.net Enhanced Reader
 // @author       stroke6
 // @license      MIT
@@ -2307,15 +2307,34 @@
             { title: 'From the Ring, With Love', file: 'From_the_Ring_With_Love.epub', cover: 'FTRWL.jpg', color: '#b45309' },
         ];
         const LINKS_COLOR = '#1a1a1a';
+        // Cards as a share of the picture-height they could fill (1 = full height).
+        const CARD_SCALE = 0.85;
 
         const style = document.createElement('style');
         style.textContent = `
+            /* Desktop: one row of five beside the profile picture (the grid steps around the
+               float on its own). --s6-w is set by alignToPicture() so the cards end level
+               with the picture; 154px is the picture's own width. */
             .s6-shelf {
-                display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
-                gap: 14px; max-width: 680px; margin: 12px 12em 16px; padding: 0 6px 6px 0;
+                display: grid; grid-template-columns: repeat(5, minmax(0, var(--s6-w, 154px)));
+                gap: 14px; margin: 12px 4em 16px 0; padding: 0 6px 6px 0;
                 font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
                 text-align: left; line-height: 1.2;
             }
+            /* Phones: no picture, no side margins, let the cards wrap. */
+            @media (max-width: 700px) {
+                .s6-shelf { grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); margin-left: 0; margin-right: 0; }
+            }
+            /* Profile picture dressed like the site's quiet tiles, with room around it. */
+            #bio > img.cimage {
+                padding: 0 !important; border: 2px solid #e2e2dc !important; border-radius: 10px !important;
+                box-shadow: 6px 6px 0 #e2e2dc; margin: 6px 16px 16px 6px !important;
+                object-fit: cover; background: #fff;
+            }
+            /* Drop the 300×250 ad floated beside the bio so the shelf gets that width. */
+            td:has(> #bio) > div:has(> ins.adsbygoogle) { display: none !important; }
+            /* Keep the floated picture inside the bio instead of spilling onto "My Stories". */
+            #bio::after { content: ""; display: block; clear: both; }
             .s6-card {
                 display: block; min-width: 0; background: #fff;
                 border: 2px solid var(--c); border-radius: 10px; overflow: hidden;
@@ -2419,7 +2438,32 @@
                 after.nodeValue = after.nodeValue.slice(m[0].length);
                 node.parentNode.insertBefore(buildShelf(), after);
             });
+            document.querySelectorAll('.s6-shelf').forEach(alignToPicture);
         }
+
+        // Sizes the cards so their bottoms line up with the profile picture's; when the
+        // row is too narrow for that, the smaller cards are nudged down to the same line.
+        function alignToPicture(shelf) {
+            const pic = document.querySelector('#bio > img.cimage');
+            shelf.style.removeProperty('--s6-w');
+            shelf.style.removeProperty('padding-top');
+            if (!pic || window.innerWidth <= 700) return;
+
+            const first = shelf.querySelector('.s6-card');
+            const meta = first.querySelector('.s6-meta').offsetHeight;
+            const room = pic.getBoundingClientRect().bottom - first.getBoundingClientRect().top;
+            shelf.style.setProperty('--s6-w', Math.max(80, (room - meta) * CARD_SCALE) + 'px');
+
+            const short = pic.getBoundingClientRect().bottom - first.getBoundingClientRect().bottom;
+            // Padding, not margin: the shelf's top margin collapses into the bio <p>'s.
+            if (short > 0) shelf.style.paddingTop = short + 'px';
+        }
+
+        let alignFrame = 0;
+        window.addEventListener('resize', () => {
+            cancelAnimationFrame(alignFrame);
+            alignFrame = requestAnimationFrame(() => document.querySelectorAll('.s6-shelf').forEach(alignToPicture));
+        });
 
         processTextNodes();
         window.addEventListener('load', processTextNodes, { once: true });

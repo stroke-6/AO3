@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         stroke6's AO3 + FFN All-In-One Combined — Reader Version
 // @namespace    http://tampermonkey.net/
-// @version      1.6.1
-// @description  Combined bundle of 11 user scripts for my own use, and 8 for you: AO3 enhancements + FanFiction.net Enhanced Reader
+// @version      1.8.0
+// @description  Combined bundle of 12 user scripts for my own use, and 9 for you: AO3 enhancements + FanFiction.net Enhanced Reader
 // @author       stroke6 (combined)
 // @license      MIT
 // @run-at       document-start
@@ -27,12 +27,19 @@
 // @match        https://www.fanfiction.net/story/story_preview.php*
 // @match        https://fanfiction.net/story/story_preview.php*
 // @match        https://m.fanfiction.net/story/story_preview.php*
+// @match        https://www.fanfiction.net/~stroke6*
+// @match        https://fanfiction.net/~stroke6*
+// @match        https://m.fanfiction.net/~stroke6*
+// @match        https://www.fanfiction.net/u/15463812*
+// @match        https://fanfiction.net/u/15463812*
+// @match        https://m.fanfiction.net/u/15463812*
 //
 // @updateURL    https://stroke-6.github.io/AO3/stroke6%27s%20AO3%20%2B%20FFN%20All-In-One%20Combined%20%E2%80%94%20Reader%20Version.user.js
 // @downloadURL  https://stroke-6.github.io/AO3/stroke6%27s%20AO3%20%2B%20FFN%20All-In-One%20Combined%20%E2%80%94%20Reader%20Version.user.js
 
 // @grant        GM_xmlhttpRequest
 // @connect      translate.googleapis.com
+// @connect      api.github.com
 // ==/UserScript==
 
 /*
@@ -54,6 +61,7 @@
  *  10. FanFiction.net Kanji Title (Indra + Indra: Extra)
  *  11. FanFiction.net Illustrations (Crimson Horizons/FTRWL)
  *  12. AO3 Illustrations from GitHub (replaces lensdump images on AO3 work in case)
+ *  13. FanFiction.net Profile Shelf (EPUB downloads + "My Links" to stroke-6.github.io)
  */
 
 (function bundleRoot() {
@@ -82,6 +90,7 @@
     };
     const isTargetedFFNStory = () => onUrl(/^https?:\/\/(www\.|m\.)?fanfiction\.net\/s\/(14312002|14396658|14163903|14095149|14285217)\//);
     const isFFNKanjiTitleStory = () => onUrl(/^https?:\/\/(www\.|m\.)?fanfiction\.net\/s\/(14095149|14163903)\//);
+    const isFFNStroke6Profile = () => onUrl(/^https?:\/\/(www\.|m\.)?fanfiction\.net\/(~stroke6|u\/15463812)(\/|\?|#|$)/i);
     // Live chapters, plus the author's story previews
     // (/story/story_preview.php?storyid=14312002&chapter=85).
     const isFFNIllustrationStory = () =>
@@ -2274,6 +2283,156 @@
         const root = document.getElementById('main') || document.body;
         root.querySelectorAll('img[src]').forEach(swapImage);
         root.querySelectorAll('a[href]').forEach(swapLink);
+    })());
+
+
+    // =====================================================================
+    // MODULE 13 — FanFiction.net Profile Shelf
+    // Original @match: FFN profile ~stroke6 / u/15463812 (desktop + mobile)
+    // Replaces "stroke-6 (dot) github (dot) io" with the EPUB download cards
+    // from stroke-6.github.io, plus a matching "My Links" card to the site.
+    // =====================================================================
+    if (isFFNStroke6Profile()) whenReady(() => (function moduleFFNProfileShelf() {
+        const SITE_URL = 'https://stroke-6.github.io/';
+        const SITE_RE = /stroke-6\s*\(\s*dot\s*\)\s*github\s*\(\s*dot\s*\)\s*io/i;
+        const EPUB_BASE = 'https://github.com/stroke-6/AO3/releases/download/epubs/';
+        const COVER_BASE = 'https://stroke-6.github.io/AO3/images/epub-covers/';
+        const RELEASE_API = 'https://api.github.com/repos/stroke-6/AO3/releases/tags/epubs';
+
+        // Same order and colours as the Stories shelf on stroke-6.github.io.
+        const BOOKS = [
+            { title: 'Crimson Horizons',         file: 'Crimson_Horizons.epub',        cover: 'CH.jpg',    color: '#901f21' },
+            { title: 'Indra',                    file: 'Indra.epub',                   cover: 'Indra.jpg', color: '#6d3b6a' },
+            { title: 'Indra: Extra',             file: 'Indra_Extra.epub',             cover: 'IE.jpg',    color: '#9b5566' },
+            { title: 'From the Ring, With Love', file: 'From_the_Ring_With_Love.epub', cover: 'FTRWL.jpg', color: '#b45309' },
+        ];
+        const LINKS_COLOR = '#1a1a1a';
+
+        const style = document.createElement('style');
+        style.textContent = `
+            .s6-shelf {
+                display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+                gap: 14px; max-width: 680px; margin: 12px 0 16px; padding: 0 6px 6px 0;
+                font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+                text-align: left; line-height: 1.2;
+            }
+            .s6-card {
+                display: block; min-width: 0; background: #fff;
+                border: 2px solid var(--c); border-radius: 10px; overflow: hidden;
+                box-shadow: 6px 6px 0 var(--c); text-decoration: none !important;
+                transition: transform .12s ease, box-shadow .12s ease;
+            }
+            .s6-card:hover, .s6-card:focus-visible { transform: translate(3px, 3px); box-shadow: 3px 3px 0 var(--c); }
+            .s6-card:active { transform: translate(6px, 6px); box-shadow: 0 0 0 var(--c); }
+            .s6-card img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; margin: 0; border: 0; }
+            .s6-face { display: block; width: 100%; aspect-ratio: 1; color: var(--c); background: #fff; }
+            .s6-meta {
+                padding: .45rem .65rem; border-top: 2px solid var(--c);
+                font-size: .72rem; font-weight: 700; color: var(--c);
+                white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            }
+        `;
+        document.head.appendChild(style);
+
+        function card(href, color, faceEl, metaText, title) {
+            const a = document.createElement('a');
+            a.className = 's6-card';
+            a.href = href;
+            a.title = title;
+            a.style.setProperty('--c', color);
+            a.appendChild(faceEl);
+            const meta = document.createElement('div');
+            meta.className = 's6-meta';
+            meta.textContent = metaText;
+            a.appendChild(meta);
+            return { a, meta };
+        }
+
+        function buildShelf() {
+            const shelf = document.createElement('div');
+            shelf.className = 's6-shelf';
+            const metas = {};
+
+            BOOKS.forEach((b) => {
+                const img = document.createElement('img');
+                img.src = COVER_BASE + b.cover;
+                img.alt = b.title;
+                img.loading = 'lazy';
+                const c = card(EPUB_BASE + b.file, b.color, img, 'EPUB', `Download ${b.title} (EPUB)`);
+                metas[b.file] = c.meta;
+                shelf.appendChild(c.a);
+            });
+
+            // Drawn to sit with the covers: wave-patterned tile, emblem, serif title.
+            const face = document.createElement('div');
+            face.className = 's6-face';
+            face.innerHTML = `
+                <svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true">
+                    <defs>
+                        <pattern id="s6-waves" width="16" height="8" patternUnits="userSpaceOnUse">
+                            <g fill="none" stroke="currentColor" stroke-width=".7" opacity=".22">
+                                <path d="M0 8a8 8 0 0 1 16 0M3 8a5 5 0 0 1 10 0M6 8a2 2 0 0 1 4 0"/>
+                                <path d="M-8 4a8 8 0 0 1 16 0M-5 4a5 5 0 0 1 10 0M8 4a8 8 0 0 1 16 0M11 4a5 5 0 0 1 10 0"/>
+                            </g>
+                        </pattern>
+                    </defs>
+                    <rect x="7" y="7" width="86" height="86" rx="9" fill="url(#s6-waves)" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="50" cy="40" r="19" fill="#fff" stroke="currentColor" stroke-width="2.5"/>
+                    <circle cx="50" cy="40" r="14" fill="none" stroke="currentColor" stroke-width="1" opacity=".5"/>
+                    <path d="M43 47l14-14M46 33h11v11" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <rect x="16" y="66" width="68" height="18" rx="3" fill="#fff"/>
+                    <text x="50" y="80" text-anchor="middle" fill="currentColor"
+                          font-family="Merriweather, Georgia, serif" font-weight="700" font-size="14" letter-spacing=".5">MY LINKS</text>
+                </svg>`;
+            const links = card(SITE_URL, LINKS_COLOR, face, 'stroke-6.github.io', 'stroke-6.github.io');
+            links.a.target = '_blank';
+            links.a.rel = 'noopener';
+            shelf.appendChild(links.a);
+
+            fillSizes(metas);
+            return shelf;
+        }
+
+        // Same as the site: "EPUB · N MB" from the release; labels stay "EPUB" on failure.
+        function fillSizes(metas) {
+            if (typeof GM_xmlhttpRequest !== 'function') return;
+            GM_xmlhttpRequest({
+                method: 'GET',
+                url: RELEASE_API,
+                onload(res) {
+                    try {
+                        JSON.parse(res.responseText).assets.forEach((asset) => {
+                            const meta = metas[asset.name];
+                            if (meta) meta.textContent = 'EPUB · ' + Math.max(1, Math.round(asset.size / 1e6)) + ' MB';
+                        });
+                    } catch (e) { /* keep "EPUB" */ }
+                }
+            });
+        }
+
+        function processTextNodes() {
+            const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+                acceptNode(node) {
+                    const parent = node.parentNode;
+                    if (!parent || /^(SCRIPT|STYLE|TEXTAREA)$/.test(parent.tagName)) return NodeFilter.FILTER_REJECT;
+                    if (parent.closest('.s6-shelf')) return NodeFilter.FILTER_REJECT;
+                    return SITE_RE.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+                }
+            });
+            const nodes = [];
+            while (walker.nextNode()) nodes.push(walker.currentNode);
+
+            nodes.forEach((node) => {
+                const m = node.nodeValue.match(SITE_RE);
+                if (!m) return;
+                const after = node.splitText(m.index);
+                after.nodeValue = after.nodeValue.slice(m[0].length);
+                node.parentNode.insertBefore(buildShelf(), after);
+            });
+        }
+
+        processTextNodes();
+        window.addEventListener('load', processTextNodes, { once: true });
     })());
 
 })();

@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.8.0
 // @description  Combined bundle of 12 user scripts for my own use, and 9 for you: AO3 enhancements + FanFiction.net Enhanced Reader
-// @author       stroke6 (combined)
+// @author       stroke6
 // @license      MIT
 // @run-at       document-start
 //

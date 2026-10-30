@@ -249,9 +249,45 @@ h1 {
   width: auto;
   height: auto;
 }
-  </style>
+  /* ---- Quiet style, shared with index.html ---- */
+:root { --q-bg: #fafaf7; --q-surface: #fff; --q-text: #1a1a1a; --q-soft: #6b6b6b; --q-rule: #e2e2dc; }
+html, body { background: var(--q-bg) !important; color: var(--q-text); font-family: "Inter", -apple-system, "Segoe UI", sans-serif !important; }
+.q-back { max-width: 1000px; margin: 0 auto; padding: 1.1rem 16px 0; font: 600 .85rem "Inter", sans-serif; }
+.q-back a { color: var(--q-soft); text-decoration: none; }
+.q-back a:hover { color: var(--q-c); }
+.q-back b { color: var(--q-c); font-weight: 600; }
+/* ---- FTRWL Family Tree ---- */
+:root { --q-c: #b45309; }
+body { width: auto; padding: 0 16px 3rem; box-sizing: border-box; }
+.q-back { max-width: 1100px; }
+.container { background: none; box-shadow: none; padding: 0; max-width: 1100px; box-sizing: border-box; }
+h1 { font-family: "Merriweather", Georgia, serif; color: var(--q-text); font-size: clamp(1.6rem, 4vw, 2.2rem); margin: 1.25rem 0 1.5rem; }
+.tabs { border-bottom: none; gap: .5rem; padding: 2px 4px 8px 2px; margin-bottom: 1.5rem; box-sizing: border-box; }
+.tab { margin-right: 0; background: #fff; border: 2px solid var(--q-rule); border-radius: 999px; padding: .4rem 1rem; box-shadow: 2px 2px 0 var(--q-rule);
+  font-size: .86rem; font-weight: 600; color: var(--q-soft); white-space: nowrap; transition: transform .12s, box-shadow .12s, border-color .12s; }
+.tab:hover { border-color: var(--q-c); box-shadow: 2px 2px 0 var(--q-c); color: var(--q-text); }
+.tab.active { bottom: 0; background: var(--q-c); border-color: var(--q-c); color: #fff; box-shadow: 0 0 0 var(--q-c); transform: translate(2px, 2px); font-weight: 600; }
+.union, .union-poly, .union-poly2 { border: 2px dashed var(--q-rule); border-radius: 12px; }
+.union { width: 100%; max-width: 360px; }
+@media (max-width: 480px) {
+  .union-poly, .union-poly2, .union { padding-left: 10px; padding-right: 10px; }
+  .parents { gap: 14px; }
+  .parents .person { flex: 1 1 0; width: auto; min-width: 0; max-width: 145px; }
+}
+.union-title, .union-poly-title { background: var(--q-bg); font-family: "Merriweather", Georgia, serif; font-size: .85rem; color: var(--q-text); }
+.children { border-top: 1px solid var(--q-rule); }
+.parents::before, .connector { background-color: #b5b5ad; }
+.person { background: #fff; border: 2px solid var(--q-rule); border-left: 6px solid var(--pc); border-radius: 8px; box-shadow: 2px 2px 0 var(--q-rule); font-size: 13.5px; }
+.male { --pc: #4c75a3; background: #fff; } .female { --pc: #d6769e; background: #fff; }
+.male-color { --pc: #4c75a3; } .female-color { --pc: #d6769e; }
+.legend { border-top: 1px solid var(--q-rule); font-size: .88rem; color: var(--q-soft); }
+.legend-color { background: #fff; border: 2px solid var(--q-rule); border-left: 6px solid var(--pc); }
+</style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+<nav class="q-back"><a href="https://stroke-6.github.io/AO3/">&larr; All stories</a> &middot; <b>From the Ring, With Love</b></nav>
+
   <div class="container">
     <h1>Family Tree - Organized by Unions</h1>
     

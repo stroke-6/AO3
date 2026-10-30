@@ -536,9 +536,79 @@
             border: 1px solid rgba(153, 0, 0, 0.3);
             border-radius: 6px;
         }
-    </style>
+    /* ---- Quiet style, shared with index.html ---- */
+:root { --q-bg: #fafaf7; --q-surface: #fff; --q-text: #1a1a1a; --q-soft: #6b6b6b; --q-rule: #e2e2dc; }
+html, body { background: var(--q-bg) !important; color: var(--q-text); font-family: "Inter", -apple-system, "Segoe UI", sans-serif !important; }
+.q-back { max-width: 1000px; margin: 0 auto; padding: 1.1rem 16px 0; font: 600 .85rem "Inter", sans-serif; }
+.q-back a { color: var(--q-soft); text-decoration: none; }
+.q-back a:hover { color: var(--q-c); }
+.q-back b { color: var(--q-c); font-weight: 600; }
+/* ---- The Story So Far / Tier List ---- */
+:root {
+  --q-c: #901f21;
+  --accent: #901f21; --accent-light: #a83234; --accent-dark: #6e1719;
+  --bg-primary: #fafaf7; --bg-secondary: #f3f3ee; --bg-tertiary: #ececE6; --bg-card: #ffffff;
+  --border: #e2e2dc; --border-light: #d6d6cf;
+}
+.header h1, .tab, .progress h2, .chapter-info h2, .arc-numeral, .arc-title, .arc-blurb, .chapter-num, .chapter-title,
+.mystery-title, .tl-cycle h3, .tl-year, .tl-frame-label, .tl-title, .tl-anchor .tl-anchor-label, .legend h3 { font-family: "Merriweather", Georgia, serif !important; }
+.header { background: none; border-bottom: none; padding: 1.25rem 16px 1.5rem; }
+.header h1 { font-weight: 700; font-size: clamp(1.6rem, 4vw, 2.2rem); letter-spacing: -.01em; }
+.header .subtitle { font-style: normal; color: var(--q-soft); }
+.controls { background: rgba(250,250,247,.94); backdrop-filter: blur(6px); border-bottom: 1px solid var(--q-rule); border-top: 1px solid var(--q-rule); }
+.chapter-select-wrapper label { font-size: .7rem; letter-spacing: .12em; color: var(--q-soft); }
+.chapter-select { background-color: #fff; border: 2px solid var(--q-rule); border-radius: 10px; box-shadow: 3px 3px 0 var(--q-rule); transition: border-color .12s, box-shadow .12s; }
+.chapter-select:hover, .chapter-select:focus { border-color: var(--q-c); box-shadow: 3px 3px 0 var(--q-c); }
+.spoiler-warning { background: none; border: 2px dashed var(--q-rule); border-radius: 10px; color: var(--q-soft); }
+.spoiler-warning svg { fill: var(--q-c); }
+
+.tabs { border-bottom: none; gap: .5rem; padding-top: 1.4rem; padding-bottom: .2rem; }
+.tab { font-family: "Inter", sans-serif !important; font-size: .86rem; font-weight: 600; color: var(--q-soft); background: #fff;
+  border: 2px solid var(--q-rule); border-radius: 999px; padding: .35rem .95rem; box-shadow: 2px 2px 0 var(--q-rule);
+  transition: transform .12s, box-shadow .12s, border-color .12s, color .12s; }
+.tab:hover { color: var(--q-text); border-color: var(--q-c); box-shadow: 2px 2px 0 var(--q-c); }
+.tab.active { color: #fff; background: var(--q-c); border-color: var(--q-c); box-shadow: 0 0 0 var(--q-c); transform: translate(2px, 2px); }
+.tab.active .count { background: rgba(255,255,255,.22); color: #fff; }
+
+.progress, .chapter-info { background: #fff; border: 2px solid var(--q-rule); border-left: 6px solid var(--q-c); border-radius: 10px; box-shadow: 3px 3px 0 var(--q-rule); }
+.arc-head { border-bottom-color: var(--q-rule); }
+.arc-title { font-size: 1.3rem; } .arc-numeral { font-size: 1.3rem; }
+.arc-blurb { background: #fff; border: 2px solid var(--q-rule); border-radius: 10px; font-size: .97rem; line-height: 1.75; }
+.chapter-title { font-size: 1rem; }
+.chapter-num { font-size: 1.1rem; color: #c9c9c1; }
+
+.filter { background: #fff; border: 2px solid var(--q-rule); box-shadow: 2px 2px 0 var(--q-rule); transition: transform .12s, box-shadow .12s, border-color .12s; }
+.filter:hover { border-color: var(--q-c); box-shadow: 2px 2px 0 var(--q-c); }
+.filter.active { background: var(--q-c); border-color: var(--q-c); box-shadow: 0 0 0 var(--q-c); transform: translate(2px, 2px); }
+.mystery { background: #fff; border: 2px solid var(--q-rule); border-left: 6px solid var(--open); border-radius: 10px; box-shadow: 3px 3px 0 var(--q-rule); }
+.mystery.answered { border-left-color: var(--answered); }
+.mystery.master { background: #fff; }
+.mystery-title { font-size: 1.02rem; }
+.veil { border-radius: 10px; border-width: 2px; }
+
+/* Tier List */
+.tier-list { border: 2px solid var(--q-rule); border-radius: 10px; box-shadow: 3px 3px 0 var(--q-rule); background: var(--q-rule); }
+.tier-row:first-child .tier-label { border-top-left-radius: 8px; }
+.tier-row:last-child .tier-label { border-bottom-left-radius: 8px; }
+.tier-label { text-shadow: none; border-right: 2px solid var(--q-rule); font-family: "Merriweather", serif; }
+.character-card { border: 2px solid var(--q-rule); border-radius: 8px; box-shadow: 2px 2px 0 var(--q-rule); transition: transform .12s, box-shadow .12s, border-color .12s; }
+.character-card:hover { transform: translate(1px, 1px); border-color: var(--q-c); box-shadow: 1px 1px 0 var(--q-c); }
+.character-card .image-area { border-radius: 6px 6px 0 0; }
+.character-card .name-label { background: #fff; color: var(--q-text); border-top: 2px solid var(--q-rule); border-radius: 0 0 6px 6px; font-family: "Inter", sans-serif; }
+.power-badge { background: var(--q-c); border-radius: 999px; box-shadow: none; }
+.tooltip { border: 2px solid var(--q-rule); border-radius: 8px; box-shadow: 3px 3px 0 var(--q-rule); }
+.tooltip::before { border-width: 8px; border-top-color: var(--q-rule); }
+.legend { background: #fff; border: 2px solid var(--q-rule); border-radius: 10px; }
+.legend h3 { font-size: .9rem; }
+
+/* Tier List's content is wider than The Story So Far's */
+.q-back.wide { max-width: 1200px; }
+</style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+<nav class="q-back wide"><a href="https://stroke-6.github.io/AO3/">&larr; All stories</a> &middot; <b>Crimson Horizons</b></nav>
+
     <header class="header">
         <h1><span>Crimson Horizons</span> — Power Rankings</h1>
         <p class="subtitle">Character strength tiers by chapter</p>

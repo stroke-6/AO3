@@ -135,10 +135,41 @@
 			  z-index: -1;
 			  border-radius: 2px;
 		}
-    </style>
+    /* ---- Quiet style, shared with index.html ---- */
+:root { --q-bg: #fafaf7; --q-surface: #fff; --q-text: #1a1a1a; --q-soft: #6b6b6b; --q-rule: #e2e2dc; }
+html, body { background: var(--q-bg) !important; color: var(--q-text); font-family: "Inter", -apple-system, "Segoe UI", sans-serif !important; }
+.q-back { max-width: 1000px; margin: 0 auto; padding: 1.1rem 16px 0; font: 600 .85rem "Inter", sans-serif; }
+.q-back a { color: var(--q-soft); text-decoration: none; }
+.q-back a:hover { color: var(--q-c); }
+.q-back b { color: var(--q-c); font-weight: 600; }
+/* ---- Character Ages ---- */
+:root { --q-c: #901f21; --accent: #901f21; --border: #e2e2dc; --text-muted: #6b6b6b; }
+body { max-width: 1000px; margin: 0 auto; padding: 0 16px 3rem; }
+.q-back { padding-left: 0; padding-right: 0; }
+h1 { font-family: "Merriweather", Georgia, serif; color: var(--q-text); font-size: clamp(1.6rem, 4vw, 2.2rem); margin: 1.25rem 0 1.5rem; }
+.controls { background: #fff; border: 2px solid var(--q-rule); border-left: 6px solid var(--q-c); border-radius: 10px; box-shadow: 3px 3px 0 var(--q-rule); padding: 1rem 1.2rem; }
+.controls label { color: var(--q-soft); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
+.controls input { font-family: "Inter", sans-serif; border: 2px solid var(--q-rule); border-radius: 10px; box-shadow: 2px 2px 0 var(--q-rule); }
+.controls input:focus { outline: none; border-color: var(--q-c); box-shadow: 2px 2px 0 var(--q-c); }
+.table-wrap { overflow-x: auto; padding: 0 3px 3px 0; }
+table { border: 2px solid var(--q-rule); border-radius: 10px; box-shadow: 3px 3px 0 var(--q-rule); border-collapse: separate; border-spacing: 0; }
+th { background: #fff; color: var(--q-soft); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; border-bottom: 2px solid var(--q-rule); }
+td { border-bottom: 1px solid #eeeee8; font-size: .95rem; }
+tbody tr:last-child td { border-bottom: none; }
+tr:hover { background: #fbf7f7; }
+td:first-child { font-family: "Merriweather", Georgia, serif; font-weight: 700; font-size: .92rem; }
+.age-cell { color: var(--q-c); }
+.birth-year { color: var(--q-soft); }
+.add-character { font-family: "Inter", sans-serif; background: #fff; color: var(--q-c); border: 2px solid var(--q-c); border-radius: 10px;
+  box-shadow: 3px 3px 0 var(--q-c); transition: transform .12s, box-shadow .12s; }
+.add-character:hover { background: #fff; transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--q-c); }
+</style>
 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+<nav class="q-back"><a href="https://stroke-6.github.io/AO3/">&larr; All stories</a> &middot; <b>Crimson Horizons</b></nav>
+
     <h1>Character Ages Timeline</h1>
     
     <div class="controls">
@@ -147,7 +178,7 @@
         <span style="margin-left: 20px; color: #666;">Base Year: 211</span>
     </div>
     
-    <table id="ageTable">
+    <div class="table-wrap"><table id="ageTable">
         <thead>
             <tr>
                 <th>Character Name</th>
@@ -159,7 +190,7 @@
         <tbody id="tableBody">
             <!-- Character rows will be inserted here -->
         </tbody>
-    </table>
+    </table></div>
     
     <button class="add-character" onclick="addCharacter()">+ Add Character</button>
 

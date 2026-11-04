@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         stroke6's AO3 + FFN All-In-One Combined — Reader Version
 // @namespace    http://tampermonkey.net/
-// @version      1.8.3
+// @version      1.8.4
 // @description  Combined bundle of 12 user scripts for my own use, and 9 for you: AO3 enhancements + FanFiction.net Enhanced Reader
 // @author       stroke6
 // @license      MIT
@@ -61,7 +61,7 @@
  *  10. FanFiction.net Kanji Title (Indra + Indra: Extra)
  *  11. FanFiction.net Illustrations (Crimson Horizons/FTRWL)
  *  12. AO3 Illustrations from GitHub (replaces lensdump images on AO3 work in case)
- *  13. FanFiction.net Profile Shelf (EPUB downloads + "My Links" to stroke-6.github.io)
+ *  13. FanFiction.net Profile Shelf (EPUB + MOBI downloads + "My Links" to stroke-6.github.io)
  */
 
 (function bundleRoot() {
@@ -2289,7 +2289,7 @@
     // =====================================================================
     // MODULE 13 — FanFiction.net Profile Shelf
     // Original @match: FFN profile ~stroke6 / u/15463812 (desktop + mobile)
-    // Replaces "stroke-6 (dot) github (dot) io" with the EPUB download cards
+    // Replaces "stroke-6 (dot) github (dot) io" with the EPUB/MOBI download cards
     // from stroke-6.github.io, plus a matching "My Links" card to the site.
     // =====================================================================
     if (isFFNStroke6Profile()) whenReady(() => (function moduleFFNProfileShelf() {
@@ -2306,6 +2306,8 @@
             { title: 'Indra: Extra',             file: 'Indra_Extra.epub',             cover: 'IE.jpg',    color: '#9b5566' },
             { title: 'From the Ring, With Love', file: 'From_the_Ring_With_Love.epub', cover: 'FTRWL.jpg', color: '#b45309' },
         ];
+        // Formats offered for each book, all in the "epubs" release (MOBIs come from mobi.yml).
+        const FORMATS = ['epub', 'mobi'];
         const LINKS_COLOR = '#1a1a1a';
         // Cards as a share of the picture-height they could fill (1 = full height).
         const CARD_SCALE = 0.85;
@@ -2336,20 +2338,27 @@
             /* Keep the floated picture inside the bio instead of spilling onto "My Stories". */
             #bio::after { content: ""; display: block; clear: both; }
             .s6-card {
-                display: block; min-width: 0; background: #fff;
+                display: flex; flex-direction: column; min-width: 0; background: #fff;
                 border: 2px solid var(--c); border-radius: 10px; overflow: hidden;
                 box-shadow: 6px 6px 0 var(--c); text-decoration: none !important;
                 transition: transform .12s ease, box-shadow .12s ease;
             }
-            .s6-card:hover, .s6-card:focus-visible { transform: translate(3px, 3px); box-shadow: 3px 3px 0 var(--c); }
+            .s6-card:hover, .s6-card:focus-visible, .s6-card:focus-within { transform: translate(3px, 3px); box-shadow: 3px 3px 0 var(--c); }
             .s6-card:active { transform: translate(6px, 6px); box-shadow: 0 0 0 var(--c); }
             .s6-card img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; margin: 0; border: 0; }
+            .s6-cover { display: block; }
             .s6-face { display: block; width: 100%; aspect-ratio: 1; color: var(--c); background: #fff; }
             .s6-meta {
-                padding: .45rem .65rem; border-top: 2px solid var(--c);
+                flex: 1; padding: .45rem .65rem; border-top: 2px solid var(--c);
                 font-size: .72rem; font-weight: 700; color: var(--c);
                 white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
             }
+            /* Book cards: "EPUB 58 MB" over "MOBI 57 MB", one link each (the cards are ~85px wide,
+               too narrow for the site's single "EPUB · N MB | MOBI · N MB" line). */
+            .s6-meta.s6-formats { display: flex; flex-direction: column; padding-left: .4rem; padding-right: .4rem; font-size: .68rem; }
+            .s6-formats a { color: var(--c) !important; text-decoration: none !important; overflow: hidden; text-overflow: ellipsis; }
+            .s6-formats a:hover, .s6-formats a:focus-visible { text-decoration: underline !important; text-underline-offset: 2px; }
+            .s6-formats .s6-sep { display: none; }
         `;
         document.head.appendChild(style);
 
@@ -2367,20 +2376,52 @@
             return { a, meta };
         }
 
+        // A book: the cover downloads the EPUB, the strip under it has one link per format.
+        // `labels` collects each format link by its release file name, for fillSizes().
+        function bookCard(b, labels) {
+            const box = document.createElement('div');
+            box.className = 's6-card';
+            box.style.setProperty('--c', b.color);
+
+            const cover = document.createElement('a');
+            cover.className = 's6-cover';
+            cover.href = EPUB_BASE + b.file;
+            cover.title = `Download ${b.title} (EPUB)`;
+            const img = document.createElement('img');
+            img.src = COVER_BASE + b.cover;
+            img.alt = b.title;
+            img.loading = 'lazy';
+            cover.appendChild(img);
+            box.appendChild(cover);
+
+            const meta = document.createElement('div');
+            meta.className = 's6-meta s6-formats';
+            FORMATS.forEach((fmt, i) => {
+                if (i) {
+                    const sep = document.createElement('span');
+                    sep.className = 's6-sep';
+                    sep.setAttribute('aria-hidden', 'true');
+                    sep.textContent = '|';
+                    meta.appendChild(sep);
+                }
+                const file = b.file.replace(/\.epub$/, '.' + fmt);
+                const link = document.createElement('a');
+                link.href = EPUB_BASE + file;
+                link.title = `Download ${b.title} (${fmt.toUpperCase()})`;
+                link.textContent = fmt.toUpperCase();
+                labels[file] = link;
+                meta.appendChild(link);
+            });
+            box.appendChild(meta);
+            return box;
+        }
+
         function buildShelf() {
             const shelf = document.createElement('div');
             shelf.className = 's6-shelf';
-            const metas = {};
+            const labels = {};
 
-            BOOKS.forEach((b) => {
-                const img = document.createElement('img');
-                img.src = COVER_BASE + b.cover;
-                img.alt = b.title;
-                img.loading = 'lazy';
-                const c = card(EPUB_BASE + b.file, b.color, img, 'EPUB', `Download ${b.title} (EPUB)`);
-                metas[b.file] = c.meta;
-                shelf.appendChild(c.a);
-            });
+            BOOKS.forEach((b) => shelf.appendChild(bookCard(b, labels)));
 
             // Drawn to sit with the covers: emblem and serif title.
             const face = document.createElement('div');
@@ -2398,12 +2439,13 @@
             links.a.rel = 'noopener';
             shelf.appendChild(links.a);
 
-            fillSizes(metas);
+            fillSizes(labels);
             return shelf;
         }
 
-        // Same as the site: "EPUB · N MB" from the release; labels stay "EPUB" on failure.
-        function fillSizes(metas) {
+        // Like the site, sizes come from the release ("EPUB 58 MB", without the site's "·" to
+        // fit the narrow cards); labels stay "EPUB" / "MOBI" on failure or before a MOBI exists.
+        function fillSizes(labels) {
             if (typeof GM_xmlhttpRequest !== 'function') return;
             GM_xmlhttpRequest({
                 method: 'GET',
@@ -2411,10 +2453,10 @@
                 onload(res) {
                     try {
                         JSON.parse(res.responseText).assets.forEach((asset) => {
-                            const meta = metas[asset.name];
-                            if (meta) meta.textContent = 'EPUB · ' + Math.max(1, Math.round(asset.size / 1e6)) + ' MB';
+                            const label = labels[asset.name];
+                            if (label) label.textContent = asset.name.split('.').pop().toUpperCase() + ' ' + Math.max(1, Math.round(asset.size / 1e6)) + ' MB';
                         });
-                    } catch (e) { /* keep "EPUB" */ }
+                    } catch (e) { /* keep "EPUB" / "MOBI" */ }
                 }
             });
         }
@@ -2450,7 +2492,9 @@
             if (!pic || window.innerWidth <= 700) return;
 
             const first = shelf.querySelector('.s6-card');
-            const meta = first.querySelector('.s6-meta').offsetHeight;
+            // Sized from a one-line strip ("My Links"), so the second format line on the book
+            // cards hangs just below the picture instead of shrinking the covers.
+            const meta = (shelf.querySelector('a.s6-card .s6-meta') || first.querySelector('.s6-meta')).offsetHeight;
             const room = pic.getBoundingClientRect().bottom - first.getBoundingClientRect().top;
             shelf.style.setProperty('--s6-w', Math.max(80, (room - meta) * CARD_SCALE) + 'px');
 

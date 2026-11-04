@@ -26,6 +26,9 @@ MOBI copies (mobi.yml, "MOBI · All stories"):
   (ebook-convert) and uploaded next to it as <file>.mobi; state-mobi.json in the
   release remembers which EPUB each MOBI came from. A new story needs nothing extra
   here, except adding its workflow's name to the "workflows:" list in mobi.yml.
+  The MOBIs are marked as personal documents (--share-not-sync), so Kindles show their
+  embedded cover. After changing the conversion settings, run it by hand with "Reconvert",
+  and on the Kindle delete the old copy before loading the new one (it caches thumbnails).
 
 Reader links (permanent, always the newest version; swap .epub for .mobi to get the MOBI):
   https://github.com/stroke-6/AO3/releases/download/epubs/Crimson_Horizons.epub

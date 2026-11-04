@@ -86,7 +86,10 @@ jobs:
             echo "::group::$epub -> $mobi"
             gh release download "$TAG" --pattern "$epub" --dir work --clobber
             # "both" = old MOBI + KF8 in one file: older Kindles read the first, newer ones the second.
-            ebook-convert "work/$epub" "work/$mobi" --mobi-file-type both
+            # --share-not-sync leaves out Calibre's made-up ASIN and the "EBOK" (store book) type, so
+            # the Kindle treats the file as a personal document and shows its embedded cover instead
+            # of looking the cover up on Amazon (which fails and leaves a blank placeholder).
+            ebook-convert "work/$epub" "work/$mobi" --mobi-file-type both --share-not-sync
             jq --arg n "$epub" --arg u "$updated" '.[$n] = $u' "$STATE" > work/state.tmp && mv work/state.tmp "$STATE"
             # Upload after each book, so a later failure doesn't lose the ones already done.
             gh release upload "$TAG" "work/$mobi" "$STATE" --clobber

@@ -19,7 +19,15 @@ Running one by hand:
 Changing a schedule: edit the "schedule" / "cron" lines in that story's workflow file
 (e.g. copy the schedule block from epub-ch.yml to make another story daily).
 
-Reader links (permanent, always the newest version):
+MOBI copies (mobi.yml, "MOBI · All stories"):
+  runs by itself after any of the EPUB workflows above succeeds, or by hand
+  (Actions > MOBI · All stories > Run workflow; "Reconvert" redoes every book).
+  Any EPUB in the release whose MOBI is missing or older is converted with Calibre
+  (ebook-convert) and uploaded next to it as <file>.mobi; state-mobi.json in the
+  release remembers which EPUB each MOBI came from. A new story needs nothing extra
+  here, except adding its workflow's name to the "workflows:" list in mobi.yml.
+
+Reader links (permanent, always the newest version; swap .epub for .mobi to get the MOBI):
   https://github.com/stroke-6/AO3/releases/download/epubs/Crimson_Horizons.epub
   https://github.com/stroke-6/AO3/releases/download/epubs/From_the_Ring_With_Love.epub
   https://github.com/stroke-6/AO3/releases/download/epubs/Indra_Extra.epub

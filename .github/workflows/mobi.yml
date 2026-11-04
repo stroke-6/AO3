@@ -1,0 +1,95 @@
+# MOBI copies of the formatted EPUBs.
+#
+# Runs after any EPUB workflow (epub-*.yml) finishes successfully, or by hand
+# (Actions > MOBI · All stories > Run workflow). For every EPUB in the "epubs" release
+# whose MOBI is missing or older than the EPUB, converts it with Calibre and uploads it
+# next to the EPUB, which gives it a permanent link:
+#   https://github.com/<owner>/<repo>/releases/download/epubs/<file>.mobi
+# state-mobi.json (in the release) records which EPUB upload each MOBI was made from.
+name: "MOBI · All stories"
+
+on:
+  workflow_run:
+    workflows:
+      - "EPUB · Crimson Horizons"
+      - "EPUB · From the Ring, With Love"
+      - "EPUB · Indra: Extra"
+      - "EPUB · Indra"
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Reconvert every EPUB, even if its MOBI is up to date"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: mobi
+  cancel-in-progress: false
+
+jobs:
+  convert:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      TAG: epubs
+      FORCE: ${{ inputs.force == true }}
+      STATE: work/state-mobi.json
+    steps:
+      - name: Find EPUBs that need a MOBI
+        id: check
+        run: |
+          mkdir -p work
+          gh release download "$TAG" --pattern "state-mobi.json" --dir work --clobber 2>/dev/null \
+            || echo '{}' > "$STATE"
+
+          gh api "repos/$GH_REPO/releases/tags/$TAG" > work/release.json
+          jq -r '.assets[] | select(.name | endswith(".epub")) | [.name, .updated_at] | @tsv' \
+            work/release.json > work/epubs.tsv
+
+          : > work/todo.tsv
+          while IFS=$'\t' read -r -u 3 epub updated; do
+            mobi="${epub%.epub}.mobi"
+            made_from=$(jq -r --arg n "$epub" '.[$n] // ""' "$STATE")
+            has_mobi=$(jq -r --arg n "$mobi" '[.assets[] | select(.name == $n)] | length' work/release.json)
+            if [ "$FORCE" = "true" ] || [ "$has_mobi" = "0" ] || [ "$made_from" != "$updated" ]; then
+              echo "Needs converting: $epub"
+              printf '%s\t%s\n' "$epub" "$updated" >> work/todo.tsv
+            else
+              echo "Up to date: $mobi"
+            fi
+          done 3< work/epubs.tsv
+
+          echo "count=$(wc -l < work/todo.tsv)" >> "$GITHUB_OUTPUT"
+
+      - name: Install Calibre
+        if: steps.check.outputs.count != '0'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq calibre >/dev/null
+          ebook-convert --version
+
+      - name: Convert and upload
+        if: steps.check.outputs.count != '0'
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: |
+          # The list is read on fd 3 so gh / ebook-convert can't swallow it from stdin.
+          while IFS=$'\t' read -r -u 3 epub updated; do
+            mobi="${epub%.epub}.mobi"
+            echo "::group::$epub -> $mobi"
+            gh release download "$TAG" --pattern "$epub" --dir work --clobber
+            # "both" = old MOBI + KF8 in one file: older Kindles read the first, newer ones the second.
+            ebook-convert "work/$epub" "work/$mobi" --mobi-file-type both
+            jq --arg n "$epub" --arg u "$updated" '.[$n] = $u' "$STATE" > work/state.tmp && mv work/state.tmp "$STATE"
+            # Upload after each book, so a later failure doesn't lose the ones already done.
+            gh release upload "$TAG" "work/$mobi" "$STATE" --clobber
+            rm -f "work/$epub" "work/$mobi"
+            echo "::endgroup::"
+          done 3< work/todo.tsv

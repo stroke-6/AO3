@@ -167,7 +167,7 @@
     }
 
     .book:hover,
-    .book:focus-visible {
+    .book:focus-within {
       transform: translate(3px, 3px);
       box-shadow: 3px 3px 0 var(--c);
     }
@@ -176,6 +176,8 @@
       transform: translate(6px, 6px);
       box-shadow: 0 0 0 var(--c);
     }
+
+    .book-cover { display: block; }
 
     .book img {
       display: block;
@@ -190,7 +192,16 @@
       font-size: 0.72rem;
       font-weight: 700;
       color: var(--c);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0 0.45rem;
     }
+
+    .book-meta a { white-space: nowrap; }
+    .book-meta a:hover,
+    .book-meta a:focus-visible { text-decoration: underline; text-underline-offset: 2px; }
+    .book-meta .sep { opacity: 0.45; font-weight: 400; }
 
     /* ---------- Quiet tiles ---------- */
     .tiles {
@@ -347,10 +358,14 @@
         <h2>Stories</h2>
         <div class="stories">
           <div class="story ch">
-            <a class="book" href="https://github.com/stroke-6/AO3/releases/download/epubs/Crimson_Horizons.epub">
-              <img src="https://stroke-6.github.io/AO3/images/epub-covers/CH.jpg" alt="Crimson Horizons" loading="lazy">
-              <div class="book-meta" data-epub="Crimson_Horizons.epub">EPUB</div>
-            </a>
+            <div class="book">
+              <a class="book-cover" href="https://github.com/stroke-6/AO3/releases/download/epubs/Crimson_Horizons.epub"><img src="https://stroke-6.github.io/AO3/images/epub-covers/CH.jpg" alt="Crimson Horizons" loading="lazy"></a>
+              <div class="book-meta">
+                <a href="https://github.com/stroke-6/AO3/releases/download/epubs/Crimson_Horizons.epub" data-asset="Crimson_Horizons.epub">EPUB</a>
+                <span class="sep" aria-hidden="true">|</span>
+                <a href="https://github.com/stroke-6/AO3/releases/download/epubs/Crimson_Horizons.mobi" data-asset="Crimson_Horizons.mobi">MOBI</a>
+              </div>
+            </div>
             <a class="tile" href="https://stroke-6.github.io/AO3/CH%20Story%20Summary.html" title="Chapter-by-chapter recap and open mysteries, revealed only up to the chapter you select.">
               <span class="tile-title">The Story So Far</span>
             </a>
@@ -363,24 +378,36 @@
           </div>
 
           <div class="story indra">
-            <a class="book" href="https://github.com/stroke-6/AO3/releases/download/epubs/Indra.epub">
-              <img src="https://stroke-6.github.io/AO3/images/epub-covers/Indra.jpg" alt="Indra" loading="lazy">
-              <div class="book-meta" data-epub="Indra.epub">EPUB</div>
-            </a>
+            <div class="book">
+              <a class="book-cover" href="https://github.com/stroke-6/AO3/releases/download/epubs/Indra.epub"><img src="https://stroke-6.github.io/AO3/images/epub-covers/Indra.jpg" alt="Indra" loading="lazy"></a>
+              <div class="book-meta">
+                <a href="https://github.com/stroke-6/AO3/releases/download/epubs/Indra.epub" data-asset="Indra.epub">EPUB</a>
+                <span class="sep" aria-hidden="true">|</span>
+                <a href="https://github.com/stroke-6/AO3/releases/download/epubs/Indra.mobi" data-asset="Indra.mobi">MOBI</a>
+              </div>
+            </div>
           </div>
 
           <div class="story ie">
-            <a class="book" href="https://github.com/stroke-6/AO3/releases/download/epubs/Indra_Extra.epub">
-              <img src="https://stroke-6.github.io/AO3/images/epub-covers/IE.jpg" alt="Indra: Extra" loading="lazy">
-              <div class="book-meta" data-epub="Indra_Extra.epub">EPUB</div>
-            </a>
+            <div class="book">
+              <a class="book-cover" href="https://github.com/stroke-6/AO3/releases/download/epubs/Indra_Extra.epub"><img src="https://stroke-6.github.io/AO3/images/epub-covers/IE.jpg" alt="Indra: Extra" loading="lazy"></a>
+              <div class="book-meta">
+                <a href="https://github.com/stroke-6/AO3/releases/download/epubs/Indra_Extra.epub" data-asset="Indra_Extra.epub">EPUB</a>
+                <span class="sep" aria-hidden="true">|</span>
+                <a href="https://github.com/stroke-6/AO3/releases/download/epubs/Indra_Extra.mobi" data-asset="Indra_Extra.mobi">MOBI</a>
+              </div>
+            </div>
           </div>
 
           <div class="story ftrwl">
-            <a class="book" href="https://github.com/stroke-6/AO3/releases/download/epubs/From_the_Ring_With_Love.epub">
-              <img src="https://stroke-6.github.io/AO3/images/epub-covers/FTRWL.jpg" alt="From the Ring, With Love" loading="lazy">
-              <div class="book-meta" data-epub="From_the_Ring_With_Love.epub">EPUB</div>
-            </a>
+            <div class="book">
+              <a class="book-cover" href="https://github.com/stroke-6/AO3/releases/download/epubs/From_the_Ring_With_Love.epub"><img src="https://stroke-6.github.io/AO3/images/epub-covers/FTRWL.jpg" alt="From the Ring, With Love" loading="lazy"></a>
+              <div class="book-meta">
+                <a href="https://github.com/stroke-6/AO3/releases/download/epubs/From_the_Ring_With_Love.epub" data-asset="From_the_Ring_With_Love.epub">EPUB</a>
+                <span class="sep" aria-hidden="true">|</span>
+                <a href="https://github.com/stroke-6/AO3/releases/download/epubs/From_the_Ring_With_Love.mobi" data-asset="From_the_Ring_With_Love.mobi">MOBI</a>
+              </div>
+            </div>
             <a class="tile" href="https://stroke-6.github.io/AO3/FTRWL%20Family%20Tree.html" title="A visual map of character connections within the FTRWL universe.">
               <span class="tile-title">Family Tree</span>
             </a>
@@ -480,14 +507,14 @@
       });
     })();
 
-    // Fill in each EPUB's size from the "epubs" release; the labels stay "EPUB" if this fails.
+    // Fill in each EPUB/MOBI size from the "epubs" release; the labels stay "EPUB" / "MOBI" if this fails.
     fetch("https://api.github.com/repos/stroke-6/AO3/releases/tags/epubs")
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (release) {
         if (!release) return;
         release.assets.forEach(function (asset) {
-          var meta = document.querySelector('[data-epub="' + asset.name + '"]');
-          if (meta) meta.textContent = "EPUB · " + Math.max(1, Math.round(asset.size / 1e6)) + " MB";
+          var link = document.querySelector('[data-asset="' + asset.name + '"]');
+          if (link) link.textContent = asset.name.split(".").pop().toUpperCase() + " · " + Math.max(1, Math.round(asset.size / 1e6)) + " MB";
         });
       })
       .catch(function () {});

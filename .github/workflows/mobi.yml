@@ -80,6 +80,17 @@ jobs:
         env:
           QT_QPA_PLATFORM: offscreen
         run: |
+          # GitHub sometimes answers an upload with a 5xx error (e.g. HTTP 502): try again a few
+          # times before giving up. --clobber also copes with a try that removed the old file.
+          upload() {
+            for try in 1 2 3 4 5; do
+              gh release upload "$TAG" "$@" --clobber && return 0
+              echo "::warning::Upload of $* failed (try $try of 5), retrying in $((try * 20))s"
+              sleep $((try * 20))
+            done
+            return 1
+          }
+
           # The list is read on fd 3 so gh / ebook-convert can't swallow it from stdin.
           while IFS=$'\t' read -r -u 3 epub updated; do
             mobi="${epub%.epub}.mobi"
@@ -92,7 +103,9 @@ jobs:
             ebook-convert "work/$epub" "work/$mobi" --mobi-file-type both --share-not-sync
             jq --arg n "$epub" --arg u "$updated" '.[$n] = $u' "$STATE" > work/state.tmp && mv work/state.tmp "$STATE"
             # Upload after each book, so a later failure doesn't lose the ones already done.
-            gh release upload "$TAG" "work/$mobi" "$STATE" --clobber
+            # The MOBI goes first: the state only says "done" once the MOBI is really there.
+            upload "work/$mobi"
+            upload "$STATE"
             rm -f "work/$epub" "work/$mobi"
             echo "::endgroup::"
           done 3< work/todo.tsv

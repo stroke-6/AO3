@@ -48,7 +48,7 @@
     }
     .ffn-image-btn:hover { color:#111; border-bottom:1px solid; box-shadow: 2px 2px 0 #891111; }
     .ffn-image-btn:active { color:#111; background:#ccc; border-color:#fff; box-shadow: inset 1px 1px 3px #333; transform: translateY(4px); }
-    .ffn-image-btn::before { content: url('https://c.l3n.co/i/vJpYDq.png'); transform: scale(.05); display:inline-block; width:1em; height:1em; vertical-align:top; margin-right:.5em; position:relative; top:-.1em; }
+    .ffn-image-btn::before { content: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/vJpYDq.png'); transform: scale(.05); display:inline-block; width:1em; height:1em; vertical-align:top; margin-right:.5em; position:relative; top:-.1em; }
     .ffn-image-btn::after { content:" ↓"; }
     .ffn-image-title {
       font-size: 140%; font-weight: bold; font-family: PT Serif, Georgia; color: #750705;

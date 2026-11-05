@@ -495,23 +495,23 @@
     if (isStroke6User()) whenReady(() => (function moduleStoryImageDisplay() {
         const storyData = {
             "Indra": {
-                img: "https://a.l3n.co/i/D8fgtM.png",
+                img: "https://stroke-6.github.io/AO3/images/Indra-Illustrations/D8fgtM.png",
                 url: "https://archiveofourown.org/works/39294225/chapters/98328066"
             },
             "Indra: Extra": {
-                img: "https://b.l3n.co/i/D8PicP.png",
+                img: "https://stroke-6.github.io/AO3/images/IndraExtra-Illustrations/D8PicP.png",
                 url: "https://archiveofourown.org/works/42794847/chapters/107503575"
             },
             "From the Ring, With Love": {
-                img: "https://d.l3n.co/i/D8PWHZ.png",
+                img: "https://stroke-6.github.io/AO3/images/FTRWL-Illustrations/D8PWHZ.png",
                 url: "https://archiveofourown.org/works/59274742/chapters/151165909"
             },
             "Crimson Horizons": {
-                img: "https://a.l3n.co/i/D8P25c.png",
+                img: "https://stroke-6.github.io/AO3/images/CH-Illustrations/D8P25c.png",
                 url: "https://archiveofourown.org/works/52616674/chapters/133092478"
             },
             "In the Quiet Confines of the Hokage's Office": {
-                img: "https://d.l3n.co/DiQ2uH.png",
+                img: "https://stroke-6.github.io/AO3/images/ITQCOTHO-Illustrations/DiQ2uH.png",
                 url: "https://archiveofourown.org/works/50560177"
             }
         };
@@ -820,7 +820,7 @@
             }
             .ffn-image-btn:hover { color:#111; border-bottom:1px solid; box-shadow: 2px 2px 0 #891111; }
             .ffn-image-btn:active { color:#111; background:#ccc; border-color:#fff; box-shadow: inset 1px 1px 3px #333; transform: translateY(4px); }
-            .ffn-image-btn::before { content: url('https://c.l3n.co/i/vJpYDq.png'); transform: scale(.05); display:inline-block; width:1em; height:1em; vertical-align:top; margin-right:.5em; position:relative; top:-.1em; }
+            .ffn-image-btn::before { content: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/vJpYDq.png'); transform: scale(.05); display:inline-block; width:1em; height:1em; vertical-align:top; margin-right:.5em; position:relative; top:-.1em; }
             .ffn-image-btn::after { content:" ↓"; }
             .ffn-image-title {
                 font-size: 140%; font-weight: bold; font-family: PT Serif, Georgia; color: #750705;

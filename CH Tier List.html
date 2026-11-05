@@ -605,6 +605,56 @@ html, body { background: var(--q-bg) !important; color: var(--q-text); font-fami
 .q-back.wide { max-width: 1200px; }
 </style>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* Tag-style buttons, matching the index page */
+/* ===== shared tag recipe (from index): tinted at rest, full colour on hover ===== */
+.q-back { display: flex; align-items: center; gap: .6rem; }
+.q-back a {
+  display: inline-block; padding: .25rem .6rem;
+  background: color-mix(in srgb, var(--q-c) 5%, #fff);
+  border: 2px solid color-mix(in srgb, var(--q-c) 32%, #fff); border-radius: 6px;
+  box-shadow: 3px 3px 0 color-mix(in srgb, var(--q-c) 32%, #fff);
+  color: color-mix(in srgb, var(--q-c) 80%, #000);
+  font-size: .72rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+  transition: transform .12s, box-shadow .12s, border-color .12s, background-color .12s;
+}
+.q-back a:hover { color: color-mix(in srgb, var(--q-c) 80%, #000); border-color: var(--q-c); background: color-mix(in srgb, var(--q-c) 9%, #fff); transform: translate(3px,3px); box-shadow: 0 0 0 var(--q-c); }
+/* Story Summary + Tier List: tabs, filters, chapter select, info card */
+.tab, .filter {
+  background: color-mix(in srgb, var(--q-c) 5%, #fff);
+  border: 2px solid color-mix(in srgb, var(--q-c) 32%, #fff);
+  border-radius: 6px;
+  box-shadow: 3px 3px 0 color-mix(in srgb, var(--q-c) 32%, #fff);
+  color: color-mix(in srgb, var(--q-c) 80%, #000);
+  font-size: .74rem !important; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+  padding: .35rem .75rem;
+  transition: transform .12s, box-shadow .12s, border-color .12s, background-color .12s;
+}
+.tab:hover, .filter:hover {
+  color: color-mix(in srgb, var(--q-c) 80%, #000);
+  border-color: var(--q-c); background: color-mix(in srgb, var(--q-c) 9%, #fff);
+  box-shadow: 3px 3px 0 var(--q-c);
+}
+.tab.active, .filter.active {
+  background: var(--q-c); border-color: var(--q-c); color: #fff;
+  transform: translate(3px,3px); box-shadow: 0 0 0 var(--q-c);
+}
+.tab .count { background: color-mix(in srgb, var(--q-c) 14%, #fff); color: inherit; border-radius: 4px; letter-spacing: 0; }
+.tab.active .count { background: rgba(255,255,255,.22); color: #fff; }
+.chapter-select {
+  background-color: color-mix(in srgb, var(--q-c) 5%, #fff);
+  border-color: color-mix(in srgb, var(--q-c) 32%, #fff); border-radius: 6px;
+  box-shadow: 3px 3px 0 color-mix(in srgb, var(--q-c) 32%, #fff);
+}
+.chapter-select:hover, .chapter-select:focus { border-color: var(--q-c); box-shadow: 3px 3px 0 var(--q-c); }
+/* info card: drop the old thick left accent, use the tinted card from index */
+.progress, .chapter-info {
+  background: color-mix(in srgb, var(--q-c) 5%, #fff);
+  border: 2px solid color-mix(in srgb, var(--q-c) 32%, #fff);
+  box-shadow: 6px 6px 0 color-mix(in srgb, var(--q-c) 32%, #fff);
+}
+.progress h2, .chapter-info h2 { color: color-mix(in srgb, var(--q-c) 75%, #000); }
+</style>
 </head>
 <body>
 <nav class="q-back wide"><a href="https://stroke-6.github.io/AO3/">&larr; All stories</a> &middot; <b>Crimson Horizons</b></nav>

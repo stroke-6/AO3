@@ -982,8 +982,57 @@ button:hover {
   }
 }
     </style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+<style>
+/* Tag-style buttons, matching the index page */
+/* ===== shared tag recipe (from index): tinted at rest, full colour on hover ===== */
+.q-back { display: flex; align-items: center; gap: .6rem; }
+.q-back a {
+  display: inline-block; padding: .25rem .6rem;
+  background: color-mix(in srgb, var(--q-c) 5%, #fff);
+  border: 2px solid color-mix(in srgb, var(--q-c) 32%, #fff); border-radius: 6px;
+  box-shadow: 3px 3px 0 color-mix(in srgb, var(--q-c) 32%, #fff);
+  color: color-mix(in srgb, var(--q-c) 80%, #000);
+  font-size: .72rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+  transition: transform .12s, box-shadow .12s, border-color .12s, background-color .12s;
+}
+.q-back a:hover { color: color-mix(in srgb, var(--q-c) 80%, #000); border-color: var(--q-c); background: color-mix(in srgb, var(--q-c) 9%, #fff); transform: translate(3px,3px); box-shadow: 0 0 0 var(--q-c); }
+/* Tool pages: they never got the shared layer. Light pass, teal like their index cards. */
+:root { --q-c: #0f766e; --q-bg: #fafaf7; --q-rule: #e2e2dc; --q-text: #1a1a1a; --q-soft: #6b6b6b; }
+html, body { background: var(--q-bg) !important; }
+.q-back { max-width: 1000px; margin: 0 auto; padding: 1.1rem 16px 0; font: 600 .85rem "Inter", sans-serif; color: var(--q-soft); }
+.q-back b { color: var(--q-c); font-weight: 600; }
+body > h1, .container > h1 { font-family: "Merriweather", Georgia, serif !important; letter-spacing: -.01em !important; color: var(--q-text) !important; }
+.form-container, .chart-container, .output-container, .preview-container {
+  font-family: "Inter", sans-serif;
+  background: #fff !important;
+  border: 2px solid color-mix(in srgb, var(--q-c) 32%, #fff);
+  border-radius: 10px !important;
+  box-shadow: 6px 6px 0 color-mix(in srgb, var(--q-c) 32%, #fff) !important;
+}
+.form-container input, .form-container textarea, .form-container select {
+  border: 2px solid var(--q-rule) !important; border-radius: 6px !important; font-family: "Inter", sans-serif;
+}
+.form-container input:focus, .form-container textarea:focus, .form-container select:focus { outline: none; border-color: var(--q-c) !important; }
+button {
+  font-family: "Inter", sans-serif !important;
+  background: color-mix(in srgb, var(--q-c) 5%, #fff) !important;
+  border: 2px solid color-mix(in srgb, var(--q-c) 32%, #fff) !important; border-radius: 6px !important;
+  box-shadow: 3px 3px 0 color-mix(in srgb, var(--q-c) 32%, #fff);
+  color: color-mix(in srgb, var(--q-c) 80%, #000) !important;
+  font-size: .76rem !important; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+  transition: transform .12s, box-shadow .12s, border-color .12s, background-color .12s;
+}
+button:hover { background: color-mix(in srgb, var(--q-c) 9%, #fff) !important; border-color: var(--q-c) !important; transform: translate(3px,3px); box-shadow: 0 0 0 var(--q-c); }
+/* primary action: solid */
+#generateBtn, .form-container button[type="submit"], #copyBtn { background: var(--q-c) !important; border-color: var(--q-c) !important; color: #fff !important; box-shadow: 3px 3px 0 color-mix(in srgb, var(--q-c) 55%, #000); }
+#generateBtn:hover, .form-container button[type="submit"]:hover, #copyBtn:hover { background: var(--q-c) !important; box-shadow: 0 0 0 var(--q-c); }
+/* destructive: red tint */
+.remove-skill, .remove-shinjutsu, #resetBtn { --q-c: #b91c1c; }
+</style>
 </head>
 <body id="workskin">
+<nav class="q-back"><a href="https://stroke-6.github.io/AO3/">&larr; All tools</a> &middot; <b>Character Card Generator</b></nav>
     <h1>Character Card Generator</h1>
     
     <div class="container">

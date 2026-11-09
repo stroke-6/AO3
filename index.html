@@ -208,6 +208,52 @@
     .book-meta a:hover,
     .book-meta a:focus-visible { text-decoration: underline; text-underline-offset: 2px; }
 
+    /* Series: labels above the grid, plus a numeral tab on each Indra volume */
+    .book { position: relative; }
+
+    .vol-tab {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 1;
+      padding: 0.05rem 0.55rem 0.1rem;
+      background: var(--surface);
+      color: var(--c);
+      border-left: 2px solid var(--c);
+      border-bottom: 2px solid var(--c);
+      border-bottom-left-radius: 8px;
+      font-family: "Merriweather", Georgia, serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      pointer-events: none;
+    }
+
+    .series-label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: -0.7rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .series-label.ch    { color: var(--color-crimson); }
+    .series-label.indra { grid-column: 2 / 5; color: var(--color-indra); }
+    .series-label.indra::before,
+    .series-label.indra::after {
+      content: "";
+      flex: 1;
+      height: 2px;
+      background: color-mix(in srgb, var(--color-indra) 35%, var(--surface));
+    }
+
+    /* Two-column layout: the labels can't line up with their books, so the numeral tabs carry the order alone */
+    @container (max-width: 559px) {
+      .series-label { display: none; }
+    }
+
     /* ---------- Quiet tiles ---------- */
     .tiles {
       display: grid;
@@ -245,37 +291,44 @@
 
     .tile-desc em { color: var(--text); }
 
-    /* Story annexes: one joined box under the cover, rows split by dividers */
+    /* Story links: extra strips inside the cover card, under EPUB/MOBI (echoes the userscript footers) */
     .annex {
       display: flex;
       flex-direction: column;
-      margin-right: 3px;
-      background: color-mix(in srgb, var(--c) 5%, var(--surface));
-      border: 2px solid color-mix(in srgb, var(--c) 32%, var(--surface));
-      border-radius: 10px;
-      box-shadow: 3px 3px 0 color-mix(in srgb, var(--c) 32%, var(--surface));
-      overflow: hidden;
-      transition: border-color 0.12s ease, box-shadow 0.12s ease;
+      border-top: 2px solid var(--c);
     }
 
-    .annex:hover { border-color: var(--c); box-shadow: 3px 3px 0 var(--c); }
-
     .annex .tile {
-      padding: 0.6rem 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.4rem;
+      padding: 0.42rem 0.65rem;
       border: 0;
       border-top: 2px solid color-mix(in srgb, var(--c) 22%, var(--surface));
       border-radius: 0;
       box-shadow: none;
-      background: transparent;
-      color: color-mix(in srgb, var(--c) 75%, #000);
+      background: color-mix(in srgb, var(--c) 5%, var(--surface));
+      color: color-mix(in srgb, var(--c) 80%, #000);
       transition: background-color 0.12s ease, color 0.12s ease;
     }
 
     .annex .tile:first-child { border-top: 0; }
-    .annex .tile:hover { box-shadow: none; border-color: color-mix(in srgb, var(--c) 22%, var(--surface)); background: color-mix(in srgb, var(--c) 9%, var(--surface)); color: var(--c); }
-    .annex .tile:active { transform: none; box-shadow: none; background: color-mix(in srgb, var(--c) 16%, var(--surface)); }
+    .annex .tile::after { content: "→"; font-size: 0.75rem; font-weight: 700; opacity: 0.6; }
 
-    .story .tile-title { font-size: 0.86rem; line-height: 1.3; margin: 0; }
+    .annex .tile-title {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    .annex .tile:hover { background: var(--c); color: #fff; border-color: color-mix(in srgb, var(--c) 22%, var(--surface)); box-shadow: none; }
+    .annex .tile:hover::after { opacity: 1; }
+    .annex .tile:active { transform: none; box-shadow: none; background: color-mix(in srgb, var(--c) 80%, #000); }
 
     /* Userscripts and tools: tinted cards with a footer strip, echoing the covers' EPUB/MOBI strip */
     .tiles.scripts { --c: var(--color-blue); }
@@ -416,9 +469,12 @@
     <section class="content">
       <div class="section">
         <h2>Stories</h2>
-        <!-- To give any story links, add after its .book:
+        <!-- To give any story links, add inside its .book, after .book-meta:
              <div class="annex"><a class="tile" href="…"><span class="tile-title">…</span></a> …</div> -->
         <div class="stories">
+          <div class="series-label ch">Crimson Horizons</div>
+          <div class="series-label indra">The Indra series</div>
+
           <div class="story ch">
             <div class="book">
               <a class="book-cover" href="https://github.com/stroke-6/AO3/releases/download/epubs/Crimson_Horizons.epub"><img src="https://stroke-6.github.io/AO3/images/epub-covers/CH.jpg" alt="Crimson Horizons" loading="lazy"></a>
@@ -426,10 +482,9 @@
                 <a href="https://github.com/stroke-6/AO3/releases/download/epubs/Crimson_Horizons.epub" data-asset="Crimson_Horizons.epub">EPUB</a>
                 <a href="https://github.com/stroke-6/AO3/releases/download/epubs/Crimson_Horizons.mobi" data-asset="Crimson_Horizons.mobi">MOBI</a>
               </div>
-            </div>
-            <div class="annex">
+              <div class="annex">
             <a class="tile" href="https://stroke-6.github.io/AO3/CH%20Story%20Summary.html" title="Chapter-by-chapter recap and open mysteries, revealed only up to the chapter you select.">
-              <span class="tile-title">The Story So Far</span>
+              <span class="tile-title">The Story</span>
             </a>
             <a class="tile" href="https://stroke-6.github.io/AO3/CH%20Tier%20List.html" title="Power rankings of characters from across the Crimson Horizons universe.">
               <span class="tile-title">Tier List</span>
@@ -437,11 +492,13 @@
             <a class="tile" href="https://stroke-6.github.io/AO3/CH%20Character%20Ages.html" title="Birthdates and current ages of every character in the Crimson Horizons universe.">
               <span class="tile-title">Character Ages</span>
             </a>
+              </div>
             </div>
           </div>
 
           <div class="story indra">
             <div class="book">
+              <span class="vol-tab" title="Indra series, part 1">I</span>
               <a class="book-cover" href="https://github.com/stroke-6/AO3/releases/download/epubs/Indra.epub"><img src="https://stroke-6.github.io/AO3/images/epub-covers/Indra.jpg" alt="Indra" loading="lazy"></a>
               <div class="book-meta">
                 <a href="https://github.com/stroke-6/AO3/releases/download/epubs/Indra.epub" data-asset="Indra.epub">EPUB</a>
@@ -452,6 +509,7 @@
 
           <div class="story ie">
             <div class="book">
+              <span class="vol-tab" title="Indra series, part 2">II</span>
               <a class="book-cover" href="https://github.com/stroke-6/AO3/releases/download/epubs/Indra_Extra.epub"><img src="https://stroke-6.github.io/AO3/images/epub-covers/IE.jpg" alt="Indra: Extra" loading="lazy"></a>
               <div class="book-meta">
                 <a href="https://github.com/stroke-6/AO3/releases/download/epubs/Indra_Extra.epub" data-asset="Indra_Extra.epub">EPUB</a>
@@ -462,19 +520,20 @@
 
           <div class="story ftrwl">
             <div class="book">
+              <span class="vol-tab" title="Indra series, part 3">III</span>
               <a class="book-cover" href="https://github.com/stroke-6/AO3/releases/download/epubs/From_the_Ring_With_Love.epub"><img src="https://stroke-6.github.io/AO3/images/epub-covers/FTRWL.jpg" alt="From the Ring, With Love" loading="lazy"></a>
               <div class="book-meta">
                 <a href="https://github.com/stroke-6/AO3/releases/download/epubs/From_the_Ring_With_Love.epub" data-asset="From_the_Ring_With_Love.epub">EPUB</a>
                 <a href="https://github.com/stroke-6/AO3/releases/download/epubs/From_the_Ring_With_Love.mobi" data-asset="From_the_Ring_With_Love.mobi">MOBI</a>
               </div>
-            </div>
-            <div class="annex">
+              <div class="annex">
             <a class="tile" href="https://stroke-6.github.io/AO3/FTRWL%20Family%20Tree.html" title="A visual map of character connections within the FTRWL universe.">
               <span class="tile-title">Family Tree</span>
             </a>
             <a class="tile" href="https://stroke-6.github.io/AO3/All%20Character%20Cards.html" title="Character stats and information within the FTRWL universe.">
               <span class="tile-title">Character Cards</span>
             </a>
+              </div>
             </div>
           </div>
         </div>

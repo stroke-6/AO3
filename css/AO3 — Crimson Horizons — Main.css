@@ -1,0 +1,1206 @@
+/* =========================================================
+   ICON HOVERS
+   ========================================================= */
+
+#workskin .iiron,
+#workskin .iironi,
+#workskin .ifire,
+#workskin .isword,
+#workskin .iwater,
+#workskin .icrane {
+  width: 100px;
+  height: 100px;
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#workskin .iiron::after,
+#workskin .iironi::after,
+#workskin .ifire::after,
+#workskin .isword::after,
+#workskin .iwater::after,
+#workskin .icrane::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+#workskin .iiron:hover::after,
+#workskin .iironi:hover::after,
+#workskin .ifire:hover::after,
+#workskin .isword:hover::after,
+#workskin .iwater:hover::after,
+#workskin .icrane:hover::after {
+  opacity: 1;
+}
+
+#workskin .iiron::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/o1IufD.png'); }
+#workskin .iironi::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/NhETmc.png'); }
+#workskin .ifire::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/NhR8X0.png'); }
+#workskin .isword::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/PimUC7.png'); }
+#workskin .iwater::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/PVmstr.png'); }
+#workskin .icrane::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/f6XrGe.png'); }
+
+/* =========================================================
+   CHAPTER HEADINGS / EPIGRAPH IMAGES
+   ========================================================= */
+
+#workskin .landmark.heading + p img {
+  transition: transform 1s ease-in-out;
+}
+
+#workskin .landmark.heading + p img:hover {
+  transform: scale(1.2);
+}
+
+#workskin .epigraph + .hr5 + p > strong > img,
+#workskin .epigraph + .hr6 + p > strong > img {
+  transition: 1s ease-in-out;
+}
+
+#workskin .epigraph + .hr5 + p > strong > img:hover,
+#workskin .epigraph + .hr6 + p > strong > img:hover {
+  filter: drop-shadow(1em 1em #7507);
+  transition-duration: 2s;
+}
+
+/* =========================================================
+   CENTERED SECTION TITLES (strong.strongred)
+   Colour comes from .strongred / .strongred.shiori etc. below;
+   the lines above and below follow it via currentColor.
+   ========================================================= */
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred {
+  transition: 1s ease-out;
+  display: inline-block;
+  text-shadow: 0 0 transparent;
+  position: relative;
+  padding: 10px 0;
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred:hover {
+  transform: translateY(-2px);
+  text-shadow: 2px 2px 3px #7507;
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred::before,
+#workskin p[align="center"]:not(:has(img)) strong.strongred::after {
+  content: '';
+  position: absolute;
+  left: 12.5%;
+  width: 75%;
+  height: 1px;
+  background-color: currentColor;
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred::before {
+  top: 0;
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred::after {
+  bottom: 0;
+}
+
+#workskin ::selection {
+  background: rgba(168, 10, 6, 0.5);
+}
+
+/* =========================================================
+   HORIZONTAL RULES
+   ========================================================= */
+
+#workskin .userstuff hr {
+  width: 100%;
+  margin: auto;
+}
+
+#workskin .hr5,
+#workskin .hr6 {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+  height: 18px;
+  border: 0;
+  position: relative;
+  transition: 2s linear;
+}
+
+#workskin .hr5 { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/vJpYDq.png'); }
+#workskin .hr5.hrfire { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/NhRZ9Q.png'); }
+#workskin .hr5.hrcrane { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/fkK0pK.png'); }
+#workskin .hr5.hrrope { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/UXRdfD.png'); }
+#workskin .hr5.hrpersimmon { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/cpKKCo.png'); }
+#workskin .hr6 { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/vJphGm.png'); }
+
+#workskin .hr5::before,
+#workskin .hr5::after,
+#workskin .hr6::before,
+#workskin .hr6::after {
+  content: '';
+  display: block;
+  position: absolute;
+  background: linear-gradient(90deg, transparent, #000 30%, #000 70%, transparent);
+  height: 1px;
+  top: 8px;
+  transition: 2s linear;
+}
+
+#workskin .hr5::before,
+#workskin .hr6::before {
+  left: 0;
+  right: 50%;
+  margin-right: 10px;
+}
+
+#workskin .hr5::after,
+#workskin .hr6::after {
+  right: 0;
+  left: 50%;
+  margin-left: 10px;
+}
+
+#workskin .hr5:hover {
+  height: 5em;
+  transition: 2s ease-in-out 4s;
+}
+
+#workskin .hr6:hover {
+  height: 10em;
+  filter: drop-shadow(1em 1em #750705);
+  transition: 2s ease-in-out 4s;
+}
+
+#workskin .hr5:hover::before,
+#workskin .hr6:hover::before {
+  transform: translateX(-800px);
+}
+
+#workskin .hr5:hover::after,
+#workskin .hr6:hover::after {
+  transform: translateX(800px);
+}
+
+#workskin .epigraph + .hr5,
+#workskin .epigraph + .hr6,
+#workskin .hr5.hrdouble {
+  background: none;
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  height: 3px;
+  width: 100%;
+}
+
+#workskin .hr4 {
+  background: #a80a06;
+  border: 0;
+  height: 1px;
+  width: 100%;
+}
+
+#workskin .hr7 {
+  border: 0;
+  height: 1px;
+  width: 40%;
+  background: linear-gradient(to right, rgba(117, 7, 5, 0) 0%, rgba(117, 7, 5, 1) 25%, rgba(117, 7, 5, 1) 75%, rgba(117, 7, 5, 0) 100%);
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(117, 7, 5, 0.5);
+}
+
+#workskin .eye {
+  transition: 2s ease-in-out;
+}
+
+#workskin .eye:hover {
+  filter: drop-shadow(1em 1em #750705);
+}
+
+/* =========================================================
+   WORK TITLE & PREFACE
+   ========================================================= */
+
+#workskin .title.heading {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/D8P25c.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-indent: -9999px;
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  display: block;
+  transition: 2s ease-in-out;
+}
+
+#workskin .title.heading:hover {
+  filter: brightness(1.3) contrast(1.1);
+  transform: scale(1.05);
+}
+
+#workskin .title.heading + .byline {
+  font-family: Georgia;
+  transition-duration: 3s;
+}
+
+#workskin .title.heading:hover + .byline {
+  filter: brightness(0);
+}
+
+#workskin h3.title {
+  display: none;
+}
+
+#workskin #notes {
+  display: none;
+}
+
+#workskin .preface.group div h3 {
+  display: none;
+}
+
+#workskin .preface.group a {
+  border: none;
+  font-weight: bold;
+  color: #a80a06;
+  font-family: arial, helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.7px;
+}
+
+#workskin .preface.group h3.byline.heading a {
+  display: inline;
+  margin-bottom: 0;
+  color: black;
+  text-transform: lowercase;
+  letter-spacing: 0;
+  font-size: 16px;
+}
+
+#workskin .preface.group {
+  padding: 15px;
+}
+
+#workskin div.preface {
+  margin: 0;
+  padding: .643em .643em 0;
+  float: none;
+}
+
+/* =========================================================
+   SUMMARY BOX
+   ========================================================= */
+
+#workskin .summary {
+  padding: 0;
+  border-radius: 5px;
+  border: 1px solid #7a100e;
+  margin: 1.5em auto;
+  max-width: 50em;
+  float: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  background: transparent;
+  text-shadow: 2px 2px 2px rgba(255, 255, 255, 1);
+  overflow: hidden;
+  transition: transform 1s ease, filter 0.2s ease;
+}
+
+#workskin .summary p {
+  color: #333;
+}
+
+#workskin .summary::before,
+#workskin .summary::after {
+  content: "";
+  width: 4em;
+  background-size: cover;
+  background-repeat: repeat-y;
+  background-position: center;
+  flex-shrink: 1;
+}
+
+#workskin .summary::before {
+  background-image: url("https://stroke-6.github.io/AO3/images/CH-Illustrations/fBLmdT.png");
+}
+
+#workskin .summary::after {
+  background-image: url("https://stroke-6.github.io/AO3/images/CH-Illustrations/fBLsLb.png");
+}
+
+#workskin .summary blockquote {
+  flex: 1 1 300px;
+  min-width: 0;
+  padding: 2em 2.5em;
+  margin: 0;
+  background: #fefdfb;
+  background-image: linear-gradient(rgba(254, 253, 251, 0.89), rgba(254, 253, 251, 0.99), rgba(254, 253, 251, 0.95), rgba(254, 253, 251, 0.99), rgba(254, 253, 251, 0.75)),
+    url("https://stroke-6.github.io/AO3/images/CH-Illustrations/fBL8va.png");
+  background-size: cover;
+  background-position: center;
+}
+
+#workskin .summary h3 {
+  margin-top: 0;
+}
+
+#workskin .summary p:first-child {
+  text-indent: 0;
+  margin-top: 2em;
+  padding-top: 3em;
+}
+
+#workskin .summary p:last-child {
+  text-indent: 0;
+  margin-bottom: 1.5em;
+  padding-bottom: 1.8em;
+}
+
+#workskin .summary p:first-child::first-letter {
+  font-size: 0;
+  visibility: hidden;
+}
+
+#workskin .summary p:first-child::before {
+  content: "";
+  float: left;
+  width: 4em;
+  height: 4em;
+  background-image: url("https://stroke-6.github.io/AO3/images/CH-Illustrations/fBA9B5.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 0.5em;
+}
+
+#workskin .summary:hover {
+  transform: scale(1.03);
+}
+
+#workskin .summary:hover::before,
+#workskin .summary:hover::after,
+#workskin .summary:hover p:first-child::before,
+#workskin .summary:hover a {
+  filter: brightness(1.1) contrast(1.1) saturate(1.2);
+  transition: filter 1s ease;
+}
+
+/* =========================================================
+   NOTES
+   ========================================================= */
+
+#workskin .notes {
+  font-size: 13px;
+  padding: 0.643em 0.643em 0;
+  border-radius: 5px;
+  border: none;
+  margin: 1.5em 3em;
+  float: none;
+}
+
+#workskin .notes p {
+  font-size: 12px;
+  font-family: Arial;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#workskin .notes.module p a {
+  text-transform: lowercase;
+  font-weight: normal;
+  font-size: inherit;
+  color: inherit;
+  text-decoration: none;
+}
+
+#workskin .notes img {
+  width: 120%;
+}
+
+#workskin .notes img.no-resize {
+  width: auto;
+}
+
+#workskin .notes .fnotes {
+  width: 95%;
+}
+
+#workskin .notes u:hover,
+#workskin .end.notes.module:hover u {
+  color: #750705;
+}
+
+#workskin .notes u:hover::after,
+#workskin .end.notes.module:hover u::after {
+  content: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/vJpYDq.png');
+  transform: scale(0.05);
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: top;
+  margin-right: 0.5em;
+  position: relative;
+  top: -0.1em;
+  transition: ease-in-out 1s;
+}
+
+#workskin .notes details {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #750705;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  width: 75%;
+  margin: 1rem auto;
+}
+
+#workskin .notes summary {
+  background: rgba(117, 7, 5, 0.12);
+  display: inline-block;
+  transform: rotate(-2deg);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid rgba(137, 17, 17, 0.3);
+  border-bottom: 4px solid rgba(137, 17, 17, 0.3);
+  cursor: pointer;
+}
+
+#workskin .notes summary:hover {
+  transform: rotate(-2deg) translateY(-2px);
+  box-shadow: 0 4px 8px rgba(137, 17, 17, 0.2);
+  border-right: 2px solid rgba(137, 17, 17, 0.3);
+  border-bottom: 5px solid rgba(137, 17, 17, 0.3);
+}
+
+#workskin .notes summary:active {
+  transform: rotate(-2deg) translateY(0);
+  box-shadow: 0 1px 2px rgba(137, 17, 17, 0.2);
+  transition: ease-in-out 1s;
+}
+
+#workskin .notes summary::before {
+  content: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/vJpYDq.png');
+  transform: scale(0.05);
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: top;
+  margin-right: 0.5em;
+  position: relative;
+  top: -0.1em;
+}
+
+#workskin .notes summary::after {
+  content: " ↓";
+}
+
+#workskin div.chapter.preface.group:has(div.end.notes.module) {
+  border-top: none;
+}
+
+#workskin .end.notes.module {
+  font-size: 0.75rem;
+  border-radius: 5px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.94)),
+    url("https://stroke-6.github.io/AO3/images/CH-Illustrations/fBL8va.png");
+  background-size: cover;
+  background-position: center;
+  border: 1px solid #7a100e;
+  padding: 1.5em;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  margin: 0 auto;
+  position: relative;
+  line-height: 1.6;
+  transition: ease-in-out 1s;
+}
+
+#workskin .end.notes.module::before,
+#workskin .end.notes.module::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  min-width: 3em;
+  background-size: 100%;
+  background-repeat: repeat-y;
+  background-position: left;
+}
+
+#workskin .end.notes.module::after {
+  right: 0;
+  background-image: url("https://stroke-6.github.io/AO3/images/CH-Illustrations/fBLsLb.png");
+}
+
+#workskin .end.notes.module:hover {
+  transform: scale(1.02);
+  transition: transform 1s ease, filter 0.2s ease;
+}
+
+#workskin .end.notes.module:hover::before,
+#workskin .end.notes.module:hover::after {
+  filter: brightness(1.1) contrast(1.1) saturate(1.2);
+  transition: filter 1s ease;
+}
+
+#workskin .end.notes.module p {
+  font-size: 1.21em;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  color: #333;
+}
+
+#workskin .end.notes.module details p {
+  color: #750705;
+}
+
+#workskin .end.notes.module img {
+  box-shadow: 0 0 25px white, inset 0 0 20px 10px white;
+  opacity: 0.99;
+}
+
+/* =========================================================
+   TEXT STYLES & CHARACTER COLOURS
+   ========================================================= */
+
+#workskin .strongserif {
+  font-size: 105%;
+  font-weight: bold;
+}
+
+#workskin .strongred {
+  font-size: 1.4em;
+  font-weight: 700;
+  font-family: 'PT Serif', Georgia, serif;
+  color: #750705;
+}
+
+#workskin p .red .strongred {
+  font-size: 3em;
+  line-height: 1;
+}
+
+#workskin .red {
+  font-weight: 600;
+  font-family: 'PT Serif', Georgia, serif;
+  color: #750705;
+  font-size: 1.2em;
+}
+
+#workskin .red.shiori,     #workskin .strongred.shiori     { color: #bd1212; }
+#workskin .red.entropy,    #workskin .strongred.entropy    { color: #454b51; }
+#workskin .red.crane,      #workskin .strongred.crane      { color: #AD452D; }
+#workskin .red.rope,       #workskin .strongred.rope       { color: #64816a; }
+#workskin .red.persimmon,  #workskin .strongred.persimmon  { color: #ab6e94; }
+#workskin .red.wire,       #workskin .strongred.wire       { color: #aea580; }
+
+#workskin .redsup {
+  color: #750705;
+  padding: 0.2em;
+  font-size: 0.8em;
+}
+
+#workskin .yokai {
+  font-style: italic;
+  letter-spacing: 0.2px;
+  word-spacing: 2px;
+  color: #242424;
+  text-shadow: 0 0 2px rgba(20, 20, 20, 0.1),
+               0.6px 0.6px 0 rgba(100, 0, 50, 0.15);
+  transform: skew(0.5deg, 0.5deg);
+  transition: 2s;
+}
+
+#workskin .yokai:hover {
+  letter-spacing: 0.8px;
+  word-spacing: 1.2px;
+  text-shadow: 1.1px 0.8px 0 rgba(150, 0, 50, 0.4),
+               -0.6px -0.7px 0 rgba(0, 80, 110, 0.4);
+  color: #222;
+}
+
+#workskin .no-text-decoration {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+#workskin .epigraph {
+  width: 90%;
+  font-size: 110%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'PT Serif', Garamond, Georgia, serif;
+}
+
+/* =========================================================
+   LETTERS, EMAILS, FLASHBACKS, SIDENOTES
+   ========================================================= */
+
+#workskin .letter {
+  margin: 1.5em auto;
+  background-color: transparent;
+  padding: 20px 30px;
+}
+
+#workskin .letter p:first-child {
+  text-indent: 0;
+}
+
+#workskin .letter p:not(:first-child):not(:last-child) {
+  text-indent: 30px;
+}
+
+#workskin .email {
+  padding: 0 0.643em;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  float: none;
+}
+
+#workskin .flashback {
+  border-right: 2px dotted rgba(0, 0, 0, 0.15);
+  padding: 0 1rem;
+  margin: 1.5rem 0;
+  color: #555;
+}
+
+#workskin .sidenote {
+  width: 45%;
+  margin: 0 0 1em 1.5em;
+  padding: 0.1em 1em;
+  font-size: 1em;
+  font-style: italic;
+  color: #666;
+  border-left: 2px solid #750705;
+  background: #fafafa;
+  transform: rotate(-2deg);
+}
+
+#workskin .yasaka-stamp {
+  position: relative;
+  text-align: right;
+  padding-right: 4.5em;
+}
+
+#workskin .yasaka-stamp::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 30%;
+  transform: translateY(-50%);
+  width: 4em;
+  height: 4em;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/URatJ5.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 2;
+  opacity: 0.9;
+}
+
+#workskin .userstuff blockquote {
+  border-inline-start: 3px solid #750705;
+  padding-inline-start: 1.5rem;
+  margin-inline-start: 0;
+}
+
+/* =========================================================
+   FOOTNOTES & BOXES
+   ========================================================= */
+
+#workskin .fnotes-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+#workskin .fnotes {
+  font-size: 0.75rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  width: 85%;
+  margin: 0 auto;
+  position: relative;
+  line-height: 1.6;
+}
+
+#workskin .fnotes details p,
+#workskin .fnotes details table {
+  font-size: 1.2em;
+}
+
+#workskin .tbc-img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 12px;
+  font-family: Arial;
+  text-align: right;
+}
+
+#workskin .manga-box3 {
+  padding: 1rem 1.5rem;
+  font-size: 0.75rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  width: 75%;
+  float: none;
+  margin: 1rem auto;
+  line-height: 1.6;
+}
+
+#workskin .summaryred {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #750705;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid rgba(51, 51, 51, 0.2);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+#workskin .summaryred:hover {
+  color: #a80a06;
+}
+
+/* =========================================================
+   LAYOUT HELPERS
+   ========================================================= */
+
+#workskin .float-right {
+  float: right;
+}
+
+#workskin .image-right img {
+  float: right;
+  width: 100px;
+  height: 100px;
+  margin-left: 10px;
+  clear: right;
+  position: relative;
+  padding: 20px;
+}
+
+#workskin .circle {
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#workskin .circle2 {
+  display: block;
+  border: 1px solid #a80a06;
+  height: 60px;
+  width: 60px;
+  line-height: 60px;
+  border-radius: 30px;
+  background-color: transparent;
+  color: white;
+  text-align: center;
+  font-size: 2em;
+}
+
+#workskin .image-container {
+  width: 75%;
+  height: 25px;
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ssrp2Q.png');
+  background-repeat: repeat-x;
+  background-size: 25px 25px;
+  background-position: center;
+  display: flex;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#workskin .containerb {
+  margin: 0;
+  position: relative;
+  text-align: center;
+  font-size: 250%;
+  color: #2a2a2a;
+  font-family: Georgia;
+}
+
+#workskin .centeredb {
+  margin: 0;
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#workskin .containerb p,
+#workskin .centeredb p {
+  margin: 0;
+  padding: 0;
+}
+
+#workskin .centered-container {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+}
+
+#workskin .centered-content {
+  max-width: 600px;
+}
+
+#workskin .centered-content p {
+  line-height: 1.5;
+  margin-bottom: 1em;
+  color: #333;
+}
+
+#workskin li::marker {
+  color: #750705;
+  font-weight: bold;
+}
+
+/* =========================================================
+   DEFINITION LISTS & TABLES
+   ========================================================= */
+
+#workskin .userstuff dl,
+#workskin .userstuff dd,
+#workskin .userstuff dt {
+  font-weight: 400;
+}
+
+#workskin dl {
+  margin: 1rem;
+}
+
+#workskin dd {
+  margin: 1rem;
+  line-height: 1.6;
+}
+
+#workskin dt {
+  background: rgba(0, 0, 0, 0.02);
+  color: #750705;
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+#workskin .table-container {
+  overflow-x: auto;
+  width: 100%;
+  border-radius: 8px;
+}
+
+#workskin table {
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#workskin th,
+#workskin td {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+#workskin th {
+  background: rgba(0, 0, 0, 0.03);
+  font-weight: 600;
+}
+
+#workskin .thick-border-top {
+  border-top: 3px double rgba(0, 0, 0, 0.2);
+}
+
+#workskin .thick-border-bottom {
+  border-bottom: 3px double rgba(0, 0, 0, 0.2);
+}
+
+#workskin .vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  padding: 0.75rem;
+  font-weight: 600;
+}
+
+#workskin .noble-house { background: rgba(128, 0, 0, 0.08); }
+#workskin .essential-house { background: rgba(188, 143, 143, 0.08); }
+#workskin .support-house,
+#workskin .category { background: rgba(255, 228, 225, 0.08); }
+
+
+/* =========================================================
+   IMAGE HOVER SYSTEM
+   ---------------------------------------------------------
+   Any class that contains "img-hover" gets this behaviour
+   automatically. No need to register it in a list.
+
+   SIMPLE HOVER (image B fades in over your <img>):
+     #workskin .img-hoverNN::after  { background-image: url(B); }
+
+   REVERSE / CROSSFADE (image A fades out while B fades in):
+     #workskin .img-hoverNN::before { background-image: url(A); }
+     #workskin .img-hoverNN::after  { background-image: url(B); }
+
+   SPEED (default 1s): add the class to a group in SPEEDS below,
+   or write:  #workskin .img-hoverNN { transition-duration: 2.5s; }
+   ========================================================= */
+
+#workskin [class*="img-hover"] {
+  position: relative;
+  max-width: 100%;
+  transition-duration: 1s;
+}
+
+#workskin [class*="img-hover"]::before,
+#workskin [class*="img-hover"]::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: opacity 1s;
+  transition-duration: inherit; /* takes the speed set on the parent */
+}
+
+#workskin [class*="img-hover"]::before { opacity: 1; z-index: 1; }
+#workskin [class*="img-hover"]::after  { opacity: 0; z-index: 2; }
+#workskin [class*="img-hover"]:hover::before { opacity: 0; }
+#workskin [class*="img-hover"]:hover::after  { opacity: 1; }
+
+/* ---------- SPEEDS ---------- */
+
+#workskin .img-hover81e { transition-duration: 0.1s; }
+#workskin .img-hover77 { transition-duration: 0.5s; }
+
+#workskin .img-hover29,
+#workskin .img-hover32 { transition-duration: 1.5s; }
+
+#workskin .img-hover63s,
+#workskin .img-hover66e,
+#workskin .img-hover67,
+#workskin .img-hover68,
+#workskin .img-hover69,
+#workskin .img-hover71,
+#workskin .img-hover76 { transition-duration: 2s; }
+
+#workskin .img-hover-sakaeguchi,
+#workskin .img-hover34,
+#workskin .img-hover36,
+#workskin .img-hover37,
+#workskin .img-hover38,
+#workskin .img-hover39,
+#workskin .img-hover54,
+#workskin .img-hover55,
+#workskin .img-hover56,
+#workskin .img-hover57,
+#workskin .img-hover62,
+#workskin .img-hover66,
+#workskin .img-hover74,
+#workskin .img-hover78,
+#workskin .img-hover79,
+#workskin .img-hover84,
+#workskin .img-hover85,
+#workskin .img-hover86,
+#workskin .img-hover87 { transition-duration: 2.5s; }
+
+#workskin .img-hover64e { transition-duration: 3s; }
+
+#workskin .img-hover48,
+#workskin .img-hover82,
+#workskin .img-hover83 { transition-duration: 3.5s; }
+#workskin .img-hover83::after { transition-duration: 1s; } /* A fades slowly, B pops faster */
+
+#workskin .img-hover60,
+#workskin .img-hover61,
+#workskin .img-hover72,
+#workskin .img-hover73,
+#workskin .img-hover75,
+#workskin .img-hover88 { transition-duration: 4s; }
+
+#workskin .img-hover80,
+#workskin .img-hover81 { transition-duration: 4.5s; }
+
+#workskin .img-hover65 { transition-duration: 5s; }
+
+/* ---------- SIMPLE HOVERS ---------- */
+
+#workskin .img-hover20::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/Lyj0Px.png'); }
+#workskin .img-hover21::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/Mn9lJC.png'); }
+#workskin .img-hover22::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/Mws2Yb.png'); }
+#workskin .img-hover25::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/YBygZz.png'); }
+#workskin .img-hover26::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/Yl4jtF.png'); }
+#workskin .img-hover27::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/YoEzCQ.png'); }
+#workskin .img-hover30::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/oQ4i3P.png'); }
+#workskin .img-hover31::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/o4eXdm.png'); }
+#workskin .img-hover33::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/oNiUcQ.png'); }
+#workskin .img-hover35::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/uAJWA2.png'); }
+#workskin .img-hover-sakaeguchi::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/DI6FBF.png'); }
+#workskin .img-hover40::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/DkqRxz.png'); }
+#workskin .img-hover41::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/DqOqgm.png'); }
+#workskin .img-hover42::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/DlgHSm.png'); }
+#workskin .img-hover43::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/DY6uY5.png'); }
+#workskin .img-hover44::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/DFGW2o.png'); }
+#workskin .img-hover45::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/DhxpYH.png'); }
+#workskin .img-hover46::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/NZ8mN9.png'); }
+#workskin .img-hover47::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/NOaavZ.png'); }
+#workskin .img-hover48::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/NaWcKi.png'); }
+#workskin .img-hover50::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/P0Un9v.png'); }
+#workskin .img-hover51::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/PTGabQ.png'); }
+#workskin .img-hover52::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/PVmpj0.png'); }
+#workskin .img-hover53::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/P4ypdH.png'); }
+#workskin .img-hover561::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/PUYYvc.png'); }
+#workskin .img-hover58::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/fiWP93.png'); }
+#workskin .img-hover59::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ftjbSm.png'); }
+#workskin .img-hover60::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/f6ZWjb.png'); }
+#workskin .img-hover61::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/fsbLub.png'); }
+#workskin .img-hover63::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/FDUVqi.png'); }
+#workskin .img-hover63s::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/FDUQjm.png'); }
+#workskin .img-hover64e::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/FxcTse.png'); }
+#workskin .img-hover65::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/UiussA.png'); }
+#workskin .img-hover66::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/U1wmBA.png'); }
+#workskin .img-hover66e::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/UtHPUD.png'); }
+#workskin .img-hover67::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/UQDN8K.png'); }
+#workskin .img-hover68::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/UsLwmk.png'); }
+#workskin .img-hover69::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/UlFeVH.png'); }
+#workskin .img-hover71::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/UXRKCa.png'); }
+#workskin .img-hover72::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/c0G0ix.png'); }
+#workskin .img-hover73::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ckwb12.png'); }
+#workskin .img-hover75::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/cpL1aq.png'); }
+#workskin .img-hover76::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/cbhpwr.png'); }
+#workskin .img-hover77::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/XZTVKv.png'); }
+#workskin .img-hover78::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/XEVGUC.png'); }
+#workskin .img-hover79::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/X9BGZQ.png'); }
+#workskin .img-hover80::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/XsukLm.png'); }
+#workskin .img-hover81::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/XOUN0P.png'); }
+#workskin .img-hover81e::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/XHECj5.png'); }
+#workskin .img-hover84::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/b0NNpF.png'); }
+#workskin .img-hover85::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/bRytY5.png'); }
+#workskin .img-hover86::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/bUVKaZ.png'); }
+#workskin .img-hover87::after { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/87Hover.png'); }
+
+/* ---------- CROSSFADES (A out, B in) ---------- */
+
+#workskin .img-hover29::before { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/oiPY21.png'); }
+#workskin .img-hover29::after  { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/oiPLYH.png'); }
+
+#workskin .img-hover32::before { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/oeqMXC.png'); }
+#workskin .img-hover32::after  { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/oeqog5.png'); }
+
+#workskin .img-hover34::before { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/oXhBIM.png'); }
+#workskin .img-hover34::after  { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/oXhdUA.png'); }
+
+#workskin .img-hover36::before { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/uZPsXb.png'); }
+#workskin .img-hover36::after  { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/uZPmlT.png'); }
+
+#workskin .img-hover37::before { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/uVGNvi.png'); }
+#workskin .img-hover37::after  { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/uVGDVm.png'); }
+
+#workskin .img-hover38::before { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/uLJexZ.png'); }
+#workskin .img-hover38::after  { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/uLJv1P.png'); }
+
+#workskin .img-hover39::before { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/DImNUC.png'); }
+#workskin .img-hover39::after  { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/DZxI1Q.png'); }
+
+#workskin .img-hover54::before { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/PnWnOT.png'); }
+#workskin .img-hover54::after  { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/PnWeTz.png'); }
+
+#workskin .img-hover55::before { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/Pu7BVD.png'); }
+#workskin .img-hover55::after  { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/Pu7qW0.png'); }
+
+#workskin .img-hover56::before { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/PFOYHv.png'); }
+#workskin .img-hover56::after  { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/PFOoXC.png'); }
+
+#workskin .img-hover57::before { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/P5DSQQ.png'); }
+#workskin .img-hover57::after  { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/PGrlnA.png'); }
+
+#workskin .img-hover62::before { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/F3Yoa7.png'); }
+#workskin .img-hover62::after  { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/F3YYLb.png'); }
+
+#workskin .img-hover74::before { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/cq1V21.png'); }
+#workskin .img-hover74::after  { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/cq19Cc.png'); }
+
+#workskin .img-hover82::before { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/XNU9um.png'); }
+#workskin .img-hover82::after  { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/XNUBQo.png'); }
+
+#workskin .img-hover83::before { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/XxxMzv.png'); }
+#workskin .img-hover83::after  { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/XxoAEe.png'); }
+
+#workskin .img-hover88::before { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/88TOTTB.png'); }
+#workskin .img-hover88::after  { background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/88TOTTA.png'); }
+
+
+
+/* ---------- SEQUENCES (two layers both fade IN, with delays) ---------- */
+
+#workskin .img-hover28::before,
+#workskin .img-hover70::before,
+#workskin .img-hover64.ch-title-hover::before { opacity: 0; }
+
+#workskin .img-hover28:hover::before,
+#workskin .img-hover70:hover::before,
+#workskin .img-hover64.ch-title-hover:hover::before { opacity: 1; }
+
+/* 28 */
+#workskin .img-hover28::before {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/YXkSpC.png');
+  transition: opacity 2s linear;
+}
+#workskin .img-hover28::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/YXK46D.png');
+  transition: opacity 6s ease-in-out 2s;
+}
+
+/* 70 */
+#workskin .img-hover70::before {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/Uuu3fC.png');
+  transition: opacity 3s linear 1s;
+}
+#workskin .img-hover70:hover::before { transition: opacity 3s linear; }
+#workskin .img-hover70::after {
+  background-image: url('https://stroke-6.github.io/AO3/images/CH-Illustrations/UuuKj5.png');
+  transition: opacity 0.1s;
+}
+#workskin .img-hover70:hover::after { transition: opacity 0.1s 5.5s; }
+
+/* 64 — chapter title */
+#workskin .img-hover64.ch-title-hover {
+  display: inline-block;
+}
+#workskin .img-hover64.ch-title-hover::before {
+  background-image: url("https://stroke-6.github.io/AO3/images/CH-Illustrations/FxvpQa.png");
+  background-position: center;
+  transition: opacity 5s ease 4s;
+}
+#workskin .img-hover64.ch-title-hover:hover::before { transition-delay: 0s; }
+#workskin .img-hover64.ch-title-hover::after {
+  top: 50%;
+  height: 55%;
+  transform: translateY(-50%);
+  background-image: url("https://stroke-6.github.io/AO3/images/CH-Illustrations/Fxv3uM.png");
+  background-position: center;
+  transition: opacity 2s ease 0s;
+}
+#workskin .img-hover64.ch-title-hover:hover::after { transition-delay: 10s; }

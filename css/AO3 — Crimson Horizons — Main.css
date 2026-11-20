@@ -1024,14 +1024,14 @@
 #workskin .img-hover84,
 #workskin .img-hover85,
 #workskin .img-hover86,
-#workskin .img-hover87,
-#workskin .img-hover89 { transition-duration: 2.5s; }
+#workskin .img-hover87 { transition-duration: 2.5s; }
 
 #workskin .img-hover64e { transition-duration: 3s; }
 
 #workskin .img-hover48,
 #workskin .img-hover82,
-#workskin .img-hover83 { transition-duration: 3.5s; }
+#workskin .img-hover83,
+#workskin .img-hover89 { transition-duration: 3.5s; }
 #workskin .img-hover83::after { transition-duration: 1s; } /* A fades slowly, B pops faster */
 
 #workskin .img-hover60,

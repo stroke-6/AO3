@@ -116,8 +116,8 @@
 #workskin p[align="center"]:not(:has(img)) strong.strongred::after {
   content: '';
   position: absolute;
-  left: 0;
-  right: 0;
+  left: 1.4em;    /* lines start 1.4em in from the title box: */
+  right: 1.4em;   /* the text starts at 1.1em, so they end just inside it */
   height: 7px;
   border-left: 23px solid transparent;
   border-right: 23px solid transparent;
@@ -139,10 +139,11 @@
   transform: rotate(180deg) scaleY(0.7);
 }
 
+/* on hover the lines stretch out by 0.4em on each side */
 #workskin p[align="center"]:not(:has(img)) strong.strongred:hover::before,
 #workskin p[align="center"]:not(:has(img)) strong.strongred:hover::after {
-  left: -0.4em;
-  right: -0.4em;
+  left: 1em;
+  right: 1em;
 }
 
 /* ---------- artwork, one set per POV colour ----------

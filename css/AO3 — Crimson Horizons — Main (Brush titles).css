@@ -127,14 +127,16 @@
   transition: left 1s ease-out, right 1s ease-out;
 }
 
+/* scaleY thins the lines without touching the PNGs (1 = full 7px) */
 #workskin p[align="center"]:not(:has(img)) strong.strongred::before {
   top: 0;
+  transform: scaleY(0.7);
 }
 
 /* the bottom rule is turned around, so its stroke runs the other way */
 #workskin p[align="center"]:not(:has(img)) strong.strongred::after {
   bottom: 0;
-  transform: rotate(180deg);
+  transform: rotate(180deg) scaleY(0.7);
 }
 
 #workskin p[align="center"]:not(:has(img)) strong.strongred:hover::before,

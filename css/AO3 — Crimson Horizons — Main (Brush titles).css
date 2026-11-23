@@ -79,23 +79,25 @@
    CENTERED SECTION TITLES (strong.strongred)
    Chapter title in spaced capitals between two brush-stroke
    rules, each with a brush dot beyond either end.
+   The top and bottom strokes are different drawings.
    Each rule uses three PNGs: left end, right end, stroke
-   (ch-rule-calli-cap-l / cap-r / stroke - <colour>.png),
+     top:    ch-rule-calli-cap-l / cap-r / stroke - <colour>.png
+     bottom: ch-rule-calli-alt-cap-l / cap-r / stroke - <colour>.png
    one set per POV colour.
-   A new POV needs its own set of three files plus a rule
-   in the POV list below.
+   A new POV needs its own six files plus a rule in the POV
+   list below.
    ========================================================= */
 
 #workskin p[align="center"]:not(:has(img)) strong.strongred {
   display: inline-block;
   position: relative;
   max-width: 90%;
-  padding: 0.7em 1.1em;
+  padding: 0.65em 1.1em;
   font-family: 'PT Serif', Georgia, serif;
-  font-size: 1.1em;
+  font-size: 1.25em;
   font-weight: 700;
   letter-spacing: 0.05em;
-  line-height: 1.5;
+  line-height: 1.4;
   text-transform: uppercase;
   font-variant-numeric: lining-nums;
   text-shadow: 0 0 0 transparent;
@@ -116,12 +118,12 @@
   position: absolute;
   left: 0;
   right: 0;
-  height: 8px;
-  border-left: 26px solid transparent;
-  border-right: 26px solid transparent;
+  height: 7px;
+  border-left: 23px solid transparent;
+  border-right: 23px solid transparent;
   background-repeat: no-repeat;
-  background-size: 27px 8px, 27px 8px, 100% 8px;   /* ends overlap the stroke by 1px: no seam */
-  background-position: -26px 0, right -26px top 0, 0 0;
+  background-size: 25px 7px, 25px 7px, 100% 7px;   /* ends overlap the stroke by 2px: no seam */
+  background-position: -23px 0, right -23px top 0, 0 0;
   transition: left 1s ease-out, right 1s ease-out;
 }
 
@@ -129,7 +131,7 @@
   top: 0;
 }
 
-/* the bottom rule is the top one turned around */
+/* the bottom rule is turned around, so its stroke runs the other way */
 #workskin p[align="center"]:not(:has(img)) strong.strongred::after {
   bottom: 0;
   transform: rotate(180deg);
@@ -141,62 +143,105 @@
   right: -0.4em;
 }
 
-/* ---------- artwork, one set per POV colour ---------- */
+/* ---------- artwork, one set per POV colour ----------
+   ::before = top stroke, ::after = bottom stroke */
 
-#workskin p[align="center"]:not(:has(img)) strong.strongred::before,
-#workskin p[align="center"]:not(:has(img)) strong.strongred::after {
+#workskin p[align="center"]:not(:has(img)) strong.strongred::before {
   background-image:
     url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-cap-l-default.png'),
     url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-cap-r-default.png'),
     url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-stroke-default.png');
 }
 
-#workskin p[align="center"]:not(:has(img)) strong.strongred.shiori::before,
-#workskin p[align="center"]:not(:has(img)) strong.strongred.shiori::after {
+#workskin p[align="center"]:not(:has(img)) strong.strongred::after {
+  background-image:
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-alt-cap-l-default.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-alt-cap-r-default.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-alt-stroke-default.png');
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred.shiori::before {
   background-image:
     url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-cap-l-shiori.png'),
     url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-cap-r-shiori.png'),
     url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-stroke-shiori.png');
 }
 
-#workskin p[align="center"]:not(:has(img)) strong.strongred.entropy::before,
-#workskin p[align="center"]:not(:has(img)) strong.strongred.entropy::after {
+#workskin p[align="center"]:not(:has(img)) strong.strongred.shiori::after {
+  background-image:
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-alt-cap-l-shiori.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-alt-cap-r-shiori.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-alt-stroke-shiori.png');
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred.entropy::before {
   background-image:
     url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-cap-l-entropy.png'),
     url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-cap-r-entropy.png'),
     url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-stroke-entropy.png');
 }
 
-#workskin p[align="center"]:not(:has(img)) strong.strongred.crane::before,
-#workskin p[align="center"]:not(:has(img)) strong.strongred.crane::after {
+#workskin p[align="center"]:not(:has(img)) strong.strongred.entropy::after {
+  background-image:
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-alt-cap-l-entropy.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-alt-cap-r-entropy.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-alt-stroke-entropy.png');
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred.crane::before {
   background-image:
     url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-cap-l-crane.png'),
     url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-cap-r-crane.png'),
     url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-stroke-crane.png');
 }
 
-#workskin p[align="center"]:not(:has(img)) strong.strongred.rope::before,
-#workskin p[align="center"]:not(:has(img)) strong.strongred.rope::after {
+#workskin p[align="center"]:not(:has(img)) strong.strongred.crane::after {
+  background-image:
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-alt-cap-l-crane.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-alt-cap-r-crane.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-alt-stroke-crane.png');
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred.rope::before {
   background-image:
     url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-cap-l-rope.png'),
     url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-cap-r-rope.png'),
     url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-stroke-rope.png');
 }
 
-#workskin p[align="center"]:not(:has(img)) strong.strongred.persimmon::before,
-#workskin p[align="center"]:not(:has(img)) strong.strongred.persimmon::after {
+#workskin p[align="center"]:not(:has(img)) strong.strongred.rope::after {
+  background-image:
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-alt-cap-l-rope.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-alt-cap-r-rope.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-alt-stroke-rope.png');
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred.persimmon::before {
   background-image:
     url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-cap-l-persimmon.png'),
     url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-cap-r-persimmon.png'),
     url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-stroke-persimmon.png');
 }
 
-#workskin p[align="center"]:not(:has(img)) strong.strongred.wire::before,
-#workskin p[align="center"]:not(:has(img)) strong.strongred.wire::after {
+#workskin p[align="center"]:not(:has(img)) strong.strongred.persimmon::after {
+  background-image:
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-alt-cap-l-persimmon.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-alt-cap-r-persimmon.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-alt-stroke-persimmon.png');
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred.wire::before {
   background-image:
     url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-cap-l-wire.png'),
     url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-cap-r-wire.png'),
     url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-stroke-wire.png');
+}
+
+#workskin p[align="center"]:not(:has(img)) strong.strongred.wire::after {
+  background-image:
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-alt-cap-l-wire.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-alt-cap-r-wire.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-calli-alt-stroke-wire.png');
 }
 
 #workskin ::selection {

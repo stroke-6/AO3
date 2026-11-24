@@ -362,7 +362,8 @@
    side, the same strokes as the chapter titles (ch-rule-nib).
    The right-hand stroke is turned around, so both run outward.
    hr4 / hr7: a single brush stroke.
-   A plain <hr> with no class gets a black brush stroke too.
+   A plain <hr> with no class gets a brush stroke too.
+   All strokes are #2a2a2a, the body-text colour (ch-rule-nib-*-text).
    ========================================================= */
 
 #workskin .userstuff hr {
@@ -427,86 +428,86 @@
 /* artwork: one pair per emblem */
 #workskin .hr5::before {
   background-image:
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-l-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-r-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-stroke-ink.png');
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-l-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-r-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-stroke-text.png');
 }
 
 #workskin .hr5::after {
   background-image:
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-l-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-r-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-stroke-ink.png');
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-l-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-r-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-stroke-text.png');
 }
 
 #workskin .hr5.hrfire::before {
   background-image:
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-l-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-r-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-stroke-ink.png');
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-l-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-r-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-stroke-text.png');
 }
 
 #workskin .hr5.hrfire::after {
   background-image:
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-l-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-r-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-stroke-ink.png');
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-l-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-r-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-stroke-text.png');
 }
 
 #workskin .hr5.hrcrane::before {
   background-image:
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-l-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-r-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-stroke-ink.png');
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-l-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-r-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-stroke-text.png');
 }
 
 #workskin .hr5.hrcrane::after {
   background-image:
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-l-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-r-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-stroke-ink.png');
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-l-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-r-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-stroke-text.png');
 }
 
 #workskin .hr5.hrrope::before {
   background-image:
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-l-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-r-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-stroke-ink.png');
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-l-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-r-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-stroke-text.png');
 }
 
 #workskin .hr5.hrrope::after {
   background-image:
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-l-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-r-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-stroke-ink.png');
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-l-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-r-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-stroke-text.png');
 }
 
 #workskin .hr5.hrpersimmon::before {
   background-image:
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-l-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-r-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-stroke-ink.png');
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-l-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-r-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-stroke-text.png');
 }
 
 #workskin .hr5.hrpersimmon::after {
   background-image:
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-l-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-r-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-stroke-ink.png');
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-l-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-r-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-stroke-text.png');
 }
 
 #workskin .hr6::before {
   background-image:
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-l-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-r-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-stroke-ink.png');
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-l-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-r-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-stroke-text.png');
 }
 
 #workskin .hr6::after {
   background-image:
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-l-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-r-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-stroke-ink.png');
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-l-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-r-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-stroke-text.png');
 }
 
 #workskin .hr5:hover {
@@ -552,9 +553,9 @@
   border-right: 23px solid transparent;
   background-color: transparent;
   background-image:
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-l-hrred.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-r-hrred.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-stroke-hrred.png');
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-l-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-r-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-stroke-text.png');
   background-repeat: no-repeat;
   background-size: 25px 7px, 25px 7px, 100% 7px;
   background-position: -23px 0, right -23px top 0, 0 0;
@@ -574,17 +575,17 @@
   border-right: 23px solid transparent;
   background-color: transparent;
   background-image:
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-l-default.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-r-default.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-stroke-default.png');
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-l-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-cap-r-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-alt-stroke-text.png');
   background-repeat: no-repeat;
   background-size: 25px 7px, 25px 7px, 100% 7px;
   background-position: -23px 0, right -23px top 0, 0 0;
   transform: scaleY(0.6);
-  filter: drop-shadow(0 0 6px rgba(117, 7, 5, 0.5));
+  filter: drop-shadow(0 0 6px rgba(42, 42, 42, 0.35));
 }
 
-/* plain <hr> (no class): one black brush stroke across the width */
+/* plain <hr> (no class): one brush stroke across the width */
 #workskin hr:not([class]) {
   box-sizing: border-box;
   width: 100%;
@@ -594,9 +595,9 @@
   border-right: 23px solid transparent;
   background-color: transparent;
   background-image:
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-l-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-r-ink.png'),
-    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-stroke-ink.png');
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-l-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-cap-r-text.png'),
+    url('https://stroke-6.github.io/AO3/images/CH-Illustrations/ch-rule-nib-stroke-text.png');
   background-repeat: no-repeat;
   background-size: 25px 7px, 25px 7px, 100% 7px;
   background-position: -23px 0, right -23px top 0, 0 0;

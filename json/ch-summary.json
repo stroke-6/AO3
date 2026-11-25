@@ -834,7 +834,7 @@
       "title": "The Scholar",
       "chapter": 84,
       "scope": "tale",
-      "weight": "master",
+      "weight": "thread",
       "text": "**Umezu Hakuin** sits silent for most of the meeting, then asks only two questions: where Naruto was standing when the red light came down, and what he did just before it. He notes that the examiners found **nothing left of Reiha's illusions on either Naruto or Kushimaru** — and Kushimaru was in no condition to scrub anything off himself. Naruto deflects. Umezu says \"Thank you,\" sits back, and **tells the room nothing of what he concluded.** Afterwards he stops watching Naruto.",
       "updates": [
         { "chapter": 87, "text": "In the instructors' room his brush stops whenever an answer interests him. Naruto holds a lead ball and wonders how many a scroll could hold, \"*and how blood—*\". Umezu is not watching his face. Umezu is watching his hands." },
@@ -868,12 +868,12 @@
       "title": "\"Did My Father Lie to Me?\"",
       "chapter": 85,
       "scope": "tale",
-      "weight": "master",
+      "weight": "thread",
       "text": "**Kushimoto Yukina** reconstructed Naruto's arrival from the household registers alone — one boat, four days from the Shelf — and knows that nobody ever came to that place to hunt for her. Her father says the reports don't agree. She asks the one person under the roof who knows.",
       "updates": [
-        { "chapter": 86, "text": "\"*The reports don't agree,*\" says Naruto, as the daimyō once said to Yukina. She catches it. So does **Ōura**, who tells Naruto to his face. Then a note in a salt trough: **Kane-bashi, the east end, two in the night** — the issue is... Naruto is not allowed out of the court." },
-        { "chapter": 88, "text": "*Yes. I would say he has,* Naruto says." }
-      ]
+        { "chapter": 86, "text": "\"*The reports don't agree,*\" says Naruto, as the daimyō once said to Yukina. She catches it. So does **Ōura**, who tells Naruto to his face. Then a note in a salt trough: **Kane-bashi, the east end, two in the night** — the issue is... Naruto is not allowed out of the court." }
+      ],
+      "resolution": { "chapter": 88, "text": "*Yes. I would say he has,* Naruto says." }
     },
     {
       "id": "diary",
@@ -900,7 +900,7 @@
       "title": "\"He Won't Let You Go\"",
       "chapter": 88,
       "scope": "tale",
-      "weight": "master",
+      "weight": "thread",
       "text": "The council thinks Naruto will be sent home eventually, but Yukina says she knows her father: \"*Once he has something, he keeps it. A field, a boat… a person.*\""
     },
     {
@@ -913,7 +913,7 @@
     },
     {
       "id": "sagara-face",
-      "title": "Sagara Face",
+      "title": "Sagara",
       "chapter": 88,
       "scope": "tale",
       "weight": "thread",
@@ -924,7 +924,7 @@
       "title": "Kase",
       "chapter": 89,
       "scope": "tale",
-      "weight": "master",
+      "weight": "thread",
       "text": "A second seal, cut into his own leg with a stolen hook: the **shackle**, to store what the body holds back. It needs a spoken word to trigger properly, and there's nowhere in the house to say one unheard. Then come the headache, the fever... One night, dreaming of drowning, he kicks — and the seal answers."
     }
   ],

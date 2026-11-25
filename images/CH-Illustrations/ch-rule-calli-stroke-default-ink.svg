@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 7" preserveAspectRatio="none">
+  <!--
+    Crimson Horizons: animated brush stroke for strong.strongred.
+    Drop-in replacement for ch-rule-calli-stroke-default.png.
+    The stroke paints itself in left to right, holds, fades, repeats.
+    Everything runs inside this file, so AO3 never sees the @keyframes.
+  -->
+  <style>
+    .ink  { fill: #750705; }
+    .wet  { fill: #a80a06; opacity: .55; }
+    .reveal {
+      stroke-dasharray: 400;
+      stroke-dashoffset: 400;
+      animation: paint 7s cubic-bezier(.55,.1,.25,1) infinite;
+    }
+    .sheen { animation: sheen 7s ease-in-out infinite; }
+    @keyframes paint {
+      0%   { stroke-dashoffset: 400; opacity: 1; }
+      22%  { stroke-dashoffset: 0;   opacity: 1; }
+      85%  { stroke-dashoffset: 0;   opacity: 1; }
+      100% { stroke-dashoffset: 0;   opacity: 0; }
+    }
+    @keyframes sheen {
+      0%, 18% { opacity: .55; }
+      45%, 100% { opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { animation: none; stroke-dashoffset: 0; }
+      .sheen  { animation: none; opacity: 0; }
+    }
+  </style>
+  <defs>
+    <filter id="rough" x="0" y="-50%" width="100%" height="200%">
+      <feTurbulence type="fractalNoise" baseFrequency=".09 .9" numOctaves="2" seed="6"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.6"/>
+    </filter>
+    <mask id="m" maskUnits="userSpaceOnUse" x="0" y="0" width="400" height="7">
+      <line class="reveal" x1="0" y1="3.5" x2="400" y2="3.5" stroke="#fff" stroke-width="7"/>
+    </mask>
+  </defs>
+  <g mask="url(#m)" filter="url(#rough)">
+    <path class="ink" d="M0,2.9 C40,1.1 120,.9 200,1.5 C280,2.1 350,2.3 400,3.1 L400,3.9 C350,4.9 280,5.3 200,5.5 C120,5.9 40,5.9 0,4.1 Z"/>
+    <path class="wet sheen" d="M0,3.2 C60,2.2 140,2 220,2.5 C300,3 360,3.1 400,3.4 L400,3.6 C360,3.9 300,4 220,4.1 C140,4.3 60,4.3 0,3.8 Z"/>
+  </g>
+</svg>

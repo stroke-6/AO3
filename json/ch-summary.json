@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Crimson Horizons",
-    "latestChapter": 87,
-    "updated": "2026-10-07"
+    "latestChapter": 89,
+    "updated": "2026-11-25"
   },
 
   "arcs": [
@@ -167,7 +167,9 @@
     { "n": 84, "title": "The Guest", "type": "tale", "summary": "Delivered to **Shiosai**, the Imperial Capital of Water. They do not put him in a cell — they bathe him, burn his clothes, wash the dye out of his hair, write down every mark on his body, and sit him in front of **nine men** who argue for two hours, most of it in a court tongue he cannot understand, over whether to teach him, sell him to Fire, or cut his throat. He listens for names. Then he interrupts, and **sells them a leash on purpose**: everything they want, in exchange for any healer in the country. Asked who is sick, he tells the daimyō the truth — his mother. He is entered as a **guest**." },
     { "n": 85, "title": "Yukina", "type": "tale", "summary": "Nineteen wards live in the east court and Naruto makes twenty. He learns the house's economy, and still, within a day he tells an eleven-year-old **Karatachi** that the Harvest is theater and his father is coming a long way to sit where he's put. At night, as agreed upon, he summons **Kaito** out of a salt pond and sends his mother a letter the household has approved. Then a physician asks plain questions about her four-year illness and the answers stop fitting in Naruto's mind. The daimyō's daughter walks into the court, empties it, and asks what happened on the Shihō Shelf." },
     { "n": 86, "title": "Bells and Cages", "type": "tale", "summary": "Yes is true and a bad idea; no is an obvious lie. So Naruto gives the daimyō's daughter her father's own words back, and waits four seconds to find out whether she is clever enough to catch it. His keeper, Ōura Naozane, catches it too. The next morning he goes up the rites house — a stair with a trough of salt on every landing — and from the roof he sees **Shiosai** entire for the first time. She tells him about the night her ship went down and her foster mother. As is customary, with his usual grace, he asks her for anatomy books. On the way down, his fingers find paper in the sixth trough." },
-    { "n": 87, "title": "Raisen", "type": "tale", "summary": "The man who sold him teaches him the sword, mostly by hitting him with it. A general shows him a **teppō** and asks how he'd kill the boys who carry them; he answers honestly, and the scholar watches his hands. A letter comes from home, read by the household first: **Yasaka is alive.** Kushimaru teaches him a technique he made before he was a Swordsman, one that only works on someone who thinks he knows where you're going, and tells him to eat more fish, because protein's important. The household has planned for a sealer; just not this kind. On the fifth night, Naruto leaves a face at a window, takes the lead out of the grate, and goes out with the tide toward the loudest bells in Shiosai." }
+    { "n": 87, "title": "Raisen", "type": "tale", "summary": "The man who sold him teaches him the sword, mostly by hitting him with it. A general shows him a **teppō** and asks how he'd kill the boys who carry them; he answers honestly, and the scholar watches his hands. A letter comes from home, read by the household first: **Yasaka is alive.** Kushimaru teaches him a technique he made before he was a Swordsman, one that only works on someone who thinks he knows where you're going, and tells him to eat more fish, because protein's important. The household has planned for a sealer; just not this kind. On the fifth night, Naruto leaves a face at a window, takes the lead out of the grate, and goes out with the tide toward the loudest bells in Shiosai." },
+    { "n": 88, "title": "The Only True Things", "type": "tale", "summary": "Outside the walls, Naruto gets his first true glance of Shiosai: a fish carved under every eave, a couple mending nets, and, in a yard of **kuzushi**, a song is sung all night so that the sea will learn a new boat's name. Under **Kane-bashi** waits a kitchen girl who smells of mackerel: the princess. Did her father lie to her? The answer is **yes**, Naruto says. She answers in kind: **her father won't let Naruto go.** He offers her his hand, carries her out to a sandbar where the sea lights under their fingers, and the daimyō's daughter, for once, laughs out loud. She asks him to come back on the sixteenth. On the way home, he steals a knife, an inkstick, and three brushes. The princess, he decides, is useful." },
+    { "n": 89, "title": "Ink and Thread", "type": "tale", "summary": "General **Isonami** wants his guns loaded faster than a shinobi can cross a harbor; Naruto wants his things back. A powder-maker and a smith take his first idea apart, he gets a better one, and so it is that fourteen farm children from the Azure Guard learn to make one seal — only that one, and never why it works. Naruto's paid half: his iron bracelets, but not the scrolls. He learns his lines for the Harvest. At night he reads Yukina's books, and, in u**z**ual recklessness, carves a seal into his own leg with the stolen knife. Then the fever comes, and one night the seal answers in his sleep... and the daimyō comes to see the result himself. He's rather unhappy." }
   ],
 
   "mysteries": [
@@ -210,7 +212,8 @@
         { "chapter": 71, "text": "The Shelf poison's effects remind Naruto of his mother's illness. A clue, or a traumatized child's projection?" },
         { "chapter": 85, "text": "A **Hōzuki** physician asks plain questions and nothing fits. Four years of a wasting course that **comes and goes**, which no wasting disease does." },
         { "chapter": 86, "text": "With *mother* in front of him, he asks a princess for books on physic — \"*how it's put together, what moves what*\". She doesn't know why, but will remember that he did." },
-        { "chapter": 87, "text": "He asks a court physician why a man can't tear his own arm off. \"*Whatever answer pleases you, don't imagine the bone grows stronger because you've found a way to pull harder on it.*\"" }
+        { "chapter": 87, "text": "He asks a court physician why a man can't tear his own arm off. \"*Whatever answer pleases you, don't imagine the bone grows stronger because you've found a way to pull harder on it.*\"" },
+        { "chapter": 89, "text": "The physician's questions go to Uzushio, addressed to anyone but Naruto's mother. The scrolls that might (*might*) hold an answer stay in the house." }
       ]
     },
     {
@@ -617,7 +620,8 @@
       "updates": [
         { "chapter": 56, "text": "Waka decides to leave once they reach land — and admits, \"I would've taken Kesshin's hand too.\"" },
         { "chapter": 67, "text": "He is left behind, burnt and helpless, in a broker's hands. \"We'll have him walk again.\"" },
-        { "chapter": 79, "text": "And is now an exposed loose end in the daimyō's trap, along with Tsuneko. Naruto can't reach him and mustn't name him." }
+        { "chapter": 79, "text": "And is now an exposed loose end in the daimyō's trap, along with Tsuneko. Naruto can't reach him and mustn't name him." },
+        { "chapter": 88, "text": "With nobody watching for once, Kaito carries a hasty letter out of Shiosai, asking after a boy from Iron." }
       ]
     },
     
@@ -660,7 +664,8 @@
       "updates": [
         { "chapter": 66, "text": "Shunryō names the direction it's heading: a **flowing, mobile Sealing Field** — protection that doesn't prevent offense. A Tenjin-shaped Art." },
         { "chapter": 70, "text": "The slicing variant gets its own word, and he turns it on a crowd. **\"Shear.\"**" },
-        { "chapter": 78, "text": "He **bluffs** a Sealing Field he does not have, and a Swordsman believes it." }
+        { "chapter": 78, "text": "He **bluffs** a Sealing Field he does not have, and a Swordsman believes it." },
+        { "chapter": 89, "text": "A sip of blood with every heartbeat, pressed harder than a hundred hearts could manage. It's a decent technique, and it's his. It's also **not enough**: he can't get there in time. Recklessness ensues." }
       ]
     },
     {
@@ -832,7 +837,8 @@
       "weight": "master",
       "text": "**Umezu Hakuin** sits silent for most of the meeting, then asks only two questions: where Naruto was standing when the red light came down, and what he did just before it. He notes that the examiners found **nothing left of Reiha's illusions on either Naruto or Kushimaru** — and Kushimaru was in no condition to scrub anything off himself. Naruto deflects. Umezu says \"Thank you,\" sits back, and **tells the room nothing of what he concluded.** Afterwards he stops watching Naruto.",
       "updates": [
-        { "chapter": 87, "text": "In the instructors' room his brush stops whenever an answer interests him. Naruto holds a lead ball and wonders how many a scroll could hold, \"*and how blood—*\". Umezu is not watching his face. Umezu is watching his hands." }
+        { "chapter": 87, "text": "In the instructors' room his brush stops whenever an answer interests him. Naruto holds a lead ball and wonders how many a scroll could hold, \"*and how blood—*\". Umezu is not watching his face. Umezu is watching his hands." },
+        { "chapter": 89, "text": "Every afternoon, at the end of the table, Umezu writes it all down. Naruto's paper is counted back in at sunset." }
       ]
     },
     {
@@ -865,7 +871,8 @@
       "weight": "master",
       "text": "**Kushimoto Yukina** reconstructed Naruto's arrival from the household registers alone — one boat, four days from the Shelf — and knows that nobody ever came to that place to hunt for her. Her father says the reports don't agree. She asks the one person under the roof who knows.",
       "updates": [
-        { "chapter": 86, "text": "\"*The reports don't agree,*\" says Naruto, as the daimyō once said to Yukina. She catches it. So does **Ōura**, who tells Naruto to his face. Then a note in a salt trough: **Kane-bashi, the east end, two in the night** — the issue is... Naruto is not allowed out of the court." }
+        { "chapter": 86, "text": "\"*The reports don't agree,*\" says Naruto, as the daimyō once said to Yukina. She catches it. So does **Ōura**, who tells Naruto to his face. Then a note in a salt trough: **Kane-bashi, the east end, two in the night** — the issue is... Naruto is not allowed out of the court." },
+        { "chapter": 88, "text": "*Yes. I would say he has,* Naruto says." }
       ]
     },
     {
@@ -887,6 +894,38 @@
 		"chapter": 83,
         "text": "Answered in 74 with the tale of Mikio: Naruto can't listen to warnings."
       }
+    },
+    {
+      "id": "kept",
+      "title": "\"He Won't Let You Go\"",
+      "chapter": 88,
+      "scope": "tale",
+      "weight": "master",
+      "text": "The council thinks Naruto will be sent home eventually, but Yukina says she knows her father: \"*Once he has something, he keeps it. A field, a boat… a person.*\""
+    },
+    {
+      "id": "the-look",
+      "title": "A Strange Look",
+      "chapter": 88,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "\"*Sometimes you have a strange look in your eyes.*\" Yukina can't explain it better. Had she been beside him the next morning, she would have known it. Doesn't she know our boy is slightly psychotic...?"
+    },
+    {
+      "id": "sagara-face",
+      "title": "Sagara Face",
+      "chapter": 88,
+      "scope": "tale",
+      "weight": "thread",
+      "text": "By starlight, the princess's profile is her guard's: the same short, straight nose, the same chin. Naruto keeps it to himself. Like his mental issues."
+    },
+    {
+      "id": "kase",
+      "title": "Kase",
+      "chapter": 89,
+      "scope": "tale",
+      "weight": "master",
+      "text": "A second seal, cut into his own leg with a stolen hook: the **shackle**, to store what the body holds back. It needs a spoken word to trigger properly, and there's nowhere in the house to say one unheard. Then come the headache, the fever... One night, dreaming of drowning, he kicks — and the seal answers."
     }
   ],
 
@@ -1018,7 +1057,9 @@
 
 	{ "id": "first-night-out", "cycle": "Fire",  "year": 211, "monthIndex": 8, "day": 29, "dateLabel": "29 August", "chapter": 87, "kind": "event", "tale": true,
       "title": "Naruto leaves the daimyō's house through the pond grate",
-      "detail": "The fifth night. A face at the gatehouse window, two bars lifted out of their lead, the culvert on the ebb; the boy shinobi turns toward Kane-bashi." }
+      "detail": "The fifth night. A face at the gatehouse window, two bars lifted out of their lead, the culvert on the ebb; the boy shinobi turns toward Kane-bashi." },
+	{ "id": "kane-bashi", "cycle": "Fire", "year": 211, "monthIndex": 8, "day": 30, "dateLabel": "30 August", "chapter": 88, "kind": "event", "tale": true, "title": "Naruto meets Yukina under Kane-bashi", "detail": "Two in the night. She came as a kitchen girl; he carries her out to a sandbar east of Ukisu and has her back on the kitchen boat before dawn. Way to go, hero." },
+	{ "id": "kase-misfire", "cycle": "Fire", "year": 211, "monthIndex": 9, "day": 15, "dateLabel": "15 September", "chapter": 89, "kind": "event", "tale": true, "title": "The east court wakes in the night", "detail": "A ward goes through his own door and across the colonnade. The daimyō comes to the physician's room in person." }
 
   ]
 }
